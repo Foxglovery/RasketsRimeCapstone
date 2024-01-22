@@ -1,0 +1,6 @@
+@RasketsRimeCapstone_HostAddress = http://localhost:5117
+
+GET {{RasketsRimeCapstone_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
