@@ -9,6 +9,11 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
     private readonly IConfiguration _configuration;
 
     public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<Event> Events { get; set; }
+    public DbSet<EventService> EventServices { get; set; }
+    public DbSet<Service> Services { get; set; }
+    public DbSet<Venue> Venues { get; set; }
+    public DbSet<VenueService> VenueServices { get; set; }
 
     public RasketsRimeDbContext(DbContextOptions<RasketsRimeDbContext> context, IConfiguration config) : base(context)
     {
@@ -19,6 +24,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
     {
         base.OnModelCreating(modelBuilder);
         //rolls available
+        //only adding 1 so I dont need the bracket to indicate an array of IdentityRoles
         modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
         {
             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
@@ -27,7 +33,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
         });
         modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
         {
-            // LEFT OFF ADDING THIS GUID TO THIS ROLE. CONTINUE ADDING TILL GET A WORKABLE USER
+
             Id = "a601c402-545f-4ba8-869d-6f0968774d58",
             Name = "User",
             NormalizedName = "user"
@@ -37,7 +43,14 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
         {
             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             UserName = "Administrator",
-            Email = "admina@strator.comx",
+            Email = "admin@neopets.com",
+            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+        });
+        modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
+        {
+            Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
+            UserName = "Schlebethany",
+            Email = "Schlebethany@neopets.com",
             PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
         });
         //join table of user roles with users
@@ -46,13 +59,41 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
             UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
         });
-        modelBuilder.Entity<UserProfile>().HasData(new UserProfile
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
         {
+            RoleId = "a601c402-545f-4ba8-869d-6f0968774d58",
+            UserId = "e2731372-eb45-4cc5-9a34-d9711f3642b2"
+        });
+        // modelBuilder.Entity<UserProfile>().HasData(new UserProfile
+        // {
+        //     Id = 1,
+        //     IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
+        //     FirstName = "Admina",
+        //     LastName = "Strator",
+        //     Address = "101 Main Street",
+        // });
+        modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
+        {
+            new UserProfile
+            {
             Id = 1,
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             FirstName = "Admina",
             LastName = "Strator",
             Address = "101 Main Street",
+            IsAdmin = true,
+            ProfileImage = "https://i.pinimg.com/564x/c0/fd/d7/c0fdd735d4db94c60866e43e44ae98cf.jpg"
+            },
+            new UserProfile
+            {
+                Id = 2,
+                IdentityUserId = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
+                FirstName = "Schlebethany",
+                LastName = "Pleasance",
+                Address = "222 N Sidereal Way",
+                IsAdmin = false,
+                ProfileImage = "https://beta.creativecirclecdn.com/timberjay/original/20210127-160305-1.29%20weasel%20looks.tif.jpg" 
+            }
         });
         modelBuilder.Entity<Venue>().HasData(new Venue[]
         {
@@ -112,7 +153,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             VenueName = "The Patty Lupone Groupon Coupon Main Stage",
             Address = "5590 Fingerpail Row",
             Description = "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ",
-            ContactInfo = "Schlebetheny Jerp --850-334-9010",
+            ContactInfo = "Maisel Darby --850-334-9010",
             MaxOccupancy = 500,
             IsActive = true
             }
@@ -538,19 +579,42 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceId = 21
             }
         });
+            DateTime initialEventSubmitted = DateTime.SpecifyKind(DateTime.Parse("2024-01-12T11:00:00Z"), DateTimeKind.Utc);
+            DateTime initialEventStart = DateTime.SpecifyKind(DateTime.Parse("2024-04-12T12:00:00Z"), DateTimeKind.Utc);
+
 
         modelBuilder.Entity<Event>().HasData(new Event[]
         {
             new Event
             {
-                
+                Id = 1,
+                UserId = 2,
+                VenueId = 5,
+                EventName = "Darla Dinkles Bachelorette Party",
+                ExpectedAttendees = 15,
+                EventDescription = "Just some rowdy gals ready to get totally twisted.",
+                IsPublic = true,
+                SubmitedOn = initialEventSubmitted,
+                Status = "Accepted",
+                EventStart = initialEventStart,
+                Duration = 6
             }
         });
 
-
-
-
-
-
+        modelBuilder.Entity<EventService>().HasData(new EventService[]
+        {
+            new EventService
+            {
+                Id = 1,
+                EventId = 1,
+                ServiceId = 2
+            },
+            new EventService
+            {
+                Id = 2,
+                EventId = 1,
+                ServiceId = 16
+            }
+        });
     }
 }
