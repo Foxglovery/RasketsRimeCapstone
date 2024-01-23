@@ -253,7 +253,7 @@ namespace RasketsRimeCapstone.Migrations
                     ExpectedAttendees = table.Column<int>(type: "integer", nullable: false),
                     EventDescription = table.Column<string>(type: "text", nullable: false),
                     IsPublic = table.Column<bool>(type: "boolean", nullable: false),
-                    SubmitedOn = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    SubmitedOn = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     Status = table.Column<string>(type: "text", nullable: false),
                     EventStart = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Duration = table.Column<int>(type: "integer", nullable: false)
@@ -315,8 +315,8 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "ee9699eb-753a-4088-b0b5-e0094c08b836", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEATfQ9cPNqNjdIzXFEebGbw3BgTiIDCJFODMdFiz7ySbYaKjzqew67BFtb99R0osuA==", null, false, "5d9eb036-a904-4b10-82d2-198d8c589dbc", false, "Administrator" },
-                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "417875c8-8dd3-494b-85d0-f52935403c1c", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMJEyKVQ1pGQy7aX7HgDKlon6k1cPH50dkYymmqE87ZBrC9UIRL7I/TnF1hIBGCn+g==", null, false, "58755185-0f3b-4efd-94cd-f15a231775bc", false, "Schlebethany" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "b8b62a5e-7bdd-482e-b875-1e9170683265", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDbqUktx3h1ro89CkVVbZn6MtEOFfA2BTEc+PUrP8ELbbAIaCNoP6r61TikfoF+O5g==", null, false, "d200ccdf-4bba-460b-9bd5-13d56528462f", false, "Administrator" },
+                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "5eda098b-ad6f-45cc-aca7-7f0dea45eaa0", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHSwkvd+KBNi3fb4DMeZU0IlOfi8QANxy/Mc1u+HWQ64mquXqFKCWE732cpmYL0Xlg==", null, false, "ed6c3d88-878b-47ab-86c4-786b77c2e374", false, "Schlebethany" }
                 });
 
             migrationBuilder.InsertData(

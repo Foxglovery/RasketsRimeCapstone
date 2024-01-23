@@ -156,13 +156,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ee9699eb-753a-4088-b0b5-e0094c08b836",
+                            ConcurrencyStamp = "b8b62a5e-7bdd-482e-b875-1e9170683265",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEATfQ9cPNqNjdIzXFEebGbw3BgTiIDCJFODMdFiz7ySbYaKjzqew67BFtb99R0osuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDbqUktx3h1ro89CkVVbZn6MtEOFfA2BTEc+PUrP8ELbbAIaCNoP6r61TikfoF+O5g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5d9eb036-a904-4b10-82d2-198d8c589dbc",
+                            SecurityStamp = "d200ccdf-4bba-460b-9bd5-13d56528462f",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -170,13 +170,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "417875c8-8dd3-494b-85d0-f52935403c1c",
+                            ConcurrencyStamp = "5eda098b-ad6f-45cc-aca7-7f0dea45eaa0",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMJEyKVQ1pGQy7aX7HgDKlon6k1cPH50dkYymmqE87ZBrC9UIRL7I/TnF1hIBGCn+g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHSwkvd+KBNi3fb4DMeZU0IlOfi8QANxy/Mc1u+HWQ64mquXqFKCWE732cpmYL0Xlg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "58755185-0f3b-4efd-94cd-f15a231775bc",
+                            SecurityStamp = "ed6c3d88-878b-47ab-86c4-786b77c2e374",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -307,7 +307,7 @@ namespace RasketsRimeCapstone.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("SubmitedOn")
+                    b.Property<DateTime?>("SubmitedOn")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("UserId")

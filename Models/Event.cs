@@ -18,8 +18,8 @@ public class Event
     public string EventDescription { get; set; }
     [Required]
     public bool IsPublic { get; set; }
-    [Required]
-    public DateTime SubmitedOn { get; set; }
+    
+    public DateTime? SubmitedOn { get; set; }
     [Required]
     public string Status { get; set; }
     [Required]
