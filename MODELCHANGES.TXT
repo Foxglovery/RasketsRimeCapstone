@@ -1,1 +1,6 @@
 created an event creation DTO
+added to venue serviceDTO / model
+ public Service Service { get; set; }
+    public Venue Venue { get; set; }
+
+added Venue service lists to dto /model Service
