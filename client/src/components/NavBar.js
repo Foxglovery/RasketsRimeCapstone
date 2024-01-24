@@ -10,12 +10,13 @@ Navbar,
 NavbarBrand,
 NavbarToggler,
 } from "reactstrap";
-import { logout } from "../managers/authManager";
+import { logout } from "./managers/authManager";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
 const [open, setOpen] = useState(false);
 
 const toggleNavbar = () => setOpen(!open);
+const isAdmin = loggedInUser && loggedInUser.roles.includes('Admin');
 
 return (
     <div>
@@ -27,7 +28,19 @@ return (
         <>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
-            <Nav navbar></Nav>
+            <Nav navbar>
+                {loggedInUser && (
+                    <>
+                    {isAdmin && (
+                        <NavItem>
+                            <NavLink tag={RRNavLink} to="/dashboard">
+                            Dashboard
+                            </NavLink>
+                        </NavItem>
+                    )}
+                    </>
+                )}
+            </Nav>
             </Collapse>
             <Button
             color="primary"
