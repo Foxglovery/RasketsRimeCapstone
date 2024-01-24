@@ -13,7 +13,7 @@ using RasketsRime.Data;
 namespace RasketsRimeCapstone.Migrations
 {
     [DbContext(typeof(RasketsRimeDbContext))]
-    [Migration("20240123203606_InitialCreate")]
+    [Migration("20240124021612_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,13 +158,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b8b62a5e-7bdd-482e-b875-1e9170683265",
+                            ConcurrencyStamp = "96ad90bf-c761-4463-9a8c-2eeff645a3a6",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEDbqUktx3h1ro89CkVVbZn6MtEOFfA2BTEc+PUrP8ELbbAIaCNoP6r61TikfoF+O5g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEORe20loL2xGbPEXHWB+EKTH/U4bW8gIKe7GfSKu/U5RbTeXwVEQuqJ3yaly2swOVA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d200ccdf-4bba-460b-9bd5-13d56528462f",
+                            SecurityStamp = "bf0a58d2-754d-407b-b8f5-168ebb796afa",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -172,13 +172,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5eda098b-ad6f-45cc-aca7-7f0dea45eaa0",
+                            ConcurrencyStamp = "0f6bfcdc-1f88-49a2-a2cf-b7198468c09a",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHSwkvd+KBNi3fb4DMeZU0IlOfi8QANxy/Mc1u+HWQ64mquXqFKCWE732cpmYL0Xlg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELmRs2oS8PonjasJePr39ODhmnjSEEdzNLMkw+lnqFZDMSvp4uxDwW1h1HzFhQmG8A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ed6c3d88-878b-47ab-86c4-786b77c2e374",
+                            SecurityStamp = "6eca308a-b7ec-44e6-9312-f3e10fc36eab",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -1086,13 +1086,13 @@ namespace RasketsRimeCapstone.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RasketsRime.Models.Service", "BookedService")
+                    b.HasOne("RasketsRime.Models.Service", "Service")
                         .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("BookedService");
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("RasketsRime.Models.UserProfile", b =>
@@ -1108,24 +1108,31 @@ namespace RasketsRimeCapstone.Migrations
 
             modelBuilder.Entity("RasketsRime.Models.VenueService", b =>
                 {
-                    b.HasOne("RasketsRime.Models.Service", "ServiceDetails")
-                        .WithMany()
+                    b.HasOne("RasketsRime.Models.Service", "Service")
+                        .WithMany("VenueServices")
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RasketsRime.Models.Venue", null)
+                    b.HasOne("RasketsRime.Models.Venue", "Venue")
                         .WithMany("VenueServices")
                         .HasForeignKey("VenueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ServiceDetails");
+                    b.Navigation("Service");
+
+                    b.Navigation("Venue");
                 });
 
             modelBuilder.Entity("RasketsRime.Models.Event", b =>
                 {
                     b.Navigation("EventServices");
+                });
+
+            modelBuilder.Entity("RasketsRime.Models.Service", b =>
+                {
+                    b.Navigation("VenueServices");
                 });
 
             modelBuilder.Entity("RasketsRime.Models.UserProfile", b =>

@@ -315,8 +315,8 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "b8b62a5e-7bdd-482e-b875-1e9170683265", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDbqUktx3h1ro89CkVVbZn6MtEOFfA2BTEc+PUrP8ELbbAIaCNoP6r61TikfoF+O5g==", null, false, "d200ccdf-4bba-460b-9bd5-13d56528462f", false, "Administrator" },
-                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "5eda098b-ad6f-45cc-aca7-7f0dea45eaa0", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHSwkvd+KBNi3fb4DMeZU0IlOfi8QANxy/Mc1u+HWQ64mquXqFKCWE732cpmYL0Xlg==", null, false, "ed6c3d88-878b-47ab-86c4-786b77c2e374", false, "Schlebethany" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "96ad90bf-c761-4463-9a8c-2eeff645a3a6", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEORe20loL2xGbPEXHWB+EKTH/U4bW8gIKe7GfSKu/U5RbTeXwVEQuqJ3yaly2swOVA==", null, false, "bf0a58d2-754d-407b-b8f5-168ebb796afa", false, "Administrator" },
+                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "0f6bfcdc-1f88-49a2-a2cf-b7198468c09a", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELmRs2oS8PonjasJePr39ODhmnjSEEdzNLMkw+lnqFZDMSvp4uxDwW1h1HzFhQmG8A==", null, false, "6eca308a-b7ec-44e6-9312-f3e10fc36eab", false, "Schlebethany" }
                 });
 
             migrationBuilder.InsertData(

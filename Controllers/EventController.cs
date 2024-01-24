@@ -29,7 +29,7 @@ public class EventController : ControllerBase
             .Include(e => e.UserProfile)
                 .ThenInclude(up => up.IdentityUser)
             .Include(e => e.EventServices)
-                .ThenInclude(es => es.BookedService)
+                .ThenInclude(es => es.Service)
             .Select(e => new EventDTO
             {
                 Id = e.Id,
@@ -68,13 +68,13 @@ public class EventController : ControllerBase
                     Id = es.Id,
                     EventId = es.EventId,
                     ServiceId = es.ServiceId,
-                    BookedService = new ServiceDTO
+                    Service = new ServiceDTO
                     {
-                        Id = es.BookedService.Id,
-                        ServiceName = es.BookedService.ServiceName,
-                        Description = es.BookedService.Description,
-                        Price = es.BookedService.Price,
-                        IsActive = es.BookedService.IsActive
+                        Id = es.Service.Id,
+                        ServiceName = es.Service.ServiceName,
+                        Description = es.Service.Description,
+                        Price = es.Service.Price,
+                        IsActive = es.Service.IsActive
                     }
 
                 }).ToList()
@@ -93,7 +93,7 @@ public class EventController : ControllerBase
                 .ThenInclude(up => up.IdentityUser)
         .Include(e => e.Venue)
         .Include(e => e.EventServices)
-                .ThenInclude(es => es.BookedService)
+                .ThenInclude(es => es.Service)
                 .SingleOrDefault(e => e.Id == id);
         if (eventInstance == null)
         {
@@ -137,13 +137,13 @@ public class EventController : ControllerBase
                 Id = es.Id,
                 EventId = es.EventId,
                 ServiceId = es.ServiceId,
-                BookedService = es.BookedService != null ? new ServiceDTO
+                Service = es.Service != null ? new ServiceDTO
                 {
-                    Id = es.BookedService.Id,
-                    ServiceName = es.BookedService.ServiceName,
-                    Description = es.BookedService.Description,
-                    Price = es.BookedService.Price,
-                    IsActive = es.BookedService.IsActive
+                    Id = es.Service.Id,
+                    ServiceName = es.Service.ServiceName,
+                    Description = es.Service.Description,
+                    Price = es.Service.Price,
+                    IsActive = es.Service.IsActive
                 } : null
 
             }).ToList() ?? new List<EventServiceDTO>()
@@ -161,7 +161,7 @@ public class EventController : ControllerBase
                     .ThenInclude(up => up.IdentityUser)
             .Include(e => e.Venue)
             .Include(e => e.EventServices)
-                    .ThenInclude(es => es.BookedService)
+                    .ThenInclude(es => es.Service)
                     .SingleOrDefault(e => e.UserId == userId);
         if (eventInstance == null)
         {
@@ -205,13 +205,13 @@ public class EventController : ControllerBase
                 Id = es.Id,
                 EventId = es.EventId,
                 ServiceId = es.ServiceId,
-                BookedService = es.BookedService != null ? new ServiceDTO
+                Service = es.Service != null ? new ServiceDTO
                 {
-                    Id = es.BookedService.Id,
-                    ServiceName = es.BookedService.ServiceName,
-                    Description = es.BookedService.Description,
-                    Price = es.BookedService.Price,
-                    IsActive = es.BookedService.IsActive
+                    Id = es.Service.Id,
+                    ServiceName = es.Service.ServiceName,
+                    Description = es.Service.Description,
+                    Price = es.Service.Price,
+                    IsActive = es.Service.IsActive
                 } : null
 
             }).ToList() ?? new List<EventServiceDTO>()
@@ -259,7 +259,7 @@ public class EventController : ControllerBase
                     {
                         _dbContext.EventServices.Add(newEventService);
                     }
-                    
+
 
                 }
                 _dbContext.SaveChanges();

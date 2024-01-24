@@ -64,25 +64,25 @@ public class UserProfileController : ControllerBase
     }
 
     //FINISH THIS ENDPOINT
-        [HttpGet("{id}")]
-        //[Authorize]
-        public IActionResult GetById(int id)
+    [HttpGet("{id}")]
+    //[Authorize]
+    public IActionResult GetById(int id)
+    {
+        UserProfile userProfile = _dbContext
+        .UserProfiles
+        .Include(up => up.Events)
+        .ThenInclude(e => e.EventServices)
+        .ThenInclude(ev => ev.Service)
+        .SingleOrDefault(up => up.Id == id);
+
+
+        if (userProfile == null)
         {
-            UserProfile userProfile = _dbContext
-            .UserProfiles
-            .Include(up => up.Events)
-            .ThenInclude(e => e.EventServices)
-            .ThenInclude(ev => ev.BookedService)
-            .SingleOrDefault(up => up.Id == id);
-            
-
-            if (userProfile == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(userProfile);
+            return NotFound();
         }
+
+        return Ok(userProfile);
+    }
 
     // [HttpPost("promote/{id}")]
     // [Authorize(Roles = "Admin")]
