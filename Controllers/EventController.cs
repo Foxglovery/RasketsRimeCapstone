@@ -229,6 +229,15 @@ public class EventController : ControllerBase
         {
             try
             {
+                var venue = _dbContext.Venues.SingleOrDefault(v => v.Id == eventToCreate.VenueId);
+                if (venue == null)
+                {
+                    return BadRequest("This venue does not exist");
+                }
+                if (eventToCreate.ExpectedAttendees > venue.MaxOccupancy)
+                {
+                    return BadRequest($"The new venue cannot accommodate this number of people. The limit for this venue is {venue.MaxOccupancy}");
+                }
                 var serviceList = _dbContext.VenueServices.Where(es => es.VenueId == eventToCreate.VenueId).ToList();
                 var newEvent = new Event
                 {
@@ -278,6 +287,66 @@ public class EventController : ControllerBase
             }
         }
     }
+//will complete logic to update eventServices too
+    [HttpPut("{id}")]
+    //[Authorize]
+    public IActionResult UpdateEvent(int id, [FromBody] UpdateEventDTO newEvent)
+    {
+        var eventToUpdate = _dbContext.Events
+        .Include(e => e.EventServices)
+        .FirstOrDefault(e => e.Id == id);
 
+    if (eventToUpdate == null)
+    {
+        return NotFound();
+    }   
+        //did they enter a valid number of expected people?
+        var newVenue = _dbContext.Venues
+            .SingleOrDefault(v => v.Id == newEvent.VenueId);
+        if (newEvent.ExpectedAttendees > newVenue.MaxOccupancy)
+        {
+            return BadRequest($"The new venue cannot accommodate this number of people. The limit for this venue is {newVenue.MaxOccupancy}");
+        }
+        //does this venue exist?
+        var venueExists = _dbContext.Venues.Any(v => v.Id == newEvent.VenueId);
+        if (!venueExists)
+        {
+            return BadRequest("Venue not found.");
+        }
+        //Are those services even available at the new venue?
+        var availableServiceIdsAtVenue = _dbContext.VenueServices
+            .Where(vs => vs.VenueId == newEvent.VenueId)
+            .Select(vs => vs.ServiceId)
+            .ToList();
+        
+        //check the new event for  serviceids that are not on the new venueService table
+        var invalidServices = newEvent.ServiceIds
+            .Where(sid => !availableServiceIdsAtVenue.Contains(sid))
+            .ToList();
+        
+        if (invalidServices.Any())
+        {
+            return BadRequest($"The following service Ids are not available at the chosen venue: {string.Join(",", invalidServices)}");
+        }
+        eventToUpdate.VenueId = newEvent.VenueId;
+        eventToUpdate.EventName = newEvent.EventName;
+        eventToUpdate.ExpectedAttendees = newEvent.ExpectedAttendees;
+        eventToUpdate.EventDescription = newEvent.EventDescription;
+        eventToUpdate.EventStart = newEvent.EventStart;
+        eventToUpdate.Duration = newEvent.Duration;
+
+        eventToUpdate.EventServices.Clear();
+        foreach (var serviceId in newEvent.ServiceIds)
+        {
+            eventToUpdate.EventServices.Add(new EventService
+            {
+                EventId = id,
+                ServiceId = serviceId
+            });
+        }
+        
+        _dbContext.SaveChanges();
+        return Ok(eventToUpdate);
+    }
 
 }
