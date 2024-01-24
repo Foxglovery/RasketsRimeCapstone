@@ -13,7 +13,7 @@ using RasketsRime.Data;
 namespace RasketsRimeCapstone.Migrations
 {
     [DbContext(typeof(RasketsRimeDbContext))]
-    [Migration("20240124021612_InitialCreate")]
+    [Migration("20240124170010_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,13 +158,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "96ad90bf-c761-4463-9a8c-2eeff645a3a6",
+                            ConcurrencyStamp = "b53fb7b7-765a-41dd-ae6d-ef5e71226518",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEORe20loL2xGbPEXHWB+EKTH/U4bW8gIKe7GfSKu/U5RbTeXwVEQuqJ3yaly2swOVA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK0g1QGt+fF4oz7QzAkHGD6UFBieiX+hupSFlCMnxSTQW05oIxD/O1EMUQYSlQdqog==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bf0a58d2-754d-407b-b8f5-168ebb796afa",
+                            SecurityStamp = "2525d451-7435-43f8-aeda-2151c1127741",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -172,13 +172,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0f6bfcdc-1f88-49a2-a2cf-b7198468c09a",
+                            ConcurrencyStamp = "f203f6a6-f8a6-438f-ab81-5c1ab7f134d0",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAELmRs2oS8PonjasJePr39ODhmnjSEEdzNLMkw+lnqFZDMSvp4uxDwW1h1HzFhQmG8A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAdumHZJcXK5nGItNdnKEVnT1Xid5JHfEvzQwAp7omOqCKz2hiIIYDUiAXhtncXeqg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6eca308a-b7ec-44e6-9312-f3e10fc36eab",
+                            SecurityStamp = "63b8bdca-9ea7-4827-804a-7238741f3800",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -336,7 +336,7 @@ namespace RasketsRimeCapstone.Migrations
                             EventStart = new DateTime(2024, 4, 12, 7, 0, 0, 0, DateTimeKind.Utc),
                             ExpectedAttendees = 15,
                             IsPublic = true,
-                            Status = "Accepted",
+                            Status = "Approved",
                             SubmitedOn = new DateTime(2024, 1, 12, 5, 0, 0, 0, DateTimeKind.Utc),
                             UserId = 2,
                             VenueId = 5

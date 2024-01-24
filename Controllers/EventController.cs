@@ -268,6 +268,10 @@ public class EventController : ControllerBase
                     {
                         _dbContext.EventServices.Add(newEventService);
                     }
+                    else
+                    {
+                        return BadRequest($"This service(Id:{serviceId}) is not available at this venue");
+                    }
 
 
                 }
@@ -412,6 +416,50 @@ public IActionResult GetPending()
           
 
             return Ok(PendingList);
+}
+
+[HttpPost("approve/{id}")]
+//[Authorize(Roles = "Admin")]
+public IActionResult ApproveEvent(int id)
+{
+    var eventToApprove = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+    if (eventToApprove == null)
+    {
+        return NotFound();
+    }
+    eventToApprove.Status = "Approved";
+    _dbContext.SaveChanges();
+    return Ok("Event approval successful");
+
+}
+
+[HttpPost("AdminCancel/{id}")]
+//[Authorize(Roles = "Admin")]
+public IActionResult AdminCancelEvent(int id)
+{
+    var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+    if (eventToCancel == null)
+    {
+        return NotFound();
+    }
+    eventToCancel.Status = "Canceled";
+    _dbContext.SaveChanges();
+    return Ok("Event cancellation successful");
+
+}
+[HttpPost("UserCancel/{eventId}")]
+//[Authorize]
+public IActionResult UserCancelEvent(int eventId, int userId)
+{
+    var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == eventId && e.UserId == userId);
+    if (eventToCancel == null)
+    {
+        return NotFound();
+    }
+    eventToCancel.Status = "Canceled";
+    _dbContext.SaveChanges();
+    return Ok("Event cancellation successful");
+
 }
 
 
