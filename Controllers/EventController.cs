@@ -152,73 +152,75 @@ public class EventController : ControllerBase
         return Ok(eventDto);
     }
 
-    [HttpGet("user/{userId}")]
-    //[Authorize]
-    public IActionResult GetByUserId(int userId)
+ [HttpGet("user/{userId}")]
+//[Authorize]
+public IActionResult GetByUserId(int userId)
+{
+    var events = _dbContext.Events
+        .Where(e => e.UserId == userId)
+        .Include(e => e.UserProfile)
+            .ThenInclude(up => up.IdentityUser)
+        .Include(e => e.Venue)
+        .Include(e => e.EventServices)
+            .ThenInclude(es => es.Service)
+        .ToList();
+
+    if (events == null || events.Count == 0)
     {
-        var eventInstance = _dbContext.Events
-            .Include(e => e.UserProfile)
-                    .ThenInclude(up => up.IdentityUser)
-            .Include(e => e.Venue)
-            .Include(e => e.EventServices)
-                    .ThenInclude(es => es.Service)
-                    .SingleOrDefault(e => e.UserId == userId);
-        if (eventInstance == null)
-        {
-            return NotFound();
-        }
-        var eventDto = new EventDTO
-        {
-            Id = eventInstance.Id,
-            UserId = eventInstance.UserId,
-            UserProfile = eventInstance.UserProfile != null ? new UserProfileDTO
-            {
-                Id = eventInstance.UserProfile.Id,
-                FirstName = eventInstance.UserProfile.FirstName,
-                LastName = eventInstance.UserProfile.LastName,
-                Address = eventInstance.UserProfile.Address,
-                Email = eventInstance.UserProfile.IdentityUser.Email,
-                UserName = eventInstance.UserProfile.IdentityUser.UserName,
-                IsAdmin = eventInstance.UserProfile.IsAdmin,
-            } : null,
-            VenueId = eventInstance.VenueId,
-            EventName = eventInstance.EventName,
-            ExpectedAttendees = eventInstance.ExpectedAttendees,
-            EventDescription = eventInstance.EventDescription,
-            IsPublic = eventInstance.IsPublic,
-            SubmitedOn = eventInstance.SubmitedOn,
-            Status = eventInstance.Status,
-            EventStart = eventInstance.EventStart,
-            Duration = eventInstance.Duration,
-            Venue = new VenueDTO
-            {
-                Id = eventInstance.Venue.Id,
-                VenueName = eventInstance.Venue.VenueName,
-                Address = eventInstance.Venue.Address,
-                Description = eventInstance.Venue.Description,
-                ContactInfo = eventInstance.Venue.ContactInfo,
-                MaxOccupancy = eventInstance.Venue.MaxOccupancy,
-                IsActive = eventInstance.Venue.IsActive,
-            },
-            EventServices = eventInstance.EventServices?.Select(es => new EventServiceDTO
-            {
-                Id = es.Id,
-                EventId = es.EventId,
-                ServiceId = es.ServiceId,
-                Service = es.Service != null ? new ServiceDTO
-                {
-                    Id = es.Service.Id,
-                    ServiceName = es.Service.ServiceName,
-                    Description = es.Service.Description,
-                    Price = es.Service.Price,
-                    IsActive = es.Service.IsActive
-                } : null
-
-            }).ToList() ?? new List<EventServiceDTO>()
-
-        };
-        return Ok(eventDto);
+        return NotFound();
     }
+
+    var eventDtos = events.Select(eventInstance => new EventDTO
+    {
+        Id = eventInstance.Id,
+        UserId = eventInstance.UserId,
+        UserProfile = eventInstance.UserProfile != null ? new UserProfileDTO
+        {
+            Id = eventInstance.UserProfile.Id,
+            FirstName = eventInstance.UserProfile.FirstName,
+            LastName = eventInstance.UserProfile.LastName,
+            Address = eventInstance.UserProfile.Address,
+            Email = eventInstance.UserProfile.IdentityUser?.Email,
+            UserName = eventInstance.UserProfile.IdentityUser?.UserName,
+            IsAdmin = eventInstance.UserProfile.IsAdmin,
+        } : null,
+        VenueId = eventInstance.VenueId,
+        EventName = eventInstance.EventName,
+        ExpectedAttendees = eventInstance.ExpectedAttendees,
+        EventDescription = eventInstance.EventDescription,
+        IsPublic = eventInstance.IsPublic,
+        SubmitedOn = eventInstance.SubmitedOn,
+        Status = eventInstance.Status,
+        EventStart = eventInstance.EventStart,
+        Duration = eventInstance.Duration,
+        Venue = eventInstance.Venue != null ? new VenueDTO
+        {
+            Id = eventInstance.Venue.Id,
+            VenueName = eventInstance.Venue.VenueName,
+            Address = eventInstance.Venue.Address,
+            Description = eventInstance.Venue.Description,
+            ContactInfo = eventInstance.Venue.ContactInfo,
+            MaxOccupancy = eventInstance.Venue.MaxOccupancy,
+            IsActive = eventInstance.Venue.IsActive,
+        } : null,
+        EventServices = eventInstance.EventServices?.Select(es => new EventServiceDTO
+        {
+            Id = es.Id,
+            EventId = es.EventId,
+            ServiceId = es.ServiceId,
+            Service = es.Service != null ? new ServiceDTO
+            {
+                Id = es.Service.Id,
+                ServiceName = es.Service.ServiceName,
+                Description = es.Service.Description,
+                Price = es.Service.Price,
+                IsActive = es.Service.IsActive
+            } : null
+        }).ToList() ?? new List<EventServiceDTO>()
+    }).ToList();
+
+    return Ok(eventDtos);
+}
 
 
     [HttpPost]

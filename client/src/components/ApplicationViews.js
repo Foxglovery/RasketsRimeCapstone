@@ -2,7 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-
+import Home from "./Home";
+import UserProfileList from "./userProfiles/UserProfileList";
+import UserProfileDetails from "./userProfiles/UserProfileDetails";
+import DashboardEvents from "./dashboard/DashboardEvents";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -13,10 +16,34 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             //Route elements are wrapped in AuthorizedRoute which checks logged in user's roles
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              {/* <Bikes /> */}
+              <Home />
             </AuthorizedRoute>
           }
         />
+        <Route
+          index
+          path="/dashboard"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <DashboardEvents />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          index
+          path="/userprofiles"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <UserProfileList />
+            </AuthorizedRoute>
+          }
+        />
+        <Route path="/userprofiles/:id"
+        element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <UserProfileDetails />
+            </AuthorizedRoute>
+        } />
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}
