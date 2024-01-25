@@ -3,9 +3,11 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Home from "./Home";
-import UserProfileList from "./userProfiles/UserProfileList";
-import UserProfileDetails from "./userProfiles/UserProfileDetails";
-import DashboardEvents from "./dashboard/DashboardEvents";
+import UserProfileList from "./dashboard/userProfiles/UserProfileList";
+import UserProfileDetails from "./dashboard/userProfiles/UserProfileDetails";
+import DashboardEvents from "./dashboard/events/DashboardEvents";
+import EventDetailsAdmin from "./dashboard/events/EventDetailsAdmin";
+import VenueListAdmin from "./dashboard/venues/VenueListAdmin";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -21,8 +23,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           }
         />
         <Route
-          index
-          path="/dashboard"
+          path="/admin/events"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
               <DashboardEvents />
@@ -30,7 +31,25 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           }
         />
         <Route
-          index
+          path="/admin/events/:id"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <EventDetailsAdmin />
+            </AuthorizedRoute>
+          }
+        />
+        <Route path="/admin/venues" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <VenueListAdmin />
+        </AuthorizedRoute>
+        }/>
+        <Route path="/admin/venues/:id" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <Home />
+        </AuthorizedRoute>
+        }/>
+
+        <Route
           path="/userprofiles"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
@@ -38,12 +57,15 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route path="/userprofiles/:id"
-        element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+        <Route
+          path="/userprofiles/:id"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
               <UserProfileDetails />
             </AuthorizedRoute>
-        } />
+          }
+        />
+
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

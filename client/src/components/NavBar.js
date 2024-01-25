@@ -33,7 +33,7 @@ return (
                     <>
                     {isAdmin && (
                         <NavItem>
-                            <NavLink tag={RRNavLink} to="/dashboard">
+                            <NavLink tag={RRNavLink} to="/admin/events">
                             Dashboard
                             </NavLink>
                         </NavItem>
