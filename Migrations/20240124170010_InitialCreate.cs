@@ -315,8 +315,8 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "b8b62a5e-7bdd-482e-b875-1e9170683265", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDbqUktx3h1ro89CkVVbZn6MtEOFfA2BTEc+PUrP8ELbbAIaCNoP6r61TikfoF+O5g==", null, false, "d200ccdf-4bba-460b-9bd5-13d56528462f", false, "Administrator" },
-                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "5eda098b-ad6f-45cc-aca7-7f0dea45eaa0", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHSwkvd+KBNi3fb4DMeZU0IlOfi8QANxy/Mc1u+HWQ64mquXqFKCWE732cpmYL0Xlg==", null, false, "ed6c3d88-878b-47ab-86c4-786b77c2e374", false, "Schlebethany" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "b53fb7b7-765a-41dd-ae6d-ef5e71226518", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK0g1QGt+fF4oz7QzAkHGD6UFBieiX+hupSFlCMnxSTQW05oIxD/O1EMUQYSlQdqog==", null, false, "2525d451-7435-43f8-aeda-2151c1127741", false, "Administrator" },
+                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "f203f6a6-f8a6-438f-ab81-5c1ab7f134d0", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEAdumHZJcXK5nGItNdnKEVnT1Xid5JHfEvzQwAp7omOqCKz2hiIIYDUiAXhtncXeqg==", null, false, "63b8bdca-9ea7-4827-804a-7238741f3800", false, "Schlebethany" }
                 });
 
             migrationBuilder.InsertData(
@@ -429,7 +429,7 @@ namespace RasketsRimeCapstone.Migrations
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Duration", "EventDescription", "EventName", "EventStart", "ExpectedAttendees", "IsPublic", "Status", "SubmitedOn", "UserId", "VenueId" },
-                values: new object[] { 1, 6, "Just some rowdy gals ready to get totally twisted.", "Darla Dinkles Bachelorette Party", new DateTime(2024, 4, 12, 7, 0, 0, 0, DateTimeKind.Utc), 15, true, "Accepted", new DateTime(2024, 1, 12, 5, 0, 0, 0, DateTimeKind.Utc), 2, 5 });
+                values: new object[] { 1, 6, "Just some rowdy gals ready to get totally twisted.", "Darla Dinkles Bachelorette Party", new DateTime(2024, 4, 12, 7, 0, 0, 0, DateTimeKind.Utc), 15, true, "Approved", new DateTime(2024, 1, 12, 5, 0, 0, 0, DateTimeKind.Utc), 2, 5 });
 
             migrationBuilder.InsertData(
                 table: "EventServices",

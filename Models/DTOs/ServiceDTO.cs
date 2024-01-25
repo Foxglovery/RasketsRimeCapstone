@@ -11,5 +11,5 @@ public class ServiceDTO
     public decimal Price { get; set; }
    
     public bool IsActive { get; set; }
-    
+    public List<VenueServiceDTO> VenueServices { get; set; }
 }

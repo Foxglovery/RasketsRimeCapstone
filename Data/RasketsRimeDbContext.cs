@@ -595,7 +595,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 EventDescription = "Just some rowdy gals ready to get totally twisted.",
                 IsPublic = true,
                 SubmitedOn = initialEventSubmitted,
-                Status = "Accepted",
+                Status = "Approved",
                 EventStart = initialEventStart,
                 Duration = 6
             }

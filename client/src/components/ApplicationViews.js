@@ -2,7 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-
+import Home from "./Home";
+import UserProfileList from "./dashboard/userProfiles/UserProfileList";
+import UserProfileDetails from "./dashboard/userProfiles/UserProfileDetails";
+import DashboardEvents from "./dashboard/events/DashboardEvents";
+import EventDetailsAdmin from "./dashboard/events/EventDetailsAdmin";
+import VenueListAdmin from "./dashboard/venues/VenueListAdmin";
+import VenueDetailsAdmin from "./dashboard/venues/VenueDetailsAdmin";
+import ServiceListAdmin from "./dashboard/services/ServiceListAdmin";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -13,10 +20,59 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             //Route elements are wrapped in AuthorizedRoute which checks logged in user's roles
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              {/* <Bikes /> */}
+              <Home />
             </AuthorizedRoute>
           }
         />
+        <Route
+          path="/admin/events"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <DashboardEvents />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/admin/events/:id"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <EventDetailsAdmin />
+            </AuthorizedRoute>
+          }
+        />
+        <Route path="/admin/venues" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <VenueListAdmin />
+        </AuthorizedRoute>
+        }/>
+        <Route path="/admin/venues/:id" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <VenueDetailsAdmin />
+        </AuthorizedRoute>
+        }/>
+        <Route path="/admin/services" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <ServiceListAdmin />
+        </AuthorizedRoute>
+        }/>
+
+        <Route
+          path="/userprofiles"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <UserProfileList />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/userprofiles/:id"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <UserProfileDetails />
+            </AuthorizedRoute>
+          }
+        />
+
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

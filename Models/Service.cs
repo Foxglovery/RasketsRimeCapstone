@@ -12,5 +12,6 @@ public class Service
     public decimal Price { get; set; }
     [Required]
     public bool IsActive { get; set; }
+    public List<VenueService> VenueServices { get; set; }
     
 }

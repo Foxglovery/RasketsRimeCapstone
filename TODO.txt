@@ -1,2 +1,1 @@
-Left off having added Roles back to userprofile
-getting build error saying password cant be null.
+Left off writing the table for dashboard events

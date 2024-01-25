@@ -20,23 +20,24 @@ public class EventDTO
 
     public DateTime EventStart { get; set; }
     public int Duration { get; set; }
-    
+
     public DateTime EventEnd
     {
-        get {
+        get
+        {
             return EventStart.AddHours(Duration);
         }
     }
     public VenueDTO Venue { get; set; }
     public List<EventServiceDTO> EventServices { get; set; }
 
-      public decimal TotalCost
-{
-    get 
+    public decimal TotalCost
     {
-        return EventServices != null ? EventServices.Sum(es => es.BookedService.Price) : 0m;
+        get
+        {
+            return EventServices != null ? EventServices.Sum(es => es.Service.Price) : 0m;
+        }
     }
-}
 
 
 }
