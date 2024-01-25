@@ -420,7 +420,7 @@ public IActionResult GetPending()
             return Ok(PendingList);
 }
 
-[HttpPost("approve/{id}")]
+[HttpPut("approve/{id}")]
 //[Authorize(Roles = "Admin")]
 public IActionResult ApproveEvent(int id)
 {
@@ -434,8 +434,22 @@ public IActionResult ApproveEvent(int id)
     return Ok("Event approval successful");
 
 }
+[HttpPut("reject/{id}")]
+//[Authorize(Roles = "Admin")]
+public IActionResult RejectEvent(int id)
+{
+    var eventToReject = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+    if (eventToReject == null)
+    {
+        return NotFound();
+    }
+    eventToReject.Status = "Rejected";
+    _dbContext.SaveChanges();
+    return Ok("Event rejection successful");
 
-[HttpPost("AdminCancel/{id}")]
+}
+
+[HttpPut("AdminCancel/{id}")]
 //[Authorize(Roles = "Admin")]
 public IActionResult AdminCancelEvent(int id)
 {
@@ -449,7 +463,7 @@ public IActionResult AdminCancelEvent(int id)
     return Ok("Event cancellation successful");
 
 }
-[HttpPost("UserCancel/{eventId}")]
+[HttpPut("UserCancel/{eventId}")]
 //[Authorize]
 public IActionResult UserCancelEvent(int eventId, int userId)
 {
@@ -464,5 +478,18 @@ public IActionResult UserCancelEvent(int eventId, int userId)
 
 }
 
+[HttpDelete("{id}")]
+//[Authorize(Rolls = "Admin")]
+public IActionResult DeleteEvent(int id)
+{
+    Event eventToDelete = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+    if (eventToDelete == null)
+    {
+        return NotFound();
+    }
+    _dbContext.Events.Remove(eventToDelete);
+    _dbContext.SaveChanges();
+    return Ok("Event deletion successful");
+}
 
 }
