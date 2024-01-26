@@ -20,9 +20,6 @@ export default function VenueListAdmin() {
         <Link to={`/userprofiles`}>Users</Link>
       </div>
       <div>
-        <Link to={`/admin/venues`}>Venues</Link>
-      </div>
-      <div>
         <Link to={`/admin/services`}>Services</Link>
       </div>
         <h3>Venues</h3>

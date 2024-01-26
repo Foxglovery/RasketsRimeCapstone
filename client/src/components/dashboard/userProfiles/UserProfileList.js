@@ -12,7 +12,6 @@ export default function UserProfileList() {
 
   return (
     <>
-      <h3>Users</h3>
       <div>
         <Link to={`/admin/events`}>Events</Link>
       </div>
@@ -25,6 +24,7 @@ export default function UserProfileList() {
       <div>
         <Link to={`/admin/services`}>Services</Link>
       </div>
+      <h3>Users</h3>
       <Table dark striped>
         <thead>
           <tr>

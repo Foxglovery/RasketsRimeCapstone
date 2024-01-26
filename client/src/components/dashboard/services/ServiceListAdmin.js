@@ -15,7 +15,6 @@ export default function ServiceListAdmin() {
     },[])
     return (
         <>
-        <h3>Services</h3>
       <div>
         <Link to={`/admin/events`}>Events</Link>
       </div>
@@ -25,6 +24,7 @@ export default function ServiceListAdmin() {
       <div>
         <Link to={`/admin/venues`}>Venues</Link>
       </div>
+        <h3>Services</h3>
       <Table dark striped>
         <thead>
             <tr>

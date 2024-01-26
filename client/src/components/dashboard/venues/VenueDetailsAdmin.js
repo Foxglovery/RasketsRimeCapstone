@@ -15,7 +15,7 @@ export default function VenueDetailsAdmin() {
     return (
         <>
       <div>
-        <Link to={`/admin/venues`}>Venues</Link>
+        <Link to={`/admin/events`}>Events</Link>
       </div>
       <div>
         <Link to={`/userprofiles`}>Users</Link>
