@@ -93,4 +93,25 @@ public class ServiceController : ControllerBase
 
         return Ok(serviceDto);
     }
+
+[HttpGet("available/{venueId}")]
+    //[Authorize]
+    public IActionResult GetAvailableServices(int venueId)
+    {
+        return Ok(_dbContext.Services
+        .Where(s => s.VenueServices.Any(vs => vs.VenueId == venueId))
+        .Include(s => s.VenueServices)
+            .ThenInclude(vs => vs.Venue)
+        .Select(s => new ServiceDTO
+        {
+            Id = s.Id,
+            ServiceName = s.ServiceName,
+            Description = s.Description,
+            Price = s.Price,
+            IsActive = s.IsActive,
+             
+           
+        }).ToList());
+    }
+    
 }

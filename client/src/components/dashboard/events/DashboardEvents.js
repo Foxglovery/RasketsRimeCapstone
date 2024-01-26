@@ -7,10 +7,11 @@ import {
   RejectEvent,
 } from "../../managers/eventManager";
 import { Button, Table } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function DashboardEvents() {
+export default function DashboardEvents({loggedInUser}) {
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     GetEvents().then(setEvents);
@@ -49,6 +50,7 @@ export default function DashboardEvents() {
         <Link to={`/admin/services`}>Services</Link>
       </div>
       <h3>Events</h3>
+      <div><Link to={`/admin/events/create`}><Button  color="success">Add Event</Button></Link></div>
       <Table dark striped>
         <thead>
           <tr>
@@ -58,6 +60,7 @@ export default function DashboardEvents() {
             <th>Venue</th>
             <th>Address</th>
             <th>Status</th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -118,6 +121,11 @@ export default function DashboardEvents() {
               <td>
                 <Button color="danger" onClick={() => handleDelete(e.id)}>
                   Delete
+                </Button>
+              </td>
+              <td>
+                <Button color="warning" onClick={() => navigate(`/admin/events/update/${e.id}`)}>
+                  Update
                 </Button>
               </td>
 

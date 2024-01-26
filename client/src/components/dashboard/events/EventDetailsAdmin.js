@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { GetEventById } from "../../managers/eventManager";
 import { Table } from "reactstrap";
 
-export default function EventDetailsAdmin() {
+export default function EventDetailsAdmin({loggedInUser}) {
   const { id } = useParams();
   const [event, setEvent] = useState();
 
