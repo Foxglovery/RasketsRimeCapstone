@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { Table } from "reactstrap";
 import { GetVenueById } from "../../managers/venueManager";
 
-export default function VenueDetailsAdmin() {
+export default function VenueDetailsAdmin({loggedInUser}) {
     const {id} = useParams();
     const [venue, setVenue] = useState([]);
 

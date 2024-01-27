@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { Table } from "reactstrap";
 
-export default function UserProfileDetails() {
+export default function UserProfileDetails({loggedInUser}) {
   const [userProfile, setUserProfile] = useState({});
 
   const { id } = useParams();

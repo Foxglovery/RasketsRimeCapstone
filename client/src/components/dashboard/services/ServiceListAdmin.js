@@ -3,7 +3,7 @@ import { GetServices } from "../../managers/serviceManager";
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 
-export default function ServiceListAdmin() {
+export default function ServiceListAdmin({loggedInUser}) {
     const [services, setServices] = useState([]);
 
 

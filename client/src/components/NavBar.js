@@ -11,7 +11,7 @@ NavbarBrand,
 NavbarToggler,
 } from "reactstrap";
 import { logout } from "./managers/authManager";
-
+import './styles/NavBar.css';
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
 const [open, setOpen] = useState(false);
 
@@ -20,8 +20,8 @@ const isAdmin = loggedInUser && loggedInUser.roles.includes('Admin');
 
 return (
     <div>
-    <Navbar color="light" light fixed="true" expand="lg">
-        <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
+    <Navbar className="navbar-background" light fixed="true" expand="lg">
+        <NavbarBrand id="navBrand" className="mr-auto"  tag={RRNavLink} to="/">
         Rasket's Rime
         </NavbarBrand>
         {loggedInUser ? (
@@ -32,18 +32,38 @@ return (
                 {loggedInUser && (
                     <>
                     {isAdmin && (
-                        <NavItem>
-                            <NavLink tag={RRNavLink} to="/admin/events">
+                        <NavItem >
+                            <NavLink className="nav_bar_link" tag={RRNavLink} to="/admin/events">
                             Dashboard
                             </NavLink>
                         </NavItem>
                     )}
+                    <NavItem >
+                            <NavLink className="nav_bar_link" tag={RRNavLink} to="/events">
+                            Events
+                            </NavLink>
+                        </NavItem>
+                        <NavItem >
+                            <NavLink className="nav_bar_link" tag={RRNavLink} to="/venues">
+                            Venues
+                            </NavLink>
+                        </NavItem>
+                        <NavItem >
+                            <NavLink className="nav_bar_link" tag={RRNavLink} to="/services">
+                            Services
+                            </NavLink>
+                        </NavItem>
+                        <NavItem >
+                            <NavLink className="nav_bar_link" tag={RRNavLink} to="/myEvents">
+                            My Events
+                            </NavLink>
+                        </NavItem>
                     </>
                 )}
             </Nav>
             </Collapse>
             <Button
-            color="primary"
+            className="nav_btn_background"
             onClick={(e) => {
                 e.preventDefault();
                 setOpen(false);
@@ -60,7 +80,7 @@ return (
         <Nav navbar>
             <NavItem>
             <NavLink tag={RRNavLink} to="/login">
-                <Button color="primary">Login</Button>
+                <Button className="nav_btn_background" color="primary">Login</Button>
             </NavLink>
             </NavItem>
         </Nav>

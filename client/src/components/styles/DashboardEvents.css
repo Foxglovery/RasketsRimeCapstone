@@ -1,0 +1,25 @@
+.chip-link {
+    background-color: #133249; /* Dark blue color */
+    color: #FCD46A;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-right: 5px;
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block; /* Make sure links are inline for text-align to work */
+    margin: 5px; /* Adjust spacing around each chip */
+}
+
+/* Optional: Style for hover effect */
+.chip-link:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+.centered-content {
+    text-align: center;
+    margin-bottom: 15px; /* Adjust as needed */
+}
+
+
+
+

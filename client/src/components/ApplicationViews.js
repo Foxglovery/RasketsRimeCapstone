@@ -10,6 +10,8 @@ import EventDetailsAdmin from "./dashboard/events/EventDetailsAdmin";
 import VenueListAdmin from "./dashboard/venues/VenueListAdmin";
 import VenueDetailsAdmin from "./dashboard/venues/VenueDetailsAdmin";
 import ServiceListAdmin from "./dashboard/services/ServiceListAdmin";
+import CreateEventAdmin from "./dashboard/events/CreateEventAdmin";
+import UpdateEventAdmin from "./dashboard/events/UpdateEventAdmin";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -29,6 +31,22 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
               <DashboardEvents />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/admin/events/create"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <CreateEventAdmin loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/admin/events/update/:eventId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <UpdateEventAdmin loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />

@@ -3,7 +3,7 @@ import { GetProfiles } from "../../managers/userProfileManager";
 import { Table } from "reactstrap";
 import { Link } from "react-router-dom";
 
-export default function UserProfileList() {
+export default function UserProfileList({loggedInUser}) {
   const [userProfiles, setUserProfiles] = useState([]);
 
   useEffect(() => {
@@ -14,9 +14,6 @@ export default function UserProfileList() {
     <>
       <div>
         <Link to={`/admin/events`}>Events</Link>
-      </div>
-      <div>
-        <Link to={`/userprofiles`}>Users</Link>
       </div>
       <div>
         <Link to={`/admin/venues`}>Venues</Link>

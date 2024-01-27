@@ -4,7 +4,7 @@ import { GetVenues } from "../../managers/venueManager";
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 
-export default function VenueListAdmin() {
+export default function VenueListAdmin({loggedInUser}) {
     const [venues, setVenues] = useState([]);
 
     useEffect(() => {
