@@ -1,0 +1,21 @@
+.navbar-background {
+    background-color: #133249; /* Dark blue color */
+}
+#navBrand {
+    color: #FCD46A;
+}
+.nav_bar_link {
+    color: #FCD46A; ;
+}
+.nav_bar_link:hover {
+    color: #82B3AD; ;
+}
+.navbar-nav .nav_bar_link.active {
+    color: #ffffff; /* This sets the color to white */
+}
+
+
+.nav_btn_background {
+    color: black;
+    background: linear-gradient(90deg, rgba(252,212,106,1) 0%, rgba(254,173,111,1) 90%);
+}

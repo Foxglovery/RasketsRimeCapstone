@@ -1,0 +1,6 @@
+.feathered-edge {
+    mask-image: radial-gradient(circle, white, black);
+}
+.rounded-image {
+    border-radius: 35px; /* Adjust the px value to increase or decrease the roundness */
+}

@@ -8,7 +8,8 @@ import {
 } from "../../managers/eventManager";
 import { Button, Table } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
-
+import backgroundImage from '../../../assets/brown-blue-wood.jpg';
+import '../../styles/DashboardEvents.css'
 export default function DashboardEvents({loggedInUser}) {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
@@ -38,19 +39,23 @@ export default function DashboardEvents({loggedInUser}) {
       GetEvents().then(setEvents);
     });
   };
+  const backgroundStyle = {
+    minHeight: '100vh',
+    background: `url(${backgroundImage}) no-repeat center center fixed`, 
+    backgroundSize: 'cover', // Ensure it covers the entire background
+    color: 'white',
+};
   return (
     <>
-      <div>
-        <Link to={`/userprofiles`}>Users</Link>
+      <div style={backgroundStyle}>
+      <div className="centered-content">
+        <h3>Events</h3>
       </div>
-      <div>
-        <Link to={`/admin/venues`}>Venues</Link>
+      <div className="centered-content">
+        <Link to={`/userprofiles`} className="chip-link">Users</Link>
+        <Link to={`/admin/venues`} className="chip-link">Venues</Link>
+        <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <div>
-        <Link to={`/admin/services`}>Services</Link>
-      </div>
-      <h3>Events</h3>
-      <div><Link to={`/admin/events/create`}><Button  color="success">Add Event</Button></Link></div>
       <Table dark striped>
         <thead>
           <tr>
@@ -136,6 +141,7 @@ export default function DashboardEvents({loggedInUser}) {
           ))}
         </tbody>
       </Table>
+    </div>
     </>
   );
 }
