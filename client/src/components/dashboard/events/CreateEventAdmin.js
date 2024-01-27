@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
+import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { GetVenues } from "../../managers/venueManager";
 import {
   AvailableServicesByVenueId,
@@ -19,6 +19,7 @@ export default function CreateEventAdmin({loggedInUser}) {
   const [eventName, setEventName] = useState("");
   const [expected, setExpected] = useState(0);
   const [description, setDescription] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [isPublic, setIsPublic] = useState(true);
   const [eventStart, setEventStart] = useState(new Date());
   const [duration, setDuration] = useState(1);
@@ -206,7 +207,7 @@ const handleSubmit = async (e) => {
             </FormGroup>
 
             {/* Date Dropdowns */}
-            <div>
+            <FormGroup>
               <DateDropdowns
                 handleDayChange={handleDayChange}
                 handleMonthChange={handleMonthChange}
@@ -217,7 +218,9 @@ const handleSubmit = async (e) => {
                 currentYear={currentYear}
                 currentHour={currentHour}
               />
-            </div>
+            </FormGroup>
+              
+            
 
             {/* Duration Dropdown */}
             <FormGroup>
