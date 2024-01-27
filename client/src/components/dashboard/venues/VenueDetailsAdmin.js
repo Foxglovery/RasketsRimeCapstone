@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { Table } from "reactstrap";
 import { GetVenueById } from "../../managers/venueManager";
+import backgroundImage from '../../../assets/brown-blue-wood.jpg';
 
 export default function VenueDetailsAdmin({loggedInUser}) {
     const {id} = useParams();
@@ -11,22 +12,24 @@ export default function VenueDetailsAdmin({loggedInUser}) {
         GetVenueById(id).then(setVenue);
     },[id])
     
-    
+    const backgroundStyle = {
+      minHeight: '100vh',
+      background: `url(${backgroundImage}) no-repeat center center fixed`, 
+      backgroundSize: 'cover', // Ensure it covers the entire background
+      color: 'white',
+  };
     return (
         <>
-      <div>
-        <Link to={`/admin/events`}>Events</Link>
+      <div style={backgroundStyle}>
+      <div className="centered-content">
+        <h3>Venue</h3>
       </div>
-      <div>
-        <Link to={`/userprofiles`}>Users</Link>
+      <div className="centered-content">
+        <Link to={`/userprofiles`} className="chip-link">Users</Link>
+        <Link to={`/admin/events`} className="chip-link">Events</Link>
+        <Link to={`/admin/venues`} className="chip-link">Venues</Link>
+        <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <div>
-        <Link to={`/admin/venues`}>Venues</Link>
-      </div>
-      <div>
-        <Link to={`/admin/services`}>Services</Link>
-      </div>
-      <h3>Venue</h3>
       <Table dark striped>
         <tbody>
           <tr>
@@ -59,8 +62,9 @@ export default function VenueDetailsAdmin({loggedInUser}) {
           
         </tbody>
       </Table>
-
+      <div className="centered-content">
       <h4>Venue Services</h4>
+      </div>
       <Table dark striped>
         <thead>
           <tr>
@@ -83,6 +87,7 @@ export default function VenueDetailsAdmin({loggedInUser}) {
           ))}
         </tbody>
       </Table>
+      </div>
     </>
     )
 }
