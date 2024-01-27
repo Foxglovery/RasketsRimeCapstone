@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { GetProfiles } from "../../managers/userProfileManager";
 import { Table } from "reactstrap";
 import { Link } from "react-router-dom";
+import backgroundImage from '../../../assets/brown-blue-wood.jpg';
 
 export default function UserProfileList({loggedInUser}) {
   const [userProfiles, setUserProfiles] = useState([]);
@@ -9,19 +10,23 @@ export default function UserProfileList({loggedInUser}) {
   useEffect(() => {
     GetProfiles().then(setUserProfiles);
   }, []);
-
+  const backgroundStyle = {
+    minHeight: '100vh',
+    background: `url(${backgroundImage}) no-repeat center center fixed`, 
+    backgroundSize: 'cover', // Ensure it covers the entire background
+    color: 'white',
+};
   return (
     <>
-      <div>
-        <Link to={`/admin/events`}>Events</Link>
+    <div style={backgroundStyle}>
+      <div className="centered-content">
+        <h3>Users</h3>
       </div>
-      <div>
-        <Link to={`/admin/venues`}>Venues</Link>
+      <div className="centered-content">
+        <Link to={`/admin/events`} className="chip-link">Events</Link>
+        <Link to={`/admin/venues`} className="chip-link">Venues</Link>
+        <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <div>
-        <Link to={`/admin/services`}>Services</Link>
-      </div>
-      <h3>Users</h3>
       <Table dark striped>
         <thead>
           <tr>
@@ -52,6 +57,6 @@ export default function UserProfileList({loggedInUser}) {
           ))}
         </tbody>
       </Table>
-    </>
+    </div></>
   );
 }

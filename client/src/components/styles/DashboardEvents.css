@@ -12,14 +12,39 @@
 
 /* Optional: Style for hover effect */
 .chip-link:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
+    background-color: #061119; /* Darker shade for hover effect */
 }
 
 .centered-content {
     text-align: center;
     margin-bottom: 15px; /* Adjust as needed */
 }
-
+.left-align-btn {
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+.admin-event-btn {
+    background-color: #316878;
+}
+.admin-event-btn:hover {
+background-color: #133249;
+}
+.admin-reject-btn {
+    background-color: #8fcf4f;
+    color: #061119;
+}
+.admin-reject-btn:hover {
+    background-color: #78ad42;
+    color: #061119;
+}
+.admin-update-event-btn {
+    background-color: #9d41c5;
+    color: #e6e9ed;
+}
+.admin-update-event-btn:hover {
+    background-color: #8739a9;
+    color: #e0e5e9;
+}
 
 
 

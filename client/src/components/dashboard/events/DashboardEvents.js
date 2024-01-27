@@ -56,6 +56,9 @@ export default function DashboardEvents({loggedInUser}) {
         <Link to={`/admin/venues`} className="chip-link">Venues</Link>
         <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
+      <div className="left-align-btn">
+        <Button  className="admin-event-btn"onClick={() => navigate("/admin/events/create")}>Add Event</Button>
+      </div>
       <Table dark striped>
         <thead>
           <tr>
@@ -74,9 +77,9 @@ export default function DashboardEvents({loggedInUser}) {
           </tr>
         </thead>
         <tbody>
-          {events.map((e) => (
+          {events.map((e, index) => (
             <tr key={e.id}>
-              <th scope="row">{e.id}</th>
+              <th scope="row">{index + 1}</th>
               <td>{e.eventName}</td>
               <td>
                 {e.userProfile.firstName} {e.userProfile.lastName}
@@ -110,15 +113,15 @@ export default function DashboardEvents({loggedInUser}) {
                   </Button>
                 </td>
               )}
-              {e.status === "Pending" ? (
+              {e.status === "Pending" || e.status === "Approved"? (
                 <td>
-                  <Button color="warning" onClick={() => handleReject(e.id)}>
+                  <Button className="admin-reject-btn"  onClick={() => handleReject(e.id)}>
                     Reject
                   </Button>
                 </td>
               ) : (
                 <td>
-                  <Button color="warning" disabled>
+                  <Button className="admin-reject-btn" disabled>
                     Reject
                   </Button>
                 </td>
@@ -129,13 +132,13 @@ export default function DashboardEvents({loggedInUser}) {
                 </Button>
               </td>
               <td>
-                <Button color="warning" onClick={() => navigate(`/admin/events/update/${e.id}`)}>
+                <Button className="admin-update-event-btn" onClick={() => navigate(`/admin/events/update/${e.id}`)}>
                   Update
                 </Button>
               </td>
 
               <td>
-                <Link to={`${e.id}`}>Details</Link>
+                <Link className="details" to={`${e.id}`}>Details</Link>
               </td>
             </tr>
           ))}

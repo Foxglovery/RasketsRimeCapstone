@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GetEventById } from "../../managers/eventManager";
 import { Table } from "reactstrap";
+import backgroundImage from '../../../assets/brown-blue-wood.jpg';
 
 export default function EventDetailsAdmin({loggedInUser}) {
   const { id } = useParams();
@@ -10,22 +11,26 @@ export default function EventDetailsAdmin({loggedInUser}) {
   useEffect(() => {
     GetEventById(id).then(setEvent);
   }, [id]);
+
+  const backgroundStyle = {
+    minHeight: '100vh',
+    background: `url(${backgroundImage}) no-repeat center center fixed`, 
+    backgroundSize: 'cover', // Ensure it covers the entire background
+    color: 'white',
+};
   return (
     //add a table here to display event
     <>
-      <div>
-        <Link to={`/admin/events`}>Events</Link>
+      <div style={backgroundStyle}>
+      <div className="centered-content">
+        <h3>Event Details</h3>
       </div>
-      <div>
-        <Link to={`/userprofiles`}>Users</Link>
+      <div className="centered-content">
+        <Link to={`/userprofiles`} className="chip-link">Users</Link>
+        <Link to={`/admin/events`} className="chip-link">Events</Link>
+        <Link to={`/admin/venues`} className="chip-link">Venues</Link>
+        <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <div>
-        <Link to={`/admin/venues`}>Venues</Link>
-      </div>
-      <div>
-        <Link to={`/admin/services`}>Services</Link>
-      </div>
-      <h3>Event</h3>
       <Table dark striped>
         <tbody>
           <tr>
@@ -92,6 +97,6 @@ export default function EventDetailsAdmin({loggedInUser}) {
           ))}
         </tbody>
       </Table>
-    </>
+   </div> </>
   );
 }
