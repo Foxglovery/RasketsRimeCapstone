@@ -173,7 +173,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Trash-Pickup",
                 Description = "We will pick up your trash, but we won't be happy about it.",
                 Price = 60,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/de/f8/lvuIZQr2_o.png",
                 IsActive = true
             },
             new Service
@@ -182,7 +182,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Smoothie-Bar",
                 Description = "Pitaya, Pineapple, Mango...You name it, we will throw it in a bucket and blend it till its oh-so smooth.",
                 Price = 100,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/4d/f0/043VF0mx_o.png",
                 IsActive = true
             },
             new Service
@@ -191,16 +191,16 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Security (By The Arbiter's Secret Militia)",
                 Description = "If your wondering who will be providing security, chances are you've already met them and they were likely not impressed. Ever watchful, they do not rest.",
                 Price = 100,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/e4/b8/b4yyisFh_o.jpg",
                 IsActive = true
             },
             new Service
             {
                 Id = 4,
                 ServiceName = "Child-Care (Also By The Arbiter's Secret Militia)",
-                Description = "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers. Our operatives are standing by to assess and neutralize any bad behavior.",
+                Description = "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers.",
                 Price = 200,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/ad/8e/rvA5aOH5_o.png",
                 IsActive = true
             },
             new Service
@@ -209,7 +209,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Valet-Lake Parking",
                 Description = "Look, the University is under the lake. You want to try your hand at getting your car out yourself? Go ahead.",
                 Price = 50,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/7e/51/IyDxqLiR_o.png",
                 IsActive = true
             },
             new Service
@@ -218,7 +218,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Library 'Supermarket Sweep'",
                 Description = "We will let you shove as many books as you can fit in a burlap sac from the 'donated' stacks. We are not responsible for what these books may or may not do upon reading. ",
                 Price = 800,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/ad/9c/Cee2RDsS_o.png",
                 IsActive = true
             },
             new Service
@@ -227,7 +227,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Mobile Heat Censors",
                 Description = "It gets cold here. These floating bowls of heat will warm your guests. Be sure you do not put ANYTHING in the censor. Again we cannot stress that enough.",
                 Price = 20,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/ef/56/n2BD5zlx_o.png",
                 IsActive = true
             },
             new Service
@@ -236,7 +236,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Mountain-Top Ski Lift",
                 Description = "You really do not want to try parking up here. The lift will get you from the main square in town all the way up to the Station. Be sure to dress warmly!",
                 Price = 10,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/41/49/v1dI3OGz_o.png",
                 IsActive = true
             },
             new Service
@@ -245,7 +245,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "'Are You The DJ?'",
                 Description = "We know. You think you are the gift of song itself. Why not put your money where your mouth is? Let the whole town hear your...choices by selecting the music.",
                 Price = 100,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/f0/ad/jZhvHsgk_o.png",
                 IsActive = true
             },
             new Service
@@ -254,7 +254,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Woodland Creature Package",
                 Description = "Everyone thinks they are a Snow White. Now it can finally be true for you. Many tiny cuddles and helpful forest friends are waiting for you to add this package.",
                 Price = 80,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/d6/e9/1AnPEjAB_o.png",
                 IsActive = true
             },
             new Service
@@ -263,7 +263,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Ent Walk",
                 Description = "The trees are ancient, yet the Ents are older still. Take a walk with several of these arboreal protectors and see the world through a whole new lens.",
                 Price = 50,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/27/87/FTqvH0Jh_o.png",
                 IsActive = true
             },
             new Service
@@ -272,7 +272,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Suddenly Spooky",
                 Description = "You know when you think something is going to be really funny, but then it just creeps everyone out? Yeah...we got you. Your guests will be terrified. So will you, actually.",
                 Price = 20,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/c6/dc/x24ENwDY_o.png",
                 IsActive = true
             },
             new Service
@@ -281,7 +281,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Fractal Tile",
                 Description = "The tiles in this space can be made to display a mind-melting fractal of the person standing on them. Now just imagine you have 200 guests...yeah, we thought you would like that.",
                 Price = 80,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/3d/4a/xpuGluG1_o.png",
                 IsActive = true
             },
             new Service
@@ -290,7 +290,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Goofy Golf",
                 Description = "We weren't kidding when we said they built the Cathedral right on top the Goofy Golf. With access to the subterranean levels, your golf skills will be tested. You will be tested. ",
                 Price = 200,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/25/3f/46BQBDgP_o.png",
                 IsActive = true
             },
             new Service
@@ -299,7 +299,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Haunting Vocals",
                 Description = "The lilting voices of those gone before will be piped in to punctuate the ethereal nature of this space.",
                 Price = 200,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/a4/79/KEI4lkbc_o.png",
                 IsActive = true
             },
             new Service
@@ -308,7 +308,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Non-Seance",
                 Description = "When you want to have a party but don't want to risk bringing anything back from the other side. Madam Zostra will gladly hold back her services so that you might feel more comfortable in your mortal vessel.",
                 Price = 500,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/01/f7/WYpnLtYu_o.png",
                 IsActive = true
             },
             new Service
@@ -317,7 +317,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Astral Travel",
                 Description = "Madam Zostra is a skilled Translocator. She can have you zipped up to the Poconos all without leaving the warmth of her cottage.",
                 Price = 600,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/fb/8b/DtGlv0kO_o.jpg",
                 IsActive = true
             },
             new Service
@@ -326,7 +326,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Item Identification",
                 Description = "Found an object of dubious origin? Worried it might be cursed? This is like Antiques Roadshow but if that old spoon set made you end every sentence with a question.",
                 Price = 200,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/4f/c8/XcTMx6tM_o.png",
                 IsActive = true
             },
             new Service
@@ -335,7 +335,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Earplugs",
                 Description = "It is uhh, loud here. You will probably need these. Your guests will also be wanting these.",
                 Price = 20,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/26/b4/wxtF3RRZ_o.png",
                 IsActive = true
             },
             new Service
@@ -344,7 +344,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Laser Lights",
                 Description = "NO, these are not the same lasers they used to etch this space from the quarry. They have had fun colors added. You will probably not be in any danger.",
                 Price = 300,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/21/f7/di3e3vqa_o.png",
                 IsActive = true
             },
             new Service
@@ -353,7 +353,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Comically Large Baloon Drop",
                 Description = "What can we can? They're REALLY big balloons.",
                 Price = 200,
-                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                ImageUrl = "https://images2.imgbox.com/83/96/cSaL1GzD_o.png",
                 IsActive = true
             }
         });
@@ -369,239 +369,155 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             {
                 Id = 2,
                 VenueId = 1,
-                ServiceId = 2
-            },
-            new VenueService
-            {
-                Id = 3,
-                VenueId = 1,
                 ServiceId = 3
             },
             new VenueService
             {
-                Id = 4,
-                VenueId = 1,
-                ServiceId = 4
-            },
-            new VenueService
-            {
-                Id = 5,
+                Id = 3,
                 VenueId = 2,
                 ServiceId = 1
             },
             new VenueService
             {
-                Id = 6,
-                VenueId = 2,
+                Id = 4,
+                VenueId = 3,
                 ServiceId = 2
             },
             new VenueService
             {
+                Id = 5,
+                VenueId = 3,
+                ServiceId = 4
+            },
+            new VenueService
+            {
+                Id = 6,
+                VenueId = 4,
+                ServiceId = 1
+            },
+            new VenueService
+            {
                 Id = 7,
-                VenueId = 2,
+                VenueId = 4,
                 ServiceId = 3
             },
             new VenueService
             {
                 Id = 8,
-                VenueId = 2,
-                ServiceId = 4
+                VenueId = 5,
+                ServiceId = 2
             },
             new VenueService
             {
                 Id = 9,
-                VenueId = 3,
-                ServiceId = 1
+                VenueId = 6,
+                ServiceId = 2
             },
             new VenueService
             {
                 Id = 10,
-                VenueId = 3,
-                ServiceId = 2
+                VenueId = 6,
+                ServiceId = 4
             },
             new VenueService
             {
                 Id = 11,
-                VenueId = 3,
-                ServiceId = 3
-            },
-            new VenueService
-            {
-                Id = 12,
-                VenueId = 3,
-                ServiceId = 4
-            },
-            new VenueService
-            {
-                Id = 13,
-                VenueId = 4,
-                ServiceId = 1
-            },
-            new VenueService
-            {
-                Id = 14,
-                VenueId = 4,
-                ServiceId = 2
-            },
-            new VenueService
-            {
-                Id = 15,
-                VenueId = 4,
-                ServiceId = 3
-            },
-            new VenueService
-            {
-                Id = 16,
-                VenueId = 4,
-                ServiceId = 4
-            },
-            new VenueService
-            {
-                Id = 17,
-                VenueId = 5,
-                ServiceId = 1
-            },
-            new VenueService
-            {
-                Id = 18,
-                VenueId = 5,
-                ServiceId = 2
-            },
-            new VenueService
-            {
-                Id = 19,
-                VenueId = 5,
-                ServiceId = 3
-            },
-            new VenueService
-            {
-                Id = 20,
-                VenueId = 5,
-                ServiceId = 4
-            },
-            new VenueService
-            {
-                Id = 21,
-                VenueId = 6,
-                ServiceId = 1
-            },
-            new VenueService
-            {
-                Id = 22,
-                VenueId = 6,
-                ServiceId = 2
-            },
-            new VenueService
-            {
-                Id = 23,
-                VenueId = 6,
-                ServiceId = 3
-            },
-            new VenueService
-            {
-                Id = 24,
-                VenueId = 6,
-                ServiceId = 4
-            },
-            new VenueService
-            {
-                Id = 25,
                 VenueId = 1,
                 ServiceId = 5
             },
             new VenueService
             {
-                Id = 26,
+                Id = 12,
                 VenueId = 1,
                 ServiceId = 6
             },
             new VenueService
             {
-                Id = 27,
+                Id = 13,
                 VenueId = 2,
                 ServiceId = 7
             },
             new VenueService
             {
-                Id = 28,
+                Id = 14,
                 VenueId = 2,
                 ServiceId = 8
             },
             new VenueService
             {
-                Id = 29,
+                Id = 15,
                 VenueId = 2,
                 ServiceId = 9
             },
             new VenueService
             {
-                Id = 30,
+                Id = 16,
                 VenueId = 3,
                 ServiceId = 10
             },
             new VenueService
             {
-                Id = 31,
+                Id = 17,
                 VenueId = 3,
                 ServiceId = 11
             },
             new VenueService
             {
-                Id = 32,
+                Id = 18,
                 VenueId = 3,
                 ServiceId = 12
             },
             new VenueService
             {
-                Id = 33,
+                Id = 19,
                 VenueId = 4,
                 ServiceId = 13
             },
             new VenueService
             {
-                Id = 34,
+                Id = 20,
                 VenueId = 4,
                 ServiceId = 14
             },
             new VenueService
             {
-                Id = 35,
+                Id = 21,
                 VenueId = 4,
                 ServiceId = 15
             },
             new VenueService
             {
-                Id = 36,
+                Id = 22,
                 VenueId = 5,
                 ServiceId = 16
             },
             new VenueService
             {
-                Id = 37,
+                Id = 23,
                 VenueId = 5,
                 ServiceId = 17
             },
             new VenueService
             {
-                Id = 38,
+                Id = 24,
                 VenueId = 5,
                 ServiceId = 18
             },
             new VenueService
             {
-                Id = 39,
+                Id = 25,
                 VenueId = 6,
                 ServiceId = 19
             },
             new VenueService
             {
-                Id = 40,
+                Id = 26,
                 VenueId = 6,
                 ServiceId = 20
             },
             new VenueService
             {
-                Id = 41,
+                Id = 27,
                 VenueId = 6,
                 ServiceId = 21
             }
