@@ -104,6 +104,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             Address = "19 Under Lake Blvd",
             Description = "A prestigious arcane academy lovingly nestled beneath the central lake of the town. Its atrium is more than accommodating for crowds large and small.",
             ContactInfo = "Arbiter Darling : 850-474-5555",
+            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
             MaxOccupancy = 300,
             IsActive = true
             },
@@ -114,6 +115,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             Address = "327 Rumbler Route Way",
             Description = "From atop the mountains, the radio station glows eternal. Deceptively large, its unassuming facade belies the many cozy suites nestled within its walls.",
             ContactInfo = "Foxglove Mackenzie -- 850-985-2934",
+            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
             MaxOccupancy = 85,
             IsActive = true
             },
@@ -124,6 +126,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             Address = "667 W Rambling Road",
             Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under a revelry-drunk moon.",
             ContactInfo = "Thorely Goodparty",
+            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
             MaxOccupancy = 50,
             IsActive = true
             },
@@ -134,6 +137,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             Address = "3762 Gnomiad Fork",
             Description = "Believe it or not, this was never a cathedral. The creator instead saw fit to erect this behemoth of architectural ego on top of the abandoned Goofy Golf complex. Vestigial dinosaurs and aliens still linger where you would least expect them.",
             ContactInfo = "Parker Billian -- 850-987-2926",
+            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
             MaxOccupancy = 200,
             IsActive = true
             },
@@ -144,6 +148,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             Address = "3 Nestledown Thicket",
             Description = "Ambience and incense will greet you as you settle in. On display are the relics and spoils of war won by Madame Zostra in her pursuit of the Thaumaturgical Arts",
             ContactInfo = "Madame Zostra -- 850-222-1053",
+            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
             MaxOccupancy = 20,
             IsActive = true
             },
@@ -154,6 +159,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             Address = "5590 Fingerpail Row",
             Description = "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ",
             ContactInfo = "Maisel Darby --850-334-9010",
+            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
             MaxOccupancy = 500,
             IsActive = true
             }
@@ -167,6 +173,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Trash-Pickup",
                 Description = "We will pick up your trash, but we won't be happy about it.",
                 Price = 60,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -175,6 +182,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Smoothie-Bar",
                 Description = "Pitaya, Pineapple, Mango...You name it, we will throw it in a bucket and blend it till its oh-so smooth.",
                 Price = 100,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -183,6 +191,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Security (By The Arbiter's Secret Militia)",
                 Description = "If your wondering who will be providing security, chances are you've already met them and they were likely not impressed. Ever watchful, they do not rest.",
                 Price = 100,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -191,6 +200,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Child-Care (Also By The Arbiter's Secret Militia)",
                 Description = "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers. Our operatives are standing by to assess and neutralize any bad behavior.",
                 Price = 200,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -199,6 +209,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Valet-Lake Parking",
                 Description = "Look, the University is under the lake. You want to try your hand at getting your car out yourself? Go ahead.",
                 Price = 50,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -207,6 +218,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Library 'Supermarket Sweep'",
                 Description = "We will let you shove as many books as you can fit in a burlap sac from the 'donated' stacks. We are not responsible for what these books may or may not do upon reading. ",
                 Price = 800,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -215,6 +227,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Mobile Heat Censors",
                 Description = "It gets cold here. These floating bowls of heat will warm your guests. Be sure you do not put ANYTHING in the censor. Again we cannot stress that enough.",
                 Price = 20,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -223,6 +236,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Mountain-Top Ski Lift",
                 Description = "You really do not want to try parking up here. The lift will get you from the main square in town all the way up to the Station. Be sure to dress warmly!",
                 Price = 10,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -231,6 +245,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "'Are You The DJ?'",
                 Description = "We know. You think you are the gift of song itself. Why not put your money where your mouth is? Let the whole town hear your...choices by selecting the music.",
                 Price = 100,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -239,6 +254,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Woodland Creature Package",
                 Description = "Everyone thinks they are a Snow White. Now it can finally be true for you. Many tiny cuddles and helpful forest friends are waiting for you to add this package.",
                 Price = 80,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -247,6 +263,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Ent Walk",
                 Description = "The trees are ancient, yet the Ents are older still. Take a walk with several of these arboreal protectors and see the world through a whole new lens.",
                 Price = 50,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -255,6 +272,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Suddenly Spooky",
                 Description = "You know when you think something is going to be really funny, but then it just creeps everyone out? Yeah...we got you. Your guests will be terrified. So will you, actually.",
                 Price = 20,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -263,6 +281,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Fractal Tile",
                 Description = "The tiles in this space can be made to display a mind-melting fractal of the person standing on them. Now just imagine you have 200 guests...yeah, we thought you would like that.",
                 Price = 80,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -271,6 +290,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Goofy Golf",
                 Description = "We weren't kidding when we said they built the Cathedral right on top the Goofy Golf. With access to the subterranean levels, your golf skills will be tested. You will be tested. ",
                 Price = 200,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -279,6 +299,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Haunting Vocals",
                 Description = "The lilting voices of those gone before will be piped in to punctuate the ethereal nature of this space.",
                 Price = 200,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -287,6 +308,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Non-Seance",
                 Description = "When you want to have a party but don't want to risk bringing anything back from the other side. Madam Zostra will gladly hold back her services so that you might feel more comfortable in your mortal vessel.",
                 Price = 500,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -295,6 +317,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Astral Travel",
                 Description = "Madam Zostra is a skilled Translocator. She can have you zipped up to the Poconos all without leaving the warmth of her cottage.",
                 Price = 600,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -303,6 +326,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Item Identification",
                 Description = "Found an object of dubious origin? Worried it might be cursed? This is like Antiques Roadshow but if that old spoon set made you end every sentence with a question.",
                 Price = 200,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -311,6 +335,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Earplugs",
                 Description = "It is uhh, loud here. You will probably need these. Your guests will also be wanting these.",
                 Price = 20,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -319,6 +344,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Laser Lights",
                 Description = "NO, these are not the same lasers they used to etch this space from the quarry. They have had fun colors added. You will probably not be in any danger.",
                 Price = 300,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             },
             new Service
@@ -327,6 +353,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceName = "Comically Large Baloon Drop",
                 Description = "What can we can? They're REALLY big balloons.",
                 Price = 200,
+                ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                 IsActive = true
             }
         });

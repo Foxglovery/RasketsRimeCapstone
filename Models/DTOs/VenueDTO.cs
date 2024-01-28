@@ -13,6 +13,7 @@ public class VenueDTO
     public string Description { get; set; }
 
     public string ContactInfo { get; set; }
+    public string ImageUrl { get; set; }
     public int MaxOccupancy { get; set; }
 
     public bool IsActive { get; set; }

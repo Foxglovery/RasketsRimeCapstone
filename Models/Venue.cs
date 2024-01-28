@@ -13,6 +13,8 @@ public class Venue
     public string Description { get; set; }
     [Required]
     public string ContactInfo { get; set; }
+    [Required]
+    public string ImageUrl { get; set;}
     public int MaxOccupancy { get; set; }
     [Required]
     public bool IsActive { get; set; }
