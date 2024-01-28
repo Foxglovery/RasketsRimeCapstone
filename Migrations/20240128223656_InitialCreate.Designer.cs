@@ -13,7 +13,7 @@ using RasketsRime.Data;
 namespace RasketsRimeCapstone.Migrations
 {
     [DbContext(typeof(RasketsRimeDbContext))]
-    [Migration("20240128203317_InitialCreate")]
+    [Migration("20240128223656_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,13 +158,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "211037d0-f758-4f74-9786-e7c4f6853db3",
+                            ConcurrencyStamp = "76978027-fcf5-49a1-b2b1-0f484ff63215",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEM2igmMlqRqYiSISYYMmcE+WOEayjUwdDuq35IWTuzBRKeVO3Ejh1iX374LuCj7U+g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELAI5g2585iDQFm+dalXvfJp+KeCY4yJB0RwT+17aLNuaoCJ5qd+2OGkqe20SBSr+g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5decab30-07fb-49c1-9387-77f6d68dbc2d",
+                            SecurityStamp = "1571d027-d65f-44e3-b316-b7b32d171424",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -172,13 +172,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fc82f0f3-5938-42f3-96af-c33712c755da",
+                            ConcurrencyStamp = "a8c41f98-85b7-4abe-8d4c-2da94906736f",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEC2pgu7jv46rsh40QZQQix4JC0G8a2nHv5JOKkX0epq/MSnlHVcMwf4xzike9Ev1gQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMvvuUjERsyVbleCy/IFICRAyskyL1i8hW2LpjLCiSXrLVDu19BbnzpuFb9epblZWg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4570c46a-e56f-448e-b605-d444ef15190b",
+                            SecurityStamp = "212eb227-3cde-47aa-af50-35fafeb36047",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -594,7 +594,7 @@ namespace RasketsRimeCapstone.Migrations
                         new
                         {
                             Id = 21,
-                            Description = "What can we can? They're REALLY big balloons.",
+                            Description = "What can we say? They're REALLY big balloons.",
                             ImageUrl = "https://images2.imgbox.com/83/96/cSaL1GzD_o.png",
                             IsActive = true,
                             Price = 200m,

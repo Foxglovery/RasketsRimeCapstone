@@ -317,8 +317,8 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "211037d0-f758-4f74-9786-e7c4f6853db3", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEM2igmMlqRqYiSISYYMmcE+WOEayjUwdDuq35IWTuzBRKeVO3Ejh1iX374LuCj7U+g==", null, false, "5decab30-07fb-49c1-9387-77f6d68dbc2d", false, "Administrator" },
-                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "fc82f0f3-5938-42f3-96af-c33712c755da", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEC2pgu7jv46rsh40QZQQix4JC0G8a2nHv5JOKkX0epq/MSnlHVcMwf4xzike9Ev1gQ==", null, false, "4570c46a-e56f-448e-b605-d444ef15190b", false, "Schlebethany" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "76978027-fcf5-49a1-b2b1-0f484ff63215", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELAI5g2585iDQFm+dalXvfJp+KeCY4yJB0RwT+17aLNuaoCJ5qd+2OGkqe20SBSr+g==", null, false, "1571d027-d65f-44e3-b316-b7b32d171424", false, "Administrator" },
+                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "a8c41f98-85b7-4abe-8d4c-2da94906736f", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMvvuUjERsyVbleCy/IFICRAyskyL1i8hW2LpjLCiSXrLVDu19BbnzpuFb9epblZWg==", null, false, "212eb227-3cde-47aa-af50-35fafeb36047", false, "Schlebethany" }
                 });
 
             migrationBuilder.InsertData(
@@ -346,7 +346,7 @@ namespace RasketsRimeCapstone.Migrations
                     { 18, "Found an object of dubious origin? Worried it might be cursed? This is like Antiques Roadshow but if that old spoon set made you end every sentence with a question.", "https://images2.imgbox.com/4f/c8/XcTMx6tM_o.png", true, 200m, "Item Identification" },
                     { 19, "It is uhh, loud here. You will probably need these. Your guests will also be wanting these.", "https://images2.imgbox.com/26/b4/wxtF3RRZ_o.png", true, 20m, "Earplugs" },
                     { 20, "NO, these are not the same lasers they used to etch this space from the quarry. They have had fun colors added. You will probably not be in any danger.", "https://images2.imgbox.com/21/f7/di3e3vqa_o.png", true, 300m, "Laser Lights" },
-                    { 21, "What can we can? They're REALLY big balloons.", "https://images2.imgbox.com/83/96/cSaL1GzD_o.png", true, 200m, "Comically Large Baloon Drop" }
+                    { 21, "What can we say? They're REALLY big balloons.", "https://images2.imgbox.com/83/96/cSaL1GzD_o.png", true, 200m, "Comically Large Baloon Drop" }
                 });
 
             migrationBuilder.InsertData(

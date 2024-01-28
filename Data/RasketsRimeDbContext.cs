@@ -351,7 +351,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             {
                 Id = 21,
                 ServiceName = "Comically Large Baloon Drop",
-                Description = "What can we can? They're REALLY big balloons.",
+                Description = "What can we say? They're REALLY big balloons.",
                 Price = 200,
                 ImageUrl = "https://images2.imgbox.com/83/96/cSaL1GzD_o.png",
                 IsActive = true

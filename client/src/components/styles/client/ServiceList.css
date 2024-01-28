@@ -1,7 +1,7 @@
 /* Font imports */
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
-
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Forum&family=Quattrocento&family=Stoke:wght@300;400&display=swap');
 /* Variables */
 .card-width {
   width: 350px;
@@ -27,14 +27,16 @@
 }
 
 /* Body styles */
-body {
+/* body {
   background: #323c41;
-}
+
+} */
 .service-header {
     text-align: center;
 }
 .service-header h1 {
     color: #FCD46A;
+    font-family: 'Stoke';
 }
 
 .cards-container {
@@ -58,6 +60,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
   }
 
 /* .blog-card.spring-fever {
@@ -110,6 +113,7 @@ body {
   top: 0;
   left: 0;
   
+  
 }
 
 h3 {
@@ -117,7 +121,7 @@ h3 {
   font-weight: 500;
   letter-spacing: 2px;
   color: #9CC9E3;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Stoke';
   margin-bottom: 0;
 }
 
@@ -140,7 +144,7 @@ hr {
 
 
 .intro {
-  width: 170px;
+  width: 260px;
   margin: 0 auto;
   color: #DCE3E7;
   font-family: 'Droid Serif', serif;
@@ -159,7 +163,7 @@ hr {
   margin: 0 auto;
   padding: 0 50px;
   color: #DCE3E7;
-  font-family: 'Droid Serif', serif;
+  font-family: 'Stoke', serif;
   font-style: 16px;
   line-height: 24px;
   z-index: 20;
