@@ -156,13 +156,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b53fb7b7-765a-41dd-ae6d-ef5e71226518",
+                            ConcurrencyStamp = "d3cfcdcc-0bf1-4d2a-a304-fa48fcb6e449",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEK0g1QGt+fF4oz7QzAkHGD6UFBieiX+hupSFlCMnxSTQW05oIxD/O1EMUQYSlQdqog==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP6Uu5KY/+Jh4bfXJhVN1E+2io+qVvGS1FXCOtK3YvpIPDQoHwke7Orn6tAKyH7CvA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2525d451-7435-43f8-aeda-2151c1127741",
+                            SecurityStamp = "8b79b043-b071-47c1-8a37-0ef7cf6fe62b",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -170,13 +170,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f203f6a6-f8a6-438f-ab81-5c1ab7f134d0",
+                            ConcurrencyStamp = "77e7a335-599f-40f0-92e4-b611787fbce0",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEAdumHZJcXK5nGItNdnKEVnT1Xid5JHfEvzQwAp7omOqCKz2hiIIYDUiAXhtncXeqg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFaYix84OU42ziB6ab4KP11G49DBm+LKF4GbjjlyFzCgg8saOdx+DSzrv0G8nEdygQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "63b8bdca-9ea7-4827-804a-7238741f3800",
+                            SecurityStamp = "bc6fc2da-3290-446c-90f9-4486809cf609",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -390,6 +390,10 @@ namespace RasketsRimeCapstone.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
@@ -409,6 +413,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 1,
                             Description = "We will pick up your trash, but we won't be happy about it.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 60m,
                             ServiceName = "Trash-Pickup"
@@ -417,6 +422,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 2,
                             Description = "Pitaya, Pineapple, Mango...You name it, we will throw it in a bucket and blend it till its oh-so smooth.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 100m,
                             ServiceName = "Smoothie-Bar"
@@ -425,6 +431,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 3,
                             Description = "If your wondering who will be providing security, chances are you've already met them and they were likely not impressed. Ever watchful, they do not rest.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 100m,
                             ServiceName = "Security (By The Arbiter's Secret Militia)"
@@ -433,6 +440,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 4,
                             Description = "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers. Our operatives are standing by to assess and neutralize any bad behavior.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Child-Care (Also By The Arbiter's Secret Militia)"
@@ -441,6 +449,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 5,
                             Description = "Look, the University is under the lake. You want to try your hand at getting your car out yourself? Go ahead.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 50m,
                             ServiceName = "Valet-Lake Parking"
@@ -449,6 +458,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 6,
                             Description = "We will let you shove as many books as you can fit in a burlap sac from the 'donated' stacks. We are not responsible for what these books may or may not do upon reading. ",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 800m,
                             ServiceName = "Library 'Supermarket Sweep'"
@@ -457,6 +467,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 7,
                             Description = "It gets cold here. These floating bowls of heat will warm your guests. Be sure you do not put ANYTHING in the censor. Again we cannot stress that enough.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 20m,
                             ServiceName = "Mobile Heat Censors"
@@ -465,6 +476,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 8,
                             Description = "You really do not want to try parking up here. The lift will get you from the main square in town all the way up to the Station. Be sure to dress warmly!",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 10m,
                             ServiceName = "Mountain-Top Ski Lift"
@@ -473,6 +485,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 9,
                             Description = "We know. You think you are the gift of song itself. Why not put your money where your mouth is? Let the whole town hear your...choices by selecting the music.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 100m,
                             ServiceName = "'Are You The DJ?'"
@@ -481,6 +494,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 10,
                             Description = "Everyone thinks they are a Snow White. Now it can finally be true for you. Many tiny cuddles and helpful forest friends are waiting for you to add this package.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 80m,
                             ServiceName = "Woodland Creature Package"
@@ -489,6 +503,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 11,
                             Description = "The trees are ancient, yet the Ents are older still. Take a walk with several of these arboreal protectors and see the world through a whole new lens.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 50m,
                             ServiceName = "Ent Walk"
@@ -497,6 +512,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 12,
                             Description = "You know when you think something is going to be really funny, but then it just creeps everyone out? Yeah...we got you. Your guests will be terrified. So will you, actually.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 20m,
                             ServiceName = "Suddenly Spooky"
@@ -505,6 +521,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 13,
                             Description = "The tiles in this space can be made to display a mind-melting fractal of the person standing on them. Now just imagine you have 200 guests...yeah, we thought you would like that.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 80m,
                             ServiceName = "Fractal Tile"
@@ -513,6 +530,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 14,
                             Description = "We weren't kidding when we said they built the Cathedral right on top the Goofy Golf. With access to the subterranean levels, your golf skills will be tested. You will be tested. ",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Goofy Golf"
@@ -521,6 +539,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 15,
                             Description = "The lilting voices of those gone before will be piped in to punctuate the ethereal nature of this space.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Haunting Vocals"
@@ -529,6 +548,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 16,
                             Description = "When you want to have a party but don't want to risk bringing anything back from the other side. Madam Zostra will gladly hold back her services so that you might feel more comfortable in your mortal vessel.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 500m,
                             ServiceName = "Non-Seance"
@@ -537,6 +557,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 17,
                             Description = "Madam Zostra is a skilled Translocator. She can have you zipped up to the Poconos all without leaving the warmth of her cottage.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 600m,
                             ServiceName = "Astral Travel"
@@ -545,6 +566,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 18,
                             Description = "Found an object of dubious origin? Worried it might be cursed? This is like Antiques Roadshow but if that old spoon set made you end every sentence with a question.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Item Identification"
@@ -553,6 +575,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 19,
                             Description = "It is uhh, loud here. You will probably need these. Your guests will also be wanting these.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 20m,
                             ServiceName = "Earplugs"
@@ -561,6 +584,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 20,
                             Description = "NO, these are not the same lasers they used to etch this space from the quarry. They have had fun colors added. You will probably not be in any danger.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 300m,
                             ServiceName = "Laser Lights"
@@ -569,6 +593,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 21,
                             Description = "What can we can? They're REALLY big balloons.",
+                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Comically Large Baloon Drop"
@@ -658,6 +683,10 @@ namespace RasketsRimeCapstone.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
@@ -679,6 +708,7 @@ namespace RasketsRimeCapstone.Migrations
                             Address = "19 Under Lake Blvd",
                             ContactInfo = "Arbiter Darling : 850-474-5555",
                             Description = "A prestigious arcane academy lovingly nestled beneath the central lake of the town. Its atrium is more than accommodating for crowds large and small.",
+                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 300,
                             VenueName = "The Unmoored University"
@@ -689,6 +719,7 @@ namespace RasketsRimeCapstone.Migrations
                             Address = "327 Rumbler Route Way",
                             ContactInfo = "Foxglove Mackenzie -- 850-985-2934",
                             Description = "From atop the mountains, the radio station glows eternal. Deceptively large, its unassuming facade belies the many cozy suites nestled within its walls.",
+                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 85,
                             VenueName = "Mountain-Top Radio Station"
@@ -699,6 +730,7 @@ namespace RasketsRimeCapstone.Migrations
                             Address = "667 W Rambling Road",
                             ContactInfo = "Thorely Goodparty",
                             Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under a revelry-drunk moon.",
+                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 50,
                             VenueName = "Cedrine Forest Adirondack"
@@ -709,6 +741,7 @@ namespace RasketsRimeCapstone.Migrations
                             Address = "3762 Gnomiad Fork",
                             ContactInfo = "Parker Billian -- 850-987-2926",
                             Description = "Believe it or not, this was never a cathedral. The creator instead saw fit to erect this behemoth of architectural ego on top of the abandoned Goofy Golf complex. Vestigial dinosaurs and aliens still linger where you would least expect them.",
+                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 200,
                             VenueName = "Glinterland Cathedral Hall"
@@ -719,6 +752,7 @@ namespace RasketsRimeCapstone.Migrations
                             Address = "3 Nestledown Thicket",
                             ContactInfo = "Madame Zostra -- 850-222-1053",
                             Description = "Ambience and incense will greet you as you settle in. On display are the relics and spoils of war won by Madame Zostra in her pursuit of the Thaumaturgical Arts",
+                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 20,
                             VenueName = "Madame Zostra's Family Fun Time Seance Parlor"
@@ -729,6 +763,7 @@ namespace RasketsRimeCapstone.Migrations
                             Address = "5590 Fingerpail Row",
                             ContactInfo = "Maisel Darby --850-334-9010",
                             Description = "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ",
+                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 500,
                             VenueName = "The Patty Lupone Groupon Coupon Main Stage"

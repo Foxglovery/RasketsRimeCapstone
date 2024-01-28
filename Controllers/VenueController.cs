@@ -32,6 +32,7 @@ public IActionResult GetVenues()
                 Address = v.Address,
                 Description = v.Description,
                 ContactInfo = v.ContactInfo,
+                ImageUrl = v.ImageUrl,
                 MaxOccupancy = v.MaxOccupancy,
                 IsActive = v.IsActive,
                 VenueServices = (List<VenueServiceDTO>)v.VenueServices.Select(vs => new VenueServiceDTO
@@ -45,6 +46,7 @@ public IActionResult GetVenues()
                         ServiceName = vs.Service.ServiceName,
                         Description = vs.Service.Description,
                         Price = vs.Service.Price,
+                        ImageUrl = vs.Service.ImageUrl,
                         IsActive = vs.Service.IsActive
                     }
                 })
@@ -71,6 +73,7 @@ public IActionResult GetById(int id)
                 Address = venue.Address,
                 Description = venue.Description,
                 ContactInfo = venue.ContactInfo,
+                ImageUrl = venue.ImageUrl,
                 MaxOccupancy = venue.MaxOccupancy,
                 IsActive = venue.IsActive,
                 VenueServices = (List<VenueServiceDTO>)venue.VenueServices.Select(vs => new VenueServiceDTO
@@ -84,6 +87,7 @@ public IActionResult GetById(int id)
                         ServiceName = vs.Service.ServiceName,
                         Description = vs.Service.Description,
                         Price = vs.Service.Price,
+                        ImageUrl = vs.Service.ImageUrl,
                         IsActive = vs.Service.IsActive
                     }
                 }).ToList()

@@ -31,6 +31,7 @@ public class ServiceController : ControllerBase
             ServiceName = s.ServiceName,
             Description = s.Description,
             Price = s.Price,
+            ImageUrl = s.ImageUrl,
             IsActive = s.IsActive,
             VenueServices = (List<VenueServiceDTO>)s.VenueServices.Select(vs => new VenueServiceDTO
             {
@@ -43,6 +44,7 @@ public class ServiceController : ControllerBase
                     Address = vs.Venue.Address,
                     Description = vs.Venue.Description,
                     ContactInfo = vs.Venue.ContactInfo,
+                    ImageUrl = vs.Venue.ImageUrl,
                     MaxOccupancy = vs.Venue.MaxOccupancy,
                     IsActive = vs.Venue.IsActive
                 },
@@ -72,6 +74,7 @@ public class ServiceController : ControllerBase
             ServiceName = service.ServiceName,
             Description = service.Description,
             Price = service.Price,
+            ImageUrl = service.ImageUrl,
             IsActive = service.IsActive,
             VenueServices = service.VenueServices?.Select(vs => new VenueServiceDTO
             {
@@ -84,6 +87,7 @@ public class ServiceController : ControllerBase
                     Address = vs.Venue.Address,
                     Description = vs.Venue.Description,
                     ContactInfo = vs.Venue.ContactInfo,
+                    ImageUrl = vs.Venue.ImageUrl,
                     MaxOccupancy = vs.Venue.MaxOccupancy,
                     IsActive = vs.Venue.IsActive
                 },
@@ -108,6 +112,7 @@ public class ServiceController : ControllerBase
             ServiceName = s.ServiceName,
             Description = s.Description,
             Price = s.Price,
+            ImageUrl = s.ImageUrl,
             IsActive = s.IsActive,
              
            

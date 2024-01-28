@@ -16,9 +16,22 @@ body {
 	text-rendering: optimizeLegibility;
 	font-weight: initial;
 }
+#pageHeaderTitle {
+    color: #FCD46A;
+}
 
 .dark {
 	background: #110f16;
+}
+
+.venue-background-image {
+    background-image: url('../../../assets/brown-blue-wood.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* This makes sure that the div takes the full viewport height */
+    width: 100%;
 }
 
 
