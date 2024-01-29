@@ -1,19 +1,18 @@
 namespace RasketsRime.Models.DTOs;
 
-public class UpdateEventDTO
+public class AdminUpdateEventDTO
 {
     public int Id { get; set; }
     public int UserId { get; set; }
     public int VenueId { get; set; }
-    public UserProfileDTO UserProfile {get; set;}
 
     public string EventName { get; set; }
     public int ExpectedAttendees { get; set; }
 
     public string EventDescription { get; set; }
     public bool IsPublic { get; set; }
-    public VenueDTO Venue { get; set; }
-    public List<EventServiceDTO> EventServices { get; set; }
+   
+   
       public DateTime? SubmitedOn { get; set; }
 
     public string Status { get; set; }

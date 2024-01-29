@@ -77,17 +77,17 @@ export default function CreateEventAdmin({loggedInUser}) {
   };
   const handleMonthChange = (e) => {
     const newDate = new Date(eventStart.setMonth(parseInt(e.target.value) - 1));
-    setEventStart(new Date(newDate)); // Update month
+    setEventStart(new Date(newDate));
   };
 
   const handleDayChange = (e) => {
     const newDate = new Date(eventStart.setDate(parseInt(e.target.value)));
-    setEventStart(new Date(newDate)); // Update day
+    setEventStart(new Date(newDate));
   };
 
   const handleYearChange = (e) => {
     const newDate = new Date(eventStart.setFullYear(parseInt(e.target.value)));
-    setEventStart(new Date(newDate)); // Update year
+    setEventStart(new Date(newDate)); 
   };
   const handleDurationChange = (newDuration) => {
     setDuration(parseInt(newDuration));
@@ -101,27 +101,28 @@ export default function CreateEventAdmin({loggedInUser}) {
 };
 
 const handleSubmit = async (e) => {
-  e.preventDefault(); // Prevent default form submission behavior
+  e.preventDefault(); 
 
   try {
-      const data = await CreateEvent(newEvent); // Using the manager function
+      const data = await CreateEvent(newEvent); 
 
       if (data && !data.error) {
-          // Assuming 'data' contains the successful response
+          
           console.log('Event created successfully:', data);
           navigate(`/admin/events`);
       } else {
-          // Handle any errors contained in the response
+          
           console.error('Failed to create event:', data);
-          // Show an error message to the user based on the data
+          
       }
   } catch (error) {
-      // Handle network errors or exceptions
+      
       console.error('Error submitting event:', error);
-      // Show an error message to the user
+      
   }
 };
-  const currentMonth = eventStart.getMonth() + 1; // getMonth() returns 0-11
+//grab the selected field to populate dropdown placeholder
+  const currentMonth = eventStart.getMonth() + 1; 
   const currentDay = eventStart.getDate();
   const currentYear = eventStart.getFullYear();
   const currentHour = eventStart.getHours();
@@ -129,15 +130,16 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="background-image">
-    <Container className="my-5">
+    <Container className="">
       <Row>
         <Col md={8} className="mx-auto">
           <h3  className="text-center create-form-text mb-4">Create An Event</h3>
           <Form>
             {/* Event Name */}
             <FormGroup>
-              <Label for="eventName">Event Name</Label>
+              <Label for="eventName" className="create-form-text">Event Name</Label>
               <Input
+              required
                 id="eventName"
                 name="eventName"
                 type="text"
@@ -147,13 +149,15 @@ const handleSubmit = async (e) => {
               />
             </FormGroup>
 
-            {/* Venue Selection */}
+            {/* Venue Select */}
             <FormGroup>
-              <Label for="venueSelect">Venue</Label>
+              <Label for="venueSelect" className="create-form-text">Venue</Label>
               <Input
+              required
                 id="venueSelect"
                 name="venueSelect"
                 type="select"
+                className="form-control"
                 onChange={handleVenueChange}
               >
                 <option value="">-- Select Venue --</option>
@@ -167,8 +171,9 @@ const handleSubmit = async (e) => {
 
             {/* Expected Attendees */}
             <FormGroup>
-              <Label for="expectedAttendees">Expected Attendees</Label>
+              <Label for="expectedAttendees" className="create-form-text">Expected Attendees</Label>
               <Input
+              required
                 id="expectedAttendees"
                 name="expected"
                 placeholder="Enter the number of attendees"
@@ -177,14 +182,15 @@ const handleSubmit = async (e) => {
               />
             </FormGroup>
 
-            {/* Services Multi-select */}
+            {/* Services multiselect */}
             <FormGroup>
-              <Label for="servicesMulti">Select Services</Label>
+              <Label for="servicesMulti" className="create-form-text">Select Services</Label>
               <Input
                 id="servicesMulti"
                 multiple
                 name="servicesMulti"
                 type="select"
+                className="form-control"
                 onChange={handleServiceSelection}
               >
                 {filteredServices.map((service, index) => (
@@ -197,16 +203,18 @@ const handleSubmit = async (e) => {
 
             {/* Event Description */}
             <FormGroup>
-              <Label for="exampleText">Description</Label>
+              <Label for="exampleText" className="create-form-text">Description</Label>
               <Input
+              required
                 id="exampleText"
                 name="text"
                 type="textarea"
+                placeholder="Describe your event"
                 onChange={handleDescriptionChange}
               />
             </FormGroup>
 
-            {/* Date Dropdowns */}
+            {/* Datetime dropdowns */}
             <FormGroup>
               <DateDropdowns
                 handleDayChange={handleDayChange}
@@ -222,14 +230,16 @@ const handleSubmit = async (e) => {
               
             
 
-            {/* Duration Dropdown */}
-            <FormGroup>
-              <Label for="duration">Duration</Label>
+            {/* duration dropddown */}
+            <div className="duration-dropdown-container">
+              <FormGroup>
               <DurationDropdown onChange={handleDurationChange} />
             </FormGroup>
+            </div>
+            
 
-            {/* Public Checkbox */}
-            <FormGroup check>
+            {/* isPublic checkbox */}
+            <FormGroup check className="center-checkbox">
               <Input
                 type="checkbox"
                 checked={publicChecked}
@@ -238,7 +248,7 @@ const handleSubmit = async (e) => {
               <Label className="create-form-text" check>Is this event public?</Label>
             </FormGroup>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <FormGroup className="text-center">
               <Button className="btn btn-primary mt-3" onClick={handleSubmit}>Submit</Button>
             </FormGroup>

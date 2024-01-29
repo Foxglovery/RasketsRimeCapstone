@@ -1,5 +1,6 @@
 // DurationDropdown.js
 import React, { useState } from 'react';
+import { Label } from 'reactstrap';
 
 function DurationDropdown({ loggedInUser, onChange }) {
     const durationOptions = Array.from({ length: 8 }, (_, i) => {
@@ -20,15 +21,19 @@ function DurationDropdown({ loggedInUser, onChange }) {
         }
     };
 
-    return (
-        <select value={selectedDuration} onChange={handleChange}>
+    return (<>
+    <div className='duration-dropdown-container'>
+        <Label for="duration" className="create-form-text">Duration</Label>
+        <select value={selectedDuration} onChange={handleChange} className='duration-dropdown'>
             {durationOptions.map(option => (
                 <option key={option.value} value={option.value}>
                     {option.label}
                 </option>
             ))}
         </select>
-    );
+    </div>
+        
+    </>);
 }
 
 export default DurationDropdown;

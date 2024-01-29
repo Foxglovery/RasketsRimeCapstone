@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { AvailableServicesByVenueId, GetServices } from "../../managers/serviceManager";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Row,
+} from "reactstrap";
+import {
+  AvailableServicesByVenueId,
+  GetServices,
+} from "../../managers/serviceManager";
 import { GetVenues } from "../../managers/venueManager";
-import { Link, useParams } from "react-router-dom";
-import { GetEventById } from "../../managers/eventManager";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { CreateEvent, GetEventToUpdateById, UpdateEvent } from "../../managers/eventManager";
 import DateDropdowns from "../../DateDropdowns";
 import DurationDropdown from "../../DurationDropdown";
 
 export default function UpdateEventAdmin({ loggedInUser }) {
+  const navigate = useNavigate();
   const { eventId } = useParams();
   const [venues, setVenues] = useState([]);
   const [chosenVenueId, setChosenVenueId] = useState(null);
@@ -21,6 +34,11 @@ export default function UpdateEventAdmin({ loggedInUser }) {
   const [filteredServices, setFilteredServices] = useState([]);
   const [publicChecked, setpublicChecked] = useState(true);
   const [eventToUpdate, setEventToUpdate] = useState({});
+  const [existingServiceIds, setExistingServiceIds] = useState([]);
+  const [existingMonth, setExistingMonth] = useState(0);
+  const [existingDay, setExistingDay] = useState(0);
+  const [existingYear, setExistingYear] = useState(0);
+  const [existingHour, setExistingHour] = useState(0);
   const newEvent = {
     userId: loggedInUser.id,
     venueId: chosenVenueId,
@@ -34,8 +52,6 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     serviceIds: serviceIds,
   };
 
- 
-
   useEffect(() => {
     GetVenues().then(setVenues);
   }, []);
@@ -43,16 +59,34 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     GetServices().then(setFilteredServices);
   }, []);
 
-useEffect(() => {
-    GetEventById(eventId).then(setEventToUpdate);
-},[eventId])
+  useEffect(() => {
+    GetEventToUpdateById(eventId).then((event) => {
+      setEventToUpdate(event);
+      setExistingServiceIds(event.serviceIds);
+      setEventName(event.eventName);
+      setChosenVenueId(event.venueId);
+      setExpected(event.expectedAttendees);
+      setDescription(event.eventDescription);
+      setIsPublic(event.isPublic);
+      setServiceIds(event.serviceIds);
 
+      const existingEventStart = new Date(event.eventStart);
+      setEventStart(existingEventStart);
+      setExistingMonth(existingEventStart.getMonth() + 1);
+      setExistingDay(existingEventStart.getDate());
+      setExistingYear(existingEventStart.getFullYear());
+      setExistingHour(existingEventStart.getHours());
+      
+    });
+  }, [eventId]);
 
   useEffect(() => {
     if (chosenVenueId) {
       AvailableServicesByVenueId(chosenVenueId).then(setFilteredServices);
     }
   }, [chosenVenueId]);
+
+ 
 
   const handleVenueChange = (event) => {
     setChosenVenueId(parseInt(event.target.value));
@@ -100,134 +134,174 @@ useEffect(() => {
     setEventStart(newDate);
   };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault(); // Prevent default form submission behavior
-
-//     try {
-//       const response = await (newEvent); // Using the manager function
-//       if (response.ok) {
-//         // Handle successful creation
-//         console.log("Event created successfully:", response.data);
-//         // Optionally, redirect the user or update the state to reflect the changes
-//       } else {
-//         // Handle errors (non-successful HTTP response)
-//         console.error("Failed to create event:", response);
-//         // Show an error message to the user
-//       }
-//     } catch (error) {
-//       // Handle network errors or exceptions
-//       console.error("Error submitting event:", error);
-//       // Show an error message to the user
-//     }
-//   };
+  
   const currentMonth = eventStart.getMonth() + 1; // getMonth() returns 0-11
   const currentDay = eventStart.getDate();
   const currentYear = eventStart.getFullYear();
   const currentHour = eventStart.getHours();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = await UpdateEvent( eventId, newEvent);
+
+      if (data && !data.error) {
+        console.log("Event created successfully:", data);
+        navigate(`/admin/events`);
+      } else {
+        console.error("Failed to create event:", data);
+      }
+    } catch (error) {
+      console.error("Error submitting event:", error);
+    }
+  };
   return (
-    <>
-      <h3>Update An Event</h3>
-      <Form>
-        <FormGroup>
-          <Label for="eventName">Event</Label>
-          <Input
-            id="eventName"
-            name="eventName"
-            placeholder="Enter the name of your event."
-            type="text"
-            value={eventName}
-            onChange={handleNameChange}
-          />
-        </FormGroup>
+    <div className="background-image">
+      <Container className="">
+        <Row>
+          <Col md={8} className="mx-auto">
+            <h3 className="text-center create-form-text mb-4">
+              Update An Event
+            </h3>
+            <Form>
+              {/* Event Name */}
+              <FormGroup>
+                <Label for="eventName" className="create-form-text">
+                  Event Name
+                </Label>
+                <Input
+                  required
+                  id="eventName"
+                  name="eventName"
+                  type="text"
+                  value={eventName}
+                  className="form-control"
+                  placeholder="Enter the name of your event"
+                  onChange={handleNameChange}
+                />
+              </FormGroup>
 
-        <FormGroup>
-          <Label for="venueSelect">Venue</Label>
-          <Input
-            id="venueSelect"
-            name="venueSelect"
-            type="select"
-            onChange={handleVenueChange}
-          >
-            <option value="">-- Select Venue --</option>
-            {venues.map((venue, index) => (
-              <option key={index} value={venue.id}>
-                {venue.venueName} (Max Attendees: {venue.maxOccupancy})
-              </option>
-            ))}
-          </Input>
-        </FormGroup>
+              {/* Venue Select */}
+              <FormGroup>
+                <Label for="venueSelect" className="create-form-text">
+                  Venue
+                </Label>
+                <Input
+                  required
+                  id="venueSelect"
+                  name="venueSelect"
+                  type="select"
+                  value={chosenVenueId}
+                  className="form-control"
+                  onChange={handleVenueChange}
+                >
+                  <option value="">-- Select Venue --</option>
+                  {venues.map((venue, index) => (
+                    <option key={index} value={venue.id}>
+                      {venue.venueName} (Max Attendees: {venue.maxOccupancy})
+                    </option>
+                  ))}
+                </Input>
+              </FormGroup>
 
-        <FormGroup>
-          <Label for="expectedAttendees">Expected Attendees</Label>
-          <Input
-            id="expectedAttendees"
-            name="expected"
-            placeholder="Enter the number of folks you expect"
-            type="text"
-            onChange={handleExpectedChange}
-          />
-        </FormGroup>
+              {/* Expected Attendees */}
+              <FormGroup>
+                <Label for="expectedAttendees" className="create-form-text">
+                  Expected Attendees
+                </Label>
+                <Input
+                  required
+                  id="expectedAttendees"
+                  name="expected"
+                  placeholder="Enter the number of attendees"
+                  type="number"
+                  value={expected}
+                  onChange={handleExpectedChange}
+                />
+              </FormGroup>
 
-        <FormGroup>
-          <Label for="servicesMulti">Select Services</Label>
-          <Input
-            id="servicesMulti"
-            multiple
-            name="servicesMulti"
-            type="select"
-            onChange={handleServiceSelection}
-          >
-            {filteredServices.map((service, index) => (
-              <option key={index} value={service.id}>
-                {service.serviceName}
-              </option>
-            ))}
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleText">Description</Label>
-          <Input
-            id="exampleText"
-            name="text"
-            type="textarea"
-            onChange={handleDescriptionChange}
-          />
-        </FormGroup>
-        <div>
-          <DateDropdowns
-            handleDayChange={handleDayChange}
-            handleMonthChange={handleMonthChange}
-            handleYearChange={handleYearChange}
-            handleHourChange={handleHourChange}
-            currentDay={currentDay}
-            currentMonth={currentMonth}
-            currentYear={currentYear}
-            currentHour={currentHour}
-          />
-        </div>
-        <FormGroup>
-          <Label for="duration">Duration</Label>
-          <DurationDropdown onChange={handleDurationChange} />
-        </FormGroup>
+              {/* Services multiselect */}
+              <FormGroup>
+                <Label for="servicesMulti" className="create-form-text">
+                  Select Services
+                </Label>
+                <Input
+                  id="servicesMulti"
+                  multiple
+                  name="servicesMulti"
+                  type="select"
+                  value={serviceIds}
+                  className="form-control"
+                  onChange={handleServiceSelection}
+                >
+                  {filteredServices.map((service, index) => (
+                    <option key={index} value={service.id}>
+                      {service.serviceName}
+                    </option>
+                  ))}
+                </Input>
+              </FormGroup>
 
-        <FormGroup check>
-          <Input
-            type="checkbox"
-            checked={publicChecked}
-            onChange={handlePublicChange}
-          />{" "}
-          <Label check>Is this public?</Label>
-        </FormGroup>
-        <FormGroup></FormGroup>
-        {/* <Button onClick={handleSubmit}>Submit</Button> */}
-      </Form>
-      {/* <DatePicker 
-            showIcon
-            showTimeSelect
-            timeIntervals={60}
-            selected={eventStart}
-            onChange={date => setEventStart(date)}
-            /> */}
-    </>
+              {/* Event Description */}
+              <FormGroup>
+                <Label for="exampleText" className="create-form-text">
+                  Description
+                </Label>
+                <Input
+                  required
+                  id="exampleText"
+                  name="text"
+                  type="textarea"
+                  value={description}
+                  placeholder="Describe your event"
+                  onChange={handleDescriptionChange}
+                />
+              </FormGroup>
+
+              {/* Datetime dropdowns */}
+              <FormGroup>
+                <DateDropdowns
+                  handleDayChange={handleDayChange}
+                  handleMonthChange={handleMonthChange}
+                  handleYearChange={handleYearChange}
+                  handleHourChange={handleHourChange}
+                  currentDay={currentDay}
+                  currentMonth={currentMonth}
+                  currentYear={currentYear}
+                  currentHour={currentHour}
+                />
+              </FormGroup>
+
+              {/* duration dropddown */}
+              <div className="duration-dropdown-container">
+                <FormGroup>
+                  <DurationDropdown onChange={handleDurationChange} />
+                </FormGroup>
+              </div>
+
+              {/* isPublic checkbox */}
+              <FormGroup check className="center-checkbox">
+                <Input
+                  type="checkbox"
+                  checked={publicChecked}
+                  onChange={handlePublicChange}
+                />{" "}
+                <Label className="create-form-text" check>
+                  Is this event public?
+                </Label>
+              </FormGroup>
+
+              {/* Submit */}
+              <FormGroup className="text-center">
+                <Button className="btn btn-primary mt-3" onClick={handleSubmit}>
+                  Submit
+                </Button>
+              </FormGroup>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }

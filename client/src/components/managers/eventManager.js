@@ -7,9 +7,21 @@ export const GetEventsByUserId = (id) => {
 export const GetEventById = (id) => {
     return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 }
+export const GetEventToUpdateById = (id) => {
+    return fetch(`${_apiUrl}/update/${id}`).then((res) => res.json());
+}
 
 export const GetEvents = () => {
     return fetch(_apiUrl).then((res) => res.json());
+}
+export const UpdateEvent = (eventId, newEvent) => {
+return fetch(`${_apiUrl}/${eventId}`, {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newEvent),
+})
 }
 
 export const AdminCancelEvent = (id) => {
