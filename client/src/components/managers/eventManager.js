@@ -1,7 +1,7 @@
 const _apiUrl = "/api/Event";
 
 export const GetEventsByUserId = (id) => {
-    return fetch(`${_apiUrl}/user/{id}`).then((res) => res.json());
+    return fetch(`${_apiUrl}/user/${id}`).then((res) => res.json());
 }
 
 export const GetEventById = (id) => {

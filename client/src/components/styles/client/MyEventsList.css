@@ -1,0 +1,24 @@
+.postcard-my-venue-text {
+    font-size: 22px;
+}
+
+.my-events-btn-container {
+    display: flex;
+    gap: 10px;
+}
+.my-events-btn-container Button {
+    background-color: #486F7B;
+    color: black;
+}
+.my-events-btn-container Button:hover {
+    background-color: #5b8c9b;
+    color: black;
+}
+.my-events-btn-container :nth-child(2) {
+    background-color: #D90368;
+    color: black;
+}
+.my-events-btn-container :nth-child(2):hover {
+    background-color: #f20573;
+    color: black;
+}

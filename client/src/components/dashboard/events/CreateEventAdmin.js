@@ -250,7 +250,7 @@ const handleSubmit = async (e) => {
 
             {/* Submit */}
             <FormGroup className="text-center">
-              <Button className="btn btn-primary mt-3" onClick={handleSubmit}>Submit</Button>
+              <Button className="btn btn-primary mt-3 create-event-submit-btn" onClick={handleSubmit}>Submit</Button>
             </FormGroup>
           </Form>
         </Col>

@@ -14,6 +14,7 @@ import CreateEventAdmin from "./dashboard/events/CreateEventAdmin";
 import UpdateEventAdmin from "./dashboard/events/UpdateEventAdmin";
 import VenueList from "./customer/VenueList";
 import ServiceList from "./customer/ServiceList";
+import MyEventsList from "./customer/MyEventsList";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -105,6 +106,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser} >
               <ServiceList />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/myEvents"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} >
+              <MyEventsList loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
