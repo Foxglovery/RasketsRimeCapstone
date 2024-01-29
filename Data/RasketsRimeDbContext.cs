@@ -103,8 +103,8 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             VenueName = "The Unmoored University",
             Address = "19 Under Lake Blvd",
             Description = "A prestigious arcane academy lovingly nestled beneath the central lake of the town. Its atrium is more than accommodating for crowds large and small.",
-            ContactInfo = "Arbiter Darling : 850-474-5555",
-            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+            ContactInfo = "Arbiter Darling at 850-474-3905",
+            ImageUrl = "https://images2.imgbox.com/aa/8c/8gzFd8Az_o.jpg",
             MaxOccupancy = 300,
             IsActive = true
             },
@@ -114,8 +114,8 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             VenueName = "Mountain-Top Radio Station",
             Address = "327 Rumbler Route Way",
             Description = "From atop the mountains, the radio station glows eternal. Deceptively large, its unassuming facade belies the many cozy suites nestled within its walls.",
-            ContactInfo = "Foxglove Mackenzie -- 850-985-2934",
-            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+            ContactInfo = "Foxglove Mackenzie at 850-985-9856",
+            ImageUrl = "https://images2.imgbox.com/8e/dd/wfvRMq4r_o.png",
             MaxOccupancy = 85,
             IsActive = true
             },
@@ -124,8 +124,8 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             Id = 3,
             VenueName = "Cedrine Forest Adirondack",
             Address = "667 W Rambling Road",
-            Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under a revelry-drunk moon.",
-            ContactInfo = "Thorely Goodparty",
+            Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under the glowing moon.",
+            ContactInfo = "Thorely Goodparty at 850-378-3563",
             ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
             MaxOccupancy = 50,
             IsActive = true
@@ -136,8 +136,8 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             VenueName = "Glinterland Cathedral Hall",
             Address = "3762 Gnomiad Fork",
             Description = "Believe it or not, this was never a cathedral. The creator instead saw fit to erect this behemoth of architectural ego on top of the abandoned Goofy Golf complex. Vestigial dinosaurs and aliens still linger where you would least expect them.",
-            ContactInfo = "Parker Billian -- 850-987-2926",
-            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+            ContactInfo = "Parker Billian at 850-987-3453",
+            ImageUrl = "https://images2.imgbox.com/f0/0d/tvBnqhla_o.jpg",
             MaxOccupancy = 200,
             IsActive = true
             },
@@ -147,8 +147,8 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             VenueName = "Madame Zostra's Family Fun Time Seance Parlor",
             Address = "3 Nestledown Thicket",
             Description = "Ambience and incense will greet you as you settle in. On display are the relics and spoils of war won by Madame Zostra in her pursuit of the Thaumaturgical Arts",
-            ContactInfo = "Madame Zostra -- 850-222-1053",
-            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+            ContactInfo = "Madame Zostra at 850-222-1053",
+            ImageUrl = "https://images2.imgbox.com/e6/8a/DJuiYA43_o.png",
             MaxOccupancy = 20,
             IsActive = true
             },
@@ -158,8 +158,8 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             VenueName = "The Patty Lupone Groupon Coupon Main Stage",
             Address = "5590 Fingerpail Row",
             Description = "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ",
-            ContactInfo = "Maisel Darby --850-334-9010",
-            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+            ContactInfo = "Maisel Darby at 850-334-9010",
+            ImageUrl = "https://images2.imgbox.com/38/ef/dCdOMSFf_o.jpg",
             MaxOccupancy = 500,
             IsActive = true
             }

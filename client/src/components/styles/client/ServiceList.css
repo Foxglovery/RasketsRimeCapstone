@@ -33,10 +33,13 @@
 } */
 .service-header {
     text-align: center;
+    text-shadow: 0px 2px 16px #12110f;
+    
 }
 .service-header h1 {
     color: #FCD46A;
     font-family: 'Stoke';
+    
 }
 
 .cards-container {
@@ -116,11 +119,11 @@
   
 }
 
-h3 {
+.title-content h3 {
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 2px;
-  color: #9CC9E3;
+  color: #FCD46A;
   font-family: 'Stoke';
   margin-bottom: 0;
 }

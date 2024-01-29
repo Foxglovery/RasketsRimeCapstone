@@ -17,7 +17,7 @@ export default function Home({loggedInUser}) {
         <div  style={backgroundStyle}>
       <Container className="py-5">
         <Row className="justify-content-center">
-          <Col md={6} className="text-center">
+          <Col md={6} className="text-center home-container">
             {/* Image */}
             <img 
               src={rasketsImage} // Replace with your image path

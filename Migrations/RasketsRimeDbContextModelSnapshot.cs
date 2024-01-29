@@ -156,13 +156,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "76978027-fcf5-49a1-b2b1-0f484ff63215",
+                            ConcurrencyStamp = "19b92205-b132-4096-9f2a-13d84f8c5751",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAELAI5g2585iDQFm+dalXvfJp+KeCY4yJB0RwT+17aLNuaoCJ5qd+2OGkqe20SBSr+g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL7D+UfCY53sL8VflnjuBZrIe8opo8UErmfWNyO6OLzc7eK3uta3P3Go6vkQ+WLnvg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1571d027-d65f-44e3-b316-b7b32d171424",
+                            SecurityStamp = "1b985123-0fed-475a-91ea-171fc21d9385",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -170,13 +170,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a8c41f98-85b7-4abe-8d4c-2da94906736f",
+                            ConcurrencyStamp = "cd1d0ca6-dba6-4f80-a091-ae829b59997d",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMvvuUjERsyVbleCy/IFICRAyskyL1i8hW2LpjLCiSXrLVDu19BbnzpuFb9epblZWg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFJP416lM1OaTq1L3Tfdnxam5XZxidY2Xi8N0+Pj+NkCegW7FECKkUWNV8TV/fsOMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "212eb227-3cde-47aa-af50-35fafeb36047",
+                            SecurityStamp = "c714dc1f-121a-4779-831d-f0f2301cbffa",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -706,9 +706,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 1,
                             Address = "19 Under Lake Blvd",
-                            ContactInfo = "Arbiter Darling : 850-474-5555",
+                            ContactInfo = "Arbiter Darling at 850-474-3905",
                             Description = "A prestigious arcane academy lovingly nestled beneath the central lake of the town. Its atrium is more than accommodating for crowds large and small.",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/aa/8c/8gzFd8Az_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 300,
                             VenueName = "The Unmoored University"
@@ -717,9 +717,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 2,
                             Address = "327 Rumbler Route Way",
-                            ContactInfo = "Foxglove Mackenzie -- 850-985-2934",
+                            ContactInfo = "Foxglove Mackenzie at 850-985-9856",
                             Description = "From atop the mountains, the radio station glows eternal. Deceptively large, its unassuming facade belies the many cozy suites nestled within its walls.",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/8e/dd/wfvRMq4r_o.png",
                             IsActive = true,
                             MaxOccupancy = 85,
                             VenueName = "Mountain-Top Radio Station"
@@ -728,8 +728,8 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 3,
                             Address = "667 W Rambling Road",
-                            ContactInfo = "Thorely Goodparty",
-                            Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under a revelry-drunk moon.",
+                            ContactInfo = "Thorely Goodparty at 850-378-3563",
+                            Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under the glowing moon.",
                             ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 50,
@@ -739,9 +739,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 4,
                             Address = "3762 Gnomiad Fork",
-                            ContactInfo = "Parker Billian -- 850-987-2926",
+                            ContactInfo = "Parker Billian at 850-987-3453",
                             Description = "Believe it or not, this was never a cathedral. The creator instead saw fit to erect this behemoth of architectural ego on top of the abandoned Goofy Golf complex. Vestigial dinosaurs and aliens still linger where you would least expect them.",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/f0/0d/tvBnqhla_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 200,
                             VenueName = "Glinterland Cathedral Hall"
@@ -750,9 +750,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 5,
                             Address = "3 Nestledown Thicket",
-                            ContactInfo = "Madame Zostra -- 850-222-1053",
+                            ContactInfo = "Madame Zostra at 850-222-1053",
                             Description = "Ambience and incense will greet you as you settle in. On display are the relics and spoils of war won by Madame Zostra in her pursuit of the Thaumaturgical Arts",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/e6/8a/DJuiYA43_o.png",
                             IsActive = true,
                             MaxOccupancy = 20,
                             VenueName = "Madame Zostra's Family Fun Time Seance Parlor"
@@ -761,9 +761,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 6,
                             Address = "5590 Fingerpail Row",
-                            ContactInfo = "Maisel Darby --850-334-9010",
+                            ContactInfo = "Maisel Darby at 850-334-9010",
                             Description = "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/38/ef/dCdOMSFf_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 500,
                             VenueName = "The Patty Lupone Groupon Coupon Main Stage"
