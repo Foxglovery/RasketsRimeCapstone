@@ -200,6 +200,7 @@ public IActionResult GetByUserId(int userId)
             Address = eventInstance.Venue.Address,
             Description = eventInstance.Venue.Description,
             ContactInfo = eventInstance.Venue.ContactInfo,
+            ImageUrl = eventInstance.Venue.ImageUrl,
             MaxOccupancy = eventInstance.Venue.MaxOccupancy,
             IsActive = eventInstance.Venue.IsActive,
         } : null,

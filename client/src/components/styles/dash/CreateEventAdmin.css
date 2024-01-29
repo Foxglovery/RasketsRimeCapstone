@@ -4,6 +4,14 @@
     padding: 0;
     height: 100%;
   } */
+  input[type="text"]:-webkit-autofill,
+input[type="number"]:-webkit-autofill,
+input[type="email"]:-webkit-autofill,
+input[type="date"]:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #201e19 inset;
+    -webkit-text-fill-color: #d8a830;
+    transition: background-color 5000s ease-in-out 0s; /* Smooth transition for background color */
+}
   .create-form-text {
     color: #FCD46A;
     font-family: 'Stoke';
@@ -13,6 +21,7 @@
   .background-image .form-control {
     background-color: #201e19; /* Replace #yourColor with your desired color */
   }
+ 
   .background-image .form-control::placeholder {
     color: #d8a830; /* Replace #yourColor with your desired color */
   }
@@ -37,4 +46,19 @@
     align-items: center;
     gap: 10px;
   }
+  
+  .create-event-submit-btn {
+    color: black;
+    font-family: 'Stoke';
+    background: linear-gradient(90deg, #2a7092 0%, #3a8eb8 90%);
+  }
+input {
+  font-family: 'Forum';
+}
+select {
+  font-family: 'Forum';
+}
+textarea {
+  font-family: 'Forum';
+}
 
