@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Forum&family=Quattrocento&family=Stoke:wght@300;400&display=swap');
 .feathered-edge {
     mask-image: radial-gradient(circle, white, black);
 }
 .rounded-image {
     border-radius: 35px; /* Adjust the px value to increase or decrease the roundness */
+}
+
+.home-container h2, p {
+    font-family: 'Stoke';
+    color: #FCD46A;
 }

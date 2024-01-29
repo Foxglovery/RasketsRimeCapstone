@@ -317,8 +317,8 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "d3cfcdcc-0bf1-4d2a-a304-fa48fcb6e449", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEP6Uu5KY/+Jh4bfXJhVN1E+2io+qVvGS1FXCOtK3YvpIPDQoHwke7Orn6tAKyH7CvA==", null, false, "8b79b043-b071-47c1-8a37-0ef7cf6fe62b", false, "Administrator" },
-                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "77e7a335-599f-40f0-92e4-b611787fbce0", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEFaYix84OU42ziB6ab4KP11G49DBm+LKF4GbjjlyFzCgg8saOdx+DSzrv0G8nEdygQ==", null, false, "bc6fc2da-3290-446c-90f9-4486809cf609", false, "Schlebethany" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "19b92205-b132-4096-9f2a-13d84f8c5751", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEL7D+UfCY53sL8VflnjuBZrIe8opo8UErmfWNyO6OLzc7eK3uta3P3Go6vkQ+WLnvg==", null, false, "1b985123-0fed-475a-91ea-171fc21d9385", false, "Administrator" },
+                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "cd1d0ca6-dba6-4f80-a091-ae829b59997d", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEFJP416lM1OaTq1L3Tfdnxam5XZxidY2Xi8N0+Pj+NkCegW7FECKkUWNV8TV/fsOMg==", null, false, "c714dc1f-121a-4779-831d-f0f2301cbffa", false, "Schlebethany" }
                 });
 
             migrationBuilder.InsertData(
@@ -326,27 +326,27 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "Description", "ImageUrl", "IsActive", "Price", "ServiceName" },
                 values: new object[,]
                 {
-                    { 1, "We will pick up your trash, but we won't be happy about it.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 60m, "Trash-Pickup" },
-                    { 2, "Pitaya, Pineapple, Mango...You name it, we will throw it in a bucket and blend it till its oh-so smooth.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 100m, "Smoothie-Bar" },
-                    { 3, "If your wondering who will be providing security, chances are you've already met them and they were likely not impressed. Ever watchful, they do not rest.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 100m, "Security (By The Arbiter's Secret Militia)" },
-                    { 4, "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers. Our operatives are standing by to assess and neutralize any bad behavior.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 200m, "Child-Care (Also By The Arbiter's Secret Militia)" },
-                    { 5, "Look, the University is under the lake. You want to try your hand at getting your car out yourself? Go ahead.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 50m, "Valet-Lake Parking" },
-                    { 6, "We will let you shove as many books as you can fit in a burlap sac from the 'donated' stacks. We are not responsible for what these books may or may not do upon reading. ", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 800m, "Library 'Supermarket Sweep'" },
-                    { 7, "It gets cold here. These floating bowls of heat will warm your guests. Be sure you do not put ANYTHING in the censor. Again we cannot stress that enough.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 20m, "Mobile Heat Censors" },
-                    { 8, "You really do not want to try parking up here. The lift will get you from the main square in town all the way up to the Station. Be sure to dress warmly!", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 10m, "Mountain-Top Ski Lift" },
-                    { 9, "We know. You think you are the gift of song itself. Why not put your money where your mouth is? Let the whole town hear your...choices by selecting the music.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 100m, "'Are You The DJ?'" },
-                    { 10, "Everyone thinks they are a Snow White. Now it can finally be true for you. Many tiny cuddles and helpful forest friends are waiting for you to add this package.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 80m, "Woodland Creature Package" },
-                    { 11, "The trees are ancient, yet the Ents are older still. Take a walk with several of these arboreal protectors and see the world through a whole new lens.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 50m, "Ent Walk" },
-                    { 12, "You know when you think something is going to be really funny, but then it just creeps everyone out? Yeah...we got you. Your guests will be terrified. So will you, actually.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 20m, "Suddenly Spooky" },
-                    { 13, "The tiles in this space can be made to display a mind-melting fractal of the person standing on them. Now just imagine you have 200 guests...yeah, we thought you would like that.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 80m, "Fractal Tile" },
-                    { 14, "We weren't kidding when we said they built the Cathedral right on top the Goofy Golf. With access to the subterranean levels, your golf skills will be tested. You will be tested. ", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 200m, "Goofy Golf" },
-                    { 15, "The lilting voices of those gone before will be piped in to punctuate the ethereal nature of this space.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 200m, "Haunting Vocals" },
-                    { 16, "When you want to have a party but don't want to risk bringing anything back from the other side. Madam Zostra will gladly hold back her services so that you might feel more comfortable in your mortal vessel.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 500m, "Non-Seance" },
-                    { 17, "Madam Zostra is a skilled Translocator. She can have you zipped up to the Poconos all without leaving the warmth of her cottage.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 600m, "Astral Travel" },
-                    { 18, "Found an object of dubious origin? Worried it might be cursed? This is like Antiques Roadshow but if that old spoon set made you end every sentence with a question.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 200m, "Item Identification" },
-                    { 19, "It is uhh, loud here. You will probably need these. Your guests will also be wanting these.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 20m, "Earplugs" },
-                    { 20, "NO, these are not the same lasers they used to etch this space from the quarry. They have had fun colors added. You will probably not be in any danger.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 300m, "Laser Lights" },
-                    { 21, "What can we can? They're REALLY big balloons.", "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png", true, 200m, "Comically Large Baloon Drop" }
+                    { 1, "We will pick up your trash, but we won't be happy about it.", "https://images2.imgbox.com/de/f8/lvuIZQr2_o.png", true, 60m, "Trash-Pickup" },
+                    { 2, "Pitaya, Pineapple, Mango...You name it, we will throw it in a bucket and blend it till its oh-so smooth.", "https://images2.imgbox.com/4d/f0/043VF0mx_o.png", true, 100m, "Smoothie-Bar" },
+                    { 3, "If your wondering who will be providing security, chances are you've already met them and they were likely not impressed. Ever watchful, they do not rest.", "https://images2.imgbox.com/e4/b8/b4yyisFh_o.jpg", true, 100m, "Security (By The Arbiter's Secret Militia)" },
+                    { 4, "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers.", "https://images2.imgbox.com/ad/8e/rvA5aOH5_o.png", true, 200m, "Child-Care (Also By The Arbiter's Secret Militia)" },
+                    { 5, "Look, the University is under the lake. You want to try your hand at getting your car out yourself? Go ahead.", "https://images2.imgbox.com/7e/51/IyDxqLiR_o.png", true, 50m, "Valet-Lake Parking" },
+                    { 6, "We will let you shove as many books as you can fit in a burlap sac from the 'donated' stacks. We are not responsible for what these books may or may not do upon reading. ", "https://images2.imgbox.com/ad/9c/Cee2RDsS_o.png", true, 800m, "Library 'Supermarket Sweep'" },
+                    { 7, "It gets cold here. These floating bowls of heat will warm your guests. Be sure you do not put ANYTHING in the censor. Again we cannot stress that enough.", "https://images2.imgbox.com/ef/56/n2BD5zlx_o.png", true, 20m, "Mobile Heat Censors" },
+                    { 8, "You really do not want to try parking up here. The lift will get you from the main square in town all the way up to the Station. Be sure to dress warmly!", "https://images2.imgbox.com/41/49/v1dI3OGz_o.png", true, 10m, "Mountain-Top Ski Lift" },
+                    { 9, "We know. You think you are the gift of song itself. Why not put your money where your mouth is? Let the whole town hear your...choices by selecting the music.", "https://images2.imgbox.com/f0/ad/jZhvHsgk_o.png", true, 100m, "'Are You The DJ?'" },
+                    { 10, "Everyone thinks they are a Snow White. Now it can finally be true for you. Many tiny cuddles and helpful forest friends are waiting for you to add this package.", "https://images2.imgbox.com/d6/e9/1AnPEjAB_o.png", true, 80m, "Woodland Creature Package" },
+                    { 11, "The trees are ancient, yet the Ents are older still. Take a walk with several of these arboreal protectors and see the world through a whole new lens.", "https://images2.imgbox.com/27/87/FTqvH0Jh_o.png", true, 50m, "Ent Walk" },
+                    { 12, "You know when you think something is going to be really funny, but then it just creeps everyone out? Yeah...we got you. Your guests will be terrified. So will you, actually.", "https://images2.imgbox.com/c6/dc/x24ENwDY_o.png", true, 20m, "Suddenly Spooky" },
+                    { 13, "The tiles in this space can be made to display a mind-melting fractal of the person standing on them. Now just imagine you have 200 guests...yeah, we thought you would like that.", "https://images2.imgbox.com/3d/4a/xpuGluG1_o.png", true, 80m, "Fractal Tile" },
+                    { 14, "We weren't kidding when we said they built the Cathedral right on top the Goofy Golf. With access to the subterranean levels, your golf skills will be tested. You will be tested. ", "https://images2.imgbox.com/25/3f/46BQBDgP_o.png", true, 200m, "Goofy Golf" },
+                    { 15, "The lilting voices of those gone before will be piped in to punctuate the ethereal nature of this space.", "https://images2.imgbox.com/a4/79/KEI4lkbc_o.png", true, 200m, "Haunting Vocals" },
+                    { 16, "When you want to have a party but don't want to risk bringing anything back from the other side. Madam Zostra will gladly hold back her services so that you might feel more comfortable in your mortal vessel.", "https://images2.imgbox.com/01/f7/WYpnLtYu_o.png", true, 500m, "Non-Seance" },
+                    { 17, "Madam Zostra is a skilled Translocator. She can have you zipped up to the Poconos all without leaving the warmth of her cottage.", "https://images2.imgbox.com/fb/8b/DtGlv0kO_o.jpg", true, 600m, "Astral Travel" },
+                    { 18, "Found an object of dubious origin? Worried it might be cursed? This is like Antiques Roadshow but if that old spoon set made you end every sentence with a question.", "https://images2.imgbox.com/4f/c8/XcTMx6tM_o.png", true, 200m, "Item Identification" },
+                    { 19, "It is uhh, loud here. You will probably need these. Your guests will also be wanting these.", "https://images2.imgbox.com/26/b4/wxtF3RRZ_o.png", true, 20m, "Earplugs" },
+                    { 20, "NO, these are not the same lasers they used to etch this space from the quarry. They have had fun colors added. You will probably not be in any danger.", "https://images2.imgbox.com/21/f7/di3e3vqa_o.png", true, 300m, "Laser Lights" },
+                    { 21, "What can we say? They're REALLY big balloons.", "https://images2.imgbox.com/83/96/cSaL1GzD_o.png", true, 200m, "Comically Large Baloon Drop" }
                 });
 
             migrationBuilder.InsertData(
@@ -354,12 +354,12 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "Address", "ContactInfo", "Description", "ImageUrl", "IsActive", "MaxOccupancy", "VenueName" },
                 values: new object[,]
                 {
-                    { 1, "19 Under Lake Blvd", "Arbiter Darling : 850-474-5555", "A prestigious arcane academy lovingly nestled beneath the central lake of the town. Its atrium is more than accommodating for crowds large and small.", "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg", true, 300, "The Unmoored University" },
-                    { 2, "327 Rumbler Route Way", "Foxglove Mackenzie -- 850-985-2934", "From atop the mountains, the radio station glows eternal. Deceptively large, its unassuming facade belies the many cozy suites nestled within its walls.", "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg", true, 85, "Mountain-Top Radio Station" },
-                    { 3, "667 W Rambling Road", "Thorely Goodparty", "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under a revelry-drunk moon.", "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg", true, 50, "Cedrine Forest Adirondack" },
-                    { 4, "3762 Gnomiad Fork", "Parker Billian -- 850-987-2926", "Believe it or not, this was never a cathedral. The creator instead saw fit to erect this behemoth of architectural ego on top of the abandoned Goofy Golf complex. Vestigial dinosaurs and aliens still linger where you would least expect them.", "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg", true, 200, "Glinterland Cathedral Hall" },
-                    { 5, "3 Nestledown Thicket", "Madame Zostra -- 850-222-1053", "Ambience and incense will greet you as you settle in. On display are the relics and spoils of war won by Madame Zostra in her pursuit of the Thaumaturgical Arts", "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg", true, 20, "Madame Zostra's Family Fun Time Seance Parlor" },
-                    { 6, "5590 Fingerpail Row", "Maisel Darby --850-334-9010", "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ", "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg", true, 500, "The Patty Lupone Groupon Coupon Main Stage" }
+                    { 1, "19 Under Lake Blvd", "Arbiter Darling at 850-474-3905", "A prestigious arcane academy lovingly nestled beneath the central lake of the town. Its atrium is more than accommodating for crowds large and small.", "https://images2.imgbox.com/aa/8c/8gzFd8Az_o.jpg", true, 300, "The Unmoored University" },
+                    { 2, "327 Rumbler Route Way", "Foxglove Mackenzie at 850-985-9856", "From atop the mountains, the radio station glows eternal. Deceptively large, its unassuming facade belies the many cozy suites nestled within its walls.", "https://images2.imgbox.com/8e/dd/wfvRMq4r_o.png", true, 85, "Mountain-Top Radio Station" },
+                    { 3, "667 W Rambling Road", "Thorely Goodparty at 850-378-3563", "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under the glowing moon.", "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg", true, 50, "Cedrine Forest Adirondack" },
+                    { 4, "3762 Gnomiad Fork", "Parker Billian at 850-987-3453", "Believe it or not, this was never a cathedral. The creator instead saw fit to erect this behemoth of architectural ego on top of the abandoned Goofy Golf complex. Vestigial dinosaurs and aliens still linger where you would least expect them.", "https://images2.imgbox.com/f0/0d/tvBnqhla_o.jpg", true, 200, "Glinterland Cathedral Hall" },
+                    { 5, "3 Nestledown Thicket", "Madame Zostra at 850-222-1053", "Ambience and incense will greet you as you settle in. On display are the relics and spoils of war won by Madame Zostra in her pursuit of the Thaumaturgical Arts", "https://images2.imgbox.com/e6/8a/DJuiYA43_o.png", true, 20, "Madame Zostra's Family Fun Time Seance Parlor" },
+                    { 6, "5590 Fingerpail Row", "Maisel Darby at 850-334-9010", "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ", "https://images2.imgbox.com/38/ef/dCdOMSFf_o.jpg", true, 500, "The Patty Lupone Groupon Coupon Main Stage" }
                 });
 
             migrationBuilder.InsertData(
@@ -386,46 +386,32 @@ namespace RasketsRimeCapstone.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 1 },
-                    { 2, 2, 1 },
-                    { 3, 3, 1 },
-                    { 4, 4, 1 },
-                    { 5, 1, 2 },
-                    { 6, 2, 2 },
-                    { 7, 3, 2 },
-                    { 8, 4, 2 },
-                    { 9, 1, 3 },
-                    { 10, 2, 3 },
-                    { 11, 3, 3 },
-                    { 12, 4, 3 },
-                    { 13, 1, 4 },
-                    { 14, 2, 4 },
-                    { 15, 3, 4 },
-                    { 16, 4, 4 },
-                    { 17, 1, 5 },
-                    { 18, 2, 5 },
-                    { 19, 3, 5 },
-                    { 20, 4, 5 },
-                    { 21, 1, 6 },
-                    { 22, 2, 6 },
-                    { 23, 3, 6 },
-                    { 24, 4, 6 },
-                    { 25, 5, 1 },
-                    { 26, 6, 1 },
-                    { 27, 7, 2 },
-                    { 28, 8, 2 },
-                    { 29, 9, 2 },
-                    { 30, 10, 3 },
-                    { 31, 11, 3 },
-                    { 32, 12, 3 },
-                    { 33, 13, 4 },
-                    { 34, 14, 4 },
-                    { 35, 15, 4 },
-                    { 36, 16, 5 },
-                    { 37, 17, 5 },
-                    { 38, 18, 5 },
-                    { 39, 19, 6 },
-                    { 40, 20, 6 },
-                    { 41, 21, 6 }
+                    { 2, 3, 1 },
+                    { 3, 1, 2 },
+                    { 4, 2, 3 },
+                    { 5, 4, 3 },
+                    { 6, 1, 4 },
+                    { 7, 3, 4 },
+                    { 8, 2, 5 },
+                    { 9, 2, 6 },
+                    { 10, 4, 6 },
+                    { 11, 5, 1 },
+                    { 12, 6, 1 },
+                    { 13, 7, 2 },
+                    { 14, 8, 2 },
+                    { 15, 9, 2 },
+                    { 16, 10, 3 },
+                    { 17, 11, 3 },
+                    { 18, 12, 3 },
+                    { 19, 13, 4 },
+                    { 20, 14, 4 },
+                    { 21, 15, 4 },
+                    { 22, 16, 5 },
+                    { 23, 17, 5 },
+                    { 24, 18, 5 },
+                    { 25, 19, 6 },
+                    { 26, 20, 6 },
+                    { 27, 21, 6 }
                 });
 
             migrationBuilder.InsertData(

@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Forum&family=Quattrocento&family=Stoke:wght@300;400&display=swap');
 .navbar-background {
     background-color: #133249; /* Dark blue color */
 }
 #navBrand {
     color: #FCD46A;
+    font-family: 'Stoke';
 }
 .nav_bar_link {
     color: #FCD46A; ;
+    font-family: 'Stoke';
 }
 .nav_bar_link:hover {
     color: #82B3AD; ;
@@ -17,5 +20,6 @@
 
 .nav_btn_background {
     color: black;
+    font-family: 'Stoke';
     background: linear-gradient(90deg, rgba(252,212,106,1) 0%, rgba(254,173,111,1) 90%);
 }

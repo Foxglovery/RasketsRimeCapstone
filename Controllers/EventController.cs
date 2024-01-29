@@ -296,7 +296,7 @@ public IActionResult GetByUserId(int userId)
 //will complete logic to update eventServices too
     [HttpPut("{id}")]
     //[Authorize]
-    public IActionResult UpdateEvent(int id, [FromBody] UpdateEventDTO newEvent)
+    public IActionResult UpdateEvent(int id, [FromBody] AdminUpdateEventDTO newEvent)
     {
         var eventToUpdate = _dbContext.Events
         .Include(e => e.EventServices)
@@ -354,6 +354,79 @@ public IActionResult GetByUserId(int userId)
         _dbContext.SaveChanges();
         return Ok(eventToUpdate);
     }
+
+[HttpGet("update/{id}")]
+//[Authorize]
+public IActionResult GetEventForUpdate(int id)
+{
+    var eventInstance = _dbContext.Events
+        .Include(e => e.UserProfile)
+                .ThenInclude(up => up.IdentityUser)
+        .Include(e => e.Venue)
+        .Include(e => e.EventServices)
+                .ThenInclude(es => es.Service)
+                .SingleOrDefault(e => e.Id == id);
+    
+    var serviceIds = eventInstance.EventServices.Select(es => es.ServiceId).ToList();
+
+        if (eventInstance == null)
+        {
+            return NotFound();
+        }
+        var updateEventDto = new UpdateEventDTO
+        {
+            Id = eventInstance.Id,
+            UserId = eventInstance.UserId,
+            UserProfile = eventInstance.UserProfile != null ? new UserProfileDTO
+            {
+                Id = eventInstance.UserProfile.Id,
+                FirstName = eventInstance.UserProfile.FirstName,
+                LastName = eventInstance.UserProfile.LastName,
+                Address = eventInstance.UserProfile.Address,
+                Email = eventInstance.UserProfile.IdentityUser.Email,
+                UserName = eventInstance.UserProfile.IdentityUser.UserName,
+                IsAdmin = eventInstance.UserProfile.IsAdmin,
+            } : null,
+            VenueId = eventInstance.VenueId,
+            EventName = eventInstance.EventName,
+            ExpectedAttendees = eventInstance.ExpectedAttendees,
+            EventDescription = eventInstance.EventDescription,
+            IsPublic = eventInstance.IsPublic,
+            SubmitedOn = eventInstance.SubmitedOn,
+            Status = eventInstance.Status,
+            EventStart = eventInstance.EventStart,
+            Duration = eventInstance.Duration,
+            Venue = new VenueDTO
+            {
+                Id = eventInstance.Venue.Id,
+                VenueName = eventInstance.Venue.VenueName,
+                Address = eventInstance.Venue.Address,
+                Description = eventInstance.Venue.Description,
+                ContactInfo = eventInstance.Venue.ContactInfo,
+                MaxOccupancy = eventInstance.Venue.MaxOccupancy,
+                IsActive = eventInstance.Venue.IsActive,
+            },
+            EventServices = eventInstance.EventServices?.Select(es => new EventServiceDTO
+            {
+                Id = es.Id,
+                EventId = es.EventId,
+                ServiceId = es.ServiceId,
+                Service = es.Service != null ? new ServiceDTO
+                {
+                    Id = es.Service.Id,
+                    ServiceName = es.Service.ServiceName,
+                    Description = es.Service.Description,
+                    Price = es.Service.Price,
+                    IsActive = es.Service.IsActive
+                } : null
+
+            }).ToList() ?? new List<EventServiceDTO>(),
+            ServiceIds = serviceIds
+        };
+
+        return Ok(updateEventDto);
+}
+
 [HttpGet("pending")]
 //[Authorize(Roles = "Admin")]
 public IActionResult GetPending()

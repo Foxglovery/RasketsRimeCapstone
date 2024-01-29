@@ -156,13 +156,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d3cfcdcc-0bf1-4d2a-a304-fa48fcb6e449",
+                            ConcurrencyStamp = "19b92205-b132-4096-9f2a-13d84f8c5751",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEP6Uu5KY/+Jh4bfXJhVN1E+2io+qVvGS1FXCOtK3YvpIPDQoHwke7Orn6tAKyH7CvA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL7D+UfCY53sL8VflnjuBZrIe8opo8UErmfWNyO6OLzc7eK3uta3P3Go6vkQ+WLnvg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8b79b043-b071-47c1-8a37-0ef7cf6fe62b",
+                            SecurityStamp = "1b985123-0fed-475a-91ea-171fc21d9385",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -170,13 +170,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "77e7a335-599f-40f0-92e4-b611787fbce0",
+                            ConcurrencyStamp = "cd1d0ca6-dba6-4f80-a091-ae829b59997d",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFaYix84OU42ziB6ab4KP11G49DBm+LKF4GbjjlyFzCgg8saOdx+DSzrv0G8nEdygQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFJP416lM1OaTq1L3Tfdnxam5XZxidY2Xi8N0+Pj+NkCegW7FECKkUWNV8TV/fsOMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bc6fc2da-3290-446c-90f9-4486809cf609",
+                            SecurityStamp = "c714dc1f-121a-4779-831d-f0f2301cbffa",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -413,7 +413,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 1,
                             Description = "We will pick up your trash, but we won't be happy about it.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/de/f8/lvuIZQr2_o.png",
                             IsActive = true,
                             Price = 60m,
                             ServiceName = "Trash-Pickup"
@@ -422,7 +422,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 2,
                             Description = "Pitaya, Pineapple, Mango...You name it, we will throw it in a bucket and blend it till its oh-so smooth.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/4d/f0/043VF0mx_o.png",
                             IsActive = true,
                             Price = 100m,
                             ServiceName = "Smoothie-Bar"
@@ -431,7 +431,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 3,
                             Description = "If your wondering who will be providing security, chances are you've already met them and they were likely not impressed. Ever watchful, they do not rest.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/e4/b8/b4yyisFh_o.jpg",
                             IsActive = true,
                             Price = 100m,
                             ServiceName = "Security (By The Arbiter's Secret Militia)"
@@ -439,8 +439,8 @@ namespace RasketsRimeCapstone.Migrations
                         new
                         {
                             Id = 4,
-                            Description = "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers. Our operatives are standing by to assess and neutralize any bad behavior.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            Description = "Just because a shadowy organization strong-armed our town into a monopoly on security services does NOT mean they don't make excellent caregivers.",
+                            ImageUrl = "https://images2.imgbox.com/ad/8e/rvA5aOH5_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Child-Care (Also By The Arbiter's Secret Militia)"
@@ -449,7 +449,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 5,
                             Description = "Look, the University is under the lake. You want to try your hand at getting your car out yourself? Go ahead.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/7e/51/IyDxqLiR_o.png",
                             IsActive = true,
                             Price = 50m,
                             ServiceName = "Valet-Lake Parking"
@@ -458,7 +458,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 6,
                             Description = "We will let you shove as many books as you can fit in a burlap sac from the 'donated' stacks. We are not responsible for what these books may or may not do upon reading. ",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/ad/9c/Cee2RDsS_o.png",
                             IsActive = true,
                             Price = 800m,
                             ServiceName = "Library 'Supermarket Sweep'"
@@ -467,7 +467,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 7,
                             Description = "It gets cold here. These floating bowls of heat will warm your guests. Be sure you do not put ANYTHING in the censor. Again we cannot stress that enough.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/ef/56/n2BD5zlx_o.png",
                             IsActive = true,
                             Price = 20m,
                             ServiceName = "Mobile Heat Censors"
@@ -476,7 +476,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 8,
                             Description = "You really do not want to try parking up here. The lift will get you from the main square in town all the way up to the Station. Be sure to dress warmly!",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/41/49/v1dI3OGz_o.png",
                             IsActive = true,
                             Price = 10m,
                             ServiceName = "Mountain-Top Ski Lift"
@@ -485,7 +485,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 9,
                             Description = "We know. You think you are the gift of song itself. Why not put your money where your mouth is? Let the whole town hear your...choices by selecting the music.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/f0/ad/jZhvHsgk_o.png",
                             IsActive = true,
                             Price = 100m,
                             ServiceName = "'Are You The DJ?'"
@@ -494,7 +494,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 10,
                             Description = "Everyone thinks they are a Snow White. Now it can finally be true for you. Many tiny cuddles and helpful forest friends are waiting for you to add this package.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/d6/e9/1AnPEjAB_o.png",
                             IsActive = true,
                             Price = 80m,
                             ServiceName = "Woodland Creature Package"
@@ -503,7 +503,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 11,
                             Description = "The trees are ancient, yet the Ents are older still. Take a walk with several of these arboreal protectors and see the world through a whole new lens.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/27/87/FTqvH0Jh_o.png",
                             IsActive = true,
                             Price = 50m,
                             ServiceName = "Ent Walk"
@@ -512,7 +512,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 12,
                             Description = "You know when you think something is going to be really funny, but then it just creeps everyone out? Yeah...we got you. Your guests will be terrified. So will you, actually.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/c6/dc/x24ENwDY_o.png",
                             IsActive = true,
                             Price = 20m,
                             ServiceName = "Suddenly Spooky"
@@ -521,7 +521,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 13,
                             Description = "The tiles in this space can be made to display a mind-melting fractal of the person standing on them. Now just imagine you have 200 guests...yeah, we thought you would like that.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/3d/4a/xpuGluG1_o.png",
                             IsActive = true,
                             Price = 80m,
                             ServiceName = "Fractal Tile"
@@ -530,7 +530,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 14,
                             Description = "We weren't kidding when we said they built the Cathedral right on top the Goofy Golf. With access to the subterranean levels, your golf skills will be tested. You will be tested. ",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/25/3f/46BQBDgP_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Goofy Golf"
@@ -539,7 +539,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 15,
                             Description = "The lilting voices of those gone before will be piped in to punctuate the ethereal nature of this space.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/a4/79/KEI4lkbc_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Haunting Vocals"
@@ -548,7 +548,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 16,
                             Description = "When you want to have a party but don't want to risk bringing anything back from the other side. Madam Zostra will gladly hold back her services so that you might feel more comfortable in your mortal vessel.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/01/f7/WYpnLtYu_o.png",
                             IsActive = true,
                             Price = 500m,
                             ServiceName = "Non-Seance"
@@ -557,7 +557,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 17,
                             Description = "Madam Zostra is a skilled Translocator. She can have you zipped up to the Poconos all without leaving the warmth of her cottage.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/fb/8b/DtGlv0kO_o.jpg",
                             IsActive = true,
                             Price = 600m,
                             ServiceName = "Astral Travel"
@@ -566,7 +566,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 18,
                             Description = "Found an object of dubious origin? Worried it might be cursed? This is like Antiques Roadshow but if that old spoon set made you end every sentence with a question.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/4f/c8/XcTMx6tM_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Item Identification"
@@ -575,7 +575,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 19,
                             Description = "It is uhh, loud here. You will probably need these. Your guests will also be wanting these.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/26/b4/wxtF3RRZ_o.png",
                             IsActive = true,
                             Price = 20m,
                             ServiceName = "Earplugs"
@@ -584,7 +584,7 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 20,
                             Description = "NO, these are not the same lasers they used to etch this space from the quarry. They have had fun colors added. You will probably not be in any danger.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            ImageUrl = "https://images2.imgbox.com/21/f7/di3e3vqa_o.png",
                             IsActive = true,
                             Price = 300m,
                             ServiceName = "Laser Lights"
@@ -592,8 +592,8 @@ namespace RasketsRimeCapstone.Migrations
                         new
                         {
                             Id = 21,
-                            Description = "What can we can? They're REALLY big balloons.",
-                            ImageUrl = "https://images2.imgbox.com/78/8d/LtkgM2ws_o.png",
+                            Description = "What can we say? They're REALLY big balloons.",
+                            ImageUrl = "https://images2.imgbox.com/83/96/cSaL1GzD_o.png",
                             IsActive = true,
                             Price = 200m,
                             ServiceName = "Comically Large Baloon Drop"
@@ -706,9 +706,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 1,
                             Address = "19 Under Lake Blvd",
-                            ContactInfo = "Arbiter Darling : 850-474-5555",
+                            ContactInfo = "Arbiter Darling at 850-474-3905",
                             Description = "A prestigious arcane academy lovingly nestled beneath the central lake of the town. Its atrium is more than accommodating for crowds large and small.",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/aa/8c/8gzFd8Az_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 300,
                             VenueName = "The Unmoored University"
@@ -717,9 +717,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 2,
                             Address = "327 Rumbler Route Way",
-                            ContactInfo = "Foxglove Mackenzie -- 850-985-2934",
+                            ContactInfo = "Foxglove Mackenzie at 850-985-9856",
                             Description = "From atop the mountains, the radio station glows eternal. Deceptively large, its unassuming facade belies the many cozy suites nestled within its walls.",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/8e/dd/wfvRMq4r_o.png",
                             IsActive = true,
                             MaxOccupancy = 85,
                             VenueName = "Mountain-Top Radio Station"
@@ -728,8 +728,8 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 3,
                             Address = "667 W Rambling Road",
-                            ContactInfo = "Thorely Goodparty",
-                            Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under a revelry-drunk moon.",
+                            ContactInfo = "Thorely Goodparty at 850-378-3563",
+                            Description = "The warmth and glow of the Cedrine trees provides a lovely backdrop for any event. Weather can be controlled from inside. Many a night has been spent taking in the thrum of the woods under the glowing moon.",
                             ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 50,
@@ -739,9 +739,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 4,
                             Address = "3762 Gnomiad Fork",
-                            ContactInfo = "Parker Billian -- 850-987-2926",
+                            ContactInfo = "Parker Billian at 850-987-3453",
                             Description = "Believe it or not, this was never a cathedral. The creator instead saw fit to erect this behemoth of architectural ego on top of the abandoned Goofy Golf complex. Vestigial dinosaurs and aliens still linger where you would least expect them.",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/f0/0d/tvBnqhla_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 200,
                             VenueName = "Glinterland Cathedral Hall"
@@ -750,9 +750,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 5,
                             Address = "3 Nestledown Thicket",
-                            ContactInfo = "Madame Zostra -- 850-222-1053",
+                            ContactInfo = "Madame Zostra at 850-222-1053",
                             Description = "Ambience and incense will greet you as you settle in. On display are the relics and spoils of war won by Madame Zostra in her pursuit of the Thaumaturgical Arts",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/e6/8a/DJuiYA43_o.png",
                             IsActive = true,
                             MaxOccupancy = 20,
                             VenueName = "Madame Zostra's Family Fun Time Seance Parlor"
@@ -761,9 +761,9 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = 6,
                             Address = "5590 Fingerpail Row",
-                            ContactInfo = "Maisel Darby --850-334-9010",
+                            ContactInfo = "Maisel Darby at 850-334-9010",
                             Description = "Much like its namesake, this amphitheatre is beloved and commands your attention. Excellent acoustics make for a wonderful way to talk/sing at your audience.  ",
-                            ImageUrl = "https://images2.imgbox.com/77/31/cpoSEOJg_o.jpg",
+                            ImageUrl = "https://images2.imgbox.com/38/ef/dCdOMSFf_o.jpg",
                             IsActive = true,
                             MaxOccupancy = 500,
                             VenueName = "The Patty Lupone Groupon Coupon Main Stage"
@@ -802,240 +802,156 @@ namespace RasketsRimeCapstone.Migrations
                         new
                         {
                             Id = 2,
-                            ServiceId = 2,
+                            ServiceId = 3,
                             VenueId = 1
                         },
                         new
                         {
                             Id = 3,
-                            ServiceId = 3,
-                            VenueId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ServiceId = 4,
-                            VenueId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
                             ServiceId = 1,
                             VenueId = 2
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 4,
                             ServiceId = 2,
-                            VenueId = 2
+                            VenueId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ServiceId = 4,
+                            VenueId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ServiceId = 1,
+                            VenueId = 4
                         },
                         new
                         {
                             Id = 7,
                             ServiceId = 3,
-                            VenueId = 2
+                            VenueId = 4
                         },
                         new
                         {
                             Id = 8,
-                            ServiceId = 4,
-                            VenueId = 2
+                            ServiceId = 2,
+                            VenueId = 5
                         },
                         new
                         {
                             Id = 9,
-                            ServiceId = 1,
-                            VenueId = 3
+                            ServiceId = 2,
+                            VenueId = 6
                         },
                         new
                         {
                             Id = 10,
-                            ServiceId = 2,
-                            VenueId = 3
+                            ServiceId = 4,
+                            VenueId = 6
                         },
                         new
                         {
                             Id = 11,
-                            ServiceId = 3,
-                            VenueId = 3
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ServiceId = 4,
-                            VenueId = 3
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ServiceId = 1,
-                            VenueId = 4
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ServiceId = 2,
-                            VenueId = 4
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ServiceId = 3,
-                            VenueId = 4
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ServiceId = 4,
-                            VenueId = 4
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ServiceId = 1,
-                            VenueId = 5
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ServiceId = 2,
-                            VenueId = 5
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ServiceId = 3,
-                            VenueId = 5
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ServiceId = 4,
-                            VenueId = 5
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ServiceId = 1,
-                            VenueId = 6
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ServiceId = 2,
-                            VenueId = 6
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ServiceId = 3,
-                            VenueId = 6
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ServiceId = 4,
-                            VenueId = 6
-                        },
-                        new
-                        {
-                            Id = 25,
                             ServiceId = 5,
                             VenueId = 1
                         },
                         new
                         {
-                            Id = 26,
+                            Id = 12,
                             ServiceId = 6,
                             VenueId = 1
                         },
                         new
                         {
-                            Id = 27,
+                            Id = 13,
                             ServiceId = 7,
                             VenueId = 2
                         },
                         new
                         {
-                            Id = 28,
+                            Id = 14,
                             ServiceId = 8,
                             VenueId = 2
                         },
                         new
                         {
-                            Id = 29,
+                            Id = 15,
                             ServiceId = 9,
                             VenueId = 2
                         },
                         new
                         {
-                            Id = 30,
+                            Id = 16,
                             ServiceId = 10,
                             VenueId = 3
                         },
                         new
                         {
-                            Id = 31,
+                            Id = 17,
                             ServiceId = 11,
                             VenueId = 3
                         },
                         new
                         {
-                            Id = 32,
+                            Id = 18,
                             ServiceId = 12,
                             VenueId = 3
                         },
                         new
                         {
-                            Id = 33,
+                            Id = 19,
                             ServiceId = 13,
                             VenueId = 4
                         },
                         new
                         {
-                            Id = 34,
+                            Id = 20,
                             ServiceId = 14,
                             VenueId = 4
                         },
                         new
                         {
-                            Id = 35,
+                            Id = 21,
                             ServiceId = 15,
                             VenueId = 4
                         },
                         new
                         {
-                            Id = 36,
+                            Id = 22,
                             ServiceId = 16,
                             VenueId = 5
                         },
                         new
                         {
-                            Id = 37,
+                            Id = 23,
                             ServiceId = 17,
                             VenueId = 5
                         },
                         new
                         {
-                            Id = 38,
+                            Id = 24,
                             ServiceId = 18,
                             VenueId = 5
                         },
                         new
                         {
-                            Id = 39,
+                            Id = 25,
                             ServiceId = 19,
                             VenueId = 6
                         },
                         new
                         {
-                            Id = 40,
+                            Id = 26,
                             ServiceId = 20,
                             VenueId = 6
                         },
                         new
                         {
-                            Id = 41,
+                            Id = 27,
                             ServiceId = 21,
                             VenueId = 6
                         });

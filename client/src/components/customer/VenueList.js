@@ -11,7 +11,7 @@ export default function VenueList() {
     <div className="venue-background-image">
         <section class="">
 	<div class="container py-4">
-		<h1 class="h1 text-center" id="pageHeaderTitle">Venues</h1>
+		<h1 class="h1 text-center" id="pageHeaderTitle">Our Venues</h1>
         {venues.map(v => (
            <article class="postcard dark blue">
 			<a class="postcard__img_link" href="#">
@@ -39,7 +39,7 @@ export default function VenueList() {
 				</ul>
                 <div class="postcard__subtitle small">
 					
-						<i class="fas fa-calendar-alt mr-2"></i>Contact {v.contactInfo} for more info!
+						<i class="fas fa-calendar-alt mr-2"></i>Have questions? Reach out to <a href="#">{v.contactInfo}</a> 
 					
 				</div>
 				<div class="postcard__bar"></div>
