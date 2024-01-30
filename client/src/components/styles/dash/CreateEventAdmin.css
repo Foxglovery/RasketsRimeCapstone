@@ -28,6 +28,10 @@ input[type="date"]:-webkit-autofill {
   .background-image .form-control {
     color: #d8a830; /* Replace #yourColor with your desired color */
   }
+  .error-message {
+    font-family: 'Stoke';
+    color: #FCD46A;
+  }
   
 
 .background-image {

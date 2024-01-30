@@ -26,6 +26,7 @@ export default function CreateEventAdmin({loggedInUser}) {
   const [serviceIds, setServiceIds] = useState([]);
   const [filteredServices, setFilteredServices] = useState([]);
   const [publicChecked, setpublicChecked] = useState(true);
+  const [errorMessage, setErrorMessage] = (useState(""));
   
   const newEvent = {
     userId: loggedInUser.id,
@@ -111,15 +112,26 @@ const handleSubmit = async (e) => {
           console.log('Event created successfully:', data);
           navigate(`/admin/events`);
       } else {
-          
-          console.error('Failed to create event:', data);
+           // Handle error response
+           const errorMsg = data.error || 'Failed to create event';
+           setErrorMessage("Sorry, we couldn't create the event: " + errorMsg);
+           console.error('Failed to create event:', data);
           
       }
   } catch (error) {
-      
-      console.error('Error submitting event:', error);
-      
-  }
+      let errorMsg = error.message || 'Error submitting event';
+      if (typeof errorMsg === 'string' && errorMsg.startsWith('{')) {
+        try {
+            const parsedError = JSON.parse(errorMsg);
+            errorMsg = parsedError.error || errorMsg;
+        } catch (parseError) {
+            // Error parsing the JSON string, use the original error message
+        }
+    }
+
+    setErrorMessage("Sorry, there was a problem: " + errorMsg);
+    console.error('Error submitting event:', error);
+}
 };
 //grab the selected field to populate dropdown placeholder
   const currentMonth = eventStart.getMonth() + 1; 
@@ -250,6 +262,7 @@ const handleSubmit = async (e) => {
 
             {/* Submit */}
             <FormGroup className="text-center">
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
               <Button className="btn btn-primary mt-3 create-event-submit-btn" onClick={handleSubmit}>Submit</Button>
             </FormGroup>
           </Form>

@@ -51,7 +51,7 @@ public class EventController : ControllerBase
                 IsPublic = e.IsPublic,
                 SubmitedOn = e.SubmitedOn,
                 Status = e.Status,
-                EventStart = e.EventStart,
+                EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
                 Venue = new VenueDTO
                 {
@@ -118,9 +118,9 @@ public class EventController : ControllerBase
             ExpectedAttendees = eventInstance.ExpectedAttendees,
             EventDescription = eventInstance.EventDescription,
             IsPublic = eventInstance.IsPublic,
-            SubmitedOn = eventInstance.SubmitedOn,
+            SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc((DateTime)eventInstance.SubmitedOn, TimeZoneInfo.Local),
             Status = eventInstance.Status,
-            EventStart = eventInstance.EventStart,
+            EventStart = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.EventStart, TimeZoneInfo.Local),
             Duration = eventInstance.Duration,
             Venue = new VenueDTO
             {
@@ -191,7 +191,7 @@ public IActionResult GetByUserId(int userId)
         IsPublic = eventInstance.IsPublic,
         SubmitedOn = eventInstance.SubmitedOn,
         Status = eventInstance.Status,
-        EventStart = eventInstance.EventStart,
+        EventStart = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.EventStart, TimeZoneInfo.Local),
         Duration = eventInstance.Duration,
         Venue = eventInstance.Venue != null ? new VenueDTO
         {
@@ -232,14 +232,27 @@ public IActionResult GetByUserId(int userId)
         {
             try
             {
+                DateTime newEventEndTime = eventToCreate.EventStart.AddHours(eventToCreate.Duration);
+                //look for conflicts
+                var conflictingEvents = _dbContext.Events
+                .Where(e => e.VenueId == eventToCreate.VenueId
+                        && e.Status == "Approved" 
+                         && ((e.EventStart < newEventEndTime && e.EventStart.AddHours(e.Duration) > eventToCreate.EventStart)
+                             || (eventToCreate.EventStart < e.EventStart.AddHours(e.Duration) && newEventEndTime > e.EventStart)))
+                .ToList();
+                //if conflicts exist, then bad request
+                if (conflictingEvents.Any())
+                {
+                    return BadRequest(new {Error = "This venue is already booked for this time slot."});
+                }
                 var venue = _dbContext.Venues.SingleOrDefault(v => v.Id == eventToCreate.VenueId);
                 if (venue == null)
                 {
-                    return BadRequest("This venue does not exist");
+                    return BadRequest(new {Error = "This venue does not exist"});
                 }
                 if (eventToCreate.ExpectedAttendees > venue.MaxOccupancy)
                 {
-                    return BadRequest($"The new venue cannot accommodate this number of people. The limit for this venue is {venue.MaxOccupancy}");
+                    return BadRequest(new {Error = $"The new venue cannot accommodate this number of people. The limit for this venue is {venue.MaxOccupancy}"});
                 }
                 var serviceList = _dbContext.VenueServices.Where(es => es.VenueId == eventToCreate.VenueId).ToList();
                 var newEvent = new Event
@@ -250,9 +263,9 @@ public IActionResult GetByUserId(int userId)
                     ExpectedAttendees = eventToCreate.ExpectedAttendees,
                     EventDescription = eventToCreate.EventDescription,
                     IsPublic = eventToCreate.IsPublic,
-                    SubmitedOn = DateTime.Now,
+                    SubmitedOn = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                     Status = "Pending",
-                    EventStart = eventToCreate.EventStart,
+                    EventStart = TimeZoneInfo.ConvertTimeToUtc(eventToCreate.EventStart),
                     Duration = eventToCreate.Duration
                 };
 
@@ -273,7 +286,7 @@ public IActionResult GetByUserId(int userId)
                     }
                     else
                     {
-                        return BadRequest($"This service(Id:{serviceId}) is not available at this venue");
+                        return BadRequest(new {Error = $"This service(Id:{serviceId}) is not available at this venue"});
                     }
 
 
@@ -290,7 +303,7 @@ public IActionResult GetByUserId(int userId)
             catch (Exception ex)
             {
                 transaction.Rollback();
-                return StatusCode(500, "An error occured while creating event.");
+                return StatusCode(500, new {Error = "An error occured while creating event."} );
             }
         }
     }
@@ -339,7 +352,7 @@ public IActionResult GetByUserId(int userId)
         eventToUpdate.EventName = newEvent.EventName;
         eventToUpdate.ExpectedAttendees = newEvent.ExpectedAttendees;
         eventToUpdate.EventDescription = newEvent.EventDescription;
-        eventToUpdate.EventStart = newEvent.EventStart;
+        eventToUpdate.EventStart = TimeZoneInfo.ConvertTimeToUtc(newEvent.EventStart);
         eventToUpdate.Duration = newEvent.Duration;
 
         eventToUpdate.EventServices.Clear();
@@ -395,7 +408,7 @@ public IActionResult GetEventForUpdate(int id)
             IsPublic = eventInstance.IsPublic,
             SubmitedOn = eventInstance.SubmitedOn,
             Status = eventInstance.Status,
-            EventStart = eventInstance.EventStart,
+            EventStart = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.EventStart, TimeZoneInfo.Local),
             Duration = eventInstance.Duration,
             Venue = new VenueDTO
             {
@@ -499,6 +512,18 @@ public IActionResult GetPending()
 public IActionResult ApproveEvent(int id)
 {
     var eventToApprove = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+    
+     DateTime eventEndTime = eventToApprove.EventStart.AddHours(eventToApprove.Duration);
+
+            // Fetch conflicting events (only considering approved events)
+            var conflictingEvents = _dbContext.Events
+                .Where(e => e.VenueId == eventToApprove.VenueId 
+                         && e.Status == "Approved"
+                         && e.Id != id // Exclude the current event
+                         && ((e.EventStart < eventEndTime && e.EventStart.AddHours(e.Duration) > eventToApprove.EventStart)
+                             || (eventToApprove.EventStart < e.EventStart.AddHours(e.Duration) && eventEndTime > e.EventStart)))
+                .ToList();
+
     if (eventToApprove == null)
     {
         return NotFound();
