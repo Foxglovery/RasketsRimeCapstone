@@ -1,56 +1,64 @@
-import { useEffect, useState } from "react";
-import { GetEventsByUserId, UserCancelEvent } from "../managers/eventManager";
-import "../styles/client/MyEventsList.css";
-import { Button } from "reactstrap";
+import { useEffect, useState } from "react"
+import { GetEventsByUserId, GetUpcomingEvents, UserCancelEvent } from "../managers/eventManager";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import VenueDropdown from "../dropdowns/VenueDropdown";
+import "../styles/client/UpcomingEvents.css"
+import ServiceDropdown from "../dropdowns/ServiceDropdown";
 
-export default function MyEventsList({ loggedInUser }) {
-  const navigate = useNavigate();
-  const [myEvents, setMyEvents] = useState([]);
-  const [modal, setModal] = useState(false);
-  const [activeModalId, setActiveModalId] = useState(null);
-  const toggleModal = () => setModal(!modal);
-  
+export default function UpcomingEvents({ loggedInUser }) {
+    const navigate = useNavigate();
+    const [events, setEvents] = useState([]);
+    const [modal, setModal] = useState(false);
+    const [activeModalId, setActiveModalId] = useState(null);
+    const toggleModal = () => setModal(!modal);
 
-  useEffect(() => {
-    GetEventsByUserId(loggedInUser.id).then(setMyEvents);
-  }, []);
+    useEffect(() => {
+        GetUpcomingEvents().then(setEvents);
+    }, [])
 
-  const openModal = (eventId) => {
-    setActiveModalId(eventId);
-  };
-  const closeModal = () => {
-    setActiveModalId(null);
-  };
-
-  const formatEventTime = (dateString) => {
-    const date = new Date(dateString);
-    return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
-  };
-
-  const handleUserCancel = async (eventId) => {
-    try {
-        await UserCancelEvent(eventId, loggedInUser.id);
-
-        const updatedEvents = await GetEventsByUserId(loggedInUser.id);
-        setMyEvents(updatedEvents);
-    } catch (error) {
-        console.error("There was an error canceling the event:", error);
-        
-    } finally {
-        closeModal();
-    }
-  };
-
-  return (
-    <div className="background-image">
+    const openModal = (eventId) => {
+        setActiveModalId(eventId);
+      };
+      const closeModal = () => {
+        setActiveModalId(null);
+      };
+    
+      const formatEventTime = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
+      };
+    
+      const handleUserCancel = async (eventId) => {
+        try {
+            await UserCancelEvent(eventId, loggedInUser.id);
+    
+            const updatedEvents = await GetEventsByUserId(loggedInUser.id);
+            setEvents(updatedEvents);
+        } catch (error) {
+            console.error("There was an error canceling the event:", error);
+            
+        } finally {
+            closeModal();
+        }
+      };
+    return (
+        <div className="background-image">
+            
       <section className="">
         <div className="container py-4">
-          <h1 className="h1 text-center" id="pageHeaderTitle">
-            My Events
-          </h1>
-          {myEvents.map((me) => (
+            <div className="upcoming-header-container">
+                <VenueDropdown />
+            <h1 className="h1 text-center" id="pageHeaderTitle">
+                        Upcoming Events
+                    </h1>
+                    <ServiceDropdown />
+
+            </div>
+            
+        
+          
+          {events.map((me) => (
             <article key={me.id} className="postcard dark blue">
               <a className="postcard__img_link" href="#">
                 <img
@@ -138,5 +146,5 @@ export default function MyEventsList({ loggedInUser }) {
         </div>
       </section>
     </div>
-  );
+    )
 }

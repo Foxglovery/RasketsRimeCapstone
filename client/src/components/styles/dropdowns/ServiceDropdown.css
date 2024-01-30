@@ -1,0 +1,39 @@
+:root {
+    --service-arr-bg: rgba(55, 145, 197, 0.674);
+    --service-arr-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+    --option-bg: rgb(43, 211, 220);
+    --service-select-bg: rgba(244, 225, 79, 0.737);
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+.service-dropdown-container select {
+    /* Reset */
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    /* Personalize */
+    width: 20rem;
+    padding: 1rem 4rem 1rem 1rem;
+    background: var(--service-arr-icon) no-repeat right 0.8em center / 1.4em,
+      linear-gradient(to left, var(--service-arr-bg) 3em, var(--service-select-bg) 3em);
+    color: black;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    /* Remove IE service-arr */
+    &::-ms-expand {
+      display: none;
+    }
+    /* Remove focus outline */
+    &:focus {
+      outline: none;
+    }
+    /* <option> colors */
+    .service-dropdown-container option {
+      color: inherit;
+      background-color: var(--option-bg);
+    }
+  }

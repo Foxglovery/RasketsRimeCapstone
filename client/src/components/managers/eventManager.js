@@ -14,6 +14,9 @@ export const GetEventToUpdateById = (id) => {
 export const GetEvents = () => {
     return fetch(_apiUrl).then((res) => res.json());
 }
+export const GetUpcomingEvents = () => {
+    return fetch(`${_apiUrl}/upcoming`).then((res) => res.json());
+}
 export const UpdateEvent = (eventId, newEvent) => {
 return fetch(`${_apiUrl}/${eventId}`, {
     method: "PUT",
@@ -23,6 +26,8 @@ return fetch(`${_apiUrl}/${eventId}`, {
     body: JSON.stringify(newEvent),
 })
 }
+
+
 
 export const AdminCancelEvent = (id) => {
     return fetch(`${_apiUrl}/AdminCancel/${id}`, {
