@@ -78,6 +78,10 @@ export default function UpcomingEvents({ loggedInUser }) {
         const date = new Date(dateString);
         return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
       };
+      const formatEventEnd = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.toLocaleTimeString()}`;
+      }
     
       const handleUserCancel = async (eventId) => {
         try {
@@ -119,6 +123,12 @@ export default function UpcomingEvents({ loggedInUser }) {
                                     </div>
                                     <div className="postcard__subtitle small">
                                         <i className="fas fa-calendar-alt mr-2"></i>{formatEventTime(me.eventStart)}
+                                    </div>
+                                    <div className="postcard__subtitle small">
+                                        <i className="fas fa-calendar-alt mr-2"></i>Until {formatEventEnd(me.eventEnd)}
+                                    </div>
+                                    <div className="postcard__subtitle small">
+                                        <i className="fas fa-calendar-alt mr-2"></i>{me.expectedAttendees} People Expected
                                     </div>
                                     <div className="postcard__bar"></div>
                                     <div className="postcard__preview-txt">{me.eventDescription}</div>

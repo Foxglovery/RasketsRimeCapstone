@@ -510,7 +510,7 @@ public IActionResult GetByUserId(int userId)
     }
 //will complete logic to update eventServices too
     [HttpPut("{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult UpdateEvent(int id, [FromBody] AdminUpdateEventDTO newEvent)
     {
         var eventToUpdate = _dbContext.Events
