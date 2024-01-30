@@ -8,3 +8,16 @@
     flex-grow: 1;
     text-align: center;
 }
+.no-events-center {
+    display: flex;
+    justify-content: center;
+}
+.no-events-container {
+  
+    display: inline-block;
+    ;
+}
+.no-events-message {
+    text-align: center;
+    text-shadow: 2px 2px 16px #000000;
+}

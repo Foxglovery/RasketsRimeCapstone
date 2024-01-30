@@ -7,8 +7,14 @@ export const GetEventsByUserId = (id) => {
 export const GetEventById = (id) => {
     return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 }
+export const GetEventsByVenueId = (id) => {
+    return fetch(`${_apiUrl}/venue/${id}`).then((res) => res.json());
+}
 export const GetEventToUpdateById = (id) => {
     return fetch(`${_apiUrl}/update/${id}`).then((res) => res.json());
+}
+export const GetEventsByServiceId = (id) => {
+    return fetch(`${_apiUrl}/service/${id}`).then((res) => res.json());
 }
 
 export const GetEvents = () => {
