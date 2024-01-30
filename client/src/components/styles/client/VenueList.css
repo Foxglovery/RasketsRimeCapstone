@@ -94,6 +94,10 @@ a, a:hover {
 
   .postcard__title {
     font-size: 1.75rem;
+    margin-left: 5px;
+  }
+  .postcard-my-venue-text {
+    margin-left: 5px;
   }
 
   .postcard__img {

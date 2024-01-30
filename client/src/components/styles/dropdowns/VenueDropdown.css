@@ -9,7 +9,7 @@
   }
 
   /* <select> styles */
-   select {
+  .venue-dropdown-container select {
     /* Reset */
     appearance: none;
     border: 0;

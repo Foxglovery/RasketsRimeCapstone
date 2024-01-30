@@ -11,7 +11,6 @@ export default function MyEventsList({ loggedInUser }) {
   const [modal, setModal] = useState(false);
   const [activeModalId, setActiveModalId] = useState(null);
   const toggleModal = () => setModal(!modal);
-  
 
   useEffect(() => {
     GetEventsByUserId(loggedInUser.id).then(setMyEvents);
@@ -28,18 +27,21 @@ export default function MyEventsList({ loggedInUser }) {
     const date = new Date(dateString);
     return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
   };
+  const formatEventEnd = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.toLocaleTimeString()}`;
+  };
 
   const handleUserCancel = async (eventId) => {
     try {
-        await UserCancelEvent(eventId, loggedInUser.id);
+      await UserCancelEvent(eventId, loggedInUser.id);
 
-        const updatedEvents = await GetEventsByUserId(loggedInUser.id);
-        setMyEvents(updatedEvents);
+      const updatedEvents = await GetEventsByUserId(loggedInUser.id);
+      setMyEvents(updatedEvents);
     } catch (error) {
-        console.error("There was an error canceling the event:", error);
-        
+      console.error("There was an error canceling the event:", error);
     } finally {
-        closeModal();
+      closeModal();
     }
   };
 
@@ -59,7 +61,7 @@ export default function MyEventsList({ loggedInUser }) {
                   alt="A picture of a place"
                 />
               </a>
-              <div className="postcard__text">
+              <div className="postcard__text move-margin-right">
                 <h1 className="postcard__title blue">
                   <a href="#">{me.eventName}</a>
                 </h1>
@@ -80,8 +82,18 @@ export default function MyEventsList({ loggedInUser }) {
                   <i className="fas fa-calendar-alt mr-2"></i>
                   {formatEventTime(me.eventStart)}
                 </div>
+                <div className="postcard__subtitle small">
+                  <i className="fas fa-calendar-alt mr-2"></i>Until{" "}
+                  {formatEventEnd(me.eventEnd)}
+                </div>
+                <div className="postcard__subtitle small">
+                  <i className="fas fa-calendar-alt mr-2"></i>
+                  {me.expectedAttendees} People Expected
+                </div>
                 <div className="postcard__bar"></div>
-                <div className="postcard__preview-txt">{me.eventDescription}</div>
+                <div className="postcard__preview-txt">
+                  {me.eventDescription}
+                </div>
                 <ul className="postcard__tagbox">
                   {/* <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
 					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li> */}
@@ -96,8 +108,8 @@ export default function MyEventsList({ loggedInUser }) {
                     ))}
                 </ul>
                 <div className="postcard__subtitle small">
-                  <i className="fas fa-calendar-alt mr-2"></i>Have questions? Reach
-                  out to <a href="#">{me.venue.contactInfo}</a>
+                  <i className="fas fa-calendar-alt mr-2"></i>Have questions?
+                  Reach out to <a href="#">{me.venue.contactInfo}</a>
                 </div>
                 <div className="postcard__bar"></div>
                 {loggedInUser.id == me.userId && (
@@ -108,7 +120,10 @@ export default function MyEventsList({ loggedInUser }) {
                     >
                       Update Event
                     </Button>
-                    <Button className="my-events-btn" onClick={() => openModal(me.id)}>
+                    <Button
+                      className="my-events-btn"
+                      onClick={() => openModal(me.id)}
+                    >
                       Cancel Event
                     </Button>
                   </div>
@@ -120,7 +135,7 @@ export default function MyEventsList({ loggedInUser }) {
                     <Button
                       color="danger"
                       onClick={() => {
-                        handleUserCancel(me.id)
+                        handleUserCancel(me.id);
                       }}
                     >
                       Yes, Cancel
