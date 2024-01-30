@@ -56,7 +56,7 @@ export default function MyEventsList({ loggedInUser }) {
                 <img
                   className="postcard__img"
                   src={me.venue.imageUrl}
-                  alt="Image Title"
+                  alt="A picture of a place"
                 />
               </a>
               <div className="postcard__text">

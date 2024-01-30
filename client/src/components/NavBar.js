@@ -39,7 +39,7 @@ return (
                         </NavItem>
                     )}
                     <NavItem >
-                            <NavLink className="nav_bar_link" tag={RRNavLink} to="/events">
+                            <NavLink className="nav_bar_link" tag={RRNavLink} to="/upcomingEvents">
                             Events
                             </NavLink>
                         </NavItem>

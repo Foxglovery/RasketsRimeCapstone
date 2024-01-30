@@ -60,6 +60,206 @@ public class EventController : ControllerBase
                     Address = e.Venue.Address,
                     Description = e.Venue.Description,
                     ContactInfo = e.Venue.ContactInfo,
+                    ImageUrl = e.Venue.ImageUrl,
+                    MaxOccupancy = e.Venue.MaxOccupancy,
+                    IsActive = e.Venue.IsActive,
+                },
+                EventServices = e.EventServices.Select(es => new EventServiceDTO
+                {
+                    Id = es.Id,
+                    EventId = es.EventId,
+                    ServiceId = es.ServiceId,
+                    Service = new ServiceDTO
+                    {
+                        Id = es.Service.Id,
+                        ServiceName = es.Service.ServiceName,
+                        Description = es.Service.Description,
+                        Price = es.Service.Price,
+                        IsActive = es.Service.IsActive
+                    }
+
+                }).ToList()
+
+            }).ToList();
+
+        return Ok(EventList);
+    }
+
+    [HttpGet("venue/{id}")]
+    //[Authorize]
+    public IActionResult GetEventsByVenueId(int id)
+    {
+        var EventList = _dbContext
+            .Events
+            .Where(e => e.Venue.Id == id)
+            .Include(e => e.UserProfile)
+                .ThenInclude(up => up.IdentityUser)
+            .Include(e => e.EventServices)
+                .ThenInclude(es => es.Service)
+            .Select(e => new EventDTO
+            {
+                Id = e.Id,
+                UserId = e.UserId,
+                UserProfile = e.UserProfile != null ? new UserProfileDTO
+                {
+                    Id = e.UserProfile.Id,
+                    FirstName = e.UserProfile.FirstName,
+                    LastName = e.UserProfile.LastName,
+                    Address = e.UserProfile.Address,
+                    Email = e.UserProfile.IdentityUser.Email,
+                    UserName = e.UserProfile.IdentityUser.UserName,
+                    IsAdmin = e.UserProfile.IsAdmin,
+                } : null,
+                VenueId = e.VenueId,
+                EventName = e.EventName,
+                ExpectedAttendees = e.ExpectedAttendees,
+                EventDescription = e.EventDescription,
+                IsPublic = e.IsPublic,
+                SubmitedOn = e.SubmitedOn,
+                Status = e.Status,
+                EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
+                Duration = e.Duration,
+                Venue = new VenueDTO
+                {
+                    Id = e.Venue.Id,
+                    VenueName = e.Venue.VenueName,
+                    Address = e.Venue.Address,
+                    Description = e.Venue.Description,
+                    ContactInfo = e.Venue.ContactInfo,
+                    ImageUrl = e.Venue.ImageUrl,
+                    MaxOccupancy = e.Venue.MaxOccupancy,
+                    IsActive = e.Venue.IsActive,
+                },
+                EventServices = e.EventServices.Select(es => new EventServiceDTO
+                {
+                    Id = es.Id,
+                    EventId = es.EventId,
+                    ServiceId = es.ServiceId,
+                    Service = new ServiceDTO
+                    {
+                        Id = es.Service.Id,
+                        ServiceName = es.Service.ServiceName,
+                        Description = es.Service.Description,
+                        Price = es.Service.Price,
+                        IsActive = es.Service.IsActive
+                    }
+
+                }).ToList()
+
+            }).ToList();
+
+        return Ok(EventList);
+    }
+    [HttpGet("service/{id}")]
+    //[Authorize]
+    public IActionResult GetEventsByServiceId(int id)
+    {
+        var EventList = _dbContext
+            .Events
+            .Include(e => e.UserProfile)
+                .ThenInclude(up => up.IdentityUser)
+            .Include(e => e.EventServices)
+                .ThenInclude(es => es.Service)
+                .Where(e => e.EventServices.Any(es => es.ServiceId == id))
+                .OrderBy(e => e.EventStart)
+            .Select(e => new EventDTO
+            {
+                Id = e.Id,
+                UserId = e.UserId,
+                UserProfile = e.UserProfile != null ? new UserProfileDTO
+                {
+                    Id = e.UserProfile.Id,
+                    FirstName = e.UserProfile.FirstName,
+                    LastName = e.UserProfile.LastName,
+                    Address = e.UserProfile.Address,
+                    Email = e.UserProfile.IdentityUser.Email,
+                    UserName = e.UserProfile.IdentityUser.UserName,
+                    IsAdmin = e.UserProfile.IsAdmin,
+                } : null,
+                VenueId = e.VenueId,
+                EventName = e.EventName,
+                ExpectedAttendees = e.ExpectedAttendees,
+                EventDescription = e.EventDescription,
+                IsPublic = e.IsPublic,
+                SubmitedOn = e.SubmitedOn,
+                Status = e.Status,
+                EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
+                Duration = e.Duration,
+                Venue = new VenueDTO
+                {
+                    Id = e.Venue.Id,
+                    VenueName = e.Venue.VenueName,
+                    Address = e.Venue.Address,
+                    Description = e.Venue.Description,
+                    ContactInfo = e.Venue.ContactInfo,
+                    ImageUrl = e.Venue.ImageUrl,
+                    MaxOccupancy = e.Venue.MaxOccupancy,
+                    IsActive = e.Venue.IsActive,
+                },
+                EventServices = e.EventServices.Select(es => new EventServiceDTO
+                {
+                    Id = es.Id,
+                    EventId = es.EventId,
+                    ServiceId = es.ServiceId,
+                    Service = new ServiceDTO
+                    {
+                        Id = es.Service.Id,
+                        ServiceName = es.Service.ServiceName,
+                        Description = es.Service.Description,
+                        Price = es.Service.Price,
+                        IsActive = es.Service.IsActive
+                    }
+
+                }).ToList()
+
+            }).ToList();
+
+        return Ok(EventList);
+    }
+
+    [HttpGet("upcoming")]
+    //[Authorize]
+    public IActionResult GetUpcomingEvents()
+    {
+        var EventList = _dbContext
+            .Events
+            .Where(e => e.EventStart > DateTime.UtcNow && e.Status == "Approved")
+            .OrderBy(e => e.EventStart)
+            .Include(e => e.UserProfile)
+                .ThenInclude(up => up.IdentityUser)
+            .Include(e => e.EventServices)
+                .ThenInclude(es => es.Service)
+            .Select(e => new EventDTO
+            {
+                Id = e.Id,
+                UserId = e.UserId,
+                UserProfile = e.UserProfile != null ? new UserProfileDTO
+                {
+                    Id = e.UserProfile.Id,
+                    FirstName = e.UserProfile.FirstName,
+                    LastName = e.UserProfile.LastName,
+                    Address = e.UserProfile.Address,
+                    Email = e.UserProfile.IdentityUser.Email,
+                    UserName = e.UserProfile.IdentityUser.UserName,
+                    IsAdmin = e.UserProfile.IsAdmin,
+                } : null,
+                VenueId = e.VenueId,
+                EventName = e.EventName,
+                ExpectedAttendees = e.ExpectedAttendees,
+                EventDescription = e.EventDescription,
+                IsPublic = e.IsPublic,
+                SubmitedOn = e.SubmitedOn,
+                Status = e.Status,
+                EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
+                Duration = e.Duration,
+                Venue = new VenueDTO
+                {
+                    Id = e.Venue.Id,
+                    VenueName = e.Venue.VenueName,
+                    Address = e.Venue.Address,
+                    Description = e.Venue.Description,
+                    ContactInfo = e.Venue.ContactInfo,
+                    ImageUrl = e.Venue.ImageUrl,
                     MaxOccupancy = e.Venue.MaxOccupancy,
                     IsActive = e.Venue.IsActive,
                 },
@@ -129,6 +329,7 @@ public class EventController : ControllerBase
                 Address = eventInstance.Venue.Address,
                 Description = eventInstance.Venue.Description,
                 ContactInfo = eventInstance.Venue.ContactInfo,
+                ImageUrl = eventInstance.Venue.ImageUrl,
                 MaxOccupancy = eventInstance.Venue.MaxOccupancy,
                 IsActive = eventInstance.Venue.IsActive,
             },

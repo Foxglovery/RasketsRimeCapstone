@@ -15,6 +15,7 @@ import UpdateEventAdmin from "./dashboard/events/UpdateEventAdmin";
 import VenueList from "./customer/VenueList";
 import ServiceList from "./customer/ServiceList";
 import MyEventsList from "./customer/MyEventsList";
+import UpcomingEvents from "./customer/UpcomingEvents";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -122,6 +123,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser} >
               <MyEventsList loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/upcomingEvents"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} >
+              <UpcomingEvents loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
