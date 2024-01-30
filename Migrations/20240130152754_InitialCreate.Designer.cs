@@ -13,7 +13,7 @@ using RasketsRime.Data;
 namespace RasketsRimeCapstone.Migrations
 {
     [DbContext(typeof(RasketsRimeDbContext))]
-    [Migration("20240129024428_InitialCreate")]
+    [Migration("20240130152754_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,13 +158,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "19b92205-b132-4096-9f2a-13d84f8c5751",
+                            ConcurrencyStamp = "d5929a09-09a9-4484-98e1-2cc43b1d7077",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEL7D+UfCY53sL8VflnjuBZrIe8opo8UErmfWNyO6OLzc7eK3uta3P3Go6vkQ+WLnvg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJWjW0UmIh735k1qhFqbl+SYbrqYqYnRHwpaqrkjsFF0iEKh/3P9OYWBNSXCs0F3xA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b985123-0fed-475a-91ea-171fc21d9385",
+                            SecurityStamp = "0e92245f-1332-4a57-a82b-b6a457caf2c2",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -172,13 +172,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cd1d0ca6-dba6-4f80-a091-ae829b59997d",
+                            ConcurrencyStamp = "f38c9924-5cf9-47c0-a9bd-d41ed6830ee0",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFJP416lM1OaTq1L3Tfdnxam5XZxidY2Xi8N0+Pj+NkCegW7FECKkUWNV8TV/fsOMg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFZzxZ3834Yim27pcME29loBA3SECYpH/zKX1eAZFzTwk4zyQ+cQ+3UNTqlqkU1vng==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c714dc1f-121a-4779-831d-f0f2301cbffa",
+                            SecurityStamp = "7889ae28-121e-44b6-86f9-91d08d143b7a",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });

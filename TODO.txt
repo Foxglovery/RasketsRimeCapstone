@@ -1,2 +1,1 @@
-Left off having fetched the event to update in update event.
-need to add values to the fields so they autopopulate.
+Change the modal to avoid the white padding

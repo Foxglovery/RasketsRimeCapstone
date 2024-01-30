@@ -76,7 +76,15 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           <ServiceListAdmin />
         </AuthorizedRoute>
         }/>
-
+        {/* Customer Routes */}
+        <Route
+          path="/events/update/:eventId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <UpdateEventAdmin loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
         <Route
           path="/userprofiles"
           element={
