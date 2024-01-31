@@ -31,48 +31,42 @@ export default function EventDetailsAdmin({loggedInUser}) {
         <Link to={`/admin/venues`} className="chip-link">Venues</Link>
         <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <Table dark striped>
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <td>{event?.eventName}</td>
-          </tr>
-          <tr>
-            <th>Venue</th>
-            <td>{event?.venue.venueName}</td>
-          </tr>
-          <tr>
-            <th>Description</th>
-            <td>{event?.eventDescription}</td>
-          </tr>
-          <tr>
-            <th># Attendees</th>
-            <td>
-              {event?.expectedAttendees} / {event?.venue.maxOccupancy}
-            </td>
-          </tr>
-          <tr>
-            <th>Submitted On</th>
-            <td>{event?.submitedOn}</td>
-          </tr>
-          <tr>
-            <th>Event Start</th>
-            <td>{event?.eventStart}</td>
-          </tr>
-          <tr>
-            <th>Event End</th>
-            <td>{event?.eventEnd}</td>
-          </tr>
-          <tr>
-            <th>Is Public</th>
-            <td>{event?.isPublic ? "Yes" : "No"}</td>
-          </tr>
-          <tr>
-            <th>Total Cost</th>
-            <td>${event?.totalCost}</td>
-          </tr>
-        </tbody>
-      </Table>
+      <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <td>{event?.eventName}</td>
+            </tr>
+            <tr>
+              <th>Venue</th>
+              <td>{event?.venue.venueName}</td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>{event?.eventDescription}</td>
+            </tr>
+            <tr>
+              <th># Attendees</th>
+              <td>{event?.expectedAttendees} / {event?.venue.maxOccupancy}</td>
+            </tr>
+            <tr>
+              <th>Event Start</th>
+              <td>{event?.eventStart}</td>
+            </tr>
+            <tr>
+              <th>Event End</th>
+              <td>{event?.eventEnd}</td>
+            </tr>
+            <tr>
+              <th>Is Public</th>
+              <td>{event?.isPublic ? "Yes" : "No"}</td>
+            </tr>
+            <tr>
+              <th>Total Cost</th>
+              <td>${event?.totalCost}</td>
+            </tr>
+          </tbody>
+        </Table>
 
       <h4>Event Services</h4>
       <Table dark striped>

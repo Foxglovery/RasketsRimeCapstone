@@ -91,7 +91,7 @@ public class EventController : ControllerBase
     {
         var EventList = _dbContext
             .Events
-            .Where(e => e.Venue.Id == id)
+            .Where(e => e.Venue.Id == id && e.EventStart > DateTime.UtcNow && e.Status == "Approved")
             .Include(e => e.UserProfile)
                 .ThenInclude(up => up.IdentityUser)
             .Include(e => e.EventServices)
@@ -160,7 +160,8 @@ public class EventController : ControllerBase
                 .ThenInclude(up => up.IdentityUser)
             .Include(e => e.EventServices)
                 .ThenInclude(es => es.Service)
-                .Where(e => e.EventServices.Any(es => es.ServiceId == id))
+                .Where(e => e.EventServices.Any(es => es.ServiceId == id)
+                 && e.EventStart > DateTime.UtcNow && e.Status == "Approved")
                 .OrderBy(e => e.EventStart)
             .Select(e => new EventDTO
             {

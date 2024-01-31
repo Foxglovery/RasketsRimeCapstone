@@ -58,11 +58,14 @@ return (
                             My Events
                             </NavLink>
                         </NavItem>
-                        <NavItem >
+                        {!isAdmin && (
+                            <NavItem >
                             <NavLink className="nav_bar_link" tag={RRNavLink} to="/events/create">
                             Add An Event
                             </NavLink>
                         </NavItem>
+                        )}
+                        
                     </>
                 )}
             </Nav>
