@@ -19,7 +19,7 @@ public class UserProfile
     public bool IsAdmin { get; set; }
     public List<string>? Roles { get; set; }
     
-    public string ProfileImage { get; set; }
+    
     [Required]
     
     public string IdentityUserId { get; set; }

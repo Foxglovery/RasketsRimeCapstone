@@ -39,10 +39,16 @@ export default function DashboardEvents({loggedInUser}) {
       GetEvents().then(setEvents);
     });
   };
+
+  const formatEventTime = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
+  };
+  
   const backgroundStyle = {
     minHeight: '100vh',
     background: `url(${backgroundImage}) no-repeat center center fixed`, 
-    backgroundSize: 'cover', // Ensure it covers the entire background
+    backgroundSize: 'cover', 
     color: 'white',
 };
   return (
@@ -58,6 +64,7 @@ export default function DashboardEvents({loggedInUser}) {
       </div>
       <div className="left-align-btn">
         <Button  className="admin-event-btn"onClick={() => navigate("/admin/events/create")}>Add Event</Button>
+        {/* <Button  className="admin-event-btn"onClick={() => navigate("/admin/events/create")}>Pending</Button> */}
       </div>
       <Table dark striped>
         <thead>
@@ -67,6 +74,9 @@ export default function DashboardEvents({loggedInUser}) {
             <th>User</th>
             <th>Venue</th>
             <th>Address</th>
+            <th>Submitted</th>
+            <th>Event Start</th>
+            <th>Event End</th>
             <th>Status</th>
             <th></th>
             <th></th>
@@ -86,6 +96,9 @@ export default function DashboardEvents({loggedInUser}) {
               </td>
               <td>{e.venue.venueName}</td>
               <td>{e.venue.address}</td>
+              <td>{formatEventTime(e.submitedOn)}</td>
+              <td>{formatEventTime(e.eventStart)}</td>
+              <td>{formatEventTime(e.eventEnd)}</td>
               <td>{e.status}</td>
               {e.status !== "Approved" ? (
                 <td>

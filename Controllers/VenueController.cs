@@ -19,7 +19,7 @@ public class VenueController : ControllerBase
         _dbContext = context;
     }
 [HttpGet]
-//[Authorize]
+[Authorize]
 public IActionResult GetVenues()
 {
     return Ok(_dbContext.Venues
@@ -54,7 +54,7 @@ public IActionResult GetVenues()
 }
 
 [HttpGet("{id}")]
-//[Authorize]
+[Authorize]
 public IActionResult GetById(int id)
 {
     var venue = _dbContext.Venues

@@ -19,14 +19,14 @@ input[type="date"]:-webkit-autofill {
     text-shadow: 0px 2px 16px #12110f;
   }
   .background-image .form-control {
-    background-color: #201e19; /* Replace #yourColor with your desired color */
+    background-color: #201e19; 
   }
  
   .background-image .form-control::placeholder {
-    color: #d8a830; /* Replace #yourColor with your desired color */
+    color: #d8a830; 
   }
   .background-image .form-control {
-    color: #d8a830; /* Replace #yourColor with your desired color */
+    color: #d8a830; 
   }
   .error-message {
     font-family: 'Stoke';

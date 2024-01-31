@@ -13,7 +13,7 @@ using RasketsRime.Data;
 namespace RasketsRimeCapstone.Migrations
 {
     [DbContext(typeof(RasketsRimeDbContext))]
-    [Migration("20240130152754_InitialCreate")]
+    [Migration("20240131160759_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,13 +158,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d5929a09-09a9-4484-98e1-2cc43b1d7077",
+                            ConcurrencyStamp = "a6e06f95-e112-4953-a486-49f193cdde55",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEJWjW0UmIh735k1qhFqbl+SYbrqYqYnRHwpaqrkjsFF0iEKh/3P9OYWBNSXCs0F3xA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIai0R+qPPxCAm0JPzJ70P2ORo3sTGLE8O0m66zWDTaF+/MO5ivaN4fME+zV8kR11A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0e92245f-1332-4a57-a82b-b6a457caf2c2",
+                            SecurityStamp = "c8bcde19-f1f6-4b55-a8f6-1c8d3ad32a1f",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -172,13 +172,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f38c9924-5cf9-47c0-a9bd-d41ed6830ee0",
+                            ConcurrencyStamp = "223c15e5-d457-4c6d-b35b-a404c7cfb7c6",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFZzxZ3834Yim27pcME29loBA3SECYpH/zKX1eAZFzTwk4zyQ+cQ+3UNTqlqkU1vng==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK8+nUTIlRYVgBHOgL6o3mBRlFJ5bN/MfaiJBCmyS8ylrSblgOdNX/mVa9qfPvThOg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7889ae28-121e-44b6-86f9-91d08d143b7a",
+                            SecurityStamp = "b17f348e-d469-404c-a47a-33c54e548416",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
@@ -629,10 +629,6 @@ namespace RasketsRimeCapstone.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ProfileImage")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<List<string>>("Roles")
                         .HasColumnType("text[]");
 
@@ -650,8 +646,7 @@ namespace RasketsRimeCapstone.Migrations
                             FirstName = "Admina",
                             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             IsAdmin = true,
-                            LastName = "Strator",
-                            ProfileImage = "https://i.pinimg.com/564x/c0/fd/d7/c0fdd735d4db94c60866e43e44ae98cf.jpg"
+                            LastName = "Strator"
                         },
                         new
                         {
@@ -660,8 +655,7 @@ namespace RasketsRimeCapstone.Migrations
                             FirstName = "Schlebethany",
                             IdentityUserId = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             IsAdmin = false,
-                            LastName = "Pleasance",
-                            ProfileImage = "https://beta.creativecirclecdn.com/timberjay/original/20210127-160305-1.29%20weasel%20looks.tif.jpg"
+                            LastName = "Pleasance"
                         });
                 });
 

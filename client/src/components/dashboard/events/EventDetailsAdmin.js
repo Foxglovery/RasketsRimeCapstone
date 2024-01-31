@@ -15,8 +15,12 @@ export default function EventDetailsAdmin({loggedInUser}) {
   const backgroundStyle = {
     minHeight: '100vh',
     background: `url(${backgroundImage}) no-repeat center center fixed`, 
-    backgroundSize: 'cover', // Ensure it covers the entire background
+    backgroundSize: 'cover', 
     color: 'white',
+};
+const formatEventTime = (dateString) => {
+  const date = new Date(dateString);
+  return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
 };
   return (
     //add a table here to display event
@@ -51,11 +55,11 @@ export default function EventDetailsAdmin({loggedInUser}) {
             </tr>
             <tr>
               <th>Event Start</th>
-              <td>{event?.eventStart}</td>
+              <td>{formatEventTime(event?.eventStart)}</td>
             </tr>
             <tr>
               <th>Event End</th>
-              <td>{event?.eventEnd}</td>
+              <td>{formatEventTime(event?.eventEnd)}</td>
             </tr>
             <tr>
               <th>Is Public</th>
