@@ -81,8 +81,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
             FirstName = "Admina",
             LastName = "Strator",
             Address = "101 Main Street",
-            IsAdmin = true,
-            ProfileImage = "https://i.pinimg.com/564x/c0/fd/d7/c0fdd735d4db94c60866e43e44ae98cf.jpg"
+            IsAdmin = true
             },
             new UserProfile
             {
@@ -91,8 +90,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 FirstName = "Schlebethany",
                 LastName = "Pleasance",
                 Address = "222 N Sidereal Way",
-                IsAdmin = false,
-                ProfileImage = "https://beta.creativecirclecdn.com/timberjay/original/20210127-160305-1.29%20weasel%20looks.tif.jpg" 
+                IsAdmin = false 
             }
         });
         modelBuilder.Entity<Venue>().HasData(new Venue[]

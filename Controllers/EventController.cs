@@ -21,7 +21,7 @@ public class EventController : ControllerBase
     }
 
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetEvents()
     {
         var EventList = _dbContext
@@ -86,7 +86,7 @@ public class EventController : ControllerBase
     }
 
     [HttpGet("venue/{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetEventsByVenueId(int id)
     {
         var EventList = _dbContext
@@ -151,7 +151,7 @@ public class EventController : ControllerBase
         return Ok(EventList);
     }
     [HttpGet("service/{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetEventsByServiceId(int id)
     {
         var EventList = _dbContext
@@ -219,7 +219,7 @@ public class EventController : ControllerBase
     }
 
     [HttpGet("upcoming")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetUpcomingEvents()
     {
         var EventList = _dbContext
@@ -286,7 +286,7 @@ public class EventController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetByEventId(int id)
     {
         var eventInstance = _dbContext.Events
@@ -355,7 +355,7 @@ public class EventController : ControllerBase
     }
 
  [HttpGet("user/{userId}")]
-//[Authorize]
+[Authorize]
 public IActionResult GetByUserId(int userId)
 {
     var events = _dbContext.Events
@@ -427,7 +427,7 @@ public IActionResult GetByUserId(int userId)
 
 
     [HttpPost]
-    //[Authorize]
+    [Authorize]
     public IActionResult CreateEvent(EventCreationDTO eventToCreate)
     {
         using (var transaction = _dbContext.Database.BeginTransaction())
@@ -572,7 +572,7 @@ public IActionResult GetByUserId(int userId)
     }
 
 [HttpGet("update/{id}")]
-//[Authorize]
+[Authorize]
 public IActionResult GetEventForUpdate(int id)
 {
     var eventInstance = _dbContext.Events
@@ -644,7 +644,7 @@ public IActionResult GetEventForUpdate(int id)
 }
 
 [HttpGet("pending")]
-//[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 public IActionResult GetPending()
 {
     var PendingList = _dbContext
@@ -710,7 +710,7 @@ public IActionResult GetPending()
 }
 
 [HttpPut("approve/{id}")]
-//[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 public IActionResult ApproveEvent(int id)
 {
     var eventToApprove = _dbContext.Events.SingleOrDefault(e => e.Id == id);
@@ -736,7 +736,7 @@ public IActionResult ApproveEvent(int id)
 
 }
 [HttpPut("reject/{id}")]
-//[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 public IActionResult RejectEvent(int id)
 {
     var eventToReject = _dbContext.Events.SingleOrDefault(e => e.Id == id);
@@ -751,7 +751,7 @@ public IActionResult RejectEvent(int id)
 }
 
 [HttpPut("AdminCancel/{id}")]
-//[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 public IActionResult AdminCancelEvent(int id)
 {
     var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == id);
@@ -765,7 +765,7 @@ public IActionResult AdminCancelEvent(int id)
 
 }
 [HttpPut("UserCancel/{eventId}")]
-//[Authorize]
+[Authorize]
 public IActionResult UserCancelEvent(int eventId, int userId)
 {
     var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == eventId && e.UserId == userId);
@@ -780,7 +780,7 @@ public IActionResult UserCancelEvent(int eventId, int userId)
 }
 
 [HttpDelete("{id}")]
-//[Authorize(Rolls = "Admin")]
+[Authorize(Roles = "Admin")]
 public IActionResult DeleteEvent(int id)
 {
     Event eventToDelete = _dbContext.Events.SingleOrDefault(e => e.Id == id);

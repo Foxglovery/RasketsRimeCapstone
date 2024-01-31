@@ -53,26 +53,6 @@ export const UserCancelEvent = (eventId, userId) => {
        
     });
 };
-// export const UserCancelEvent = async (eventId, userId) => {
-//     try {
-//       const response = await fetch(`${_apiUrl}/UserCancel/${eventId}?userId=${userId}`, {
-//         method: 'PUT',
-//         headers: {
-//           // Include other headers as needed, like Content-Type or Authorization
-//         },
-//         // If you need to send additional data in the body, include it here
-//       });
-  
-//       if (!response.ok) {
-//         throw new Error('Network response was not ok');
-//       }
-  
-//       return response.json(); // or response.text() if your server sends back a text response
-//     } catch (error) {
-//       console.error('Error during event cancellation:', error);
-//       // Handle errors appropriately in your UI
-//     }
-//   };
 
 export const ApproveEvent = (id) => {
     return fetch(`${_apiUrl}/approve/${id}`, {
@@ -110,12 +90,12 @@ export const CreateEvent = (newEvent) => {
         body: JSON.stringify(newEvent),
     }).then((res) => {
         if (!res.ok) {
-            // If the response is not ok, handle it as text
+            // If the response is NOT okay, return the error
             return res.text().then(text => {
                 throw new Error(text || "Server responded with an error");
             });
         }
-        // If response is ok, parse it as JSON
+        // If response is ok, return as json
         return res.json();
     });
 }

@@ -135,7 +135,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
   };
 
   
-  const currentMonth = eventStart.getMonth() + 1; // getMonth() returns 0-11
+  const currentMonth = eventStart.getMonth() + 1; 
   const currentDay = eventStart.getDate();
   const currentYear = eventStart.getFullYear();
   const currentHour = eventStart.getHours();
@@ -294,7 +294,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
 
               {/* Submit */}
               <FormGroup className="text-center">
-                <Button className="btn btn-primary mt-3" onClick={handleSubmit}>
+                <Button className="btn btn-primary create-event-submit-btn mt-3" onClick={handleSubmit}>
                   Submit
                 </Button>
               </FormGroup>

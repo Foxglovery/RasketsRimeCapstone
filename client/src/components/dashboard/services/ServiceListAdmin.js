@@ -17,7 +17,7 @@ export default function ServiceListAdmin({loggedInUser}) {
     const backgroundStyle = {
       minHeight: '100vh',
       background: `url(${backgroundImage}) no-repeat center center fixed`, 
-      backgroundSize: 'cover', // Ensure it covers the entire background
+      backgroundSize: 'cover', 
       color: 'white',
   };
     return (

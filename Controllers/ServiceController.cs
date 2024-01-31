@@ -19,7 +19,7 @@ public class ServiceController : ControllerBase
         _dbContext = context;
     }
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetServices()
     {
         return Ok(_dbContext.Services
@@ -55,7 +55,7 @@ public class ServiceController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetById(int id)
     {
         var service = _dbContext.Services
@@ -99,7 +99,7 @@ public class ServiceController : ControllerBase
     }
 
 [HttpGet("available/{venueId}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetAvailableServices(int venueId)
     {
         return Ok(_dbContext.Services

@@ -22,7 +22,7 @@ export default function UpcomingEvents({ loggedInUser }) {
   const [selectedVenueId, setSelectedVenueId] = useState(null);
   const [selectedServiceId, setSelectedServiceId] = useState(null);
 
-  //change handlers to be passed to dropdowns
+  //handlers for the dropdowns
   const handleVenueChange = (venueId) => {
     setSelectedVenueId(parseInt(venueId));
   };
@@ -31,6 +31,7 @@ export default function UpcomingEvents({ loggedInUser }) {
   };
   const toggleModal = () => setModal(!modal);
 
+  //if a venue is selected, fetch based on that
   useEffect(() => {
     if (selectedVenueId) {
       GetEventsByVenueId(selectedVenueId)
@@ -43,6 +44,7 @@ export default function UpcomingEvents({ loggedInUser }) {
             error
           );
         });
+      //otherwise get all upcoming
     } else {
       GetUpcomingEvents()
         .then((fetchedEvents) => {
@@ -53,7 +55,7 @@ export default function UpcomingEvents({ loggedInUser }) {
         });
     }
   }, [selectedVenueId]);
-
+  //rinse and repeat for service
   useEffect(() => {
     if (selectedServiceId) {
       GetEventsByServiceId(selectedServiceId)
@@ -80,7 +82,7 @@ export default function UpcomingEvents({ loggedInUser }) {
   const closeModal = () => {
     setActiveModalId(null);
   };
-
+  //formating for the date portion of card
   const formatEventTime = (dateString) => {
     const date = new Date(dateString);
     return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
@@ -132,31 +134,28 @@ export default function UpcomingEvents({ loggedInUser }) {
                     @ {me.venue.venueName}
                   </h3>
                   <div className="upcoming-small-details">
-    <div className="upcoming-details-cont">
-        <div className="postcard__subtitle small">
-            <i className="fas fa-calendar-alt mr-2"></i>
-            {me.venue.address}
-        </div>
-        <div className="postcard__subtitle small">
-            <i className="fas fa-calendar-alt mr-2"></i>
-            {formatEventTime(me.eventStart)}
-        </div>
-    </div>
-    {/* <div className="postcard__subtitle small">
-            <i className="fas fa-calendar-alt mr-2"></i>
-            {formatEventTime(me.eventStart)}
-        </div> */}
-    <div className="upcoming-details-cont">
-    <div className="postcard__subtitle small">
-            <i className="fas fa-calendar-alt mr-2"></i>
-            {me.expectedAttendees} People Expected
-        </div>
-        <div className="postcard__subtitle small">
-            <i className="fas fa-calendar-alt mr-2"></i>
-            Until {formatEventEnd(me.eventEnd)}
-        </div>
-    </div>
-</div>
+                    <div className="upcoming-details-cont">
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {me.venue.address}
+                      </div>
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {formatEventTime(me.eventStart)}
+                      </div>
+                    </div>
+
+                    <div className="upcoming-details-cont">
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {me.expectedAttendees} People Expected
+                      </div>
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        Until {formatEventEnd(me.eventEnd)}
+                      </div>
+                    </div>
+                  </div>
 
                   <div className="postcard__bar"></div>
                   <div className="postcard__preview-txt">

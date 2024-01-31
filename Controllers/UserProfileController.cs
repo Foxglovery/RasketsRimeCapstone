@@ -21,7 +21,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult Get()
     {
         return Ok(_dbContext
@@ -42,7 +42,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("withroles")]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult GetWithRoles()
     {
         return Ok(_dbContext.UserProfiles
@@ -67,7 +67,7 @@ public class UserProfileController : ControllerBase
 
     //FINISH THIS ENDPOINT
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetById(int id)
     {
         UserProfile userProfile = _dbContext

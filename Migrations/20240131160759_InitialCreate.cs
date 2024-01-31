@@ -203,7 +203,6 @@ namespace RasketsRimeCapstone.Migrations
                     Address = table.Column<string>(type: "text", nullable: false),
                     IsAdmin = table.Column<bool>(type: "boolean", nullable: false),
                     Roles = table.Column<List<string>>(type: "text[]", nullable: true),
-                    ProfileImage = table.Column<string>(type: "text", nullable: false),
                     IdentityUserId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -317,8 +316,8 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "d5929a09-09a9-4484-98e1-2cc43b1d7077", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEJWjW0UmIh735k1qhFqbl+SYbrqYqYnRHwpaqrkjsFF0iEKh/3P9OYWBNSXCs0F3xA==", null, false, "0e92245f-1332-4a57-a82b-b6a457caf2c2", false, "Administrator" },
-                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "f38c9924-5cf9-47c0-a9bd-d41ed6830ee0", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEFZzxZ3834Yim27pcME29loBA3SECYpH/zKX1eAZFzTwk4zyQ+cQ+3UNTqlqkU1vng==", null, false, "7889ae28-121e-44b6-86f9-91d08d143b7a", false, "Schlebethany" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "a6e06f95-e112-4953-a486-49f193cdde55", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIai0R+qPPxCAm0JPzJ70P2ORo3sTGLE8O0m66zWDTaF+/MO5ivaN4fME+zV8kR11A==", null, false, "c8bcde19-f1f6-4b55-a8f6-1c8d3ad32a1f", false, "Administrator" },
+                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "223c15e5-d457-4c6d-b35b-a404c7cfb7c6", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK8+nUTIlRYVgBHOgL6o3mBRlFJ5bN/MfaiJBCmyS8ylrSblgOdNX/mVa9qfPvThOg==", null, false, "b17f348e-d469-404c-a47a-33c54e548416", false, "Schlebethany" }
                 });
 
             migrationBuilder.InsertData(
@@ -373,11 +372,11 @@ namespace RasketsRimeCapstone.Migrations
 
             migrationBuilder.InsertData(
                 table: "UserProfiles",
-                columns: new[] { "Id", "Address", "FirstName", "IdentityUserId", "IsAdmin", "LastName", "ProfileImage", "Roles" },
+                columns: new[] { "Id", "Address", "FirstName", "IdentityUserId", "IsAdmin", "LastName", "Roles" },
                 values: new object[,]
                 {
-                    { 1, "101 Main Street", "Admina", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", true, "Strator", "https://i.pinimg.com/564x/c0/fd/d7/c0fdd735d4db94c60866e43e44ae98cf.jpg", null },
-                    { 2, "222 N Sidereal Way", "Schlebethany", "e2731372-eb45-4cc5-9a34-d9711f3642b2", false, "Pleasance", "https://beta.creativecirclecdn.com/timberjay/original/20210127-160305-1.29%20weasel%20looks.tif.jpg", null }
+                    { 1, "101 Main Street", "Admina", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", true, "Strator", null },
+                    { 2, "222 N Sidereal Way", "Schlebethany", "e2731372-eb45-4cc5-9a34-d9711f3642b2", false, "Pleasance", null }
                 });
 
             migrationBuilder.InsertData(

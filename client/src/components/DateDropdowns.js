@@ -20,7 +20,7 @@ function DateDropdowns({
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const startYear = 2023;
   const years = Array.from({ length: 20 }, (_, i) => startYear + i);
-  const hours = Array.from({ length: 24 }, (_, i) => i); // For a 24-hour clock
+  const hours = Array.from({ length: 24 }, (_, i) => i);
 
   return (
     <div className="date-dropdown-wrapper">
