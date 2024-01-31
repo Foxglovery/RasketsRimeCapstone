@@ -21,48 +21,39 @@ export default function ServiceListAdmin({loggedInUser}) {
       color: 'white',
   };
     return (
-        <>
-        <div style={backgroundStyle}>
-      {/* <div>
-        <Link to={`/admin/events`}>Events</Link>
-      </div>
-      <div>
-        <Link to={`/userprofiles`}>Users</Link>
-      </div>
-      <div>
-        <Link to={`/admin/venues`}>Venues</Link>
-      </div>
-        <h3>Services</h3> */}
-        <div className="centered-content">
-        <h3>Services</h3>
-      </div>
+      <div style={backgroundStyle}>
       <div className="centered-content">
-        <Link to={`/admin/events`} className="chip-link">Events</Link>
-        <Link to={`/userprofiles`} className="chip-link">Users</Link>
-        <Link to={`/admin/venues`} className="chip-link">Venues</Link>
-      </div>
-      <Table dark striped>
-        <thead>
+        <h3>Services</h3>
+        <div className="link-group" style={{ marginTop: '20px' }}>
+          <Link to={`/admin/events`} className="chip-link">Events</Link>
+          <Link to={`/userprofiles`} className="chip-link">Users</Link>
+          <Link to={`/admin/venues`} className="chip-link">Venues</Link>
+        </div>
+        <Table dark striped className="mt-4" style={{ maxWidth: '90%', margin: 'auto' }}>
+          <thead>
             <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Available At</th>
-                <th>Price</th>
+              <th>#</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Available At</th>
+              <th>Price</th>
             </tr>
-        </thead>
-        <tbody>
-            {services?.map((s) => (
-                <tr key={s.id}>
-                    <th scope="row">{s.id}</th>
-                    <td>{s.serviceName}</td>
-                    <td>{s.description}</td>
-                    <td>{renderVenueNames(s.venueServices)}</td>
-                    <td>${s.price}</td>
-                </tr>
+          </thead>
+          <tbody>
+            {services.map((service, index) => (
+              <tr key={service.id}>
+                <th scope="row">{index + 1}</th>
+                <td>{service.serviceName}</td>
+                <td>{service.description}</td>
+                <td>{renderVenueNames(service.venueServices)}</td>
+                <td>${service.price}</td>
+              </tr>
             ))}
-        </tbody>
-      </Table>
-       </div> </>
+          </tbody>
+        </Table>
+        
+      </div>
+    </div>
+    
     )
 }

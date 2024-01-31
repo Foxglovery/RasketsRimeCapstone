@@ -34,7 +34,6 @@ export default function ServiceList() {
   <div className="utility-info">
     <ul className="utility-list">
       <li className="comments">{s.price}</li>
-      <li className="date">03.12.2015</li>
     </ul>
   </div>
   {/* overlays */}

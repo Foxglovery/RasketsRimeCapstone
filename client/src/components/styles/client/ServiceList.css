@@ -196,8 +196,8 @@ hr {
 
 /* Utility list item styles */
 .utility-list li {
-  margin: 0 15px 0 0;
-  padding: 0 0 0 22px;
+  margin: 0 5px 0 0;
+  padding: 2px 2px 10px 22px;
   display: inline-block;
   color: #DCE3E7;
   font-family: 'Roboto', sans-serif;
@@ -205,14 +205,14 @@ hr {
 
 /* Comments icon styles */
 .utility-list li.comments {
-  background: url('../../../assets/dollar.png') no-repeat 0 .1em;
-  background-size: 22px 22px; /* Example size, adjust as needed */
-    padding-left: 25px; /* Adjust padding to make room for the icon */
+  background: url('../../../assets/price-tag.png') no-repeat 0 .1em;
+  background-size: 32px 32px; /* Example size, adjust as needed */
+    padding-left: 35px; /* Adjust padding to make room for the icon */
 }
 
 /* Date icon styles */
-.utility-list li.date {
+/* .utility-list li.date {
   background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-calendar.svg) no-repeat 0 .1em;
-}
+} */
 
   
