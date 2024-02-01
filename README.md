@@ -37,7 +37,7 @@ This project went a lot smoother than my first one. The most notable snag was wi
 
 To get started with Rasket's Rime:
 
-```bash
+
 
 ### Prerequisites
 - Ensure you have [Node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm) installed on your machine. Use `node -v` and `npm -v` in your terminal to verify your installations.
@@ -46,5 +46,5 @@ To get started with Rasket's Rime:
 1. **Clone the Repository**
    Begin by cloning the repository to your local machine:
    ```bash
-   git clone https://github.com/yourusername/raskets-rime.git
-   ```
+   git clone https://github.com/Foxglovery/RasketsRimeCapstone.git
+   ```bash
