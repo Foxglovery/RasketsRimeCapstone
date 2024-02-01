@@ -80,6 +80,14 @@ background-color: #133249;
     background-color: #8739a9;
     color: #e0e5e9;
 }
+.admin-details-event-btn {
+    background-color: #ee891e;
+    color: #080a0d;
+}
+.admin-details-event-btn:hover {
+    background-color: #d1791b;
+    color: #080a0d;
+}
 .event-rounded-table {
     border-collapse: separate;
     border-spacing: 0;

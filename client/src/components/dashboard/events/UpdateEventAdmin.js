@@ -164,6 +164,17 @@ export default function UpdateEventAdmin({ loggedInUser }) {
             <h3 className="text-center create-form-text mb-4">
               Update An Event
             </h3>
+            <div className="centered-content">
+          <Link to={`/admin/events`} className="chip-link">
+            Events
+          </Link>
+          <Link to={`/admin/venues`} className="chip-link">
+            Venues
+          </Link>
+          <Link to={`/admin/services`} className="chip-link">
+            Services
+          </Link>
+        </div>
             <Form>
               {/* Event Name */}
               <FormGroup>

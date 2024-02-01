@@ -166,7 +166,7 @@ export default function DashboardEvents({loggedInUser}) {
               </td>
 
               <td>
-                <Link className="details" to={`${e.id}`}>Details</Link>
+                <Link className="details" to={`${e.id}`}><Button className="admin-details-event-btn">Details</Button></Link>
               </td>
             </tr>
           ))}

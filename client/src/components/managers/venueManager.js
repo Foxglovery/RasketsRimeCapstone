@@ -20,3 +20,13 @@ export const CreateNewVenue = (newVenue) => {
     return res.json();
   });
 };
+
+export const updateVenue = (venueId, newVenue) => {
+  return fetch(`${_apiUrl}/${venueId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newVenue),
+  })
+}

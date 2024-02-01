@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { GetServices } from "../../managers/serviceManager";
 import "../../styles/dash/CreateEventAdmin.css"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CreateNewVenue } from "../../managers/venueManager";
 
 export default function CreateVenue() {
@@ -99,6 +99,20 @@ export default function CreateVenue() {
       <Row>
         <Col md={8} className="mx-auto">
           <h3  className="text-center create-form-text mb-4">Create A Venue</h3>
+          <div className="centered-content">
+          <Link to={`/userprofiles`} className="chip-link">
+            Users
+          </Link>
+          <Link to={`/admin/events`} className="chip-link">
+            Events
+          </Link>
+          <Link to={`/admin/venues`} className="chip-link">
+            Venues
+          </Link>
+          <Link to={`/admin/services`} className="chip-link">
+            Services
+          </Link>
+        </div>
           <Form>
             {/* Venue Name */}
             <FormGroup>

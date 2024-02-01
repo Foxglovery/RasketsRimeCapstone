@@ -48,6 +48,7 @@ export default function VenueListAdmin({ loggedInUser }) {
               <th>Contact</th>
               <th>Max Occupancy</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -58,8 +59,9 @@ export default function VenueListAdmin({ loggedInUser }) {
                 <td>{v.address}</td>
                 <td>{v.contactInfo}</td>
                 <td>{v.maxOccupancy}</td>
+                <td><Button className="admin-update-event-btn" onClick={() => navigate(`/admin/venues/update/${v.id}`)}>Update</Button></td>
                 <td>
-                  <Link to={`${v.id}`}>Details</Link>
+                  <Link to={`${v.id}`}><Button className="admin-details-event-btn">Details</Button></Link>
                 </td>
               </tr>
             ))}

@@ -9,7 +9,7 @@ import {
 import DateDropdowns from "../../DateDropdowns";
 import DurationDropdown from "../../DurationDropdown";
 import { CreateEvent } from "../../managers/eventManager";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../../styles/dash/CreateEventAdmin.css'
 
 export default function CreateEventAdmin({loggedInUser}) {
@@ -148,6 +148,20 @@ const handleSubmit = async (e) => {
       <Row>
         <Col md={8} className="mx-auto">
           <h3  className="text-center create-form-text mb-4">Create An Event</h3>
+          <div className="centered-content">
+          <Link to={`/userprofiles`} className="chip-link">
+            Users
+          </Link>
+          <Link to={`/admin/events`} className="chip-link">
+            Events
+          </Link>
+          <Link to={`/admin/venues`} className="chip-link">
+            Venues
+          </Link>
+          <Link to={`/admin/services`} className="chip-link">
+            Services
+          </Link>
+        </div>
           <Form>
             {/* Event Name */}
             <FormGroup>

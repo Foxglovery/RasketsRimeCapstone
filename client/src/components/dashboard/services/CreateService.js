@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { GetVenues } from "../../managers/venueManager";
 import "../../styles/dash/CreateEventAdmin.css"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CreateNewService } from "../../managers/serviceManager";
 export default function CreateService() {
     const [venues, setVenues] = useState([]);
@@ -87,11 +87,25 @@ export default function CreateService() {
     <Container className="">
       <Row>
         <Col md={8} className="mx-auto">
-          <h3  className="text-center create-form-text mb-4">Create An Event</h3>
+          <h3  className="text-center create-form-text mb-4">Create A Service</h3>
+          <div className="centered-content">
+          <Link to={`/userprofiles`} className="chip-link">
+            Users
+          </Link>
+          <Link to={`/admin/events`} className="chip-link">
+            Events
+          </Link>
+          <Link to={`/admin/venues`} className="chip-link">
+            Venues
+          </Link>
+          <Link to={`/admin/services`} className="chip-link">
+            Services
+          </Link>
+        </div>
           <Form>
             {/* Event Name */}
             <FormGroup>
-              <Label for="eventName" className="create-form-text">Event Name</Label>
+              <Label for="eventName" className="create-form-text">Service Name</Label>
               <Input
               required
                 id="eventName"
@@ -110,7 +124,7 @@ export default function CreateService() {
 
             {/* Services multiselect */}
             <FormGroup>
-              <Label for="venueMulti" className="create-form-text">Select Services</Label>
+              <Label for="venueMulti" className="create-form-text">Select Venues</Label>
               <Input
                 id="venueMulti"
                 multiple

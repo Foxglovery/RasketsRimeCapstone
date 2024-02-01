@@ -14,7 +14,7 @@ export default function ServiceDropdown({ onServiceChange }) {
 
   return (
     <div className="service-dropdown-container">
-      <select className="service-dropdown-select" onChange={handleChange}>
+      <select onChange={handleChange}>
         <option selected value="0">
           Filter By Service
         </option>

@@ -143,5 +143,64 @@ public IActionResult CreateVenue (VenueCreationDTO venueToCreate)
     }
 }
 
+[HttpPut("{id}")]
+[Authorize(Roles = "Admin")]
+public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO newVenue)
+{
+    var venueToUpdate = _dbContext.Venues
+        .Include(v => v.VenueServices)
+        .SingleOrDefault(v => v.Id == id);
+
+    if (venueToUpdate == null)
+    {
+        return NotFound();
+    }
+
+    if (newVenue.MaxOccupancy < venueToUpdate.MaxOccupancy)
+    {
+        var affectedEvents = _dbContext.Events
+            .Where(e => e.VenueId == id && e.ExpectedAttendees > newVenue.MaxOccupancy && e.EventStart >= DateTime.Now)
+            .ToList();
+        if (affectedEvents.Any())
+        {
+            return BadRequest("Updating the venue's capacity will affect already booked events. Consult the the handbook");
+        }
+    }
+
+
+
+    venueToUpdate.VenueName = newVenue.VenueName;
+    venueToUpdate.Address = newVenue.Address;
+    venueToUpdate.Description = newVenue.Description;
+    venueToUpdate.IsActive = newVenue.IsActive;
+    venueToUpdate.ImageUrl = newVenue.ImageUrl;
+    venueToUpdate.ContactInfo = newVenue.ContactInfo;
+    venueToUpdate.MaxOccupancy = newVenue.MaxOccupancy;
+    
+    venueToUpdate.VenueServices.Clear();
+    foreach (var serviceId in newVenue.ServiceIds)
+    {
+        if (!_dbContext.Services.Any(s => s.Id == serviceId))
+        {
+            return BadRequest($"Service with ID {serviceId} does not exist.");
+        }
+        venueToUpdate.VenueServices.Add(new VenueService
+        {
+            VenueId = venueToUpdate.Id,
+            ServiceId = serviceId
+        });
+    }
+    try
+    {
+       _dbContext.SaveChanges(); 
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, "An error occurred while updating the venue" + ex.Message);
+    }
+    
+    return Ok(venueToUpdate);
+}
+
 
 }
