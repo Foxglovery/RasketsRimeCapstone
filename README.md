@@ -40,11 +40,50 @@ To get started with Rasket's Rime:
 
 
 ### Prerequisites
-- Ensure you have [Node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm) installed on your machine. Use `node -v` and `npm -v` in your terminal to verify your installations.
+Before diving into the setup process, ensure you have the following installed:
+- [Node.js and npm](https://nodejs.org/en/download/)
+- [.NET 6.0 SDK](https://dotnet.microsoft.com/download)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (or another database that Entity Framework Core supports, if applicable)
 
-### Installation Steps
+### Front-End Installation Steps
 1. **Clone the Repository**
    Begin by cloning the repository to your local machine:
    ```bash
    git clone https://github.com/Foxglovery/RasketsRimeCapstone.git
+   ```
+2. **Navigate to the Client Directory**
+   After cloning, move into the `client` directory where the React application is located:
    ```bash
+   cd raskets-rime/client
+   ```
+3. **Install Dependencies**
+   Inside the `client` directory, install the project's dependencies as defined in the `package.json` file:
+   ```bash
+   npm install
+   ```
+   This installs all necessary dependencies such as React, Bootstrap, React Router, and various testing libraries.
+4. **Run Front-End In Development**
+   In the 'client' directory, start the app
+   ```bash
+   npm start
+   ```
+### Back-End Installation Steps
+1. ** Install Dependencies**
+   In the root directory run :
+   ```bash
+   dotnet restore
+   ```
+2. **Create and Apply Migrations**
+   Now create the initial migration
+   ```bash
+   dotnet ef migrations add InitialCreate
+   ```
+3. **Update Database**
+   Now update the db
+   ```bash
+   dotnet ef database update
+   ```
+4. **Start Back-End Server**
+   As of writing this, I am running the API using the VS Code debugger.
+   Ensure you have the proper C# extension for working with C#.
+   Run Debugger
