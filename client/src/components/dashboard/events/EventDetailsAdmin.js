@@ -71,9 +71,11 @@ const formatEventTime = (dateString) => {
             </tr>
           </tbody>
         </Table>
-
-      <h4>Event Services</h4>
-      <Table dark striped>
+      <div className="centered-content">
+        <h3>Event Services</h3>
+      </div>
+      
+      <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
         <thead>
           <tr>
             <th>#</th>

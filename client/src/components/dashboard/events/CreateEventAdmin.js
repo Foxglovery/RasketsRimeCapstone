@@ -77,8 +77,10 @@ export default function CreateEventAdmin({loggedInUser}) {
     setpublicChecked(!publicChecked);
   };
   const handleMonthChange = (e) => {
-    const newDate = new Date(eventStart.setMonth(parseInt(e.target.value) - 1));
-    setEventStart(new Date(newDate));
+    let newDate = new Date(eventStart);
+    newDate.setDate(1); // Set to the first of the month to avoid day overflow
+    newDate.setMonth(parseInt(e.target.value) - 1); // Adjust for JavaScript's 0-indexed months
+    setEventStart(newDate);
   };
 
   const handleDayChange = (e) => {

@@ -49,7 +49,7 @@ public class EventController : ControllerBase
                 ExpectedAttendees = e.ExpectedAttendees,
                 EventDescription = e.EventDescription,
                 IsPublic = e.IsPublic,
-                SubmitedOn = e.SubmitedOn,
+                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local) ,
                 Status = e.Status,
                 EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
@@ -115,7 +115,7 @@ public class EventController : ControllerBase
                 ExpectedAttendees = e.ExpectedAttendees,
                 EventDescription = e.EventDescription,
                 IsPublic = e.IsPublic,
-                SubmitedOn = e.SubmitedOn,
+                SubmitedOn =TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
                 Status = e.Status,
                 EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
@@ -182,7 +182,7 @@ public class EventController : ControllerBase
                 ExpectedAttendees = e.ExpectedAttendees,
                 EventDescription = e.EventDescription,
                 IsPublic = e.IsPublic,
-                SubmitedOn = e.SubmitedOn,
+                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
                 Status = e.Status,
                 EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
@@ -249,7 +249,7 @@ public class EventController : ControllerBase
                 ExpectedAttendees = e.ExpectedAttendees,
                 EventDescription = e.EventDescription,
                 IsPublic = e.IsPublic,
-                SubmitedOn = e.SubmitedOn,
+                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
                 Status = e.Status,
                 EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
@@ -391,7 +391,7 @@ public IActionResult GetByUserId(int userId)
         ExpectedAttendees = eventInstance.ExpectedAttendees,
         EventDescription = eventInstance.EventDescription,
         IsPublic = eventInstance.IsPublic,
-        SubmitedOn = eventInstance.SubmitedOn,
+        SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.SubmitedOn, TimeZoneInfo.Local),
         Status = eventInstance.Status,
         EventStart = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.EventStart, TimeZoneInfo.Local),
         Duration = eventInstance.Duration,
@@ -608,7 +608,7 @@ public IActionResult GetEventForUpdate(int id)
             ExpectedAttendees = eventInstance.ExpectedAttendees,
             EventDescription = eventInstance.EventDescription,
             IsPublic = eventInstance.IsPublic,
-            SubmitedOn = eventInstance.SubmitedOn,
+            SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.SubmitedOn, TimeZoneInfo.Local),
             Status = eventInstance.Status,
             EventStart = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.EventStart, TimeZoneInfo.Local),
             Duration = eventInstance.Duration,
@@ -650,6 +650,7 @@ public IActionResult GetPending()
     var PendingList = _dbContext
             .Events
             .Where(e => e.Status == "Pending")
+            .OrderBy(e => e.SubmitedOn)
             .Include(e => e.UserProfile)
                 .ThenInclude(up => up.IdentityUser)
             .Include(e => e.EventServices)
@@ -673,9 +674,9 @@ public IActionResult GetPending()
                 ExpectedAttendees = e.ExpectedAttendees,
                 EventDescription = e.EventDescription,
                 IsPublic = e.IsPublic,
-                SubmitedOn = e.SubmitedOn,
+                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
                 Status = e.Status,
-                EventStart = e.EventStart,
+                EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
                 Venue = new VenueDTO
                 {

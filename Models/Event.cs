@@ -19,7 +19,7 @@ public class Event
     [Required]
     public bool IsPublic { get; set; }
     
-    public DateTime? SubmitedOn { get; set; }
+    public DateTime SubmitedOn { get; set; }
     [Required]
     public string Status { get; set; }
     [Required]

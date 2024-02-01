@@ -118,5 +118,51 @@ public class ServiceController : ControllerBase
            
         }).ToList());
     }
-    
+
+
+[HttpPost("create")]
+[Authorize(Roles = "Admin")]
+
+public IActionResult CreateService (ServiceCreationDTO serviceToCreate)
+    {
+        using (var transaction = _dbContext.Database.BeginTransaction())
+        {
+            try
+            {
+                var newService = new Service
+                {
+                    ServiceName = serviceToCreate.ServiceName,
+                    Description = serviceToCreate.Description,
+                    Price = serviceToCreate.Price,
+                    ImageUrl = serviceToCreate.ImageUrl,
+                    IsActive = serviceToCreate.IsActive
+                };
+                _dbContext.Services.Add(newService);
+                _dbContext.SaveChanges();
+
+                foreach (var venueId in serviceToCreate.VenueIds)
+                {
+                    var newVenueService = new VenueService
+                    {
+                        VenueId = venueId,
+                        ServiceId = newService.Id
+                    };
+                    _dbContext.VenueServices.Add(newVenueService);
+                }
+                _dbContext.SaveChanges();
+                transaction.Commit();
+                return Ok(new
+                {
+                    Success = true,
+                    Message = "Service Created Sucessfully",
+                    ServiceId = newService.Id
+                });
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                return StatusCode(500, new{Error = "An error occured while creating service" + ex.Message });
+            }
+        }
+    }
 }

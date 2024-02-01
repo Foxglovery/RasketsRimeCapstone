@@ -38,7 +38,7 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
             Services
           </Link>
         </div>
-        <Table dark striped>
+        <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
           <tbody>
             <tr>
               <th>Name</th>
@@ -68,9 +68,9 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
           </tbody>
         </Table>
         <div className="centered-content">
-          <h4>Venue Services</h4>
+          <h3>Venue Services</h3>
         </div>
-        <Table dark striped>
+        <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
               <th>#</th>

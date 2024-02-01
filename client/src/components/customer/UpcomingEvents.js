@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   GetEventsByServiceId,
   GetEventsByUserId,
@@ -6,7 +6,14 @@ import {
   GetUpcomingEvents,
   UserCancelEvent,
 } from "../managers/eventManager";
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Tooltip,
+} from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import VenueDropdown from "../dropdowns/VenueDropdown";
 import "../styles/client/UpcomingEvents.css";
@@ -21,7 +28,12 @@ export default function UpcomingEvents({ loggedInUser }) {
   //set up state storage
   const [selectedVenueId, setSelectedVenueId] = useState(null);
   const [selectedServiceId, setSelectedServiceId] = useState(null);
+  const [tooltips, setTooltips] = useState({});
 
+  //tooltip handler
+  const toggleTooltip = (id) => {
+    setTooltips({ ...tooltips, [id]: !tooltips[id] });
+  };
   //handlers for the dropdowns
   const handleVenueChange = (venueId) => {
     setSelectedVenueId(parseInt(venueId));
@@ -163,12 +175,22 @@ export default function UpcomingEvents({ loggedInUser }) {
                   </div>
                   <ul className="postcard__tagbox">
                     {me.eventServices.map((ev) => (
-                      <li key={ev.id} className="tag__item play blue">
-                        <a href="#">
-                          <i className="fas fa-play mr-2"></i>
-                          {ev.service.serviceName}
-                        </a>
-                      </li>
+                      <React.Fragment key={ev.id}>
+                        <li key={ev.id} className="tag__item play blue">
+                          <a href={`/services#service-${ev.service.id}`} id={`Tooltip-${ev.id}`}>
+                            <i className="fas fa-play mr-2"></i>
+                            {ev.service.serviceName}
+                          </a>
+                        </li>
+                        <Tooltip
+                          placement="bottom"
+                          isOpen={tooltips[`Tooltip-${ev.id}`]}
+                          target={`Tooltip-${ev.id}`}
+                          toggle={() => toggleTooltip(`Tooltip-${ev.id}`)}
+                        >
+                          {ev.service.description}{" "}
+                        </Tooltip>
+                      </React.Fragment>
                     ))}
                   </ul>
                   <div className="postcard__subtitle small">

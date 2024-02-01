@@ -18,6 +18,7 @@ import MyEventsList from "./customer/MyEventsList";
 import UpcomingEvents from "./customer/UpcomingEvents";
 import UpdateEventCustomer from "./dashboard/events/UpdateEventsCustomer";
 import CreateEventCustomer from "./customer/CreateEventCustomer";
+import CreateService from "./dashboard/services/CreateService";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -77,6 +78,11 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route path="/admin/services" element={
           <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
           <ServiceListAdmin />
+        </AuthorizedRoute>
+        }/>
+        <Route path="/admin/services/create" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <CreateService />
         </AuthorizedRoute>
         }/>
         {/* Customer Routes */}
