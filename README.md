@@ -3,7 +3,7 @@
 The sleepy glowing beacon of Rasket's Rime lures travelers and transforms them into residents of the holler. Those residents in turn need a way to book their favorite local venues for all manner of events. Enter: Rasket's Rime - The easy way to submit event bookings (along with specialized services). Upon admin approval, an event will be displayed for the community to see and (if desired) attend!
 ## Why I Needed It
 
-Rasket's Rime, as a concept, had been living rent-free in my brain for half a year. It started as a Canva project that I started as a way to wind down in the evenings. The thought of it's warm window panes brought me a cozy kind of comfort after a rewarding day of programming. When the time came to choose a Server-Side Capstone project for my NSS Bootcamp, it felt only fitting that I finish it out with the town that I'd accidentally created while trying to rest my brain ridges. On top of that, I had some trepidation about working with Dates in C# and wanted to get in the mud, so to speak.
+Rasket's Rime, as a concept, had been living rent-free in my brain for half a year. It started as a Canva project that I started as a way to wind down in the evenings. The thought of its warm window panes brought me a cozy kind of comfort after a rewarding day of programming. When the time came to choose a Server-Side Capstone project for my NSS Bootcamp, it felt only fitting that I finish it out with the town that I'd accidentally created while trying to rest my brain ridges. On top of that, I had some trepidation about working with Dates in C# and wanted to get in the mud, so to speak.
 ## User Features
 
 - **Event Discovery**: View all approved events and detailed information about each.
