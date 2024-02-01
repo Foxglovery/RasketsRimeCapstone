@@ -35,7 +35,7 @@ export default function VenueListAdmin({ loggedInUser }) {
             Services
           </Link>
         </div>
-        <Table dark striped>
+        <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
               <th>#</th>

@@ -20,6 +20,9 @@ export const GetEventsByServiceId = (id) => {
 export const GetEvents = () => {
     return fetch(_apiUrl).then((res) => res.json());
 }
+export const GetPending = () => {
+    return fetch(`${_apiUrl}/pending`).then((res) => res.json());
+}
 export const GetUpcomingEvents = () => {
     return fetch(`${_apiUrl}/upcoming`).then((res) => res.json());
 }

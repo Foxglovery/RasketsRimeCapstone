@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { GetServices } from "../../managers/serviceManager";
-import { Link } from "react-router-dom";
-import { Table } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Table } from "reactstrap";
 import backgroundImage from '../../../assets/brown-blue-wood.jpg';
 export default function ServiceListAdmin({loggedInUser}) {
     const [services, setServices] = useState([]);
+    const navigate = useNavigate();
 
 
     const renderVenueNames = (venueServices) => {
@@ -29,6 +30,9 @@ export default function ServiceListAdmin({loggedInUser}) {
           <Link to={`/userprofiles`} className="chip-link">Users</Link>
           <Link to={`/admin/venues`} className="chip-link">Venues</Link>
         </div>
+        <div className="centered-content">
+          <Button className="admin-service-btn" onClick={() => navigate(`/admin/services/create`)}>Add Service</Button>
+      </div>
         <Table dark striped className="mt-4" style={{ maxWidth: '90%', margin: 'auto' }}>
           <thead>
             <tr>

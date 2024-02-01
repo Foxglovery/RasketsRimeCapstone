@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import { GetVenues } from "../managers/venueManager";
 import "../styles/client/VenueList.css";
+import { Tooltip } from "reactstrap";
 export default function VenueList() {
   const [venues, setVenues] = useState([]);
+  const [tooltips, setTooltips] = useState({});
+
 
   useEffect(() => {
     GetVenues().then(setVenues);
   }, []);
+
+  const toggleTooltip = (id) => {
+    setTooltips({...tooltips, [id]: !tooltips[id] });
+  }
   return (
     <>
       <div className="venue-background-image">
@@ -37,13 +44,24 @@ export default function VenueList() {
                   <ul className="postcard__tagbox">
                     {v.venueServices &&
                       v.venueServices.map((vs) => (
+                        <>
                         <li key={vs.id} className="tag__item play blue">
-                          <a href="#">
+                          <a href={`/services#service-${vs.service.id}`} id={`Tooltip-${vs.id}`}>
                             <i className="fas fa-play mr-2"></i>
                             {vs.service.serviceName}
                           </a>
                         </li>
-                      ))}
+                        <Tooltip
+                          placement="bottom"
+                          isOpen={tooltips[`Tooltip-${vs.id}`]}
+                          target={`Tooltip-${vs.id}`}
+                          toggle={() => toggleTooltip(`Tooltip-${vs.id}`)}
+                        >
+                          {vs.service.description}{" "}
+                          {/* Assuming you have a description field */}
+                        </Tooltip>
+                      </>
+                    ))}
                   </ul>
                   <div className="postcard__subtitle small">
                     <i className="fas fa-calendar-alt mr-2"></i>Have questions?

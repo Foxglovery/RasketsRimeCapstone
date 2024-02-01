@@ -4,6 +4,7 @@ import {
   ApproveEvent,
   DeleteEvent,
   GetEvents,
+  GetPending,
   RejectEvent,
 } from "../../managers/eventManager";
 import { Button, Table } from "reactstrap";
@@ -12,11 +13,24 @@ import backgroundImage from '../../../assets/brown-blue-wood.jpg';
 import '../../styles/DashboardEvents.css'
 export default function DashboardEvents({loggedInUser}) {
   const [events, setEvents] = useState([]);
+  const [showPending, setShowPending] = useState(false);
   const navigate = useNavigate();
-
+//if showPending is false, get all events
+//if it is true then fetch and set pending
   useEffect(() => {
-    GetEvents().then(setEvents);
-  }, []);
+    if (!showPending)
+    {
+      GetEvents().then(setEvents)
+      .catch((error) => {
+        console.error(
+          "There was an error", error
+        );
+      });
+    } else {
+      GetPending().then(setEvents);
+    }
+    
+  }, [showPending]);
 
   const handleApprove = (id) => {
     ApproveEvent(id).then(() => {
@@ -62,11 +76,12 @@ export default function DashboardEvents({loggedInUser}) {
         <Link to={`/admin/venues`} className="chip-link">Venues</Link>
         <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <div className="left-align-btn">
+      <div className="centered-content">
         <Button  className="admin-event-btn"onClick={() => navigate("/admin/events/create")}>Add Event</Button>
-        {/* <Button  className="admin-event-btn"onClick={() => navigate("/admin/events/create")}>Pending</Button> */}
+        {showPending ? <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Show All</Button> : <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Pending</Button>}
+        
       </div>
-      <Table dark striped>
+      <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
         <thead>
           <tr>
             <th>#</th>
@@ -115,13 +130,13 @@ export default function DashboardEvents({loggedInUser}) {
               )}
               {e.status === "Approved" ? (
                 <td>
-                  <Button color="warning" onClick={() => handleCancel(e.id)}>
+                  <Button className="admin-cancel-btn" onClick={() => handleCancel(e.id)}>
                     Cancel
                   </Button>
                 </td>
               ) : (
                 <td>
-                  <Button color="warning" disabled>
+                  <Button className="admin-cancel-btn" disabled>
                     Cancel
                   </Button>
                 </td>

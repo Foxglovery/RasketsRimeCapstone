@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { GetEventsByUserId, UserCancelEvent } from "../managers/eventManager";
 import "../styles/client/MyEventsList.css";
-import { Button } from "reactstrap";
+import { Button, Tooltip } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
@@ -10,11 +10,17 @@ export default function MyEventsList({ loggedInUser }) {
   const [myEvents, setMyEvents] = useState([]);
   const [modal, setModal] = useState(false);
   const [activeModalId, setActiveModalId] = useState(null);
+  const [tooltips, setTooltips] = useState({});
   const toggleModal = () => setModal(!modal);
 
   useEffect(() => {
     GetEventsByUserId(loggedInUser.id).then(setMyEvents);
   }, []);
+
+  //tooltip handler
+  const toggleTooltip = (id) => {
+    setTooltips({...tooltips, [id]: !tooltips[id] });
+  }
 
   const openModal = (eventId) => {
     setActiveModalId(eventId);
@@ -71,41 +77,52 @@ export default function MyEventsList({ loggedInUser }) {
                     @ {me.venue.venueName}
                   </h3>
 
-                  <div className="postcard__subtitle small">
-                    <i className="fas fa-calendar-alt mr-2"></i>
-                    {me.status}
-                  </div>
-                  <div className="postcard__subtitle small">
-                    <i className="fas fa-calendar-alt mr-2"></i>
-                    {me.venue.address}
-                  </div>
+                  <div className="upcoming-small-details">
+                    <div className="upcoming-details-cont">
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {me.venue.address}
+                      </div>
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {formatEventTime(me.eventStart)}
+                      </div>
+                    </div>
 
-                  <div className="postcard__subtitle small">
-                    <i className="fas fa-calendar-alt mr-2"></i>
-                    {formatEventTime(me.eventStart)}
-                  </div>
-                  <div className="postcard__subtitle small">
-                    <i className="fas fa-calendar-alt mr-2"></i>Until{" "}
-                    {formatEventEnd(me.eventEnd)}
-                  </div>
-                  <div className="postcard__subtitle small">
-                    <i className="fas fa-calendar-alt mr-2"></i>
-                    {me.expectedAttendees} People Expected
+                    <div className="upcoming-details-cont">
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {me.expectedAttendees} People Expected
+                      </div>
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        Until {formatEventEnd(me.eventEnd)}
+                      </div>
+                    </div>
                   </div>
                   <div className="postcard__bar"></div>
                   <div className="postcard__preview-txt">
                     {me.eventDescription}
                   </div>
                   <ul className="postcard__tagbox">
-                    {me.eventServices &&
-                      me.eventServices.map((ev) => (
+                  {me.eventServices.map((ev) => (
+                      <>
                         <li key={ev.id} className="tag__item play blue">
-                          <a href="#">
+                          <a href="#" id={`Tooltip-${ev.id}`}>
                             <i className="fas fa-play mr-2"></i>
                             {ev.service.serviceName}
                           </a>
                         </li>
-                      ))}
+                        <Tooltip
+                          placement="bottom"
+                          isOpen={tooltips[`Tooltip-${ev.id}`]}
+                          target={`Tooltip-${ev.id}`}
+                          toggle={() => toggleTooltip(`Tooltip-${ev.id}`)}
+                        >
+                          {ev.service.description}{" "}
+                        </Tooltip>
+                      </>
+                    ))}
                   </ul>
                   <div className="postcard__subtitle small">
                     <i className="fas fa-calendar-alt mr-2"></i>Have questions?

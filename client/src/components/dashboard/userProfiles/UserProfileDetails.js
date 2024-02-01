@@ -41,7 +41,7 @@ export default function UserProfileDetails({ loggedInUser }) {
             Services
           </Link>
         </div>
-        <Table dark striped>
+        <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
               <th>Name</th>
@@ -61,18 +61,18 @@ export default function UserProfileDetails({ loggedInUser }) {
         </Table>
         {/* Event Information Table */}
         <div className="centered-content">
-          <h2>User's Events</h2>
+          <h3>User's Events</h3>
         </div>
         {userProfile.events &&
           userProfile.events.map((event, index) => (
             <div key={index}>
               <div className="centered-content">
-                <h3>
+                <h4>
                   Event {index + 1}: {event.eventName}
-                </h3>
+                </h4>
               </div>
 
-              <Table dark striped>
+              <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
                 <thead>
                   <tr>
                     <th>Event Name</th>
@@ -90,9 +90,9 @@ export default function UserProfileDetails({ loggedInUser }) {
                   </tr>
                 </tbody>
               </Table>
-
-              <h4>Event Services</h4>
-              <Table dark striped>
+            <div className="centered-content">
+              <h3>Event Services</h3>
+              <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -114,6 +114,8 @@ export default function UserProfileDetails({ loggedInUser }) {
                   ))}
                 </tbody>
               </Table>
+            </div>
+              
             </div>
           ))}
       </div>

@@ -1,13 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "../styles/client/ServiceList.css";
 import { GetServices } from "../managers/serviceManager";
 export default function ServiceList() {
   const [services, setServices] = useState([]);
+  const serviceRefs = useRef({});
 
   useEffect(() => {
     GetServices().then(setServices);
   }, []);
+//auto scrolling to service if url has ref
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#service-', '');
+      const element = document.getElementById(`service-${id}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [services]); // Dependency array includes services to re-run when services are updated
+ 
+
   return (
     <>
       <div className="venue-background-image">
@@ -19,6 +33,7 @@ export default function ServiceList() {
             <div
               className="blog-card"
               key={s.id}
+              id={`service-${s.id}`}
               style={{ backgroundImage: `url(${s.imageUrl})` }}
             >
               <div className="image-overlay"></div>
@@ -31,7 +46,7 @@ export default function ServiceList() {
                 </div>
                 <ul className="card-info">
                   {s.venueServices &&
-                    s.venueServices.map((vs) => <li>{vs.venue.venueName}</li>)}
+                    s.venueServices.map((vs) => <li key={vs.id}>{vs.venue.venueName}</li>)}
                 </ul>
                 <div className="utility-info">
                   <ul className="utility-list">

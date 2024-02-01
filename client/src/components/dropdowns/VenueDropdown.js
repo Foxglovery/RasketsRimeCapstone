@@ -15,7 +15,7 @@ export default function VenueDropdown({ onVenueChange }) {
   return (
     <div className="venue-dropdown-container">
       <select onChange={handleChange}>
-        <option selected value="0">
+        <option value="0">
           Filter By Venue
         </option>
         {venues.map((v) => (

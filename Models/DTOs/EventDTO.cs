@@ -14,7 +14,7 @@ public class EventDTO
 
     public string EventDescription { get; set; }
     public bool IsPublic { get; set; }
-    public DateTime? SubmitedOn { get; set; }
+    public DateTime SubmitedOn { get; set; }
 
     public string Status { get; set; }
 
