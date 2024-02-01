@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 
 import { Table } from "reactstrap";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
-
 export default function UserProfileDetails({ loggedInUser }) {
   const [userProfile, setUserProfile] = useState({});
 
@@ -41,7 +40,7 @@ export default function UserProfileDetails({ loggedInUser }) {
             Services
           </Link>
         </div>
-        <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
+        <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
               <th>Name</th>
@@ -72,7 +71,7 @@ export default function UserProfileDetails({ loggedInUser }) {
                 </h4>
               </div>
 
-              <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
+              <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
                 <thead>
                   <tr>
                     <th>Event Name</th>
@@ -92,7 +91,7 @@ export default function UserProfileDetails({ loggedInUser }) {
               </Table>
             <div className="centered-content">
               <h3>Event Services</h3>
-              <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
+              <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
                 <thead>
                   <tr>
                     <th>#</th>
