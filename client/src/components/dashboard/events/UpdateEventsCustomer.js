@@ -39,6 +39,7 @@ export default function UpdateEventCustomer({ loggedInUser }) {
   const [existingDay, setExistingDay] = useState(0);
   const [existingYear, setExistingYear] = useState(0);
   const [existingHour, setExistingHour] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
   const newEvent = {
     userId: loggedInUser.id,
     venueId: chosenVenueId,
@@ -144,16 +145,21 @@ export default function UpdateEventCustomer({ loggedInUser }) {
     e.preventDefault();
 
     try {
-      const data = await UpdateEvent( eventId, newEvent);
+      const response = await UpdateEvent(eventId, newEvent);
 
-      if (data && !data.error) {
-        console.log("Event created successfully:", data);
-        navigate(`/myEvents`);
-      } else {
-        console.error("Failed to create event:", data);
+      if (!response.ok) {
+        //if the server responds with error
+        const errorText = await response.text();
+        setErrorMessage(errorText || "Failed to update event. Please check your inputs.");
+        console.error("Failed to update event", errorText);
+        return;
       }
+      const data = await response.json();;
+      console.log("Event updated successfully", data);
+      navigate(`/myEvents`);
     } catch (error) {
       console.error("Error submitting event:", error);
+      setErrorMessage(error.toString());
     }
   };
   return (
@@ -294,6 +300,7 @@ export default function UpdateEventCustomer({ loggedInUser }) {
 
               {/* Submit */}
               <FormGroup className="text-center">
+              {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
                 <Button className="btn btn-primary create-event-submit-btn mt-3" onClick={handleSubmit}>
                   Submit
                 </Button>

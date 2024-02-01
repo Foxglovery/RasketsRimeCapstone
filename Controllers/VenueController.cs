@@ -96,5 +96,52 @@ public IActionResult GetById(int id)
             return Ok(venueDto);
 }
 
+[HttpPost]
+[Authorize(Roles = "Admin")]
+
+public IActionResult CreateVenue (VenueCreationDTO venueToCreate)
+{
+    using (var transaction = _dbContext.Database.BeginTransaction())
+
+    try
+    {
+        var newVenue = new Venue
+        {
+            VenueName = venueToCreate.VenueName,
+            Address = venueToCreate.Address,
+            Description = venueToCreate.Description,
+            ContactInfo = venueToCreate.ContactInfo,
+            ImageUrl = venueToCreate.ImageUrl,
+            MaxOccupancy = venueToCreate.MaxOccupancy,
+            IsActive = venueToCreate.IsActive
+        };
+        _dbContext.Venues.Add(newVenue);
+        _dbContext.SaveChanges();
+
+        foreach (var serviceId in venueToCreate.ServiceIds)
+        {
+            var newVenueService = new VenueService
+            {
+                VenueId = newVenue.Id,
+                ServiceId = serviceId
+            };
+            _dbContext.VenueServices.Add(newVenueService);
+        }
+        _dbContext.SaveChanges();
+        transaction.Commit();
+        return Ok(new
+        {
+            Success = true,
+            Message = "Venue Created Successfully",
+            VenueId = newVenue.Id
+        });
+    }
+    catch (Exception ex)
+    {
+        transaction.Rollback();
+        return StatusCode(500, new{Error = "An error occured while creating venue" + ex.Message});
+    }
+}
+
 
 }

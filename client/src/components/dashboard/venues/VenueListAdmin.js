@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { GetVenues } from "../../managers/venueManager";
-import { Link } from "react-router-dom";
-import { Table } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Table } from "reactstrap";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
 
 export default function VenueListAdmin({ loggedInUser }) {
   const [venues, setVenues] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     GetVenues().then(setVenues);
@@ -35,6 +36,9 @@ export default function VenueListAdmin({ loggedInUser }) {
             Services
           </Link>
         </div>
+        <div className="centered-content">
+          <Button className="admin-service-btn" onClick={() => navigate(`/admin/venues/create`)}>Add Venue</Button>
+      </div>
         <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
