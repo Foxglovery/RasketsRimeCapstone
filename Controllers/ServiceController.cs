@@ -120,7 +120,7 @@ public class ServiceController : ControllerBase
     }
 
 
-[HttpPost("create")]
+[HttpPost]
 [Authorize(Roles = "Admin")]
 
 public IActionResult CreateService (ServiceCreationDTO serviceToCreate)
