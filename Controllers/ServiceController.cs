@@ -154,7 +154,7 @@ public IActionResult CreateService (ServiceCreationDTO serviceToCreate)
                 return Ok(new
                 {
                     Success = true,
-                    Message = "Service Created Sucessfully",
+                    Message = "Service Created Successfully",
                     ServiceId = newService.Id
                 });
             }

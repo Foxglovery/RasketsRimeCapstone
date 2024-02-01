@@ -1,37 +1,42 @@
 
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { GetVenues } from "../../managers/venueManager";
+import { GetServices } from "../../managers/serviceManager";
 import "../../styles/dash/CreateEventAdmin.css"
 import { Link, useNavigate } from "react-router-dom";
-import { CreateNewService } from "../../managers/serviceManager";
-export default function CreateService() {
-    const [venues, setVenues] = useState([]);
-    const [chosenVenueId, setChosenVenueId] = useState(null);
-    const [serviceName, setServiceName] = useState("");
+import { CreateNewVenue } from "../../managers/venueManager";
+
+export default function CreateVenue() {
+    const [services, setServices] = useState([]);
+    const [chosenServiceId, setChosenServiceId] = useState(null);
+    const [venueName, setVenueName] = useState("");
+    const [address, setAddress] = useState("");
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState(0)
+    const [contactInfo, setContactInfo] = useState("");
+    const [maxOccupancy, setMaxOccupancy] = useState(0);
     const [imgUrl, setImgUrl] = useState("");
-    const [venueIds, setVenueIds] = useState([]);
+    const [serviceIds, setServiceIds] = useState([]);
     const [errorMessage, setErrorMessage] = (useState(""));
     const [isActive, setIsActive] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
-        GetVenues().then(setVenues);
+        GetServices().then(setServices);
     },[])
 
 
-    const newService = {
-        serviceName: serviceName,
+    const newVenue = {
+        venueName: venueName,
+        address: address,
         description: description,
-        price: price,
+        contactInfo: contactInfo,
         imageUrl: imgUrl,
+        maxOccupancy: maxOccupancy,
         isActive: isActive,
-        venueIds: venueIds
+        serviceIds: serviceIds
     }
     const handleNameChange = (event) => {
-        setServiceName(event.target.value);
+        setVenueName(event.target.value);
       };
 
     const handleToggleChecked = () => {
@@ -41,28 +46,34 @@ export default function CreateService() {
       const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
       };
+      const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+      }
       const handleImgChange = (event) => {
         setImgUrl(event.target.value);
       }
-      const handlePriceChange = (event) => {
-        setPrice(parseInt(event.target.value));
+      const handleContactChange = (event) => {
+        setContactInfo(event.target.value);
+      }
+      const handleMaxOccChange = (event) => {
+        setMaxOccupancy(parseInt(event.target.value));
       }
       const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log("New Venue", newVenue)
         try {
-          const data = await CreateNewService(newService);
+          const data = await CreateNewVenue(newVenue);
 
           if (data && !data.error) {
-            console.log('Service created successfully', data);
-            navigate(`/admin/services`);
+            console.log('Venue created successfully', data);
+            navigate(`/admin/venues`);
           } else {
-            const errorMsg = data.error || 'Failed to create service';
-            setErrorMessage('Sorry, we couldnt create the service' + errorMsg);
-            console.error('Failed to create service:', data);
+            const errorMsg = data.error || 'Failed to create venue';
+            setErrorMessage("Sorry, we couldn't create the venue" + errorMsg);
+            console.error('Failed to create venue:', data);
           }
         } catch (error) {
-          let errorMsg = error.message || 'Error submitting service';
+          let errorMsg = error.message || 'Error submitting venue';
           if (typeof errorMsg === 'string' && errorMsg.startsWith('{')) {
             try {
               const parsedError = JSON.parse(errorMsg);
@@ -73,21 +84,21 @@ export default function CreateService() {
           }
 
           setErrorMessage("Sorry, there was a problem: " + errorMsg);
-          console.error('Error submitting service', error);
+          console.error('Error submitting venue', error);
         }
       };
-    const handleVenueSelection = (event) => {
+    const handleServiceSelection = (event) => {
         const selectedOptions = Array.from(event.target.selectedOptions, (option) =>
           parseInt(option.value)
         );
-        setVenueIds(selectedOptions);
+        setServiceIds(selectedOptions);
       };
     return (
         <div className="background-image">
     <Container className="">
       <Row>
         <Col md={8} className="mx-auto">
-          <h3  className="text-center create-form-text mb-4">Create A Service</h3>
+          <h3  className="text-center create-form-text mb-4">Create A Venue</h3>
           <div className="centered-content">
           <Link to={`/userprofiles`} className="chip-link">
             Users
@@ -103,56 +114,68 @@ export default function CreateService() {
           </Link>
         </div>
           <Form>
-            {/* Event Name */}
+            {/* Venue Name */}
             <FormGroup>
-              <Label for="eventName" className="create-form-text">Service Name</Label>
+              <Label for="venueName" className="create-form-text">Venue Name</Label>
               <Input
               required
-                id="eventName"
-                name="eventName"
+                id="venueName"
+                name="venueName"
                 type="text"
                 className="form-control"
-                placeholder="Enter the name of your event"
+                placeholder="Enter the name of your venue"
                 onChange={handleNameChange}
               />
             </FormGroup>
 
-            {/* Venue Select */}
+            {/* Service Select */}
             
 
             
 
             {/* Services multiselect */}
             <FormGroup>
-              <Label for="venueMulti" className="create-form-text">Select Venues</Label>
+              <Label for="serviceMulti" className="create-form-text">Select Services</Label>
               <Input
-                id="venueMulti"
+                id="serviceMulti"
                 multiple
-                name="venueMulti"
+                name="serviceMulti"
                 type="select"
                 className="form-control"
-                onChange={handleVenueSelection}
+                onChange={handleServiceSelection}
               >
-                {venues.map((venue, index) => (
-                  <option key={index} value={venue.id}>
-                    {venue.venueName}
+                {services.map((service, index) => (
+                  <option key={index} value={service.id}>
+                    {service.serviceName}
                   </option>
                 ))}
               </Input>
             </FormGroup>
 
             <FormGroup>
-              <Label for="price" className="create-form-text">Price</Label>
+              <Label for="maxOcc" className="create-form-text">Max Occupancy</Label>
               <Input
               required
-                id="price"
-                name="price"
-                placeholder="How much does this cost?"
+                id="maxOcc"
+                name="maxOcc"
+                placeholder="How many people can this space hold?"
                 type="number"
-                onChange={handlePriceChange}
+                onChange={handleMaxOccChange}
               />
             </FormGroup>
-
+            {/* Address Field */}
+            <FormGroup>
+              <Label for="address" className="create-form-text">Address</Label>
+              <Input
+              required
+                id="address"
+                name="address"
+                type="text"
+                placeholder="Where is the venue located?"
+                onChange={handleAddressChange}
+              />
+            </FormGroup>
+            {/* Image URl */}
             <FormGroup>
               <Label for="imgUrl" className="create-form-text">Image Url</Label>
               <Input
@@ -164,6 +187,18 @@ export default function CreateService() {
                 onChange={handleImgChange}
               />
             </FormGroup>
+            {/* Contact Info */}
+            <FormGroup>
+              <Label for="contact" className="create-form-text">Contact Info</Label>
+              <Input
+              required
+                id="contact"
+                name="contact"
+                type="text"
+                placeholder='Supply contact info in this format (FirstName LastName at ###-###-####)'
+                onChange={handleContactChange}
+              />
+            </FormGroup>
 
             {/* Service Description */}
             <FormGroup>
@@ -173,7 +208,7 @@ export default function CreateService() {
                 id="description"
                 name="description"
                 type="textarea"
-                placeholder="Describe the service"
+                placeholder="Describe the venue"
                 onChange={handleDescriptionChange}
               />
             </FormGroup>
@@ -184,7 +219,7 @@ export default function CreateService() {
                 checked={isActive}
                 onChange={handleToggleChecked}
                 />{" "}
-                 <Label className="create-form-text" check>Is this service active</Label>
+                 <Label className="create-form-text" check>Is this venue active</Label>
            </FormGroup>
             
               

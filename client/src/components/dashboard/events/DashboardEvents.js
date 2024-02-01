@@ -81,7 +81,7 @@ export default function DashboardEvents({loggedInUser}) {
         {showPending ? <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Show All</Button> : <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Pending</Button>}
         
       </div>
-      <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
+      {events.length > 0 ? <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
         <thead>
           <tr>
             <th>#</th>
@@ -166,12 +166,20 @@ export default function DashboardEvents({loggedInUser}) {
               </td>
 
               <td>
-                <Link className="details" to={`${e.id}`}>Details</Link>
+                <Link className="details" to={`${e.id}`}><Button className="admin-details-event-btn">Details</Button></Link>
               </td>
             </tr>
           ))}
+           {/*conditional goes  */}
         </tbody>
-      </Table>
+      </Table> : <div className="no-events-center">
+              <div className="no-events-container">
+                <p className="no-events-message">
+                  There are no events pending approval.
+                </p>
+              </div>
+            </div>}
+      
     </div>
     </>
   );

@@ -49,7 +49,7 @@ public class EventController : ControllerBase
                 ExpectedAttendees = e.ExpectedAttendees,
                 EventDescription = e.EventDescription,
                 IsPublic = e.IsPublic,
-                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local) ,
+                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
                 Status = e.Status,
                 EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
@@ -115,7 +115,7 @@ public class EventController : ControllerBase
                 ExpectedAttendees = e.ExpectedAttendees,
                 EventDescription = e.EventDescription,
                 IsPublic = e.IsPublic,
-                SubmitedOn =TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
+                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
                 Status = e.Status,
                 EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
                 Duration = e.Duration,
@@ -354,76 +354,76 @@ public class EventController : ControllerBase
         return Ok(eventDto);
     }
 
- [HttpGet("user/{userId}")]
-[Authorize]
-public IActionResult GetByUserId(int userId)
-{
-    var events = _dbContext.Events
-        .Where(e => e.UserId == userId)
-        .Include(e => e.UserProfile)
-            .ThenInclude(up => up.IdentityUser)
-        .Include(e => e.Venue)
-        .Include(e => e.EventServices)
-            .ThenInclude(es => es.Service)
-        .ToList();
-
-    if (events == null || events.Count == 0)
+    [HttpGet("user/{userId}")]
+    [Authorize]
+    public IActionResult GetByUserId(int userId)
     {
-        return NotFound();
-    }
+        var events = _dbContext.Events
+            .Where(e => e.UserId == userId)
+            .Include(e => e.UserProfile)
+                .ThenInclude(up => up.IdentityUser)
+            .Include(e => e.Venue)
+            .Include(e => e.EventServices)
+                .ThenInclude(es => es.Service)
+            .ToList();
 
-    var eventDtos = events.Select(eventInstance => new EventDTO
-    {
-        Id = eventInstance.Id,
-        UserId = eventInstance.UserId,
-        UserProfile = eventInstance.UserProfile != null ? new UserProfileDTO
+        if (events == null || events.Count == 0)
         {
-            Id = eventInstance.UserProfile.Id,
-            FirstName = eventInstance.UserProfile.FirstName,
-            LastName = eventInstance.UserProfile.LastName,
-            Address = eventInstance.UserProfile.Address,
-            Email = eventInstance.UserProfile.IdentityUser?.Email,
-            UserName = eventInstance.UserProfile.IdentityUser?.UserName,
-            IsAdmin = eventInstance.UserProfile.IsAdmin,
-        } : null,
-        VenueId = eventInstance.VenueId,
-        EventName = eventInstance.EventName,
-        ExpectedAttendees = eventInstance.ExpectedAttendees,
-        EventDescription = eventInstance.EventDescription,
-        IsPublic = eventInstance.IsPublic,
-        SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.SubmitedOn, TimeZoneInfo.Local),
-        Status = eventInstance.Status,
-        EventStart = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.EventStart, TimeZoneInfo.Local),
-        Duration = eventInstance.Duration,
-        Venue = eventInstance.Venue != null ? new VenueDTO
+            return NotFound();
+        }
+
+        var eventDtos = events.Select(eventInstance => new EventDTO
         {
-            Id = eventInstance.Venue.Id,
-            VenueName = eventInstance.Venue.VenueName,
-            Address = eventInstance.Venue.Address,
-            Description = eventInstance.Venue.Description,
-            ContactInfo = eventInstance.Venue.ContactInfo,
-            ImageUrl = eventInstance.Venue.ImageUrl,
-            MaxOccupancy = eventInstance.Venue.MaxOccupancy,
-            IsActive = eventInstance.Venue.IsActive,
-        } : null,
-        EventServices = eventInstance.EventServices?.Select(es => new EventServiceDTO
-        {
-            Id = es.Id,
-            EventId = es.EventId,
-            ServiceId = es.ServiceId,
-            Service = es.Service != null ? new ServiceDTO
+            Id = eventInstance.Id,
+            UserId = eventInstance.UserId,
+            UserProfile = eventInstance.UserProfile != null ? new UserProfileDTO
             {
-                Id = es.Service.Id,
-                ServiceName = es.Service.ServiceName,
-                Description = es.Service.Description,
-                Price = es.Service.Price,
-                IsActive = es.Service.IsActive
-            } : null
-        }).ToList() ?? new List<EventServiceDTO>()
-    }).ToList();
+                Id = eventInstance.UserProfile.Id,
+                FirstName = eventInstance.UserProfile.FirstName,
+                LastName = eventInstance.UserProfile.LastName,
+                Address = eventInstance.UserProfile.Address,
+                Email = eventInstance.UserProfile.IdentityUser?.Email,
+                UserName = eventInstance.UserProfile.IdentityUser?.UserName,
+                IsAdmin = eventInstance.UserProfile.IsAdmin,
+            } : null,
+            VenueId = eventInstance.VenueId,
+            EventName = eventInstance.EventName,
+            ExpectedAttendees = eventInstance.ExpectedAttendees,
+            EventDescription = eventInstance.EventDescription,
+            IsPublic = eventInstance.IsPublic,
+            SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.SubmitedOn, TimeZoneInfo.Local),
+            Status = eventInstance.Status,
+            EventStart = TimeZoneInfo.ConvertTimeFromUtc(eventInstance.EventStart, TimeZoneInfo.Local),
+            Duration = eventInstance.Duration,
+            Venue = eventInstance.Venue != null ? new VenueDTO
+            {
+                Id = eventInstance.Venue.Id,
+                VenueName = eventInstance.Venue.VenueName,
+                Address = eventInstance.Venue.Address,
+                Description = eventInstance.Venue.Description,
+                ContactInfo = eventInstance.Venue.ContactInfo,
+                ImageUrl = eventInstance.Venue.ImageUrl,
+                MaxOccupancy = eventInstance.Venue.MaxOccupancy,
+                IsActive = eventInstance.Venue.IsActive,
+            } : null,
+            EventServices = eventInstance.EventServices?.Select(es => new EventServiceDTO
+            {
+                Id = es.Id,
+                EventId = es.EventId,
+                ServiceId = es.ServiceId,
+                Service = es.Service != null ? new ServiceDTO
+                {
+                    Id = es.Service.Id,
+                    ServiceName = es.Service.ServiceName,
+                    Description = es.Service.Description,
+                    Price = es.Service.Price,
+                    IsActive = es.Service.IsActive
+                } : null
+            }).ToList() ?? new List<EventServiceDTO>()
+        }).ToList();
 
-    return Ok(eventDtos);
-}
+        return Ok(eventDtos);
+    }
 
 
     [HttpPost]
@@ -438,23 +438,23 @@ public IActionResult GetByUserId(int userId)
                 //look for conflicts
                 var conflictingEvents = _dbContext.Events
                 .Where(e => e.VenueId == eventToCreate.VenueId
-                        && e.Status == "Approved" 
+                        && e.Status == "Approved"
                          && ((e.EventStart < newEventEndTime && e.EventStart.AddHours(e.Duration) > eventToCreate.EventStart)
                              || (eventToCreate.EventStart < e.EventStart.AddHours(e.Duration) && newEventEndTime > e.EventStart)))
                 .ToList();
                 //if conflicts exist, then bad request
                 if (conflictingEvents.Any())
                 {
-                    return BadRequest(new {Error = "This venue is already booked for this time slot."});
+                    return BadRequest(new { Error = "This venue is already booked for this time slot." });
                 }
                 var venue = _dbContext.Venues.SingleOrDefault(v => v.Id == eventToCreate.VenueId);
                 if (venue == null)
                 {
-                    return BadRequest(new {Error = "This venue does not exist"});
+                    return BadRequest(new { Error = "This venue does not exist" });
                 }
                 if (eventToCreate.ExpectedAttendees > venue.MaxOccupancy)
                 {
-                    return BadRequest(new {Error = $"The new venue cannot accommodate this number of people. The limit for this venue is {venue.MaxOccupancy}"});
+                    return BadRequest(new { Error = $"The new venue cannot accommodate this number of people. The limit for this venue is {venue.MaxOccupancy}" });
                 }
                 var serviceList = _dbContext.VenueServices.Where(es => es.VenueId == eventToCreate.VenueId).ToList();
                 var newEvent = new Event
@@ -488,7 +488,7 @@ public IActionResult GetByUserId(int userId)
                     }
                     else
                     {
-                        return BadRequest(new {Error = $"This service(Id:{serviceId}) is not available at this venue"});
+                        return BadRequest(new { Error = $"This service(Id:{serviceId}) is not available at this venue" });
                     }
 
 
@@ -505,11 +505,11 @@ public IActionResult GetByUserId(int userId)
             catch (Exception ex)
             {
                 transaction.Rollback();
-                return StatusCode(500, new {Error = "An error occured while creating event."} );
+                return StatusCode(500, new { Error = "An error occured while creating event." });
             }
         }
     }
-//will complete logic to update eventServices too
+    //will complete logic to update eventServices too
     [HttpPut("{id}")]
     [Authorize]
     public IActionResult UpdateEvent(int id, [FromBody] AdminUpdateEventDTO newEvent)
@@ -518,10 +518,27 @@ public IActionResult GetByUserId(int userId)
         .Include(e => e.EventServices)
         .FirstOrDefault(e => e.Id == id);
 
-    if (eventToUpdate == null)
-    {
-        return NotFound();
-    }   
+        if (eventToUpdate == null)
+        {
+            return NotFound();
+        }
+        DateTime newEventStartTime = TimeZoneInfo.ConvertTimeToUtc(newEvent.EventStart);
+        DateTime newEventEndTime = newEventStartTime.AddHours(newEvent.Duration);
+
+        // Check for conflicts excluding the current event being updated
+        var conflictingEvents = _dbContext.Events
+            .Where(e => e.Id != id // Exclude the current event
+                        && e.VenueId == newEvent.VenueId
+                        && e.Status == "Approved"
+                        && ((e.EventStart < newEventEndTime && e.EventStart.AddHours(e.Duration) > newEventStartTime)
+                            || (newEventStartTime < e.EventStart.AddHours(e.Duration) && newEventEndTime > e.EventStart)))
+            .ToList();
+
+        if (conflictingEvents.Any())
+        {
+            return BadRequest("This venue is already booked for this time slot.");
+        }
+
         //did they enter a valid number of expected people?
         var newVenue = _dbContext.Venues
             .SingleOrDefault(v => v.Id == newEvent.VenueId);
@@ -535,17 +552,18 @@ public IActionResult GetByUserId(int userId)
         {
             return BadRequest("Venue not found.");
         }
+
         //Are those services even available at the new venue?
         var availableServiceIdsAtVenue = _dbContext.VenueServices
             .Where(vs => vs.VenueId == newEvent.VenueId)
             .Select(vs => vs.ServiceId)
             .ToList();
-        
+
         //check the new event for  serviceids that are not on the new venueService table
         var invalidServices = newEvent.ServiceIds
             .Where(sid => !availableServiceIdsAtVenue.Contains(sid))
             .ToList();
-        
+
         if (invalidServices.Any())
         {
             return BadRequest($"The following service Ids are not available at the chosen venue: {string.Join(",", invalidServices)}");
@@ -566,24 +584,24 @@ public IActionResult GetByUserId(int userId)
                 ServiceId = serviceId
             });
         }
-        
+
         _dbContext.SaveChanges();
         return Ok(eventToUpdate);
     }
 
-[HttpGet("update/{id}")]
-[Authorize]
-public IActionResult GetEventForUpdate(int id)
-{
-    var eventInstance = _dbContext.Events
-        .Include(e => e.UserProfile)
-                .ThenInclude(up => up.IdentityUser)
-        .Include(e => e.Venue)
-        .Include(e => e.EventServices)
-                .ThenInclude(es => es.Service)
-                .SingleOrDefault(e => e.Id == id);
-    
-    var serviceIds = eventInstance.EventServices.Select(es => es.ServiceId).ToList();
+    [HttpGet("update/{id}")]
+    [Authorize]
+    public IActionResult GetEventForUpdate(int id)
+    {
+        var eventInstance = _dbContext.Events
+            .Include(e => e.UserProfile)
+                    .ThenInclude(up => up.IdentityUser)
+            .Include(e => e.Venue)
+            .Include(e => e.EventServices)
+                    .ThenInclude(es => es.Service)
+                    .SingleOrDefault(e => e.Id == id);
+
+        var serviceIds = eventInstance.EventServices.Select(es => es.ServiceId).ToList();
 
         if (eventInstance == null)
         {
@@ -641,157 +659,157 @@ public IActionResult GetEventForUpdate(int id)
         };
 
         return Ok(updateEventDto);
-}
+    }
 
-[HttpGet("pending")]
-[Authorize(Roles = "Admin")]
-public IActionResult GetPending()
-{
-    var PendingList = _dbContext
-            .Events
-            .Where(e => e.Status == "Pending")
-            .OrderBy(e => e.SubmitedOn)
-            .Include(e => e.UserProfile)
-                .ThenInclude(up => up.IdentityUser)
-            .Include(e => e.EventServices)
-                .ThenInclude(es => es.Service)
-            .Select(e => new EventDTO
-            {
-                Id = e.Id,
-                UserId = e.UserId,
-                UserProfile = e.UserProfile != null ? new UserProfileDTO
+    [HttpGet("pending")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult GetPending()
+    {
+        var PendingList = _dbContext
+                .Events
+                .Where(e => e.Status == "Pending")
+                .OrderBy(e => e.SubmitedOn)
+                .Include(e => e.UserProfile)
+                    .ThenInclude(up => up.IdentityUser)
+                .Include(e => e.EventServices)
+                    .ThenInclude(es => es.Service)
+                .Select(e => new EventDTO
                 {
-                    Id = e.UserProfile.Id,
-                    FirstName = e.UserProfile.FirstName,
-                    LastName = e.UserProfile.LastName,
-                    Address = e.UserProfile.Address,
-                    Email = e.UserProfile.IdentityUser.Email,
-                    UserName = e.UserProfile.IdentityUser.UserName,
-                    IsAdmin = e.UserProfile.IsAdmin,
-                } : null,
-                VenueId = e.VenueId,
-                EventName = e.EventName,
-                ExpectedAttendees = e.ExpectedAttendees,
-                EventDescription = e.EventDescription,
-                IsPublic = e.IsPublic,
-                SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
-                Status = e.Status,
-                EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
-                Duration = e.Duration,
-                Venue = new VenueDTO
-                {
-                    Id = e.Venue.Id,
-                    VenueName = e.Venue.VenueName,
-                    Address = e.Venue.Address,
-                    Description = e.Venue.Description,
-                    ContactInfo = e.Venue.ContactInfo,
-                    MaxOccupancy = e.Venue.MaxOccupancy,
-                    IsActive = e.Venue.IsActive,
-                },
-                EventServices = e.EventServices.Select(es => new EventServiceDTO
-                {
-                    Id = es.Id,
-                    EventId = es.EventId,
-                    ServiceId = es.ServiceId,
-                    Service = new ServiceDTO
+                    Id = e.Id,
+                    UserId = e.UserId,
+                    UserProfile = e.UserProfile != null ? new UserProfileDTO
                     {
-                        Id = es.Service.Id,
-                        ServiceName = es.Service.ServiceName,
-                        Description = es.Service.Description,
-                        Price = es.Service.Price,
-                        IsActive = es.Service.IsActive
-                    }
+                        Id = e.UserProfile.Id,
+                        FirstName = e.UserProfile.FirstName,
+                        LastName = e.UserProfile.LastName,
+                        Address = e.UserProfile.Address,
+                        Email = e.UserProfile.IdentityUser.Email,
+                        UserName = e.UserProfile.IdentityUser.UserName,
+                        IsAdmin = e.UserProfile.IsAdmin,
+                    } : null,
+                    VenueId = e.VenueId,
+                    EventName = e.EventName,
+                    ExpectedAttendees = e.ExpectedAttendees,
+                    EventDescription = e.EventDescription,
+                    IsPublic = e.IsPublic,
+                    SubmitedOn = TimeZoneInfo.ConvertTimeFromUtc(e.SubmitedOn, TimeZoneInfo.Local),
+                    Status = e.Status,
+                    EventStart = TimeZoneInfo.ConvertTimeFromUtc(e.EventStart, TimeZoneInfo.Local),
+                    Duration = e.Duration,
+                    Venue = new VenueDTO
+                    {
+                        Id = e.Venue.Id,
+                        VenueName = e.Venue.VenueName,
+                        Address = e.Venue.Address,
+                        Description = e.Venue.Description,
+                        ContactInfo = e.Venue.ContactInfo,
+                        MaxOccupancy = e.Venue.MaxOccupancy,
+                        IsActive = e.Venue.IsActive,
+                    },
+                    EventServices = e.EventServices.Select(es => new EventServiceDTO
+                    {
+                        Id = es.Id,
+                        EventId = es.EventId,
+                        ServiceId = es.ServiceId,
+                        Service = new ServiceDTO
+                        {
+                            Id = es.Service.Id,
+                            ServiceName = es.Service.ServiceName,
+                            Description = es.Service.Description,
+                            Price = es.Service.Price,
+                            IsActive = es.Service.IsActive
+                        }
 
-                }).ToList()
+                    }).ToList()
 
-            }).ToList();
-          
+                }).ToList();
 
-            return Ok(PendingList);
-}
 
-[HttpPut("approve/{id}")]
-[Authorize(Roles = "Admin")]
-public IActionResult ApproveEvent(int id)
-{
-    var eventToApprove = _dbContext.Events.SingleOrDefault(e => e.Id == id);
-    
-     DateTime eventEndTime = eventToApprove.EventStart.AddHours(eventToApprove.Duration);
-
-            // Fetch conflicting events (only considering approved events)
-            var conflictingEvents = _dbContext.Events
-                .Where(e => e.VenueId == eventToApprove.VenueId 
-                         && e.Status == "Approved"
-                         && e.Id != id // Exclude the current event
-                         && ((e.EventStart < eventEndTime && e.EventStart.AddHours(e.Duration) > eventToApprove.EventStart)
-                             || (eventToApprove.EventStart < e.EventStart.AddHours(e.Duration) && eventEndTime > e.EventStart)))
-                .ToList();
-
-    if (eventToApprove == null)
-    {
-        return NotFound();
+        return Ok(PendingList);
     }
-    eventToApprove.Status = "Approved";
-    _dbContext.SaveChanges();
-    return Ok("Event approval successful");
 
-}
-[HttpPut("reject/{id}")]
-[Authorize(Roles = "Admin")]
-public IActionResult RejectEvent(int id)
-{
-    var eventToReject = _dbContext.Events.SingleOrDefault(e => e.Id == id);
-    if (eventToReject == null)
+    [HttpPut("approve/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult ApproveEvent(int id)
     {
-        return NotFound();
+        var eventToApprove = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+
+        DateTime eventEndTime = eventToApprove.EventStart.AddHours(eventToApprove.Duration);
+
+        // Fetch conflicting events (only considering approved events)
+        var conflictingEvents = _dbContext.Events
+            .Where(e => e.VenueId == eventToApprove.VenueId
+                     && e.Status == "Approved"
+                     && e.Id != id // Exclude the current event
+                     && ((e.EventStart < eventEndTime && e.EventStart.AddHours(e.Duration) > eventToApprove.EventStart)
+                         || (eventToApprove.EventStart < e.EventStart.AddHours(e.Duration) && eventEndTime > e.EventStart)))
+            .ToList();
+
+        if (eventToApprove == null)
+        {
+            return NotFound();
+        }
+        eventToApprove.Status = "Approved";
+        _dbContext.SaveChanges();
+        return Ok("Event approval successful");
+
     }
-    eventToReject.Status = "Rejected";
-    _dbContext.SaveChanges();
-    return Ok("Event rejection successful");
-
-}
-
-[HttpPut("AdminCancel/{id}")]
-[Authorize(Roles = "Admin")]
-public IActionResult AdminCancelEvent(int id)
-{
-    var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == id);
-    if (eventToCancel == null)
+    [HttpPut("reject/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult RejectEvent(int id)
     {
-        return NotFound();
-    }
-    eventToCancel.Status = "Canceled";
-    _dbContext.SaveChanges();
-    return Ok("Event cancellation successful");
+        var eventToReject = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+        if (eventToReject == null)
+        {
+            return NotFound();
+        }
+        eventToReject.Status = "Rejected";
+        _dbContext.SaveChanges();
+        return Ok("Event rejection successful");
 
-}
-[HttpPut("UserCancel/{eventId}")]
-[Authorize]
-public IActionResult UserCancelEvent(int eventId, int userId)
-{
-    var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == eventId && e.UserId == userId);
-    if (eventToCancel == null)
+    }
+
+    [HttpPut("AdminCancel/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult AdminCancelEvent(int id)
     {
-        return NotFound();
+        var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+        if (eventToCancel == null)
+        {
+            return NotFound();
+        }
+        eventToCancel.Status = "Canceled";
+        _dbContext.SaveChanges();
+        return Ok("Event cancellation successful");
+
     }
-    eventToCancel.Status = "Canceled";
-    _dbContext.SaveChanges();
-    return Ok("Event cancellation successful");
-
-}
-
-[HttpDelete("{id}")]
-[Authorize(Roles = "Admin")]
-public IActionResult DeleteEvent(int id)
-{
-    Event eventToDelete = _dbContext.Events.SingleOrDefault(e => e.Id == id);
-    if (eventToDelete == null)
+    [HttpPut("UserCancel/{eventId}")]
+    [Authorize]
+    public IActionResult UserCancelEvent(int eventId, int userId)
     {
-        return NotFound();
+        var eventToCancel = _dbContext.Events.SingleOrDefault(e => e.Id == eventId && e.UserId == userId);
+        if (eventToCancel == null)
+        {
+            return NotFound();
+        }
+        eventToCancel.Status = "Canceled";
+        _dbContext.SaveChanges();
+        return Ok("Event cancellation successful");
+
     }
-    _dbContext.Events.Remove(eventToDelete);
-    _dbContext.SaveChanges();
-    return Ok("Event deletion successful");
-}
+
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult DeleteEvent(int id)
+    {
+        Event eventToDelete = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+        if (eventToDelete == null)
+        {
+            return NotFound();
+        }
+        _dbContext.Events.Remove(eventToDelete);
+        _dbContext.SaveChanges();
+        return Ok("Event deletion successful");
+    }
 
 }

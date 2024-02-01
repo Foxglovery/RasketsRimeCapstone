@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { GetVenues } from "../../managers/venueManager";
-import { Link } from "react-router-dom";
-import { Table } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Table } from "reactstrap";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
 
 export default function VenueListAdmin({ loggedInUser }) {
   const [venues, setVenues] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     GetVenues().then(setVenues);
@@ -35,6 +36,9 @@ export default function VenueListAdmin({ loggedInUser }) {
             Services
           </Link>
         </div>
+        <div className="centered-content">
+          <Button className="admin-service-btn" onClick={() => navigate(`/admin/venues/create`)}>Add Venue</Button>
+      </div>
         <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
@@ -43,6 +47,7 @@ export default function VenueListAdmin({ loggedInUser }) {
               <th>Address</th>
               <th>Contact</th>
               <th>Max Occupancy</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
@@ -54,8 +59,9 @@ export default function VenueListAdmin({ loggedInUser }) {
                 <td>{v.address}</td>
                 <td>{v.contactInfo}</td>
                 <td>{v.maxOccupancy}</td>
+                <td><Button className="admin-update-event-btn" onClick={() => navigate(`/admin/venues/update/${v.id}`)}>Update</Button></td>
                 <td>
-                  <Link to={`${v.id}`}>Details</Link>
+                  <Link to={`${v.id}`}><Button className="admin-details-event-btn">Details</Button></Link>
                 </td>
               </tr>
             ))}

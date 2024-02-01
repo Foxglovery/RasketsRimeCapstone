@@ -1,5 +1,5 @@
 .chip-link {
-    background-color: #133249; 
+    background: linear-gradient(0deg, rgba(35,94,128,1) 9%, rgba(22,50,75,1) 96%); 
     color: #FCD46A;
     padding: 5px 10px;
     border-radius: 15px;
@@ -12,7 +12,7 @@
 
 
 .chip-link:hover {
-    background-color: #061119; 
+    background: linear-gradient(0deg, rgba(6,6,6,1) 9%, rgba(5,21,34,1) 96%); 
 }
 
 .centered-content {
@@ -79,6 +79,14 @@ background-color: #133249;
 .admin-update-event-btn:hover {
     background-color: #8739a9;
     color: #e0e5e9;
+}
+.admin-details-event-btn {
+    background-color: #ee891e;
+    color: #080a0d;
+}
+.admin-details-event-btn:hover {
+    background-color: #d1791b;
+    color: #080a0d;
 }
 .event-rounded-table {
     border-collapse: separate;

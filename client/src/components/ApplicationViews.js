@@ -19,6 +19,8 @@ import UpcomingEvents from "./customer/UpcomingEvents";
 import UpdateEventCustomer from "./dashboard/events/UpdateEventsCustomer";
 import CreateEventCustomer from "./customer/CreateEventCustomer";
 import CreateService from "./dashboard/services/CreateService";
+import CreateVenue from "./dashboard/venues/CreateVenue";
+import UpdateVenue from "./dashboard/venues/UpdateVenue";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -68,6 +70,16 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route path="/admin/venues" element={
           <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
           <VenueListAdmin />
+        </AuthorizedRoute>
+        }/>
+        <Route path="/admin/venues/create" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <CreateVenue />
+        </AuthorizedRoute>
+        }/>
+        <Route path="/admin/venues/update/:venueId" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <UpdateVenue />
         </AuthorizedRoute>
         }/>
         <Route path="/admin/venues/:id" element={

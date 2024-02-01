@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "Rasket's Rime",
   "version": "0.1.0",
   "private": true,
   "proxy": "https://localhost:5001",
@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
+    "react-select": "^5.8.0",
     "reactstrap": "^9.2.2",
     "web-vitals": "^2.1.4"
   },
@@ -39,5 +40,4 @@
       "last 1 safari version"
     ]
   }
-  
 }

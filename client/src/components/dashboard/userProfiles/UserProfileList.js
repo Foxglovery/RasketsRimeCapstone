@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GetProfiles } from "../../managers/userProfileManager";
-import { Table } from "reactstrap";
+import { Button, Table } from "reactstrap";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
 
@@ -57,7 +57,7 @@ export default function UserProfileList({ loggedInUser }) {
                 <td>{up.address}</td>
                 <td>{up.isAdmin ? "yes" : "no"}</td>
                 <td>
-                  <Link to={`${up.id}`}>Details</Link>
+                  <Link to={`${up.id}`}><Button className="admin-details-event-btn">Details</Button></Link>
                 </td>
               </tr>
             ))}
