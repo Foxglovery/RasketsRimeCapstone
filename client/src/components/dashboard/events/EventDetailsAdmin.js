@@ -35,7 +35,7 @@ const formatEventTime = (dateString) => {
         <Link to={`/admin/venues`} className="chip-link">Venues</Link>
         <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
+      <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <tbody>
             <tr>
               <th>Name</th>
@@ -75,7 +75,7 @@ const formatEventTime = (dateString) => {
         <h3>Event Services</h3>
       </div>
       
-      <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
+      <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
         <thead>
           <tr>
             <th>#</th>

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { GetVenues } from "../../managers/venueManager";
 import "../../styles/dash/CreateEventAdmin.css"
+import { useNavigate } from "react-router-dom";
+import { CreateNewService } from "../../managers/serviceManager";
 export default function CreateService() {
     const [venues, setVenues] = useState([]);
     const [chosenVenueId, setChosenVenueId] = useState(null);
@@ -13,6 +15,7 @@ export default function CreateService() {
     const [venueIds, setVenueIds] = useState([]);
     const [errorMessage, setErrorMessage] = (useState(""));
     const [isActive, setIsActive] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         GetVenues().then(setVenues);
@@ -23,7 +26,7 @@ export default function CreateService() {
         serviceName: serviceName,
         description: description,
         price: price,
-        imgUrl: imgUrl,
+        imageUrl: imgUrl,
         isActive: isActive,
         venueIds: venueIds
     }
@@ -44,9 +47,35 @@ export default function CreateService() {
       const handlePriceChange = (event) => {
         setPrice(parseInt(event.target.value));
       }
-      const handleSubmit =(e) => {
-        console.log(e)
-      }
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+          const data = await CreateNewService(newService);
+
+          if (data && !data.error) {
+            console.log('Service created successfully', data);
+            navigate(`/admin/services`);
+          } else {
+            const errorMsg = data.error || 'Failed to create service';
+            setErrorMessage('Sorry, we couldnt create the service' + errorMsg);
+            console.error('Failed to create service:', data);
+          }
+        } catch (error) {
+          let errorMsg = error.message || 'Error submitting service';
+          if (typeof errorMsg === 'string' && errorMsg.startsWith('{')) {
+            try {
+              const parsedError = JSON.parse(errorMsg);
+              errorMsg = parsedError.error || errorMsg;
+            } catch (parsedError) {
+
+            }
+          }
+
+          setErrorMessage("Sorry, there was a problem: " + errorMsg);
+          console.error('Error submitting service', error);
+        }
+      };
     const handleVenueSelection = (event) => {
         const selectedOptions = Array.from(event.target.selectedOptions, (option) =>
           parseInt(option.value)
