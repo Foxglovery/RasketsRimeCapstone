@@ -81,7 +81,7 @@ export default function DashboardEvents({loggedInUser}) {
         {showPending ? <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Show All</Button> : <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Pending</Button>}
         
       </div>
-      <Table dark striped className="mt-4" style={{ maxWidth: '80%', margin: 'auto' }}>
+      <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
         <thead>
           <tr>
             <th>#</th>

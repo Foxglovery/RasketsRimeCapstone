@@ -33,7 +33,7 @@ export default function ServiceListAdmin({loggedInUser}) {
         <div className="centered-content">
           <Button className="admin-service-btn" onClick={() => navigate(`/admin/services/create`)}>Add Service</Button>
       </div>
-        <Table dark striped className="mt-4" style={{ maxWidth: '90%', margin: 'auto' }}>
+        <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '90%', margin: 'auto' }}>
           <thead>
             <tr>
               <th>#</th>
