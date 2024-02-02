@@ -16,14 +16,7 @@ Rasket's Rime, as a concept, had been living rent-free in my brain for half a ye
 - **Venue & Service Control**: Add, update, disable, or delete venues and services, ensuring the platform remains accurate and up-to-date.
 ## Loom For To Watch
 
-<div>
-    <a href="[https://www.loom.com/share/9ef53d61a54d4d25a663f40909a9327f](https://www.loom.com/share/e88545bd0d314096b141ab4f79bd47f4?sid=8c258a13-1a1a-4099-b5d7-2b5c968447ce)">
-      <p>Home Ono: A New App for Homeowners - Watch Video</p>
-    </a>
-    <a href="https://www.loom.com/share/9ef53d61a54d4d25a663f40909a9327f">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9ef53d61a54d4d25a663f40909a9327f-1699894942035-with-play.gif">
-    </a>
-  </div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/e88545bd0d314096b141ab4f79bd47f4?sid=bbdc4196-0906-4529-b36b-1c6f0d1dc769" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Screenshots
 
