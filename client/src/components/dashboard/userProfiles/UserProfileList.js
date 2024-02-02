@@ -23,11 +23,11 @@ export default function UserProfileList({ loggedInUser }) {
           <h3>Users</h3>
         </div>
         <div className="centered-content">
-          <Link to={`/admin/events`} className="chip-link">
-            Events
-          </Link>
           <Link to={`/admin/venues`} className="chip-link">
             Venues
+          </Link>
+          <Link to={`/admin/events`} className="chip-link">
+            Events
           </Link>
           <Link to={`/admin/services`} className="chip-link">
             Services

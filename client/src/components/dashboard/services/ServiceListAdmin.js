@@ -26,8 +26,8 @@ export default function ServiceListAdmin({loggedInUser}) {
       <div className="centered-content">
         <h3>Services</h3>
         <div className="link-group" style={{ marginTop: '20px' }}>
-          <Link to={`/admin/events`} className="chip-link">Events</Link>
           <Link to={`/userprofiles`} className="chip-link">Users</Link>
+          <Link to={`/admin/events`} className="chip-link">Events</Link>
           <Link to={`/admin/venues`} className="chip-link">Venues</Link>
         </div>
         <div className="centered-content">
