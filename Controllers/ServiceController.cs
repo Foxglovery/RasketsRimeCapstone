@@ -115,7 +115,23 @@ public class ServiceController : ControllerBase
             Price = s.Price,
             ImageUrl = s.ImageUrl,
             IsActive = s.IsActive,
-
+            VenueServices = (List<VenueServiceDTO>)s.VenueServices.Select(vs => new VenueServiceDTO
+            {
+                Id = vs.Id,
+                VenueId = vs.VenueId,
+                Venue = new VenueDTO
+                {
+                    Id = vs.Venue.Id,
+                    VenueName = vs.Venue.VenueName,
+                    Address = vs.Venue.Address,
+                    Description = vs.Venue.Description,
+                    ContactInfo = vs.Venue.ContactInfo,
+                    ImageUrl = vs.Venue.ImageUrl,
+                    MaxOccupancy = vs.Venue.MaxOccupancy,
+                    IsActive = vs.Venue.IsActive
+                },
+                ServiceId = vs.ServiceId
+            })
 
         }).ToList());
     }
