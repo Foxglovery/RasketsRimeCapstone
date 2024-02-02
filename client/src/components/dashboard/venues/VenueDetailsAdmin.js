@@ -3,15 +3,18 @@ import { Link, useParams } from "react-router-dom";
 import { Table } from "reactstrap";
 import { GetVenueById } from "../../managers/venueManager";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
+import { GetEventsByVenueId } from "../../managers/eventManager";
 
 export default function VenueDetailsAdmin({ loggedInUser }) {
   const { id } = useParams();
   const [venue, setVenue] = useState([]);
-
+  const [events, setEvents] = useState([]);
+  
   useEffect(() => {
     GetVenueById(id).then(setVenue);
+    GetEventsByVenueId(id).then(setEvents);
   }, [id]);
-
+  const sumServicePrice = events?.reduce((acc, event) => acc + event.totalCost, 0);
   const backgroundStyle = {
     minHeight: "100vh",
     background: `url(${backgroundImage}) no-repeat center center fixed`,
@@ -64,6 +67,10 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
             <tr>
               <th>Is Active</th>
               <td>{venue?.isActive ? "Yes" : "No"}</td>
+            </tr>
+            <tr>
+              <th>Total Service Revenue</th>
+              <td>${sumServicePrice}</td>
             </tr>
           </tbody>
         </Table>
