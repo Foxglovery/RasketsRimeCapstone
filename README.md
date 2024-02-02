@@ -26,7 +26,7 @@ Rasket's Rime, as a concept, had been living rent-free in my brain for half a ye
 
 ## Screenshots
 
-<a href="https://imgbox.com/yKIguufW" target="_blank"><img src="https://thumbs2.imgbox.com/72/ea/yKIguufW_t.png" alt="image host"/></a> <a href="https://imgbox.com/SmAwYRpv" target="_blank"><img src="https://thumbs2.imgbox.com/cd/40/SmAwYRpv_t.png" alt="image host"/></a> <a href="https://imgbox.com/3aSPp6xg" target="_blank"><img src="https://thumbs2.imgbox.com/06/09/3aSPp6xg_t.png" alt="image host"/></a> <a href="https://imgbox.com/NLne52C5" target="_blank"><img src="https://thumbs2.imgbox.com/66/f8/NLne52C5_t.png" alt="image host"/></a> <a href="https://imgbox.com/1EbWX2HO" target="_blank"><img src="https://thumbs2.imgbox.com/30/ea/1EbWX2HO_t.png" alt="image host"/></a>
+<a href="https://imgbox.com/yKIguufW" target="_blank"><img src="https://images2.imgbox.com/72/ea/yKIguufW_o.png" alt="image host"/></a> <a href="https://imgbox.com/SmAwYRpv" target="_blank"><img src="https://images2.imgbox.com/cd/40/SmAwYRpv_o.png" alt="image host"/></a> <a href="https://imgbox.com/3aSPp6xg" target="_blank"><img src="https://images2.imgbox.com/06/09/3aSPp6xg_o.png" alt="image host"/></a> <a href="https://imgbox.com/NLne52C5" target="_blank"><img src="https://images2.imgbox.com/66/f8/NLne52C5_o.png" alt="image host"/></a> <a href="https://imgbox.com/1EbWX2HO" target="_blank"><img src="https://images2.imgbox.com/30/ea/1EbWX2HO_o.png" alt="image host"/></a>
 
 
 ## Challenges Faced During Creation
