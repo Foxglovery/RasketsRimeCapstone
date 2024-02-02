@@ -1,14 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 
 import "../styles/client/ServiceList.css";
-import { GetServices } from "../managers/serviceManager";
+import { AvailableServicesByVenueId, GetServices } from "../managers/serviceManager";
+import VenueDropdown from "../dropdowns/VenueDropdown";
 export default function ServiceList() {
   const [services, setServices] = useState([]);
+  const [selectedVenueId, setSelectedVenueId] = useState(null);
   const serviceRefs = useRef({});
 
   useEffect(() => {
-    GetServices().then(setServices);
-  }, []);
+    if (selectedVenueId)
+    {
+      AvailableServicesByVenueId(selectedVenueId).then(setServices);
+    } else {
+      GetServices().then(setServices);
+    }
+    
+  }, [selectedVenueId]);
 //auto scrolling to service if url has ref
   useEffect(() => {
     const hash = window.location.hash;
@@ -21,12 +29,18 @@ export default function ServiceList() {
     }
   }, [services]); // Dependency array includes services to re-run when services are updated
  
-
+  const handleVenueChange = (venueId) => {
+    setSelectedVenueId(parseInt(venueId));
+  };
   return (
     <>
       <div className="venue-background-image">
         <div className="service-header">
           <h1>Our Services</h1>
+          <div className="venue-dropdown-container">
+                      <VenueDropdown onVenueChange={handleVenueChange} />
+
+          </div>
         </div>
         <div className="cards-container">
           {services.map((s) => (

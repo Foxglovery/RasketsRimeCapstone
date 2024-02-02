@@ -25,6 +25,11 @@
   margin: 0;
   padding: 0;
 }
+.venue-dropdown-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 
 /* Body styles */
 /* body {
