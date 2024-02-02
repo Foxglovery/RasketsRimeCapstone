@@ -43,12 +43,12 @@ export default function CreateVenue() {
         setIsActive(!isActive);
     }
 
-      const handleDescriptionChange = (event) => {
-        setDescription(event.target.value);
-      };
-      const handleAddressChange = (event) => {
-        setAddress(event.target.value);
-      }
+    const handleAddressChange = (event) => {
+      setAddress(event.target.value);
+    }
+    const handleDescriptionChange = (event) => {
+      setDescription(event.target.value);
+    };
       const handleImgChange = (event) => {
         setImgUrl(event.target.value);
       }
