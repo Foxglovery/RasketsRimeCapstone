@@ -41,6 +41,7 @@ export default function ServiceListAdmin({loggedInUser}) {
               <th>Description</th>
               <th>Available At</th>
               <th>Price</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +52,7 @@ export default function ServiceListAdmin({loggedInUser}) {
                 <td>{service.description}</td>
                 <td>{renderVenueNames(service.venueServices)}</td>
                 <td>${service.price}</td>
+                <td><Button className="admin-update-event-btn" onClick={() => navigate(`/admin/services/update/${service.id}`)}> Update</Button></td>
               </tr>
             ))}
           </tbody>

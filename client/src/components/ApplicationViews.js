@@ -21,6 +21,7 @@ import CreateEventCustomer from "./customer/CreateEventCustomer";
 import CreateService from "./dashboard/services/CreateService";
 import CreateVenue from "./dashboard/venues/CreateVenue";
 import UpdateVenue from "./dashboard/venues/UpdateVenue";
+import UpdateService from "./dashboard/services/UpdateService";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -95,6 +96,11 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route path="/admin/services/create" element={
           <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
           <CreateService />
+        </AuthorizedRoute>
+        }/>
+        <Route path="/admin/services/update/:id" element={
+          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+          <UpdateService />
         </AuthorizedRoute>
         }/>
         {/* Customer Routes */}

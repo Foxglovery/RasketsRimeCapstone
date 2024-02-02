@@ -5,6 +5,7 @@ using RasketsRime.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 using RasketsRime.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Transactions;
 
 namespace RasketsRime.Controllers;
 
@@ -49,8 +50,8 @@ public class ServiceController : ControllerBase
                     IsActive = vs.Venue.IsActive
                 },
                 ServiceId = vs.ServiceId
-            }) 
-           
+            })
+
         }).ToList());
     }
 
@@ -67,7 +68,7 @@ public class ServiceController : ControllerBase
         {
             return NotFound();
         }
-        
+
         var serviceDto = new ServiceDTO
         {
             Id = service.Id,
@@ -98,7 +99,7 @@ public class ServiceController : ControllerBase
         return Ok(serviceDto);
     }
 
-[HttpGet("available/{venueId}")]
+    [HttpGet("available/{venueId}")]
     [Authorize]
     public IActionResult GetAvailableServices(int venueId)
     {
@@ -114,16 +115,16 @@ public class ServiceController : ControllerBase
             Price = s.Price,
             ImageUrl = s.ImageUrl,
             IsActive = s.IsActive,
-             
-           
+
+
         }).ToList());
     }
 
 
-[HttpPost]
-[Authorize(Roles = "Admin")]
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
 
-public IActionResult CreateService (ServiceCreationDTO serviceToCreate)
+    public IActionResult CreateService(ServiceCreationDTO serviceToCreate)
     {
         using (var transaction = _dbContext.Database.BeginTransaction())
         {
@@ -161,8 +162,67 @@ public IActionResult CreateService (ServiceCreationDTO serviceToCreate)
             catch (Exception ex)
             {
                 transaction.Rollback();
-                return StatusCode(500, new{Error = "An error occured while creating service" + ex.Message });
+                return StatusCode(500, new { Error = "An error occured while creating service" + ex.Message });
             }
         }
     }
+
+    [HttpPut("{id}")]
+[Authorize(Roles = "Admin")]
+public IActionResult UpdateService(int id, [FromBody] UpdateServiceDTO updatedService)
+{
+    using (var transaction = _dbContext.Database.BeginTransaction())
+    {
+        try
+        {
+            var serviceToUpdate = _dbContext.Services
+                .Include(s => s.VenueServices)
+                .SingleOrDefault(s => s.Id == id);
+
+            if (serviceToUpdate == null)
+            {
+                return NotFound();
+            }
+
+
+            serviceToUpdate.ServiceName = updatedService.ServiceName;
+            serviceToUpdate.Description = updatedService.Description;
+            serviceToUpdate.IsActive = updatedService.IsActive;
+            serviceToUpdate.ImageUrl = updatedService.ImageUrl;
+            serviceToUpdate.Price = updatedService.Price;
+
+            
+            serviceToUpdate.VenueServices.Clear();
+            foreach (var venueId in updatedService.VenueIds)
+            {
+                if (!_dbContext.Venues.Any(v => v.Id == venueId))
+                {
+                    return BadRequest($"Venue with ID {venueId} does not exist.");
+                }
+                serviceToUpdate.VenueServices.Add(new VenueService
+                {
+                    VenueId = venueId,
+                    ServiceId = serviceToUpdate.Id
+                });
+            }
+
+            _dbContext.SaveChanges();
+            transaction.Commit();
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Service Updated Successfully",
+                ServiceId = updatedService.Id
+            }); 
+        }
+        catch (Exception ex)
+        {
+            transaction.Rollback();
+            // Log the exception if logging is set up
+            return StatusCode(500, new{Error = "An error occurred while updating the service" + ex.Message });
+        }
+    }
+}
+
 }

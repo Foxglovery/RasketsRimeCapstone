@@ -145,7 +145,7 @@ public IActionResult CreateVenue (VenueCreationDTO venueToCreate)
 
 [HttpPut("{id}")]
 [Authorize(Roles = "Admin")]
-public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO newVenue)
+public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO updatedVenue)
 {
     var venueToUpdate = _dbContext.Venues
         .Include(v => v.VenueServices)
@@ -156,10 +156,10 @@ public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO newVenue)
         return NotFound();
     }
 
-    if (newVenue.MaxOccupancy < venueToUpdate.MaxOccupancy)
+    if (updatedVenue.MaxOccupancy < venueToUpdate.MaxOccupancy)
     {
         var affectedEvents = _dbContext.Events
-            .Where(e => e.VenueId == id && e.ExpectedAttendees > newVenue.MaxOccupancy && e.EventStart >= DateTime.Now)
+            .Where(e => e.VenueId == id && e.ExpectedAttendees > updatedVenue.MaxOccupancy && e.EventStart >= DateTime.Now)
             .ToList();
         if (affectedEvents.Any())
         {
@@ -169,16 +169,16 @@ public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO newVenue)
 
 
 
-    venueToUpdate.VenueName = newVenue.VenueName;
-    venueToUpdate.Address = newVenue.Address;
-    venueToUpdate.Description = newVenue.Description;
-    venueToUpdate.IsActive = newVenue.IsActive;
-    venueToUpdate.ImageUrl = newVenue.ImageUrl;
-    venueToUpdate.ContactInfo = newVenue.ContactInfo;
-    venueToUpdate.MaxOccupancy = newVenue.MaxOccupancy;
+    venueToUpdate.VenueName = updatedVenue.VenueName;
+    venueToUpdate.Address = updatedVenue.Address;
+    venueToUpdate.Description = updatedVenue.Description;
+    venueToUpdate.IsActive = updatedVenue.IsActive;
+    venueToUpdate.ImageUrl = updatedVenue.ImageUrl;
+    venueToUpdate.ContactInfo = updatedVenue.ContactInfo;
+    venueToUpdate.MaxOccupancy = updatedVenue.MaxOccupancy;
     
     venueToUpdate.VenueServices.Clear();
-    foreach (var serviceId in newVenue.ServiceIds)
+    foreach (var serviceId in updatedVenue.ServiceIds)
     {
         if (!_dbContext.Services.Any(s => s.Id == serviceId))
         {

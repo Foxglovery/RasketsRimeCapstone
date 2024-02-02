@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GetEventsByUserId, UserCancelEvent } from "../managers/eventManager";
 import "../styles/client/MyEventsList.css";
 import { Button, Tooltip } from "reactstrap";
@@ -76,7 +76,10 @@ export default function MyEventsList({ loggedInUser }) {
                   <h3 className="postcard-my-venue-text">
                     @ {me.venue.venueName}
                   </h3>
-
+                  <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {me.status}
+                      </div>
                   <div className="upcoming-small-details">
                     <div className="upcoming-details-cont">
                       <div className="postcard__subtitle small">
@@ -106,7 +109,7 @@ export default function MyEventsList({ loggedInUser }) {
                   </div>
                   <ul className="postcard__tagbox">
                   {me.eventServices.map((ev) => (
-                      <>
+                      <React.Fragment key={ev.id}>
                         <li key={ev.id} className="tag__item play blue">
                           <a href="#" id={`Tooltip-${ev.id}`}>
                             <i className="fas fa-play mr-2"></i>
@@ -121,7 +124,7 @@ export default function MyEventsList({ loggedInUser }) {
                         >
                           {ev.service.description}{" "}
                         </Tooltip>
-                      </>
+                      </React.Fragment>
                     ))}
                   </ul>
                   <div className="postcard__subtitle small">

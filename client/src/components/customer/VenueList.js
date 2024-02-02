@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GetVenues } from "../managers/venueManager";
 import "../styles/client/VenueList.css";
 import { Tooltip } from "reactstrap";
@@ -44,7 +44,7 @@ export default function VenueList() {
                   <ul className="postcard__tagbox">
                     {v.venueServices &&
                       v.venueServices.map((vs) => (
-                        <>
+                        <React.Fragment key={vs.id}>
                         <li key={vs.id} className="tag__item play blue">
                           <a href={`/services#service-${vs.service.id}`} id={`Tooltip-${vs.id}`}>
                             <i className="fas fa-play mr-2"></i>
@@ -60,7 +60,7 @@ export default function VenueList() {
                           {vs.service.description}{" "}
                           {/* Assuming you have a description field */}
                         </Tooltip>
-                      </>
+                      </React.Fragment>
                     ))}
                   </ul>
                   <div className="postcard__subtitle small">

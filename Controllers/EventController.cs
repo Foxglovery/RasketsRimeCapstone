@@ -160,8 +160,7 @@ public class EventController : ControllerBase
                 .ThenInclude(up => up.IdentityUser)
             .Include(e => e.EventServices)
                 .ThenInclude(es => es.Service)
-                .Where(e => e.EventServices.Any(es => es.ServiceId == id)
-                 && e.EventStart > DateTime.UtcNow && e.Status == "Approved")
+                .Where(e => e.EventServices.Any(es => es.ServiceId == id) && e.EventStart > DateTime.UtcNow && e.Status == "Approved")
                 .OrderBy(e => e.EventStart)
             .Select(e => new EventDTO
             {

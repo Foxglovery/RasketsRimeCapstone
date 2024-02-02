@@ -29,6 +29,7 @@ export default function UpcomingEvents({ loggedInUser }) {
   const [selectedVenueId, setSelectedVenueId] = useState(null);
   const [selectedServiceId, setSelectedServiceId] = useState(null);
   const [tooltips, setTooltips] = useState({});
+  const [refetchTrigger, setRefetchTrigger] = useState(0);
 
   //tooltip handler
   const toggleTooltip = (id) => {
@@ -66,7 +67,7 @@ export default function UpcomingEvents({ loggedInUser }) {
           console.error("There was an error fetching upcoming events", error);
         });
     }
-  }, [selectedVenueId]);
+  }, [selectedVenueId , refetchTrigger]);
   //rinse and repeat for service
   useEffect(() => {
     if (selectedServiceId) {
@@ -86,7 +87,7 @@ export default function UpcomingEvents({ loggedInUser }) {
           console.error("There was an error fetching", error);
         });
     }
-  }, [selectedServiceId]);
+  }, [selectedServiceId , refetchTrigger]);
 
   const openModal = (eventId) => {
     setActiveModalId(eventId);
@@ -107,9 +108,8 @@ export default function UpcomingEvents({ loggedInUser }) {
   const handleUserCancel = async (eventId) => {
     try {
       await UserCancelEvent(eventId, loggedInUser.id);
-
-      const updatedEvents = await GetEventsByUserId(loggedInUser.id);
-      setEvents(updatedEvents);
+      //reset fetch upon cancel
+      setRefetchTrigger((prev) => prev + 1);
     } catch (error) {
       console.error("There was an error canceling the event:", error);
     } finally {
