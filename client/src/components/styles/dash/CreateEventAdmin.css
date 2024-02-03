@@ -6,12 +6,14 @@
   } */
   input[type="text"]:-webkit-autofill,
 input[type="number"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill,
 input[type="email"]:-webkit-autofill,
 input[type="date"]:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #201e19 inset;
     -webkit-text-fill-color: #d8a830;
     transition: background-color 5000s ease-in-out 0s; /* Smooth transition for background color */
 }
+
   .create-form-text {
     color: #FCD46A;
     font-family: 'Stoke';
