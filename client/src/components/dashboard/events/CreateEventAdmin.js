@@ -143,11 +143,11 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="background-image">
-    <Container className="">
+    <div className="dashboard-background background">
+    <Container>
       <Row>
         <Col md={8} className="mx-auto">
-          <h3  className="text-center create-form-text mb-4">Create An Event</h3>
+          <h3  className="text-center create-form-text mb-4">Add An Event</h3>
           <div className="centered-content">
           <Link to={`/userprofiles`} className="chip-link">
             Users
@@ -231,13 +231,14 @@ const handleSubmit = async (e) => {
 
             {/* Event Description */}
             <FormGroup>
-              <Label for="exampleText" className="create-form-text">Description</Label>
+              <Label for="description" className="create-form-text">Description</Label>
               <Input
               required
-                id="exampleText"
+                id="description"
                 name="text"
                 type="textarea"
                 placeholder="Describe your event"
+                className="description-area"
                 onChange={handleDescriptionChange}
               />
             </FormGroup>

@@ -94,11 +94,11 @@ export default function CreateVenue() {
         setServiceIds(selectedOptions);
       };
     return (
-        <div className="background-image">
+        <div className="dashboard-background">
     <Container className="">
       <Row>
         <Col md={8} className="mx-auto">
-          <h3  className="text-center create-form-text mb-4">Create A Venue</h3>
+          <h3  className="text-center create-form-text mb-4">Add A Venue</h3>
           <div className="centered-content">
           <Link to={`/userprofiles`} className="chip-link">
             Users

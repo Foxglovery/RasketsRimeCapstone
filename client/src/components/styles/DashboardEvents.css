@@ -1,3 +1,9 @@
+.dashboard-background {
+    min-height: 100vh;
+    background: var(--dash-background-image) no-repeat center center fixed;
+    background-size: cover;
+    }
+
 .chip-link {
     background: linear-gradient(0deg, rgba(35,94,128,1) 9%, rgba(22,50,75,1) 96%); 
     color: #FCD46A;
@@ -14,10 +20,12 @@
 .chip-link:hover {
     background: linear-gradient(0deg, rgba(6,6,6,1) 9%, rgba(5,21,34,1) 96%); 
 }
-
+.admin-event-btn, .pending-btn {
+    margin-top: 10px;
+}
 .centered-content {
     text-align: center;
-    margin-bottom: 15px; 
+    /* margin-bottom: 15px;  */
     
 }
 .centered-content h3 {
@@ -34,6 +42,7 @@
 .admin-event-btn {
     background-color: #316878;
     margin-right: 20px;
+    border: none;
 }
 .admin-event-btn:hover {
 background-color: #133249;

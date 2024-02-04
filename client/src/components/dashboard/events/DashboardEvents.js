@@ -67,7 +67,7 @@ export default function DashboardEvents({loggedInUser}) {
 };
   return (
     <>
-      <div style={backgroundStyle}>
+      <div className="dashboard-background">
       <div className="centered-content">
         <h3>Events</h3>
       </div>

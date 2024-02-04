@@ -2,13 +2,23 @@ import React, { useEffect, useState } from "react";
 import { GetVenues } from "../managers/venueManager";
 import "../styles/client/VenueList.css";
 import { Tooltip } from "reactstrap";
+import CircleLoader from "react-spinners/CircleLoader";
 export default function VenueList() {
   const [venues, setVenues] = useState([]);
   const [tooltips, setTooltips] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(() => {
-    GetVenues().then(setVenues);
+    setIsLoading(true);
+      GetVenues()
+        .then((fetchedVenues) => {
+          setVenues(fetchedVenues);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("There was an error fetching venues");
+        })
   }, []);
 
   const toggleTooltip = (id) => {
@@ -16,13 +26,18 @@ export default function VenueList() {
   }
   return (
     <>
-      <div className="venue-background-image">
+      <div className="dashboard-background">
         <section className="">
           <div className="container py-4">
             <h1 className="h1 text-center" id="pageHeaderTitle">
               Our Venues
             </h1>
-            {venues.map((v) => (
+            {isLoading ? (
+              <div className="upcoming-spinner-ctn">
+                <CircleLoader  loading={isLoading} color="white" size={100} />
+
+              </div>
+            ) : venues.map((v) => (
               <article key={v.id} className="postcard dark blue">
                 <a className="postcard__img_link" href="#">
                   <img
@@ -71,6 +86,7 @@ export default function VenueList() {
                 </div>
               </article>
             ))}
+            
           </div>
         </section>
       </div>

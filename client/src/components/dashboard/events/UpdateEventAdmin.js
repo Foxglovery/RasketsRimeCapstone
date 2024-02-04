@@ -15,10 +15,10 @@ import {
 } from "../../managers/serviceManager";
 import { GetVenues } from "../../managers/venueManager";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { CreateEvent, GetEventToUpdateById, UpdateEvent } from "../../managers/eventManager";
+import { GetEventToUpdateById, UpdateEvent } from "../../managers/eventManager";
 import DateDropdowns from "../../DateDropdowns";
 import DurationDropdown from "../../DurationDropdown";
-
+import "../../styles/dash/UpdateEventAdmin.css"
 export default function UpdateEventAdmin({ loggedInUser }) {
   const navigate = useNavigate();
   const { eventId } = useParams();
@@ -157,7 +157,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     }
   };
   return (
-    <div className="background-image">
+    <div className="dashboard-background">
       <Container className="">
         <Row>
           <Col md={8} className="mx-auto">

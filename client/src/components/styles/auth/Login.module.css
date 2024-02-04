@@ -1,18 +1,22 @@
 .login-background-image {
     margin-top: 0;
    padding-bottom: 3rem;
-    padding-top: 60px; /* Adjust based on your navbar's height */
+    padding-top: 60px; 
   }
 
+  .login-card-ctn {
+    padding-top: 3rem;
+  }
 .login-card {
-    background-color: rgba(35,94,128,.6); 
+    background-color: rgba(35,94,128,.7); 
     border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 20px; 
     margin: 0 auto; 
+    margin-top: ;
     max-width: 500px;
-    position: relative; /* Add this line */
-    padding-bottom: 60px; /* Adjust this value as needed */
+    position: relative; 
+    padding-bottom: 60px; 
   }
   .login-card h3 {
     margin-top: 0;
