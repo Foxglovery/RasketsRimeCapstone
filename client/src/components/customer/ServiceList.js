@@ -34,7 +34,7 @@ export default function ServiceList() {
   };
   return (
     <>
-      <div className="venue-background-image">
+      <div className="dashboard-background">
         <div className="service-header">
           <h1>Our Services</h1>
           <div className="venue-dropdown-container">

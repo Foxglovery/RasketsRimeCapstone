@@ -5,15 +5,15 @@ import backgroundImage from "../assets/brown-blue-wood.jpg";
 import "./styles/Home.css";
 
 export default function Home({ loggedInUser }) {
-  const backgroundStyle = {
-    minHeight: "100vh",
-    background: `url(${backgroundImage}) no-repeat center center fixed`,
-    backgroundSize: "cover",
-    color: "white",
-  };
+  // const backgroundStyle = {
+  //   minHeight: "100vh",
+  //   background: `url(${backgroundImage}) no-repeat center center fixed`,
+  //   backgroundSize: "cover",
+  //   color: "white",
+  // };
 
   return (
-    <div style={backgroundStyle}>
+    <div className="client-background">
       <Container className="py-5">
         <Row className="justify-content-center">
           <Col md={6} className="text-center home-container">

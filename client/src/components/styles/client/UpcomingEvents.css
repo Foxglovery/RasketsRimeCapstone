@@ -1,3 +1,9 @@
+.client-background {
+    min-height: 100vh;
+    background: var(--client-background-image) no-repeat center center fixed;
+    background-size: cover;
+    }
+
 .upcoming-header-container {
     display: flex;
     justify-content: space-between;

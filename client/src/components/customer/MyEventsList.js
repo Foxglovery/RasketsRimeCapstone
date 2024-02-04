@@ -52,7 +52,7 @@ export default function MyEventsList({ loggedInUser }) {
   };
 
   return (
-    <div className="background-image">
+    <div className="dashboard-background">
       <section className="">
         <div className="container py-4">
           <h1 className="h1 text-center" id="pageHeaderTitle">

@@ -16,7 +16,7 @@ export default function VenueList() {
   }
   return (
     <>
-      <div className="venue-background-image">
+      <div className="dashboard-background">
         <section className="">
           <div className="container py-4">
             <h1 className="h1 text-center" id="pageHeaderTitle">

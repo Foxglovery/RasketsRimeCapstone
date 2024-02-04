@@ -117,7 +117,7 @@ export default function UpcomingEvents({ loggedInUser }) {
     }
   };
   return (
-    <div className="background-image">
+    <div className="dashboard-background">
       <section className="">
         <div className="container py-4">
           <div className="upcoming-header-container">

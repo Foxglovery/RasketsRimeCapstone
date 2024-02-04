@@ -112,7 +112,7 @@ export default function UpdateVenue({ loggedInUser }) {
       };
 
     return (
-        <div className="background-image">
+        <div className="client-background">
         <Container className="">
           <Row>
             <Col md={8} className="mx-auto">
