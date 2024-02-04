@@ -35,10 +35,15 @@ input[type="date"]:-webkit-autofill {
   margin-top: 10px;
   text-shadow: 0px 2px 16px #12110f;
 }
+
 .container textarea::placeholder {
   color: #d8a830;
 }
 .background .form-control {
+  background-color: #201e19;
+  color: #d8a830;
+}
+.background .form-control::focus {
   background-color: #201e19;
   color: #d8a830;
 }

@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import VenueDropdown from "../dropdowns/VenueDropdown";
 import "../styles/client/UpcomingEvents.css";
 import ServiceDropdown from "../dropdowns/ServiceDropdown";
+import CircleLoader from "react-spinners/CircleLoader";
 
 export default function UpcomingEvents({ loggedInUser }) {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function UpcomingEvents({ loggedInUser }) {
   const [selectedServiceId, setSelectedServiceId] = useState(null);
   const [tooltips, setTooltips] = useState({});
   const [refetchTrigger, setRefetchTrigger] = useState(0);
-
+  const [isLoading, setIsLoading] = useState(true);
   //tooltip handler
   const toggleTooltip = (id) => {
     setTooltips({ ...tooltips, [id]: !tooltips[id] });
@@ -59,15 +60,17 @@ export default function UpcomingEvents({ loggedInUser }) {
         });
       //otherwise get all upcoming
     } else {
+      setIsLoading(true);
       GetUpcomingEvents()
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching upcoming events", error);
         });
     }
-  }, [selectedVenueId , refetchTrigger]);
+  }, [selectedVenueId, refetchTrigger]);
   //rinse and repeat for service
   useEffect(() => {
     if (selectedServiceId) {
@@ -79,15 +82,17 @@ export default function UpcomingEvents({ loggedInUser }) {
           console.error("There was an error fetching events by Service", error);
         });
     } else {
+      setIsLoading(true);
       GetUpcomingEvents()
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching", error);
         });
     }
-  }, [selectedServiceId , refetchTrigger]);
+  }, [selectedServiceId, refetchTrigger]);
 
   const openModal = (eventId) => {
     setActiveModalId(eventId);
@@ -127,8 +132,15 @@ export default function UpcomingEvents({ loggedInUser }) {
             </h1>
             <ServiceDropdown onServiceChange={handleServiceChange} />
           </div>
-
-          {events.length > 0 ? (
+          <div>
+            
+          </div>
+          {isLoading ? (
+            <div className="upcoming-spinner-ctn">
+               <CircleLoader loading={isLoading} color="white" size={100} />
+            </div>
+           
+          ) : events.length > 0 ? (
             events.map((me) => (
               <article key={me.id} className="postcard dark blue">
                 <a className="postcard__img_link" href="#">
@@ -177,7 +189,10 @@ export default function UpcomingEvents({ loggedInUser }) {
                     {me.eventServices.map((ev) => (
                       <React.Fragment key={ev.id}>
                         <li key={ev.id} className="tag__item play blue">
-                          <a href={`/services#service-${ev.service.id}`} id={`Tooltip-${ev.id}`}>
+                          <a
+                            href={`/services#service-${ev.service.id}`}
+                            id={`Tooltip-${ev.id}`}
+                          >
                             <i className="fas fa-play mr-2"></i>
                             {ev.service.serviceName}
                           </a>
@@ -240,7 +255,7 @@ export default function UpcomingEvents({ loggedInUser }) {
                 </p>
               </div>
             </div>
-          )}
+          )} 
         </div>
       </section>
     </div>

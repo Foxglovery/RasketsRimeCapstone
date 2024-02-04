@@ -144,7 +144,7 @@ export default function CreateEventCustomer({ loggedInUser }) {
   const currentHour = eventStart.getHours();
 
   return (
-    <div className="client-background">
+    <div className="dashboard-background">
       <Container className="">
         <Row>
           <Col md={8} className="mx-auto">

@@ -3,17 +3,34 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/client/ServiceList.css";
 import { AvailableServicesByVenueId, GetServices } from "../managers/serviceManager";
 import VenueDropdown from "../dropdowns/VenueDropdown";
+import CircleLoader from "react-spinners/CircleLoader";
+
 export default function ServiceList() {
   const [services, setServices] = useState([]);
   const [selectedVenueId, setSelectedVenueId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const serviceRefs = useRef({});
 
   useEffect(() => {
     if (selectedVenueId)
     {
-      AvailableServicesByVenueId(selectedVenueId).then(setServices);
+      AvailableServicesByVenueId(selectedVenueId)
+        .then((fetchedServices) => {
+          setServices(fetchedServices);
+        })
+        .catch((error) => {
+          console.error("There was an error fetching services by venue");
+        })
     } else {
-      GetServices().then(setServices);
+      setIsLoading(true);
+      GetServices()
+        .then((fetchedServices) => {
+          setServices(fetchedServices);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("There was an error fetching services");
+        })
     }
     
   }, [selectedVenueId]);
@@ -42,7 +59,11 @@ export default function ServiceList() {
 
           </div>
         </div>
-        <div className="cards-container">
+        {isLoading ? (
+          <div className="service-list-spinner-ctn">
+            <CircleLoader  loading={isLoading} color="white" size={100} />
+          </div>
+        ) : <div className="cards-container">
           {services.map((s) => (
             <div
               className="blog-card"
@@ -73,7 +94,8 @@ export default function ServiceList() {
               </div>
             </div>
           ))}
-        </div>
+        </div>}
+        
       </div>
     </>
   );

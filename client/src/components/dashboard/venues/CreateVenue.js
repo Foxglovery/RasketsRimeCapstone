@@ -94,7 +94,7 @@ export default function CreateVenue() {
         setServiceIds(selectedOptions);
       };
     return (
-        <div className="client-background">
+        <div className="dashboard-background">
     <Container className="">
       <Row>
         <Col md={8} className="mx-auto">

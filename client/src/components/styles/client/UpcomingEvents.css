@@ -9,6 +9,11 @@
     justify-content: space-between;
     align-items: center;
 }
+.upcoming-spinner-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #pageHeaderTitle {
     flex-grow: 1;

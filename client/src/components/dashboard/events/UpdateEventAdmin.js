@@ -18,7 +18,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { GetEventToUpdateById, UpdateEvent } from "../../managers/eventManager";
 import DateDropdowns from "../../DateDropdowns";
 import DurationDropdown from "../../DurationDropdown";
-
+import "../../styles/dash/UpdateEventAdmin.css"
 export default function UpdateEventAdmin({ loggedInUser }) {
   const navigate = useNavigate();
   const { eventId } = useParams();
@@ -157,7 +157,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     }
   };
   return (
-    <div className="client-background">
+    <div className="dashboard-background">
       <Container className="">
         <Row>
           <Col md={8} className="mx-auto">

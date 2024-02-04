@@ -22,8 +22,9 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div className={styles["login-background-image"]}>
-      <div className={styles["login-card"]}>
+    <div className="dashboard-background">
+      <div className={styles["login-card-ctn"]}>
+<div className={styles["login-card"]}>
         <div className={styles["container"]}>
           <h3>Login</h3>
           <FormGroup>
@@ -64,6 +65,8 @@ export default function Login({ setLoggedInUser }) {
           
         </div>
       </div>
+      </div>
+      
     </div>
   );
 }

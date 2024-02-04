@@ -43,8 +43,9 @@ export default function Register({ setLoggedInUser }) {
   };
 
   return (
-    <div className={styles["login-background-image"]}>
-      <div className={styles["login-card"]}>
+    <div className="dashboard-background">
+      <div className={styles["login-card-ctn"]}>
+<div className={styles["login-card"]}>
         <div className={styles["container"]} style={{ maxWidth: "500px" }}>
           <h3>Sign Up</h3>
           <FormGroup>
@@ -144,6 +145,8 @@ export default function Register({ setLoggedInUser }) {
           </div>
         </div>
       </div>
+      </div>
+      
     </div>
   );
 }

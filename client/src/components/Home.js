@@ -13,7 +13,7 @@ export default function Home({ loggedInUser }) {
   // };
 
   return (
-    <div className="client-background">
+    <div className="dashboard-background">
       <Container className="py-5">
         <Row className="justify-content-center">
           <Col md={6} className="text-center home-container">

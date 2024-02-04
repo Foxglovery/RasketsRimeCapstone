@@ -143,7 +143,7 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="client-background background">
+    <div className="dashboard-background background">
     <Container>
       <Row>
         <Col md={8} className="mx-auto">

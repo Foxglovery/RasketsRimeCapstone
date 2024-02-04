@@ -4,6 +4,7 @@ import "../styles/client/MyEventsList.css";
 import { Button, Tooltip } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import CircleLoader from "react-spinners/CircleLoader";
 
 export default function MyEventsList({ loggedInUser }) {
   const navigate = useNavigate();
@@ -11,11 +12,20 @@ export default function MyEventsList({ loggedInUser }) {
   const [modal, setModal] = useState(false);
   const [activeModalId, setActiveModalId] = useState(null);
   const [tooltips, setTooltips] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const toggleModal = () => setModal(!modal);
 
   useEffect(() => {
-    GetEventsByUserId(loggedInUser.id).then(setMyEvents);
-  }, []);
+    setIsLoading(true);
+      GetEventsByUserId(loggedInUser.id)
+        .then((fetchedEvents) => {
+          setMyEvents(fetchedEvents);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("There was an error fetching my events");
+        })
+  }, [loggedInUser.id]);
 
   //tooltip handler
   const toggleTooltip = (id) => {
@@ -58,8 +68,13 @@ export default function MyEventsList({ loggedInUser }) {
           <h1 className="h1 text-center" id="pageHeaderTitle">
             My Events
           </h1>
-          {/* make sure my events contains an array for if admin has no submitted events*/}
-          {Array.isArray(myEvents) &&
+          {isLoading ? (
+            <div className="upcoming-spinner-ctn">
+              <CircleLoader  loading={isLoading} color="white" size={100} />
+            </div>
+          
+
+          ) : Array.isArray(myEvents) &&
             myEvents.map((me) => (
               <article key={me.id} className="postcard dark blue">
                 <a className="postcard__img_link" href="#">
@@ -167,7 +182,10 @@ export default function MyEventsList({ loggedInUser }) {
                   </Modal>
                 </div>
               </article>
-            ))}
+            ))}}
+          {/* make sure my events contains an array for if admin has no submitted events*/}
+          
+
         </div>
       </section>
     </div>
