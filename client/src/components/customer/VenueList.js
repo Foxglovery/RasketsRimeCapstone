@@ -3,6 +3,7 @@ import { GetVenues } from "../managers/venueManager";
 import "../styles/client/VenueList.css";
 import { Tooltip } from "reactstrap";
 import CircleLoader from "react-spinners/CircleLoader";
+import withMinimumLoadingTime from "../WithMinimumLoadingTime";
 export default function VenueList() {
   const [venues, setVenues] = useState([]);
   const [tooltips, setTooltips] = useState({});
@@ -11,13 +12,14 @@ export default function VenueList() {
 
   useEffect(() => {
     setIsLoading(true);
-      GetVenues()
+      withMinimumLoadingTime(GetVenues()) 
         .then((fetchedVenues) => {
           setVenues(fetchedVenues);
           setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching venues");
+          setIsLoading(false);
         })
   }, []);
 

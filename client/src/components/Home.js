@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import rasketsImage from "../assets/Raskets-Rime-Capstone.png";
 import backgroundImage from "../assets/brown-blue-wood.jpg";
 import "./styles/Home.css";
+import withMinimumLoadingTime from "./WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 
 export default function Home({ loggedInUser }) {
-  // const backgroundStyle = {
-  //   minHeight: "100vh",
-  //   background: `url(${backgroundImage}) no-repeat center center fixed`,
-  //   backgroundSize: "cover",
-  //   color: "white",
-  // };
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+      const imageLoadPromise = new Promise((resolve) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.src = rasketsImage;
+        if (img.complete) resolve();
+      });
+
+      withMinimumLoadingTime(imageLoadPromise).then(() => setIsLoading(false));
+    },[])
 
   return (
     <div className="dashboard-background">
-      <Container className="py-5">
+      {isLoading ? (
+        <div className="home-spinner-ctn">
+          <CircleLoader loading={isLoading} color="white" size={100} />
+        </div>
+      ) : (
+        <Container className="py-5">
         <Row className="justify-content-center">
           <Col md={6} className="text-center home-container">
             <img
@@ -30,6 +43,8 @@ export default function Home({ loggedInUser }) {
           </Col>
         </Row>
       </Container>
+      )}
+      
     </div>
   );
 }

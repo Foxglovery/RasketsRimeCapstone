@@ -256,12 +256,12 @@ export default function UpdateEventAdmin({ loggedInUser }) {
 
               {/* Event Description */}
               <FormGroup>
-                <Label for="exampleText" className="create-form-text">
+                <Label for="description" className="create-form-text">
                   Description
                 </Label>
                 <Input
                   required
-                  id="exampleText"
+                  id="description"
                   name="text"
                   type="textarea"
                   value={description}

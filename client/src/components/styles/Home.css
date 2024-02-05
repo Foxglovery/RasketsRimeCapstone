@@ -10,3 +10,8 @@
     font-family: 'Stoke';
     color: #FCD46A;
 }
+.home-spinner-ctn {
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
+}

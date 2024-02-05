@@ -20,7 +20,7 @@ import {
 import { CreateEvent } from "../managers/eventManager";
 import DurationDropdown from "../DurationDropdown";
 import DateDropdowns from "../DateDropdowns";
-
+import "../styles/client/CreateEventCustomer.css"
 export default function CreateEventCustomer({ loggedInUser }) {
   const navigate = useNavigate();
   const [venues, setVenues] = useState([]);
@@ -147,7 +147,7 @@ export default function CreateEventCustomer({ loggedInUser }) {
     <div className="dashboard-background">
       <Container className="">
         <Row>
-          <Col md={8} className="mx-auto">
+          <Col md={8} className="mx-auto customer-create-font">
             <h3 className="text-center create-form-text mb-4">
               Create An Event
             </h3>
@@ -228,12 +228,12 @@ export default function CreateEventCustomer({ loggedInUser }) {
 
               {/* Event Description */}
               <FormGroup>
-                <Label for="exampleText" className="create-form-text">
+                <Label for="cust-create-descr" className="create-form-text">
                   Description
                 </Label>
                 <Input
                   required
-                  id="exampleText"
+                  id="cust-create-descr"
                   name="text"
                   type="textarea"
                   placeholder="Describe your event"

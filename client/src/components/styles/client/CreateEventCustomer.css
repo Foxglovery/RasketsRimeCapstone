@@ -1,0 +1,10 @@
+#cust-create-descr:focus {
+    background-color: #201e19; /* Dark background */
+    color: #d8a830; /* Yellow text */
+    outline: 2px solid #d8a830; /* Custom outline color */
+    box-shadow: 0 0 5px #d8a830; /* Optional: Adds a glow effect */
+  }
+.customer-create-font h3 {
+  font-size: 40px;
+  padding-top: 3rem;
+}

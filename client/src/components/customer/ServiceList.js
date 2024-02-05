@@ -4,6 +4,7 @@ import "../styles/client/ServiceList.css";
 import { AvailableServicesByVenueId, GetServices } from "../managers/serviceManager";
 import VenueDropdown from "../dropdowns/VenueDropdown";
 import CircleLoader from "react-spinners/CircleLoader";
+import withMinimumLoadingTime from "../WithMinimumLoadingTime";
 
 export default function ServiceList() {
   const [services, setServices] = useState([]);
@@ -12,24 +13,28 @@ export default function ServiceList() {
   const serviceRefs = useRef({});
 
   useEffect(() => {
+    setIsLoading(true);
+
     if (selectedVenueId)
     {
-      AvailableServicesByVenueId(selectedVenueId)
+     withMinimumLoadingTime(AvailableServicesByVenueId(selectedVenueId)) 
         .then((fetchedServices) => {
           setServices(fetchedServices);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching services by venue");
+          setIsLoading(false);
         })
     } else {
-      setIsLoading(true);
-      GetServices()
+      withMinimumLoadingTime(GetServices())
         .then((fetchedServices) => {
           setServices(fetchedServices);
           setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching services");
+          setIsLoading(false);
         })
     }
     

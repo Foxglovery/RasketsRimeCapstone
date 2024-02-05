@@ -2,7 +2,7 @@
     --service-arr-bg: rgba(19, 50, 73, 0.844);
     --service-arr-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
     --option-bg: rgb(43, 211, 220);
-    --service-select-bg: rgba(244, 225, 79, 0.737);
+    --service-select-bg: rgba(24, 21, 31, .9);
   }
   * {
     box-sizing: border-box;
@@ -19,7 +19,7 @@
     padding: 1rem 4rem 1rem 1rem;
     background: var(--service-arr-icon) no-repeat right 0.8em center / 1.4em,
       linear-gradient(to left, var(--service-arr-bg) 3em, var(--service-select-bg) 3em);
-    color: black;
+    color: #FCD46A;
     border-radius: 0.25em;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
@@ -30,7 +30,9 @@
     /* Remove focus outline */
     &:focus {
       outline: none;
+      
     }
+    
     /* <option> colors */
     .service-dropdown-container option {
       color: inherit;

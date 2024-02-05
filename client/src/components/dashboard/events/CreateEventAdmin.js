@@ -146,7 +146,7 @@ const handleSubmit = async (e) => {
     <div className="dashboard-background background">
     <Container>
       <Row>
-        <Col md={8} className="mx-auto">
+        <Col md={8} className="mx-auto dash-margin">
           <h3  className="text-center create-form-text mb-4">Add An Event</h3>
           <div className="centered-content">
           <Link to={`/userprofiles`} className="chip-link">

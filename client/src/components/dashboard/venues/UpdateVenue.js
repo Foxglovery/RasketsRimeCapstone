@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { GetVenueById, updateVenue } from "../../managers/venueManager";
 import { GetServices } from "../../managers/serviceManager";
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
-
+import "../../styles/dash/UpdateVenue.css"
 export default function UpdateVenue({ loggedInUser }) {
     const {venueId} = useParams();
     const [venue, setVenue] = useState({});
@@ -156,7 +156,7 @@ export default function UpdateVenue({ loggedInUser }) {
                 <FormGroup>
                   <Label for="serviceMulti" className="create-form-text">Select Services</Label>
                   <Input
-                    id="serviceMulti"
+                    id="upd-venue-service-select"
                     multiple
                     name="serviceMulti"
                     type="select"

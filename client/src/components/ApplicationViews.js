@@ -16,7 +16,7 @@ import VenueList from "./customer/VenueList";
 import ServiceList from "./customer/ServiceList";
 import MyEventsList from "./customer/MyEventsList";
 import UpcomingEvents from "./customer/UpcomingEvents";
-import UpdateEventCustomer from "./dashboard/events/UpdateEventsCustomer";
+import UpdateEventCustomer from "./customer/UpdateEventCustomer";
 import CreateEventCustomer from "./customer/CreateEventCustomer";
 import CreateService from "./dashboard/services/CreateService";
 import CreateVenue from "./dashboard/venues/CreateVenue";

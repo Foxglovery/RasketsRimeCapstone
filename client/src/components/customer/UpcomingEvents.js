@@ -19,6 +19,7 @@ import VenueDropdown from "../dropdowns/VenueDropdown";
 import "../styles/client/UpcomingEvents.css";
 import ServiceDropdown from "../dropdowns/ServiceDropdown";
 import CircleLoader from "react-spinners/CircleLoader";
+import withMinimumLoadingTime from "../WithMinimumLoadingTime";
 
 export default function UpcomingEvents({ loggedInUser }) {
   const navigate = useNavigate();
@@ -48,48 +49,56 @@ export default function UpcomingEvents({ loggedInUser }) {
   //if a venue is selected, fetch based on that
   useEffect(() => {
     if (selectedVenueId) {
-      GetEventsByVenueId(selectedVenueId)
+      setIsLoading(true);
+      withMinimumLoadingTime(GetEventsByVenueId(selectedVenueId)) 
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error(
             "There was an error fetching the events by venue",
             error
           );
+          setIsLoading(false);
         });
       //otherwise get all upcoming
     } else {
       setIsLoading(true);
-      GetUpcomingEvents()
+      withMinimumLoadingTime(GetUpcomingEvents()) 
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
           setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching upcoming events", error);
+          setIsLoading(false);
         });
     }
   }, [selectedVenueId, refetchTrigger]);
   //rinse and repeat for service
   useEffect(() => {
     if (selectedServiceId) {
-      GetEventsByServiceId(selectedServiceId)
+      setIsLoading(true);
+      withMinimumLoadingTime(GetEventsByServiceId(selectedServiceId)) 
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching events by Service", error);
+          setIsLoading(false);
         });
     } else {
       setIsLoading(true);
-      GetUpcomingEvents()
+      withMinimumLoadingTime(GetUpcomingEvents()) 
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
           setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching", error);
+          setIsLoading(false);
         });
     }
   }, [selectedServiceId, refetchTrigger]);

@@ -12,13 +12,13 @@ import {
 import {
   AvailableServicesByVenueId,
   GetServices,
-} from "../../managers/serviceManager";
-import { GetVenues } from "../../managers/venueManager";
+} from "../managers/serviceManager";
+import { GetVenues } from "../managers/venueManager";
 import { useNavigate, useParams } from "react-router-dom";
-import { GetEventToUpdateById, UpdateEvent } from "../../managers/eventManager";
-import DateDropdowns from "../../DateDropdowns";
-import DurationDropdown from "../../DurationDropdown";
-
+import { GetEventToUpdateById, UpdateEvent } from "../managers/eventManager";
+import DateDropdowns from "../DateDropdowns";
+import DurationDropdown from "../DurationDropdown";
+import "../styles/client/UpdateEventCustomer.css"
 export default function UpdateEventCustomer({ loggedInUser }) {
   const navigate = useNavigate();
   const { eventId } = useParams();
@@ -251,12 +251,12 @@ export default function UpdateEventCustomer({ loggedInUser }) {
 
               {/* Event Description */}
               <FormGroup>
-                <Label for="exampleText" className="create-form-text">
+                <Label for="cust-upd-descr" className="create-form-text">
                   Description
                 </Label>
                 <Input
                   required
-                  id="exampleText"
+                  id="cust-upd-descr"
                   name="text"
                   type="textarea"
                   value={description}

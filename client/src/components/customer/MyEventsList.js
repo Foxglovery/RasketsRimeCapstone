@@ -5,6 +5,7 @@ import { Button, Tooltip } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import CircleLoader from "react-spinners/CircleLoader";
+import withMinimumLoadingTime from "../WithMinimumLoadingTime";
 
 export default function MyEventsList({ loggedInUser }) {
   const navigate = useNavigate();
@@ -17,14 +18,15 @@ export default function MyEventsList({ loggedInUser }) {
 
   useEffect(() => {
     setIsLoading(true);
-      GetEventsByUserId(loggedInUser.id)
+    
+      withMinimumLoadingTime(GetEventsByUserId(loggedInUser.id))
         .then((fetchedEvents) => {
           setMyEvents(fetchedEvents);
           setIsLoading(false);
         })
         .catch((error) => {
           console.error("There was an error fetching my events");
-        })
+        }) 
   }, [loggedInUser.id]);
 
   //tooltip handler
@@ -60,6 +62,8 @@ export default function MyEventsList({ loggedInUser }) {
       closeModal();
     }
   };
+
+  
 
   return (
     <div className="dashboard-background">
