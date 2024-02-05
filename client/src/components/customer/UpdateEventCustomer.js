@@ -18,7 +18,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { GetEventToUpdateById, UpdateEvent } from "../managers/eventManager";
 import DateDropdowns from "../DateDropdowns";
 import DurationDropdown from "../DurationDropdown";
-import "../styles/client/UpdateEventCustomer.css"
+import "../../styles/client/UpdateEventCustomer.css"
 export default function UpdateEventCustomer({ loggedInUser }) {
   const navigate = useNavigate();
   const { eventId } = useParams();

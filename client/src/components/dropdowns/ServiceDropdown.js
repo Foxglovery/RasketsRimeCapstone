@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import "../styles/dropdowns/ServiceDropdown.css";
+import "../../styles/dropdowns/ServiceDropdown.css";
 import { GetServices } from "../managers/serviceManager";
 export default function ServiceDropdown({ onServiceChange }) {
   const [services, setServices] = useState([]);
@@ -19,7 +19,7 @@ export default function ServiceDropdown({ onServiceChange }) {
     <div className="service-dropdown-container">
       <select id="service-dropdown" value={selectedService} onChange={handleChange}>
         <option value="0">
-          Filter By Service
+          All Services
         </option>
         {services.map((s) => (
           <option key={s.id} value={s.id}>

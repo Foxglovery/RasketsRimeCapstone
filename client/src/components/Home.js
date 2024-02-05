@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import rasketsImage from "../assets/Raskets-Rime-Capstone.png";
 import backgroundImage from "../assets/brown-blue-wood.jpg";
-import "./styles/Home.css";
+import "../styles/Home.css";
 import withMinimumLoadingTime from "./WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
 

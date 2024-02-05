@@ -52,6 +52,41 @@ public IActionResult GetVenues()
                 })
             }).ToList());
 }
+[HttpGet("services/{id}")]
+[Authorize]
+public IActionResult GetVenuesWithServiceId(int id)
+{
+    return Ok(_dbContext.Venues
+    .Where(v => v.VenueServices.Any(vs => vs.ServiceId == id))
+        .Include(v => v.VenueServices)
+            .ThenInclude(vs => vs.Service)
+            .Select(v => new VenueDTO
+            {
+                Id = v.Id,
+                VenueName = v.VenueName,
+                Address = v.Address,
+                Description = v.Description,
+                ContactInfo = v.ContactInfo,
+                ImageUrl = v.ImageUrl,
+                MaxOccupancy = v.MaxOccupancy,
+                IsActive = v.IsActive,
+                VenueServices = (List<VenueServiceDTO>)v.VenueServices.Select(vs => new VenueServiceDTO
+                {
+                    Id = vs.Id,
+                    VenueId = vs.VenueId,
+                    ServiceId = vs.ServiceId,
+                    Service = new ServiceDTO
+                    {
+                        Id = vs.Service.Id,
+                        ServiceName = vs.Service.ServiceName,
+                        Description = vs.Service.Description,
+                        Price = vs.Service.Price,
+                        ImageUrl = vs.Service.ImageUrl,
+                        IsActive = vs.Service.IsActive
+                    }
+                })
+            }).ToList());
+}
 
 [HttpGet("{id}")]
 [Authorize]

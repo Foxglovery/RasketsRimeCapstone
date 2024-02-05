@@ -27,8 +27,9 @@
 }
 .venue-dropdown-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   margin-top: 10px;
+  margin-right: 30px;
 }
 
 /* Body styles */
@@ -215,7 +216,7 @@ hr {
 
 /* Comments icon styles */
 .utility-list li.comments {
-  background: url('../../../assets/price-tag.png') no-repeat 0 .1em;
+  background: url('../../assets/price-tag.png') no-repeat 0 .1em;
   background-size: 32px 32px; /* Example size, adjust as needed */
     padding-left: 35px; /* Adjust padding to make room for the icon */
 }

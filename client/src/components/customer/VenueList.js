@@ -1,17 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { GetVenues } from "../managers/venueManager";
-import "../styles/client/VenueList.css";
+import { GetVenues, GetVenuesByServiceId } from "../managers/venueManager";
+import "../../styles/client/VenueList.css";
 import { Tooltip } from "reactstrap";
 import CircleLoader from "react-spinners/CircleLoader";
 import withMinimumLoadingTime from "../WithMinimumLoadingTime";
+import ServiceDropdown from "../dropdowns/ServiceDropdown";
+
 export default function VenueList() {
   const [venues, setVenues] = useState([]);
   const [tooltips, setTooltips] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedServiceId, setSelectedServiceId] = useState(null);
 
 
   useEffect(() => {
-    setIsLoading(true);
+
+    if (selectedServiceId) {
+      setIsLoading(true);
+      withMinimumLoadingTime(GetVenuesByServiceId(selectedServiceId))
+        .then((fetchedVenues) => {
+          setVenues(fetchedVenues);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(
+            "There was an error fetching the venues by service",
+            error
+          );
+          setIsLoading(false);
+        });
+    } else {
+      setIsLoading(true);
       withMinimumLoadingTime(GetVenues()) 
         .then((fetchedVenues) => {
           setVenues(fetchedVenues);
@@ -21,8 +40,13 @@ export default function VenueList() {
           console.error("There was an error fetching venues");
           setIsLoading(false);
         })
-  }, []);
+    }
+    
+  }, [selectedServiceId]);
 
+  const handleServiceChange = (serviceId) => {
+    setSelectedServiceId(parseInt(serviceId));
+  };
   const toggleTooltip = (id) => {
     setTooltips({...tooltips, [id]: !tooltips[id] });
   }
@@ -34,6 +58,10 @@ export default function VenueList() {
             <h1 className="h1 text-center" id="pageHeaderTitle">
               Our Venues
             </h1>
+            <div className="venue-list-service-drop-ctn">
+              <ServiceDropdown onServiceChange={handleServiceChange}/>
+
+            </div>
             {isLoading ? (
               <div className="upcoming-spinner-ctn">
                 <CircleLoader  loading={isLoading} color="white" size={100} />

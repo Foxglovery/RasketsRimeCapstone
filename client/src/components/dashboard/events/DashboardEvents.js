@@ -10,7 +10,7 @@ import {
 import { Button, Table } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import backgroundImage from '../../../assets/brown-blue-wood.jpg';
-import '../../styles/DashboardEvents.css'
+import '../../../styles/DashboardEvents.css'
 export default function DashboardEvents({loggedInUser}) {
   const [events, setEvents] = useState([]);
   const [showPending, setShowPending] = useState(false);

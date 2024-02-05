@@ -2,7 +2,7 @@ import { useState } from "react";
 import { register } from "../managers/authManager";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
-import styles from "../styles/auth/Login.module.css";
+import styles from "../../styles/auth/Login.module.css";
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

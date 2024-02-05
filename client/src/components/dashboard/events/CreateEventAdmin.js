@@ -10,7 +10,7 @@ import DateDropdowns from "../../DateDropdowns";
 import DurationDropdown from "../../DurationDropdown";
 import { CreateEvent } from "../../managers/eventManager";
 import { Link, useNavigate } from "react-router-dom";
-import '../../styles/dash/CreateEventAdmin.css'
+import '../../../styles/dash/CreateEventAdmin.css'
 
 export default function CreateEventAdmin({loggedInUser}) {
   const navigate = useNavigate();
