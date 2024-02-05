@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/dropdowns/DateDropdown.css";
 import { Label } from "reactstrap";
-function DateDropdowns({
+export default function DateDropdowns({
   loggedInUser,
   handleDayChange,
   handleMonthChange,
@@ -15,12 +15,18 @@ function DateDropdowns({
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [year, setYear] = useState("");
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
-  const startYear = 2023;
-  const years = Array.from({ length: 20 }, (_, i) => startYear + i);
-  const hours = Array.from({ length: 24 }, (_, i) => i);
+  const startYear = 2024;
+  const years = Array.from({ length: 5 }, (_, i) => startYear + i);
+  const hours = Array.from({ length: 24 }, (_, i) => {
+    const hour = i % 12 === 0 ? 12 : i % 12; // Convert 24-hour time to 12-hour format
+    const suffix = i < 12 ? 'AM' : 'PM'; // Determine whether the time is AM or PM
+    return `${hour}:00 ${suffix}`; // Combine the hour and suffix
+  });
+  
 
   return (
     <div className="date-dropdown-wrapper">
@@ -32,10 +38,10 @@ function DateDropdowns({
             value={currentMonth}
             onChange={handleMonthChange}
           >
-            <option value="">Month</option>
-            {months.map((m) => (
-              <option key={m} value={m}>
-                {m}
+            
+            {monthNames.map((name, index) => (
+              <option key={name} value={index + 1}>
+                {name}
               </option>
             ))}
           </select>
@@ -80,10 +86,10 @@ function DateDropdowns({
             value={currentHour}
             onChange={handleHourChange}
           >
-            <option value="">Hour</option>
-            {hours.map((h) => (
-              <option key={h} value={h}>
-                {h}
+            
+            {hours.map((hour,index) => (
+              <option key={index} value={index}>
+                {hour}
               </option>
             ))}
           </select>
@@ -93,4 +99,4 @@ function DateDropdowns({
   );
 }
 
-export default DateDropdowns;
+
