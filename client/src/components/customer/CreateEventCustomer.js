@@ -12,7 +12,7 @@ import {
 
 import "../../styles/dash/CreateEventAdmin.css";
 import { useNavigate } from "react-router-dom";
-import { GetVenues } from "../managers/venueManager";
+import { GetActiveVenues, GetVenues } from "../managers/venueManager";
 import {
   AvailableServicesByVenueId,
   GetServices,
@@ -51,7 +51,7 @@ export default function CreateEventCustomer({ loggedInUser }) {
   };
 
   useEffect(() => {
-    GetVenues().then(setVenues);
+    GetActiveVenues().then(setVenues);
   }, []);
   useEffect(() => {
     GetServices().then(setFilteredServices);

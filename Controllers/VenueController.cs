@@ -52,12 +52,47 @@ public IActionResult GetVenues()
                 })
             }).ToList());
 }
+[HttpGet("active")]
+[Authorize]
+public IActionResult GetActiveVenues()
+{
+    return Ok(_dbContext.Venues
+        .Where(v => v.IsActive == true)
+        .Include(v => v.VenueServices)
+            .ThenInclude(vs => vs.Service)
+            .Select(v => new VenueDTO
+            {
+                Id = v.Id,
+                VenueName = v.VenueName,
+                Address = v.Address,
+                Description = v.Description,
+                ContactInfo = v.ContactInfo,
+                ImageUrl = v.ImageUrl,
+                MaxOccupancy = v.MaxOccupancy,
+                IsActive = v.IsActive,
+                VenueServices = (List<VenueServiceDTO>)v.VenueServices.Select(vs => new VenueServiceDTO
+                {
+                    Id = vs.Id,
+                    VenueId = vs.VenueId,
+                    ServiceId = vs.ServiceId,
+                    Service = new ServiceDTO
+                    {
+                        Id = vs.Service.Id,
+                        ServiceName = vs.Service.ServiceName,
+                        Description = vs.Service.Description,
+                        Price = vs.Service.Price,
+                        ImageUrl = vs.Service.ImageUrl,
+                        IsActive = vs.Service.IsActive
+                    }
+                })
+            }).ToList());
+}
 [HttpGet("services/{id}")]
 [Authorize]
 public IActionResult GetVenuesWithServiceId(int id)
 {
     return Ok(_dbContext.Venues
-    .Where(v => v.VenueServices.Any(vs => vs.ServiceId == id))
+    .Where(v => v.VenueServices.Any(vs => vs.ServiceId == id) && v.IsActive == true)
         .Include(v => v.VenueServices)
             .ThenInclude(vs => vs.Service)
             .Select(v => new VenueDTO
@@ -237,5 +272,37 @@ public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO updatedVenue)
     return Ok(venueToUpdate);
 }
 
+[HttpPut("deactivate/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult DeactivateVenue(int id)
+    {
+        var venueToDeactivate = _dbContext.Venues.SingleOrDefault(v => v.Id == id);
+
+
+        if (venueToDeactivate == null)
+        {
+            return NotFound();
+        }
+        venueToDeactivate.IsActive = false;
+        _dbContext.SaveChanges();
+        return Ok("Venue Deactivation Successful");
+
+    }
+[HttpPut("activate/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult ActivateVenue(int id)
+    {
+        var venueToDeactivate = _dbContext.Venues.SingleOrDefault(v => v.Id == id);
+
+
+        if (venueToDeactivate == null)
+        {
+            return NotFound();
+        }
+        venueToDeactivate.IsActive = true;
+        _dbContext.SaveChanges();
+        return Ok("Venue Activation Successful");
+
+    }
 
 }

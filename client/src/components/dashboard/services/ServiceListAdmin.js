@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react"
-import { GetServices } from "../../managers/serviceManager";
+import { ActivateService, DeactivateService, GetServices } from "../../managers/serviceManager";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 import backgroundImage from '../../../assets/brown-blue-wood.jpg';
 export default function ServiceListAdmin({loggedInUser}) {
     const [services, setServices] = useState([]);
+    const [activeChange, setActiveChange] = useState(false);
     const navigate = useNavigate();
 
-
+    //for to map over venues with each service
     const renderVenueNames = (venueServices) => {
         return venueServices.map(vs => vs.venue.venueName).join(", ");
     }
     useEffect(() => {
         GetServices().then(setServices);
-    },[])
+    },[activeChange])
 
     const backgroundStyle = {
       minHeight: '100vh',
@@ -21,6 +22,16 @@ export default function ServiceListAdmin({loggedInUser}) {
       backgroundSize: 'cover', 
       color: 'white',
   };
+  const handleDeactivate = (id) => {
+    DeactivateService(id).then(() => {
+      setActiveChange(!activeChange);
+    })
+  }
+  const handleActivate = (id) => {
+    ActivateService(id).then(() => {
+      setActiveChange(!activeChange);
+    })
+  }
     return (
       <div style={backgroundStyle}>
       <div className="centered-content">
@@ -41,6 +52,8 @@ export default function ServiceListAdmin({loggedInUser}) {
               <th>Description</th>
               <th>Available At</th>
               <th>Price</th>
+              <th>Status</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
@@ -52,6 +65,12 @@ export default function ServiceListAdmin({loggedInUser}) {
                 <td>{service.description}</td>
                 <td>{renderVenueNames(service.venueServices)}</td>
                 <td>${service.price}</td>
+                <td>{service.isActive ? "Active" : "Inactive"}</td>
+                <td>{service.isActive ? (
+                  <Button className="admin-reject-btn" onClick={() => handleDeactivate(service.id)}>Deactivate</Button>
+                ) : (
+                  <Button className="admin-approve-btn" onClick={() => handleActivate(service.id)}>Activate</Button>
+                )}</td>
                 <td><Button className="admin-update-event-btn" onClick={() => navigate(`/admin/services/update/${service.id}`)}> Update</Button></td>
               </tr>
             ))}

@@ -117,13 +117,13 @@ export default function DashboardEvents({loggedInUser}) {
               <td>{e.status}</td>
               {e.status !== "Approved" ? (
                 <td>
-                  <Button color="primary" onClick={() => handleApprove(e.id)}>
+                  <Button className="admin-approve-btn" onClick={() => handleApprove(e.id)}>
                     Approve
                   </Button>
                 </td>
               ) : (
                 <td>
-                  <Button color="primary" disabled>
+                  <Button className="admin-approve-btn" disabled>
                     Approve
                   </Button>
                 </td>

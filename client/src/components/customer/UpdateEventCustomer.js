@@ -13,7 +13,7 @@ import {
   AvailableServicesByVenueId,
   GetServices,
 } from "../managers/serviceManager";
-import { GetVenues } from "../managers/venueManager";
+import { GetActiveVenues, GetVenues } from "../managers/venueManager";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetEventToUpdateById, UpdateEvent } from "../managers/eventManager";
 import DateDropdowns from "../DateDropdowns";
@@ -54,7 +54,7 @@ export default function UpdateEventCustomer({ loggedInUser }) {
   };
 
   useEffect(() => {
-    GetVenues().then(setVenues);
+    GetActiveVenues().then(setVenues);
   }, []);
   useEffect(() => {
     GetServices().then(setFilteredServices);
