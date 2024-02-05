@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   GetEventsByServiceId,
-  GetEventsByUserId,
   GetEventsByVenueId,
   GetUpcomingEvents,
   UserCancelEvent,
@@ -16,7 +15,7 @@ import {
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import VenueDropdown from "../dropdowns/VenueDropdown";
-import "../styles/client/UpcomingEvents.css";
+import "../../styles/client/UpcomingEvents.css";
 import ServiceDropdown from "../dropdowns/ServiceDropdown";
 import CircleLoader from "react-spinners/CircleLoader";
 import withMinimumLoadingTime from "../WithMinimumLoadingTime";
@@ -222,7 +221,7 @@ export default function UpcomingEvents({ loggedInUser }) {
                     Reach out to <a href="#">{me.venue.contactInfo}</a>
                   </div>
                   <div className="postcard__bar"></div>
-                  {loggedInUser.id == me.userId && (
+                  {loggedInUser.id === me.userId && (
                     <div className="my-events-btn-container">
                       <Button
                         className="my-events-btn"

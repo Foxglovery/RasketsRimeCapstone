@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-import "../styles/client/ServiceList.css";
+import "../../styles/client/ServiceList.css";
 import { AvailableServicesByVenueId, GetServices } from "../managers/serviceManager";
 import VenueDropdown from "../dropdowns/VenueDropdown";
 import CircleLoader from "react-spinners/CircleLoader";
@@ -10,7 +10,7 @@ export default function ServiceList() {
   const [services, setServices] = useState([]);
   const [selectedVenueId, setSelectedVenueId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const serviceRefs = useRef({});
+ 
 
   useEffect(() => {
     setIsLoading(true);
@@ -60,7 +60,7 @@ export default function ServiceList() {
         <div className="service-header">
           <h1>Our Services</h1>
           <div className="venue-dropdown-container">
-                      <VenueDropdown onVenueChange={handleVenueChange} />
+            <VenueDropdown onVenueChange={handleVenueChange} />
 
           </div>
         </div>
@@ -69,6 +69,7 @@ export default function ServiceList() {
             <CircleLoader  loading={isLoading} color="white" size={100} />
           </div>
         ) : <div className="cards-container">
+          
           {services.map((s) => (
             <div
               className="blog-card"

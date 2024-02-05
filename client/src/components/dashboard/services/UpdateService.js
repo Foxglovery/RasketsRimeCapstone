@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { GetServiceById, updateService } from "../../managers/serviceManager";
 import { GetVenues } from "../../managers/venueManager";
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import "../../styles/dash/UpdateService.css"
+import "../../../styles/dash/UpdateService.css"
 export default function UpdateService({loggedInUser}) {
     const {id} = useParams();
     const [service, setService] = useState({});

@@ -10,7 +10,7 @@ import {
   Row,
 } from "reactstrap";
 
-import "../styles/dash/CreateEventAdmin.css";
+import "../../styles/dash/CreateEventAdmin.css";
 import { useNavigate } from "react-router-dom";
 import { GetVenues } from "../managers/venueManager";
 import {
@@ -20,7 +20,7 @@ import {
 import { CreateEvent } from "../managers/eventManager";
 import DurationDropdown from "../DurationDropdown";
 import DateDropdowns from "../DateDropdowns";
-import "../styles/client/CreateEventCustomer.css"
+import "../../styles/client/CreateEventCustomer.css"
 export default function CreateEventCustomer({ loggedInUser }) {
   const navigate = useNavigate();
   const [venues, setVenues] = useState([]);

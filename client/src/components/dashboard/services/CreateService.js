@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { GetVenues } from "../../managers/venueManager";
-import "../../styles/dash/CreateEventAdmin.css"
+import "../../../styles/dash/CreateEventAdmin.css"
 import { Link, useNavigate } from "react-router-dom";
 import { CreateNewService } from "../../managers/serviceManager";
 export default function CreateService() {

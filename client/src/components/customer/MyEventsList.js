@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GetEventsByUserId, UserCancelEvent } from "../managers/eventManager";
-import "../styles/client/MyEventsList.css";
+import "../../styles/client/MyEventsList.css";
 import { Button, Tooltip } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
