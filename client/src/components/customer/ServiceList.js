@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import "../../styles/client/ServiceList.css";
-import { AvailableServicesByVenueId, GetServices } from "../managers/serviceManager";
+import { AvailableServicesByVenueId, GetActiveServices, GetServices } from "../managers/serviceManager";
 import VenueDropdown from "../dropdowns/VenueDropdown";
 import CircleLoader from "react-spinners/CircleLoader";
 import withMinimumLoadingTime from "../WithMinimumLoadingTime";
@@ -27,7 +27,7 @@ export default function ServiceList() {
           setIsLoading(false);
         })
     } else {
-      withMinimumLoadingTime(GetServices())
+      withMinimumLoadingTime(GetActiveServices())
         .then((fetchedServices) => {
           setServices(fetchedServices);
           setIsLoading(false);

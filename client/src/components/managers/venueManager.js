@@ -3,6 +3,9 @@ const _apiUrl = "/api/Venue";
 export const GetVenues = () => {
   return fetch(_apiUrl).then((res) => res.json());
 };
+export const GetActiveVenues = () => {
+  return fetch(`${_apiUrl}/active`).then((res) => res.json());
+};
 export const GetVenueById = (id) => {
   return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 };
@@ -32,5 +35,24 @@ export const updateVenue = (venueId, newVenue) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newVenue),
+  })
+}
+
+export const DeactivateVenue = (id) => {
+  return fetch(`${_apiUrl}/deactivate/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(id),
+  })
+}
+export const ActivateVenue = (id) => {
+  return fetch(`${_apiUrl}/activate/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(id),
   })
 }

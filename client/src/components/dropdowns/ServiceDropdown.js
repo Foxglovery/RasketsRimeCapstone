@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import "../../styles/dropdowns/ServiceDropdown.css";
-import { GetServices } from "../managers/serviceManager";
+import { GetActiveServices, GetServices } from "../managers/serviceManager";
 export default function ServiceDropdown({ onServiceChange }) {
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState("0");
@@ -12,7 +12,7 @@ export default function ServiceDropdown({ onServiceChange }) {
     
   };
   useEffect(() => {
-    GetServices().then(setServices);
+    GetActiveServices().then(setServices);
   }, []);
 
   return (

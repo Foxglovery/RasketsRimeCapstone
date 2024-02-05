@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetVenues, GetVenuesByServiceId } from "../managers/venueManager";
+import { GetActiveVenues, GetVenues, GetVenuesByServiceId } from "../managers/venueManager";
 import "../../styles/client/VenueList.css";
 import { Tooltip } from "reactstrap";
 import CircleLoader from "react-spinners/CircleLoader";
@@ -31,7 +31,7 @@ export default function VenueList() {
         });
     } else {
       setIsLoading(true);
-      withMinimumLoadingTime(GetVenues()) 
+      withMinimumLoadingTime(GetActiveVenues()) 
         .then((fetchedVenues) => {
           setVenues(fetchedVenues);
           setIsLoading(false);

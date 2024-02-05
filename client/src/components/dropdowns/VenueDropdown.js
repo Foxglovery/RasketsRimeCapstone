@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { GetVenues } from "../managers/venueManager";
+import { GetActiveVenues, GetVenues } from "../managers/venueManager";
 import "../../styles/dropdowns/VenueDropdown.css";
 export default function VenueDropdown({ onVenueChange }) {
   const [venues, setVenues] = useState([]);
 
   useEffect(() => {
-    GetVenues().then(setVenues);
+    GetActiveVenues().then(setVenues);
   }, []);
 
   const handleChange = (event) => {

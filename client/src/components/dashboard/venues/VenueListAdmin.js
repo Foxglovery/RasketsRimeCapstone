@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { GetVenues } from "../../managers/venueManager";
+import { ActivateVenue, DeactivateVenue, GetVenues } from "../../managers/venueManager";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
 
 export default function VenueListAdmin({ loggedInUser }) {
   const [venues, setVenues] = useState([]);
+  const [activeChange, setActiveChange] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
     GetVenues().then(setVenues);
-  }, []);
+  }, [activeChange]);
 
   const backgroundStyle = {
     minHeight: "100vh",
@@ -18,7 +19,16 @@ export default function VenueListAdmin({ loggedInUser }) {
     backgroundSize: "cover",
     color: "white",
   };
-
+  const handleDeactivate = (id) => {
+    DeactivateVenue(id).then(() => {
+      setActiveChange(!activeChange)
+    })
+  }
+  const handleActivate = (id) => {
+    ActivateVenue(id).then(() => {
+      setActiveChange(!activeChange);
+    })
+  }
   return (
     <>
       <div style={backgroundStyle}>
@@ -47,6 +57,8 @@ export default function VenueListAdmin({ loggedInUser }) {
               <th>Address</th>
               <th>Contact</th>
               <th>Max Occupancy</th>
+              <th>Status</th>
+              <th></th>
               <th></th>
               <th></th>
             </tr>
@@ -59,6 +71,12 @@ export default function VenueListAdmin({ loggedInUser }) {
                 <td>{v.address}</td>
                 <td>{v.contactInfo}</td>
                 <td>{v.maxOccupancy}</td>
+                <td>{v.isActive ? "Active" : "Inactive"}</td>
+                <td>{v.isActive ? (
+                  <Button className="admin-reject-btn"onClick={() => handleDeactivate(v.id)} >Deactivate</Button>
+                ) : (
+                  <Button color="primary" onClick={() => handleActivate(v.id)}>Activate</Button>
+                )}</td>
                 <td><Button className="admin-update-event-btn" onClick={() => navigate(`/admin/venues/update/${v.id}`)}>Update</Button></td>
                 <td>
                   <Link to={`${v.id}`}><Button className="admin-details-event-btn">Details</Button></Link>

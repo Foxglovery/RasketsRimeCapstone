@@ -5,6 +5,9 @@ const _apiUrl = "/api/Service";
 export const GetServices = () => {
     return fetch(_apiUrl).then((res) => res.json());
 }
+export const GetActiveServices = () => {
+    return fetch(`${_apiUrl}/active`).then((res) => res.json());
+}
 export const GetServiceById = (id) => {
     return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 }
@@ -36,3 +39,22 @@ return fetch(`${_apiUrl}/${id}`, {
     body: JSON.stringify(updateService),
 })
 }
+
+export const DeactivateService = (id) => {
+    return fetch(`${_apiUrl}/deactivate/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(id),
+    })
+  }
+  export const ActivateService = (id) => {
+    return fetch(`${_apiUrl}/activate/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(id),
+    })
+  }
