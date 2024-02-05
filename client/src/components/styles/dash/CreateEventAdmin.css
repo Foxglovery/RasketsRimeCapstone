@@ -94,6 +94,6 @@ select {
 textarea {
   font-family: "Forum";
 }
-.mx-auto h3 {
-  margin-top: 10vh;
+.dash-margin h3 {
+  padding-top: 3rem;
 }

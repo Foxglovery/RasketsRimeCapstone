@@ -2,7 +2,7 @@
     --arrow-bg: rgba(19, 50, 73, 0.844);;
     --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
     --option-bg: rgb(43, 211, 220);
-    --select-bg: rgba(244, 225, 79, 0.66);
+    --select-bg:  rgba(24, 21, 31, .9);
   }
   * {
     box-sizing: border-box;
@@ -20,7 +20,7 @@
     padding: 1rem 4rem 1rem 1rem;
     background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
       linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
-    color: black;
+    color: #FCD46A;
     border-radius: 0.25em;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
