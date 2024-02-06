@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GetEventsByUserId, UserCancelEvent } from "../managers/eventManager";
 import "../../styles/client/MyEventsList.css";
 import { Button, Tooltip } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import CircleLoader from "react-spinners/CircleLoader";
 import withMinimumLoadingTime from "../WithMinimumLoadingTime";
@@ -81,13 +81,13 @@ export default function MyEventsList({ loggedInUser }) {
           ) : Array.isArray(myEvents) &&
             myEvents.map((me) => (
               <article key={me.id} className="postcard dark blue">
-                <a className="postcard__img_link" href="#">
+                <Link className="postcard__img_link" to={`/venues#venue-${me.venue.id}`}>
                   <img
                     className="postcard__img"
                     src={me.venue.imageUrl}
                     alt="A picture of a place"
                   />
-                </a>
+                </Link>
                 <div className="postcard__text my-events-details">
                   <h1 className="postcard__title blue">
                     <a href="#">{me.eventName}</a>
@@ -130,10 +130,10 @@ export default function MyEventsList({ loggedInUser }) {
                   {me.eventServices.map((ev) => (
                       <React.Fragment key={ev.id}>
                         <li key={ev.id} className="tag__item play blue">
-                          <a href="#" id={`Tooltip-${ev.id}`}>
+                          <Link to={`/services#service-${ev.service.id}`} id={`Tooltip-${ev.id}`}>
                             <i className="fas fa-play mr-2"></i>
                             {ev.service.serviceName}
-                          </a>
+                          </Link>
                         </li>
                         <Tooltip
                           placement="bottom"

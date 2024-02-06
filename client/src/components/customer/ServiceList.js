@@ -5,6 +5,7 @@ import { AvailableServicesByVenueId, GetActiveServices, GetServices } from "../m
 import VenueDropdown from "../dropdowns/VenueDropdown";
 import CircleLoader from "react-spinners/CircleLoader";
 import withMinimumLoadingTime from "../WithMinimumLoadingTime";
+import { Link } from "react-router-dom";
 
 export default function ServiceList() {
   const [services, setServices] = useState([]);
@@ -87,7 +88,10 @@ export default function ServiceList() {
                 </div>
                 <ul className="card-info">
                   {s.venueServices &&
-                    s.venueServices.map((vs) => <li key={vs.id}>{vs.venue.venueName}</li>)}
+                    s.venueServices.map((vs) => 
+                    <li key={vs.id}>
+                      <Link className="service-list-links" to={`/venues#venue-${vs.venue.id}`}>{vs.venue.venueName}</Link>
+                    </li>)}
                 </ul>
                 <div className="utility-info">
                   <ul className="utility-list">

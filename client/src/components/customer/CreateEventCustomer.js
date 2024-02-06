@@ -10,9 +10,9 @@ import {
   Row,
 } from "reactstrap";
 
-import "../../styles/dash/CreateEventAdmin.css";
+
 import { useNavigate } from "react-router-dom";
-import { GetActiveVenues, GetVenues } from "../managers/venueManager";
+import { GetActiveVenues } from "../managers/venueManager";
 import {
   AvailableServicesByVenueId,
   GetServices,

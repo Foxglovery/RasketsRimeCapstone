@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import rasketsImage from "../assets/Raskets-Rime-Capstone.png";
-import backgroundImage from "../assets/brown-blue-wood.jpg";
+
 import "../styles/Home.css";
 import withMinimumLoadingTime from "./WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
@@ -9,9 +9,11 @@ import CircleLoader from "react-spinners/CircleLoader";
 export default function Home({ loggedInUser }) {
     const [isLoading, setIsLoading] = useState(true);
 
+    //using the image load to control the spinner
     useEffect(() => {
       const imageLoadPromise = new Promise((resolve) => {
         const img = new Image();
+        //when the image finishes loading, the promise will resolve
         img.onload = resolve;
         img.src = rasketsImage;
         if (img.complete) resolve();
