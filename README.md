@@ -51,7 +51,7 @@ Before diving into the setup process, ensure you have the following installed:
 - [Node.js and npm](https://nodejs.org/en/download/)
 - [.NET 6.0 SDK](https://dotnet.microsoft.com/download)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (or another database that Entity Framework Core supports, if applicable)
-- React Spinner (https://www.npmjs.com/package/react-spinners)
+-Be sure that React Spinner gets installed during build. It is required (https://www.npmjs.com/package/react-spinners)
 
 ### Front-End Installation Steps
 1. **Clone the Repository**
