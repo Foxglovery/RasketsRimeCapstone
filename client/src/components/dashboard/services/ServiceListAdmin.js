@@ -3,9 +3,12 @@ import { ActivateService, DeactivateService, GetServices } from "../../managers/
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 import backgroundImage from '../../../assets/brown-blue-wood.jpg';
+import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 export default function ServiceListAdmin({loggedInUser}) {
     const [services, setServices] = useState([]);
-    const [activeChange, setActiveChange] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
     const navigate = useNavigate();
 
     //for to map over venues with each service
@@ -13,27 +16,33 @@ export default function ServiceListAdmin({loggedInUser}) {
         return venueServices.map(vs => vs.venue.venueName).join(", ");
     }
     useEffect(() => {
-        GetServices().then(setServices);
-    },[activeChange])
+      setIsLoading(true);
+       withMinimumLoadingTime(GetServices())
+        .then((fetchedServices) => {
+          setServices(fetchedServices);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(
+            "There was an error", error
+          );
+          setIsLoading(false);
+        });
+    },[])
 
-    const backgroundStyle = {
-      minHeight: '100vh',
-      background: `url(${backgroundImage}) no-repeat center center fixed`, 
-      backgroundSize: 'cover', 
-      color: 'white',
-  };
+    
   const handleDeactivate = (id) => {
     DeactivateService(id).then(() => {
-      setActiveChange(!activeChange);
+      GetServices().then(setServices);
     })
   }
   const handleActivate = (id) => {
     ActivateService(id).then(() => {
-      setActiveChange(!activeChange);
+      GetServices().then(setServices);
     })
   }
     return (
-      <div style={backgroundStyle}>
+      <div className="dashboard-background">
       <div className="centered-content">
         <h3>Services</h3>
         <div className="link-group" style={{ marginTop: '20px' }}>
@@ -44,6 +53,11 @@ export default function ServiceListAdmin({loggedInUser}) {
         <div className="centered-content">
           <Button className="admin-service-btn" onClick={() => navigate(`/admin/services/create`)}>Add Service</Button>
       </div>
+      {isLoading ? (
+        <div className="dashboard-event-spinner">
+          <CircleLoader color="white" size={100} />
+        </div>
+      ) : (
         <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '90%', margin: 'auto' }}>
           <thead>
             <tr>
@@ -76,6 +90,8 @@ export default function ServiceListAdmin({loggedInUser}) {
             ))}
           </tbody>
         </Table>
+      )}
+        
         
       </div>
     </div>

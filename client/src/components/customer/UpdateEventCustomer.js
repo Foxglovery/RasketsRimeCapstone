@@ -19,6 +19,8 @@ import { GetEventToUpdateById, UpdateEvent } from "../managers/eventManager";
 import DateDropdowns from "../DateDropdowns";
 import DurationDropdown from "../DurationDropdown";
 import "../../styles/client/UpdateEventCustomer.css"
+import withMinimumLoadingTime from "../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 export default function UpdateEventCustomer({ loggedInUser }) {
   const navigate = useNavigate();
   const { eventId } = useParams();
@@ -40,6 +42,7 @@ export default function UpdateEventCustomer({ loggedInUser }) {
   const [existingYear, setExistingYear] = useState(0);
   const [existingHour, setExistingHour] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const newEvent = {
     userId: loggedInUser.id,
     venueId: chosenVenueId,
@@ -53,16 +56,35 @@ export default function UpdateEventCustomer({ loggedInUser }) {
     serviceIds: serviceIds,
   };
 
-  useEffect(() => {
-    GetActiveVenues().then(setVenues);
-  }, []);
-  useEffect(() => {
-    GetServices().then(setFilteredServices);
-  }, []);
+  // useEffect(() => {
+  //   GetActiveVenues().then(setVenues);
+  // }, []);
+  // useEffect(() => {
+  //   GetServices().then(setFilteredServices);
+  // }, []);
+  useEffect(() =>{
+    const fetchInitialData = async () => {
+      setIsLoading(true);
+      try{
+        const venuesData = await withMinimumLoadingTime(GetActiveVenues());
+        setVenues(venuesData);
+        const serviceData = await withMinimumLoadingTime(GetServices());
+        setFilteredServices(serviceData);
+      } catch (error) {
+        console.error("Error fetching initial data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchInitialData();
+  },[])
 
   useEffect(() => {
-    GetEventToUpdateById(eventId).then((event) => {
-      setEventToUpdate(event);
+    const fetchEventDetails = async () => {
+      setIsLoading(true);
+      try {
+        const event = await withMinimumLoadingTime(GetEventToUpdateById(eventId));
+        setEventToUpdate(event);
       setExistingServiceIds(event.serviceIds);
       setEventName(event.eventName);
       setChosenVenueId(event.venueId);
@@ -70,21 +92,36 @@ export default function UpdateEventCustomer({ loggedInUser }) {
       setDescription(event.eventDescription);
       setIsPublic(event.isPublic);
       setServiceIds(event.serviceIds);
-
       const existingEventStart = new Date(event.eventStart);
       setEventStart(existingEventStart);
       setExistingMonth(existingEventStart.getMonth() + 1);
       setExistingDay(existingEventStart.getDate());
       setExistingYear(existingEventStart.getFullYear());
       setExistingHour(existingEventStart.getHours());
-      
-    });
+      } catch (error) {
+        console.error("Error fetching event details:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    if (eventId) {
+      fetchEventDetails();
+    }
+    
   }, [eventId]);
 
   useEffect(() => {
-    if (chosenVenueId) {
-      AvailableServicesByVenueId(chosenVenueId).then(setFilteredServices);
-    }
+    const fetchServicesByVenue = async () => {
+      if (chosenVenueId) {
+        try {
+          const services = await withMinimumLoadingTime(AvailableServicesByVenueId(chosenVenueId));
+          setFilteredServices(services);
+        } catch (error) {
+          console.error("Error fetching services by venue:", error);
+        }
+      }
+    };
+    fetchServicesByVenue();
   }, [chosenVenueId]);
 
  
@@ -170,7 +207,12 @@ export default function UpdateEventCustomer({ loggedInUser }) {
             <h3 className="text-center create-form-text mb-4">
               Update An Event
             </h3>
-            <Form>
+            {isLoading ? (
+        <div className="dashboard-event-spinner">
+          <CircleLoader color="white" size={100} />
+        </div>
+      ) : (
+        <Form>
               {/* Event Name */}
               <FormGroup>
                 <Label for="eventName" className="create-form-text">
@@ -306,6 +348,8 @@ export default function UpdateEventCustomer({ loggedInUser }) {
                 </Button>
               </FormGroup>
             </Form>
+      )}
+            
           </Col>
         </Row>
       </Container>

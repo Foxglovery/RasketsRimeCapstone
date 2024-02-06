@@ -3,22 +3,31 @@ import { GetProfiles } from "../../managers/userProfileManager";
 import { Button, Table } from "reactstrap";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
+import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 
 export default function UserProfileList({ loggedInUser }) {
   const [userProfiles, setUserProfiles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
-    GetProfiles().then(setUserProfiles);
+    setIsLoading(true);
+    withMinimumLoadingTime(GetProfiles())
+      .then((fetchedProfiles) => {
+        setUserProfiles(fetchedProfiles);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(
+          "There was an error fetching profiles", error
+        );
+      })
   }, []);
-  const backgroundStyle = {
-    minHeight: "100vh",
-    background: `url(${backgroundImage}) no-repeat center center fixed`,
-    backgroundSize: "cover",
-    color: "white",
-  };
+  
   return (
     <>
-      <div style={backgroundStyle}>
+      <div className="dashboard-background">
         <div className="centered-content">
           <h3>Users</h3>
         </div>
@@ -33,7 +42,12 @@ export default function UserProfileList({ loggedInUser }) {
             Services
           </Link>
         </div>
-        <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
+        {isLoading ? (
+          <div className="dashboard-event-spinner">
+            <CircleLoader color="white" size={100} />
+          </div>
+        ) : (
+          <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
               <th>#</th>
@@ -63,6 +77,8 @@ export default function UserProfileList({ loggedInUser }) {
             ))}
           </tbody>
         </Table>
+        )}
+        
       </div>
     </>
   );

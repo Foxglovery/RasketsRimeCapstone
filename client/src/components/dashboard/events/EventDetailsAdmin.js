@@ -3,29 +3,39 @@ import { Link, useParams } from "react-router-dom";
 import { GetEventById } from "../../managers/eventManager";
 import { Table } from "reactstrap";
 import backgroundImage from '../../../assets/brown-blue-wood.jpg';
+import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 
 export default function EventDetailsAdmin({loggedInUser}) {
   const { id } = useParams();
   const [event, setEvent] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
-    GetEventById(id).then(setEvent);
-  }, [id]);
+    setIsLoading(true);
+    withMinimumLoadingTime(GetEventById(id))
+      .then((fetchedEvent) => {
+        setEvent(fetchedEvent);
+        setIsLoading(false)
+      })
+      .catch((error) => {
+        console.error(
+          "There was an error", error
+        );
+        setIsLoading(false);
+      });
+  }, []);
 
-  const backgroundStyle = {
-    minHeight: '100vh',
-    background: `url(${backgroundImage}) no-repeat center center fixed`, 
-    backgroundSize: 'cover', 
-    color: 'white',
-};
+  
 const formatEventTime = (dateString) => {
   const date = new Date(dateString);
   return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
 };
   return (
     //add a table here to display event
-    <>
-      <div style={backgroundStyle}>
+    
+      <div className="dashboard-background">
       <div className="centered-content">
         <h3>Event Details</h3>
       </div>
@@ -35,7 +45,13 @@ const formatEventTime = (dateString) => {
         <Link to={`/admin/venues`} className="chip-link">Venues</Link>
         <Link to={`/admin/services`} className="chip-link">Services</Link>
       </div>
-      <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
+      {isLoading ? (
+        <div className="dashboard-event-spinner">
+          <CircleLoader color="white" size={100} />
+        </div>
+      ) : (
+        <>
+        <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <tbody>
             <tr>
               <th>Name</th>
@@ -97,6 +113,8 @@ const formatEventTime = (dateString) => {
           ))}
         </tbody>
       </Table>
-   </div> </>
+      </>)}
+      
+   </div> 
   );
 }

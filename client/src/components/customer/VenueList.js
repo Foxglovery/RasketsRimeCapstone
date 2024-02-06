@@ -63,7 +63,7 @@ export default function VenueList() {
 
             </div>
             {isLoading ? (
-              <div className="upcoming-spinner-ctn">
+              <div className="venue-list-spinner-ctn">
                 <CircleLoader  loading={isLoading} color="white" size={100} />
 
               </div>

@@ -33,6 +33,11 @@ body {
     width: 100%;
 }
 
+.venue-list-spinner-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .light {
 	background: #f3f5f7;

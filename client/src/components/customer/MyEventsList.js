@@ -73,7 +73,7 @@ export default function MyEventsList({ loggedInUser }) {
             My Events
           </h1>
           {isLoading ? (
-            <div className="upcoming-spinner-ctn">
+            <div className="my-events-spinner-ctn">
               <CircleLoader  loading={isLoading} color="white" size={100} />
             </div>
           

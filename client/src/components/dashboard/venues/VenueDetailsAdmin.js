@@ -4,15 +4,27 @@ import { Table } from "reactstrap";
 import { GetVenueById } from "../../managers/venueManager";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
 import { GetEventsByVenueId } from "../../managers/eventManager";
+import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 
 export default function VenueDetailsAdmin({ loggedInUser }) {
   const { id } = useParams();
   const [venue, setVenue] = useState([]);
   const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   
   useEffect(() => {
-    GetVenueById(id).then(setVenue);
-    GetEventsByVenueId(id).then(setEvents);
+    setIsLoading(true);
+    withMinimumLoadingTime(GetVenueById(id))
+      .then((fetchedVenue) => {
+        setVenue(fetchedVenue);
+      });
+    withMinimumLoadingTime(GetEventsByVenueId(id))
+      .then((fetchedEvents) => {
+        setEvents(fetchedEvents);
+        setIsLoading(false);
+      });
   }, [id]);
   const sumServicePrice = events?.reduce((acc, event) => acc + event.totalCost, 0);
   const backgroundStyle = {
@@ -23,7 +35,7 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
   };
   return (
     <>
-      <div style={backgroundStyle}>
+      <div className="dashboard-background">
         <div className="centered-content">
           <h3>Venue</h3>
         </div>
@@ -41,7 +53,12 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
             Services
           </Link>
         </div>
-        <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
+        {isLoading ? (
+        <div className="dashboard-event-spinner">
+          <CircleLoader color="white" size={100} />
+        </div>
+      ) : (<>
+         <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <tbody>
             <tr>
               <th>Name</th>
@@ -99,6 +116,8 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
             ))}
           </tbody>
         </Table>
+      </>)}
+       
       </div>
     </>
   );
