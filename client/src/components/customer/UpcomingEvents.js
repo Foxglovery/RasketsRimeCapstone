@@ -13,7 +13,7 @@ import {
   ModalHeader,
   Tooltip,
 } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import VenueDropdown from "../dropdowns/VenueDropdown";
 import "../../styles/client/UpcomingEvents.css";
 import ServiceDropdown from "../dropdowns/ServiceDropdown";
@@ -151,13 +151,13 @@ export default function UpcomingEvents({ loggedInUser }) {
           ) : events.length > 0 ? (
             events.map((me) => (
               <article key={me.id} className="postcard dark blue">
-                <a className="postcard__img_link" href="#">
+                <Link className="postcard__img_link" to={`/venues#venue-${me.venue.id}`}>
                   <img
                     className="postcard__img"
                     src={me.venue.imageUrl}
                     alt="A picture of a place"
                   />
-                </a>
+                </Link>
                 <div className="postcard__text">
                   <h1 className="postcard__title blue">
                     <a href="#">{me.eventName}</a>

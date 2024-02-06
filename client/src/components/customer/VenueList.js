@@ -5,6 +5,7 @@ import { Tooltip } from "reactstrap";
 import CircleLoader from "react-spinners/CircleLoader";
 import withMinimumLoadingTime from "../WithMinimumLoadingTime";
 import ServiceDropdown from "../dropdowns/ServiceDropdown";
+import { Link } from "react-router-dom";
 
 export default function VenueList() {
   const [venues, setVenues] = useState([]);
@@ -44,6 +45,17 @@ export default function VenueList() {
     
   }, [selectedServiceId]);
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#venue-', '');
+      const element = document.getElementById(`venue-${id}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [venues]); // Dependency array includes services to re-run when services are updated
+
   const handleServiceChange = (serviceId) => {
     setSelectedServiceId(parseInt(serviceId));
   };
@@ -68,7 +80,8 @@ export default function VenueList() {
 
               </div>
             ) : venues.map((v) => (
-              <article key={v.id} className="postcard dark blue">
+              // id ties into the hash reference
+              <article id={`venue-${v.id}`} key={v.id} className="postcard dark blue">
                 <a className="postcard__img_link" href="#">
                   <img
                     className="postcard__img"
@@ -91,10 +104,10 @@ export default function VenueList() {
                       v.venueServices.map((vs) => (
                         <React.Fragment key={vs.id}>
                         <li key={vs.id} className="tag__item play blue">
-                          <a href={`/services#service-${vs.service.id}`} id={`Tooltip-${vs.id}`}>
+                          <Link to={`/services#service-${vs.service.id}`} id={`Tooltip-${vs.id}`}>
                             <i className="fas fa-play mr-2"></i>
                             {vs.service.serviceName}
-                          </a>
+                          </Link>
                         </li>
                         <Tooltip
                           placement="bottom"
