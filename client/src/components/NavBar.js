@@ -12,6 +12,7 @@ NavbarToggler,
 } from "reactstrap";
 import { logout } from "./managers/authManager";
 import '../styles/NavBar.css';
+
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
 const [open, setOpen] = useState(false);
 
@@ -70,6 +71,7 @@ return (
                 )}
             </Nav>
             </Collapse>
+            <span className="welcome-txt">{loggedInUser.firstName}</span>
             <Button
             className="nav_btn_background"
             onClick={(e) => {
