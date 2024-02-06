@@ -34,6 +34,11 @@
     padding-top: 3rem;
     font-size: 2.5rem;
 }
+.dashboard-event-spinner {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
 .left-align-btn {
     padding-left: 15px;
     margin-bottom: 10px;

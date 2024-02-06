@@ -13,7 +13,7 @@
     appearance: none;
     border: 0;
     outline: 0;
-    font: inherit;
+    font-size: large;
     /* Personalize */
     width: 20rem;
     padding: 1rem 4rem 1rem 1rem;
@@ -36,6 +36,7 @@
     /* <option> colors */
     .service-dropdown-container option {
       color: inherit;
+      font-family: 'Stoke';
       background-color: var(--option-bg);
     }
   }

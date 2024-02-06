@@ -14,8 +14,11 @@
     
     color: black;
 }
-.my-events-details {
-    
+.my-events-spinner-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
 }
 .my-events-btn-container Button:hover {
         background: linear-gradient(0deg, rgba(29,121,109,1) 0%,  rgba(29,81,121,1) 72%);

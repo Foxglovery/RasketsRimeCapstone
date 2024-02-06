@@ -3,35 +3,45 @@ import { ActivateVenue, DeactivateVenue, GetVenues } from "../../managers/venueM
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
+import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 
 export default function VenueListAdmin({ loggedInUser }) {
   const [venues, setVenues] = useState([]);
   const [activeChange, setActiveChange] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    GetVenues().then(setVenues);
-  }, [activeChange]);
+    setIsLoading(true);
+    withMinimumLoadingTime(GetVenues())
+      .then((fetchedVenues) => {
+        setVenues(fetchedVenues);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(
+          "There was an error", error
+        );
+        setIsLoading(false);
+      });
+  }, []);
 
-  const backgroundStyle = {
-    minHeight: "100vh",
-    background: `url(${backgroundImage}) no-repeat center center fixed`,
-    backgroundSize: "cover",
-    color: "white",
-  };
+ 
   const handleDeactivate = (id) => {
     DeactivateVenue(id).then(() => {
-      setActiveChange(!activeChange)
+      GetVenues().then(setVenues);
     })
   }
   const handleActivate = (id) => {
     ActivateVenue(id).then(() => {
-      setActiveChange(!activeChange);
+      GetVenues().then(setVenues);
     })
   }
   return (
     <>
-      <div style={backgroundStyle}>
+      <div className="dashboard-background">
         <div className="centered-content">
           <h3>Venues</h3>
         </div>
@@ -49,6 +59,11 @@ export default function VenueListAdmin({ loggedInUser }) {
         <div className="centered-content">
           <Button className="admin-service-btn" onClick={() => navigate(`/admin/venues/create`)}>Add Venue</Button>
       </div>
+      {isLoading ? (
+        <div className="dashboard-event-spinner">
+          <CircleLoader color="white" size={100} />
+        </div>
+      ) : (
         <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
@@ -85,6 +100,8 @@ export default function VenueListAdmin({ loggedInUser }) {
             ))}
           </tbody>
         </Table>
+      )}
+        
       </div>{" "}
     </>
   );

@@ -4,25 +4,34 @@ import { Link, useParams } from "react-router-dom";
 
 import { Table } from "reactstrap";
 import backgroundImage from "../../../assets/brown-blue-wood.jpg";
+import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 export default function UserProfileDetails({ loggedInUser }) {
   const [userProfile, setUserProfile] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
 
   useEffect(() => {
-    GetProfile(id).then(setUserProfile);
+    setIsLoading(true);
+    withMinimumLoadingTime(GetProfile(id))
+      .then((fetchedProfile) => {
+        setUserProfile(fetchedProfile);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(
+          "There was an error", error
+        );
+        setIsLoading(false);
+      });
   }, [id]);
 
-  const backgroundStyle = {
-    minHeight: "100vh",
-    background: `url(${backgroundImage}) no-repeat center center fixed`,
-    backgroundSize: "cover",
-    color: "white",
-  };
+  
 
   return (
     <>
-      <div style={backgroundStyle}>
+      <div className="dashboard-background">
         <div className="centered-content">
           <h3>User</h3>
         </div>
@@ -40,7 +49,13 @@ export default function UserProfileDetails({ loggedInUser }) {
             Services
           </Link>
         </div>
-        <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
+        {isLoading ? (
+        <div className="dashboard-event-spinner">
+          <CircleLoader color="white" size={100} />
+        </div>
+      ) : (
+        <div>
+          <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
           <thead>
             <tr>
               <th>Name</th>
@@ -117,6 +132,10 @@ export default function UserProfileDetails({ loggedInUser }) {
               
             </div>
           ))}
+        </div>
+      )}
+        
+        
       </div>
     </>
   );

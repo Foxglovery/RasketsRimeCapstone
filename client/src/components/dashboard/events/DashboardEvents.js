@@ -11,23 +11,43 @@ import { Button, Table } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import backgroundImage from '../../../assets/brown-blue-wood.jpg';
 import '../../../styles/DashboardEvents.css'
+import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
+import CircleLoader from "react-spinners/CircleLoader";
 export default function DashboardEvents({loggedInUser}) {
   const [events, setEvents] = useState([]);
   const [showPending, setShowPending] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 //if showPending is false, get all events
 //if it is true then fetch and set pending
   useEffect(() => {
     if (!showPending)
     {
-      GetEvents().then(setEvents)
+      setIsLoading(true);
+
+     withMinimumLoadingTime(GetEvents())
+      .then((fetchedEvents) => {
+        setEvents(fetchedEvents);
+        setIsLoading(false);
+      })
       .catch((error) => {
         console.error(
           "There was an error", error
         );
+        setIsLoading(false);
       });
     } else {
-      GetPending().then(setEvents);
+      withMinimumLoadingTime(GetPending())
+        .then((fetchedEvents) => {
+          setEvents(fetchedEvents);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(
+            "There was an error", error
+          );
+          setIsLoading(false);
+        });
     }
     
   }, [showPending]);
@@ -59,12 +79,7 @@ export default function DashboardEvents({loggedInUser}) {
     return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
   };
   
-  const backgroundStyle = {
-    minHeight: '100vh',
-    background: `url(${backgroundImage}) no-repeat center center fixed`, 
-    backgroundSize: 'cover', 
-    color: 'white',
-};
+  
   return (
     <>
       <div className="dashboard-background">
@@ -81,7 +96,12 @@ export default function DashboardEvents({loggedInUser}) {
         {showPending ? <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Show All</Button> : <Button  className="pending-btn"onClick={() => setShowPending(!showPending)}>Pending</Button>}
         
       </div>
-      {events.length > 0 ? <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
+      {isLoading ? (
+        <div className="dashboard-event-spinner">
+          <CircleLoader color="white" size={100} />
+        </div>
+      ) : (
+        events.length > 0 ? <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
         <thead>
           <tr>
             <th>#</th>
@@ -178,7 +198,9 @@ export default function DashboardEvents({loggedInUser}) {
                   There are no events pending approval.
                 </p>
               </div>
-            </div>}
+            </div>
+      )}
+      
       
     </div>
     </>
