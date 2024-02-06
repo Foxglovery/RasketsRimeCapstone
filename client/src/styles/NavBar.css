@@ -19,6 +19,11 @@
 .navbar-nav .nav_bar_link.active {
     color: #ffffff; 
 }
+.welcome-txt {
+    margin-right: 10px;
+    font-family: 'Stoke';
+    color: #FCD46A;
+}
 
 
 .nav_btn_background {
