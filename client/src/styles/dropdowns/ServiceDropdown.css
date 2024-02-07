@@ -1,42 +1,46 @@
 :root {
-    --service-arr-bg: rgba(19, 50, 73, 0.844);
-    --service-arr-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
-    --option-bg: rgb(43, 211, 220);
-    --service-select-bg: rgba(24, 21, 31, .9);
-  }
-  * {
-    box-sizing: border-box;
-  }
+  --service-arr-bg: rgba(19, 50, 73, 0.844);
+  --service-arr-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --option-bg: rgb(43, 211, 220);
+  --service-select-bg: rgba(24, 21, 31, 0.9);
+}
+* {
+  box-sizing: border-box;
+}
 
 .service-dropdown-container select {
-    /* Reset */
-    appearance: none;
-    border: 0;
-    outline: 0;
-    font-size: large;
-    /* Personalize */
-    width: 20rem;
-    padding: 1rem 4rem 1rem 1rem;
-    background: var(--service-arr-icon) no-repeat right 0.8em center / 1.4em,
-      linear-gradient(to left, var(--service-arr-bg) 3em, var(--service-select-bg) 3em);
-    color: #FCD46A;
-    border-radius: 0.25em;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    /* Remove IE service-arr */
-    &::-ms-expand {
-      display: none;
-    }
-    /* Remove focus outline */
-    &:focus {
-      outline: none;
-      
-    }
-    
-    /* <option> colors */
-    .service-dropdown-container option {
-      color: inherit;
-      font-family: 'Stoke';
-      background-color: var(--option-bg);
-    }
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font-size: large;
+  /* Personalize */
+  width: 20rem;
+  padding: 1rem 4rem 1rem 1rem;
+  background: var(--service-arr-icon) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(
+      to left,
+      var(--service-arr-bg) 3em,
+      var(--service-select-bg) 3em
+    );
+  color: #fcd46a;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  /* Remove IE service-arr */
+  &::-ms-expand {
+    display: none;
   }
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+
+  /* option colors */
+  .service-dropdown-container option {
+    color: inherit;
+    font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
+
+    background-color: var(--option-bg);
+  }
+}

@@ -1,138 +1,144 @@
 .dashboard-background {
-    min-height: 100vh;
-    background: var(--dash-background-image) no-repeat center center fixed;
-    background-size: cover;
-    }
+  min-height: 100vh;
+  background: var(--dash-background-image) no-repeat center center fixed;
+  background-size: cover;
+}
 
 .chip-link {
-    background: linear-gradient(0deg, rgba(35,94,128,1) 9%, rgba(22,50,75,1) 96%); 
-    color: #FCD46A;
-    padding: 5px 10px;
-    border-radius: 15px;
-    display: inline-block;
-    margin-right: 5px;
-    text-decoration: none; /* Remove underline from links */
-    display: inline-block; /* Make sure links are inline for text-align to work */
-    margin: 5px; /* spacing around each chip */
+  background: linear-gradient(
+    0deg,
+    rgba(35, 94, 128, 1) 9%,
+    rgba(22, 50, 75, 1) 96%
+  );
+  color: #fcd46a;
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: inline-block;
+  margin-right: 5px;
+  text-decoration: none; /* Remove underline from links */
+  display: inline-block; /* links are inline to make text-align work*/
+  margin: 5px; /* spacing around each chip */
 }
-
 
 .chip-link:hover {
-    background: linear-gradient(0deg, rgba(6,6,6,1) 9%, rgba(5,21,34,1) 96%); 
+  background: linear-gradient(
+    0deg,
+    rgba(6, 6, 6, 1) 9%,
+    rgba(5, 21, 34, 1) 96%
+  );
 }
-.admin-event-btn, .pending-btn {
-    margin-top: 10px;
+.admin-event-btn,
+.pending-btn {
+  margin-top: 10px;
 }
 .centered-content {
-    text-align: center;
-    /* margin-bottom: 15px;  */
-    
+  text-align: center;
 }
 .centered-content h3 {
-    font-family: 'Stoke';
-    color: #FCD46A;
-    padding-top: 3rem;
-    font-size: 2.5rem;
+  font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
+
+  color: #fcd46a;
+  padding-top: 3rem;
+  font-size: 2.5rem;
 }
 .dashboard-event-spinner {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
 .left-align-btn {
-    padding-left: 15px;
-    margin-bottom: 10px;
-    
+  padding-left: 15px;
+  margin-bottom: 10px;
 }
 .admin-event-btn {
-    background-color: #316878;
-    margin-right: 20px;
-    border: none;
+  background-color: #316878;
+  margin-right: 20px;
+  border: none;
 }
 .admin-event-btn:hover {
-background-color: #133249;
+  background-color: #133249;
 }
 .admin-service-btn {
-    background-color: #316878;
-    margin-top: 10px;
+  background-color: #316878;
+  margin-top: 10px;
 }
 .admin-service-btn:hover {
-    background-color: #133249;
-    margin-top: 10px;
+  background-color: #133249;
+  margin-top: 10px;
 }
 .admin-cancel-btn {
-    background-color: #ffc107;
-    color: black;
+  background-color: #ffc107;
+  color: black;
 }
 .admin-cancel-btn:hover {
-    background-color: #dda706;
-    color: black;
+  background-color: #dda706;
+  color: black;
 }
 .admin-approve-btn {
-    background-color: #014af4;
-    color: white;
-    border: none;
+  background-color: #014af4;
+  color: white;
+  border: none;
 }
 .admin-approve-btn:hover {
-    background-color: #014af4;
-    color: white;
-    border: none;
+  background-color: #014af4;
+  color: white;
+  border: none;
 }
 .pending-btn {
-    background: linear-gradient(0deg, rgba(235,164,77,1) 0%, rgba(217,3,104,1) 72%);
-    border: none;
-    
+  background: linear-gradient(
+    0deg,
+    rgba(235, 164, 77, 1) 0%,
+    rgba(217, 3, 104, 1) 72%
+  );
+  border: none;
 }
 .pending-btn:hover {
-    background: linear-gradient(0deg, rgb(189, 132, 62) 0%, rgb(172, 2, 82) 72%);
-    border: none;
-    
+  background: linear-gradient(0deg, rgb(189, 132, 62) 0%, rgb(172, 2, 82) 72%);
+  border: none;
 }
 .admin-reject-btn {
-    background-color: #8fcf4f;
-    color: #061119;
+  background-color: #8fcf4f;
+  color: #061119;
 }
 .admin-reject-btn:hover {
-    background-color: #78ad42;
-    color: #061119;
+  background-color: #78ad42;
+  color: #061119;
 }
 .admin-update-event-btn {
-    background-color: #9d41c5;
-    color: #e6e9ed;
+  background-color: #9d41c5;
+  color: #e6e9ed;
 }
 .admin-update-event-btn:hover {
-    background-color: #8739a9;
-    color: #e0e5e9;
+  background-color: #8739a9;
+  color: #e0e5e9;
 }
 .admin-details-event-btn {
-    background-color: #ee891e;
-    color: #080a0d;
+  background-color: #ee891e;
+  color: #080a0d;
 }
 .admin-details-event-btn:hover {
-    background-color: #d1791b;
-    color: #080a0d;
+  background-color: #d1791b;
+  color: #080a0d;
 }
 .event-rounded-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 8px;
-    overflow: hidden; /* This ensures the rounded corners are visible */
-  }
-  
-  .event-rounded-table thead tr:first-child th:first-child {
-    border-top-left-radius: 8px;
-  }
-  
-  .event-rounded-table thead tr:first-child th:last-child {
-    border-top-right-radius: 8px;
-  }
-  
-  .event-rounded-table tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 8px;
-  }
-  
-  .event-rounded-table tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 8px;
-  }
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden; /* ensures the rounded corners show */
+}
 
+.event-rounded-table thead tr:first-child th:first-child {
+  border-top-left-radius: 8px;
+}
 
+.event-rounded-table thead tr:first-child th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.event-rounded-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.event-rounded-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
