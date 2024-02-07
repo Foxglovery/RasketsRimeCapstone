@@ -10,29 +10,27 @@ import withMinimumLoadingTime from "../WithMinimumLoadingTime";
 export default function MyEventsList({ loggedInUser }) {
   const navigate = useNavigate();
   const [myEvents, setMyEvents] = useState([]);
-  const [modal, setModal] = useState(false);
   const [activeModalId, setActiveModalId] = useState(null);
   const [tooltips, setTooltips] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const toggleModal = () => setModal(!modal);
 
   useEffect(() => {
     setIsLoading(true);
-    
-      withMinimumLoadingTime(GetEventsByUserId(loggedInUser.id))
-        .then((fetchedEvents) => {
-          setMyEvents(fetchedEvents);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("There was an error fetching my events");
-        }) 
+
+    withMinimumLoadingTime(GetEventsByUserId(loggedInUser.id))
+      .then((fetchedEvents) => {
+        setMyEvents(fetchedEvents);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching my events");
+      });
   }, [loggedInUser.id]);
 
-  //tooltip handler
+  //tooltip handler toggles between true and false (open and closed) copying and extending state of tooltips
   const toggleTooltip = (id) => {
-    setTooltips({...tooltips, [id]: !tooltips[id] });
-  }
+    setTooltips({ ...tooltips, [id]: !tooltips[id] });
+  };
 
   const openModal = (eventId) => {
     setActiveModalId(eventId);
@@ -41,6 +39,7 @@ export default function MyEventsList({ loggedInUser }) {
     setActiveModalId(null);
   };
 
+  //date time formatting
   const formatEventTime = (dateString) => {
     const date = new Date(dateString);
     return `${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
@@ -50,6 +49,7 @@ export default function MyEventsList({ loggedInUser }) {
     return `${date.toLocaleTimeString()}`;
   };
 
+  //async to wait for cancellation to complete before refetching or throwing error, then closing modal
   const handleUserCancel = async (eventId) => {
     try {
       await UserCancelEvent(eventId, loggedInUser.id);
@@ -63,8 +63,6 @@ export default function MyEventsList({ loggedInUser }) {
     }
   };
 
-  
-
   return (
     <div className="dashboard-background">
       <section className="">
@@ -74,31 +72,39 @@ export default function MyEventsList({ loggedInUser }) {
           </h1>
           {isLoading ? (
             <div className="my-events-spinner-ctn">
-              <CircleLoader  loading={isLoading} color="white" size={100} />
+              <CircleLoader loading={isLoading} color="white" size={100} />
             </div>
-          
-
-          ) : Array.isArray(myEvents) &&
+          ) : (
+            Array.isArray(myEvents) &&
             myEvents.map((me) => (
               <article key={me.id} className="postcard dark blue">
-                <Link className="postcard__img_link" to={`/venues#venue-${me.venue.id}`}>
+                <Link
+                  className="postcard__img_link"
+                  to={`/venues#venue-${me.venue.id}`}
+                >
                   <img
                     className="postcard__img"
                     src={me.venue.imageUrl}
-                    alt="A picture of a place"
+                    alt="a venue"
                   />
                 </Link>
                 <div className="postcard__text my-events-details">
                   <h1 className="postcard__title blue">
-                    <a href="#">{me.eventName}</a>
+                    <span>{me.eventName}</span>
                   </h1>
                   <h3 className="postcard-my-venue-text">
-                    @ {me.venue.venueName}
+                    <span>@ </span>
+                    <Link
+                      className="upcoming-venue-link"
+                      to={`/venues#venue-${me.venue.id}`}
+                    >
+                      {me.venue.venueName}
+                    </Link>
                   </h3>
                   <div className="postcard__subtitle small">
-                        <i className="fas fa-calendar-alt mr-2"></i>
-                        {me.status}
-                      </div>
+                    <i className="fas fa-calendar-alt mr-2"></i>
+                    {me.status}
+                  </div>
                   <div className="upcoming-small-details">
                     <div className="upcoming-details-cont">
                       <div className="postcard__subtitle small">
@@ -127,10 +133,13 @@ export default function MyEventsList({ loggedInUser }) {
                     {me.eventDescription}
                   </div>
                   <ul className="postcard__tagbox">
-                  {me.eventServices.map((ev) => (
+                    {me.eventServices.map((ev) => (
                       <React.Fragment key={ev.id}>
                         <li key={ev.id} className="tag__item play blue">
-                          <Link to={`/services#service-${ev.service.id}`} id={`Tooltip-${ev.id}`}>
+                          <Link
+                            to={`/services#service-${ev.service.id}`}
+                            id={`Tooltip-${ev.id}`}
+                          >
                             <i className="fas fa-play mr-2"></i>
                             {ev.service.serviceName}
                           </Link>
@@ -148,10 +157,10 @@ export default function MyEventsList({ loggedInUser }) {
                   </ul>
                   <div className="postcard__subtitle small">
                     <i className="fas fa-calendar-alt mr-2"></i>Have questions?
-                    Reach out to <a href="#">{me.venue.contactInfo}</a>
+                    Reach out to <span>{me.venue.contactInfo}</span>
                   </div>
                   <div className="postcard__bar"></div>
-                  {loggedInUser.id == me.userId && (
+                  {loggedInUser.id === me.userId && (
                     <div className="my-events-btn-container">
                       <Button
                         className="my-events-btn"
@@ -167,8 +176,9 @@ export default function MyEventsList({ loggedInUser }) {
                       </Button>
                     </div>
                   )}
+                  {/* begin modal */}
                   <Modal isOpen={activeModalId === me.id} toggle={closeModal}>
-                    <ModalHeader toggle={toggleModal}>Cancel Event</ModalHeader>
+                    <ModalHeader toggle={closeModal}>Cancel Event</ModalHeader>
                     <ModalBody>Are you sure you wish to cancel?</ModalBody>
                     <ModalFooter>
                       <Button
@@ -179,17 +189,16 @@ export default function MyEventsList({ loggedInUser }) {
                       >
                         Yes, Cancel
                       </Button>{" "}
-                      <Button color="secondary" onClick={toggleModal}>
+                      <Button color="secondary" onClick={closeModal}>
                         No
                       </Button>
                     </ModalFooter>
                   </Modal>
                 </div>
               </article>
-            ))}}
+            ))
+          )}
           {/* make sure my events contains an array for if admin has no submitted events*/}
-          
-
         </div>
       </section>
     </div>

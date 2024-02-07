@@ -1,8 +1,4 @@
-.client-background {
-  min-height: 100vh;
-  background: var(--client-background-image) no-repeat center center fixed;
-  background-size: cover;
-}
+
 
 .upcoming-header-container {
   display: flex;
@@ -15,6 +11,9 @@
   align-items: center;
   margin-top: 70px;
 }
+.upcoming-venue-link:hover {
+color: rgb(193, 191, 191);
+}
 
 #pageHeaderTitle {
   flex-grow: 1;
@@ -26,8 +25,6 @@
   gap: 30px;
 }
 
-.upcoming-details-cont {
-}
 .no-events-center {
   display: flex;
   justify-content: center;

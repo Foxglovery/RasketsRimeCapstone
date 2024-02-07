@@ -48,7 +48,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="/admin/events/create"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-              <CreateEventAdmin loggedInUser={loggedInUser}/>
+              <CreateEventAdmin loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
@@ -56,7 +56,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="/admin/events/update/:eventId"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-              <UpdateEventAdmin loggedInUser={loggedInUser}/>
+              <UpdateEventAdmin loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
@@ -68,66 +68,63 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route path="/admin/venues" element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-          <VenueListAdmin />
-        </AuthorizedRoute>
-        }/>
-        <Route path="/admin/venues/create" element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-          <CreateVenue />
-        </AuthorizedRoute>
-        }/>
-        <Route path="/admin/venues/update/:venueId" element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-          <UpdateVenue />
-        </AuthorizedRoute>
-        }/>
-        <Route path="/admin/venues/:id" element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-          <VenueDetailsAdmin />
-        </AuthorizedRoute>
-        }/>
-        <Route path="/admin/services" element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-          <ServiceListAdmin />
-        </AuthorizedRoute>
-        }/>
-        <Route path="/admin/services/create" element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-          <CreateService />
-        </AuthorizedRoute>
-        }/>
-        <Route path="/admin/services/update/:id" element={
-          <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-          <UpdateService />
-        </AuthorizedRoute>
-        }/>
-        {/* Customer Routes */}
         <Route
-          path="/admin/events/update/:eventId"
+          path="/admin/venues"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <UpdateEventAdmin loggedInUser={loggedInUser}/>
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <VenueListAdmin />
             </AuthorizedRoute>
           }
         />
         <Route
-          path="/events/update/:eventId"
+          path="/admin/venues/create"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <UpdateEventCustomer loggedInUser={loggedInUser}/>
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <CreateVenue />
             </AuthorizedRoute>
           }
         />
         <Route
-          path="/events/create"
+          path="/admin/venues/update/:venueId"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <CreateEventCustomer loggedInUser={loggedInUser}/>
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <UpdateVenue />
             </AuthorizedRoute>
           }
         />
+        <Route
+          path="/admin/venues/:id"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <VenueDetailsAdmin />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/admin/services"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <ServiceListAdmin />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/admin/services/create"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <CreateService />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/admin/services/update/:id"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <UpdateService />
+            </AuthorizedRoute>
+          }
+        />
+
         <Route
           path="/userprofiles"
           element={
@@ -144,10 +141,37 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
+
+        {/* Customer Routes */}
+        <Route
+          path="/admin/events/update/:eventId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <UpdateEventAdmin loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/events/update/:eventId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <UpdateEventCustomer loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="/events/create"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <CreateEventCustomer loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+
         <Route
           path="/venues"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser} >
+            <AuthorizedRoute loggedInUser={loggedInUser}>
               <VenueList />
             </AuthorizedRoute>
           }
@@ -155,7 +179,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route
           path="/services"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser} >
+            <AuthorizedRoute loggedInUser={loggedInUser}>
               <ServiceList />
             </AuthorizedRoute>
           }
@@ -163,7 +187,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route
           path="/myEvents"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser} >
+            <AuthorizedRoute loggedInUser={loggedInUser}>
               <MyEventsList loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
@@ -171,7 +195,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route
           path="/upcomingEvents"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser} >
+            <AuthorizedRoute loggedInUser={loggedInUser}>
               <UpcomingEvents loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }

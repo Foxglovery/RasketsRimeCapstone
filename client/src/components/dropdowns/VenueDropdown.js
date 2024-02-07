@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetActiveVenues, GetVenues } from "../managers/venueManager";
+import { GetActiveVenues } from "../managers/venueManager";
 import "../../styles/dropdowns/VenueDropdown.css";
 export default function VenueDropdown({ onVenueChange }) {
   const [venues, setVenues] = useState([]);
@@ -15,9 +15,7 @@ export default function VenueDropdown({ onVenueChange }) {
   return (
     <div className="venue-dropdown-container">
       <select onChange={handleChange}>
-        <option value="0">
-          All Venues
-        </option>
+        <option value="0">All Venues</option>
         {venues.map((v) => (
           <option key={v.id} value={v.id}>
             {v.venueName}

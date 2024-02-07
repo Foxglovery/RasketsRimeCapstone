@@ -12,7 +12,7 @@ export const GetVenueById = (id) => {
 
 export const GetVenuesByServiceId = (id) => {
   return fetch(`${_apiUrl}/services/${id}`).then((res) => res.json());
-}
+};
 export const CreateNewVenue = (newVenue) => {
   return fetch(_apiUrl, {
     method: "POST",
@@ -35,8 +35,8 @@ export const updateVenue = (venueId, newVenue) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newVenue),
-  })
-}
+  });
+};
 
 export const DeactivateVenue = (id) => {
   return fetch(`${_apiUrl}/deactivate/${id}`, {
@@ -45,8 +45,8 @@ export const DeactivateVenue = (id) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(id),
-  })
-}
+  });
+};
 export const ActivateVenue = (id) => {
   return fetch(`${_apiUrl}/activate/${id}`, {
     method: "PUT",
@@ -54,5 +54,5 @@ export const ActivateVenue = (id) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(id),
-  })
-}
+  });
+};

@@ -23,15 +23,13 @@ import withMinimumLoadingTime from "../WithMinimumLoadingTime";
 export default function UpcomingEvents({ loggedInUser }) {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
-
-  const [modal, setModal] = useState(false);
   const [activeModalId, setActiveModalId] = useState(null);
-  //set up state storage
   const [selectedVenueId, setSelectedVenueId] = useState(null);
   const [selectedServiceId, setSelectedServiceId] = useState(null);
   const [tooltips, setTooltips] = useState({});
   const [refetchTrigger, setRefetchTrigger] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+
   //tooltip handler
   const toggleTooltip = (id) => {
     setTooltips({ ...tooltips, [id]: !tooltips[id] });
@@ -43,13 +41,13 @@ export default function UpcomingEvents({ loggedInUser }) {
   const handleServiceChange = (serviceId) => {
     setSelectedServiceId(parseInt(serviceId));
   };
-  const toggleModal = () => setModal(!modal);
+ 
 
   //if a venue is selected, fetch based on that
   useEffect(() => {
     if (selectedVenueId) {
       setIsLoading(true);
-      withMinimumLoadingTime(GetEventsByVenueId(selectedVenueId)) 
+      withMinimumLoadingTime(GetEventsByVenueId(selectedVenueId))
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
           setIsLoading(false);
@@ -64,7 +62,7 @@ export default function UpcomingEvents({ loggedInUser }) {
       //otherwise get all upcoming
     } else {
       setIsLoading(true);
-      withMinimumLoadingTime(GetUpcomingEvents()) 
+      withMinimumLoadingTime(GetUpcomingEvents())
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
           setIsLoading(false);
@@ -79,7 +77,7 @@ export default function UpcomingEvents({ loggedInUser }) {
   useEffect(() => {
     if (selectedServiceId) {
       setIsLoading(true);
-      withMinimumLoadingTime(GetEventsByServiceId(selectedServiceId)) 
+      withMinimumLoadingTime(GetEventsByServiceId(selectedServiceId))
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
           setIsLoading(false);
@@ -90,7 +88,7 @@ export default function UpcomingEvents({ loggedInUser }) {
         });
     } else {
       setIsLoading(true);
-      withMinimumLoadingTime(GetUpcomingEvents()) 
+      withMinimumLoadingTime(GetUpcomingEvents())
         .then((fetchedEvents) => {
           setEvents(fetchedEvents);
           setIsLoading(false);
@@ -102,6 +100,7 @@ export default function UpcomingEvents({ loggedInUser }) {
     }
   }, [selectedServiceId, refetchTrigger]);
 
+  //modal handlers
   const openModal = (eventId) => {
     setActiveModalId(eventId);
   };
@@ -118,6 +117,7 @@ export default function UpcomingEvents({ loggedInUser }) {
     return `${date.toLocaleTimeString()}`;
   };
 
+  //handles cancel function with modal and increments refetch trigger to refetch
   const handleUserCancel = async (eventId) => {
     try {
       await UserCancelEvent(eventId, loggedInUser.id);
@@ -140,30 +140,36 @@ export default function UpcomingEvents({ loggedInUser }) {
             </h1>
             <ServiceDropdown onServiceChange={handleServiceChange} />
           </div>
-          <div>
-            
-          </div>
+          <div></div>
           {isLoading ? (
             <div className="upcoming-spinner-ctn">
-               <CircleLoader loading={isLoading} color="white" size={100} />
+              <CircleLoader loading={isLoading} color="white" size={100} />
             </div>
-           
           ) : events.length > 0 ? (
             events.map((me) => (
               <article key={me.id} className="postcard dark blue">
-                <Link className="postcard__img_link" to={`/venues#venue-${me.venue.id}`}>
+                <Link
+                  className="postcard__img_link"
+                  to={`/venues#venue-${me.venue.id}`}
+                >
                   <img
                     className="postcard__img"
                     src={me.venue.imageUrl}
-                    alt="A picture of a place"
+                    alt="A venue space"
                   />
                 </Link>
                 <div className="postcard__text">
                   <h1 className="postcard__title blue">
-                    <a href="#">{me.eventName}</a>
+                    <span>{me.eventName}</span>
                   </h1>
                   <h3 className="postcard-my-venue-text">
-                    @ {me.venue.venueName}
+                    <span>@ </span>
+                    <Link
+                      className="upcoming-venue-link"
+                      to={`/venues#venue-${me.venue.id}`}
+                    >
+                      {me.venue.venueName}
+                    </Link>
                   </h3>
                   <div className="upcoming-small-details">
                     <div className="upcoming-details-cont">
@@ -237,8 +243,9 @@ export default function UpcomingEvents({ loggedInUser }) {
                       </Button>
                     </div>
                   )}
+                  {/* begin modal */}
                   <Modal isOpen={activeModalId === me.id} toggle={closeModal}>
-                    <ModalHeader toggle={toggleModal}>Cancel Event</ModalHeader>
+                    <ModalHeader toggle={closeModal}>Cancel Event</ModalHeader>
                     <ModalBody>Are you sure you wish to cancel?</ModalBody>
                     <ModalFooter>
                       <Button
@@ -247,7 +254,7 @@ export default function UpcomingEvents({ loggedInUser }) {
                       >
                         Yes, Cancel
                       </Button>{" "}
-                      <Button color="secondary" onClick={toggleModal}>
+                      <Button color="secondary" onClick={closeModal}>
                         No
                       </Button>
                     </ModalFooter>
@@ -263,7 +270,7 @@ export default function UpcomingEvents({ loggedInUser }) {
                 </p>
               </div>
             </div>
-          )} 
+          )}
         </div>
       </section>
     </div>

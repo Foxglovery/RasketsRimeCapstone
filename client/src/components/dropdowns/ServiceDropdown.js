@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-
 import "../../styles/dropdowns/ServiceDropdown.css";
-import { GetActiveServices, GetServices } from "../managers/serviceManager";
+import { GetActiveServices } from "../managers/serviceManager";
 export default function ServiceDropdown({ onServiceChange }) {
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState("0");
@@ -9,7 +8,6 @@ export default function ServiceDropdown({ onServiceChange }) {
   const handleChange = (event) => {
     setSelectedService(event.target.value);
     onServiceChange(event.target.value);
-    
   };
   useEffect(() => {
     GetActiveServices().then(setServices);
@@ -17,10 +15,12 @@ export default function ServiceDropdown({ onServiceChange }) {
 
   return (
     <div className="service-dropdown-container">
-      <select id="service-dropdown" value={selectedService} onChange={handleChange}>
-        <option value="0">
-          All Services
-        </option>
+      <select
+        id="service-dropdown"
+        value={selectedService}
+        onChange={handleChange}
+      >
+        <option value="0">All Services</option>
         {services.map((s) => (
           <option key={s.id} value={s.id}>
             {s.serviceName}

@@ -1,13 +1,12 @@
-// DurationDropdown.js
 import React, { useState } from "react";
 import { Label } from "reactstrap";
 
-function DurationDropdown({ loggedInUser, onChange }) {
+export default function DurationDropdown({ loggedInUser, onChange }) {
   const durationOptions = Array.from({ length: 8 }, (_, i) => {
-    const hour = i + 1; // Starting from 1 hour
+    const hour = i + 1; // adjusted for 0 indexed array
     return {
       value: hour,
-      label: hour === 1 ? "1 hour" : `${hour} hours`,
+      label: hour === 1 ? "1 hour" : `${hour} hours`, //account for singular/plural
     };
   });
 
@@ -24,25 +23,21 @@ function DurationDropdown({ loggedInUser, onChange }) {
   };
 
   return (
-    <>
-      <div className="duration-dropdown-container">
-        <Label for="duration" className="create-form-text">
-          Duration
-        </Label>
-        <select
-          value={selectedDuration}
-          onChange={handleChange}
-          className="duration-dropdown"
-        >
-          {durationOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-    </>
+    <div className="duration-dropdown-container">
+      <Label for="duration" className="create-form-text">
+        Duration
+      </Label>
+      <select
+        value={selectedDuration}
+        onChange={handleChange}
+        className="duration-dropdown"
+      >
+        {durationOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }
-
-export default DurationDropdown;

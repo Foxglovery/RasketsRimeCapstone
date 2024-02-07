@@ -10,7 +10,6 @@ import {
   Row,
 } from "reactstrap";
 
-
 import { useNavigate } from "react-router-dom";
 import { GetActiveVenues } from "../managers/venueManager";
 import {
@@ -20,7 +19,7 @@ import {
 import { CreateEvent } from "../managers/eventManager";
 import DurationDropdown from "../DurationDropdown";
 import DateDropdowns from "../DateDropdowns";
-import "../../styles/client/CreateEventCustomer.css"
+import "../../styles/client/CreateEventCustomer.css";
 export default function CreateEventCustomer({ loggedInUser }) {
   const navigate = useNavigate();
   const [venues, setVenues] = useState([]);
@@ -28,13 +27,11 @@ export default function CreateEventCustomer({ loggedInUser }) {
   const [eventName, setEventName] = useState("");
   const [expected, setExpected] = useState(0);
   const [description, setDescription] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [isPublic, setIsPublic] = useState(true);
   const [eventStart, setEventStart] = useState(new Date());
   const [duration, setDuration] = useState(1);
   const [serviceIds, setServiceIds] = useState([]);
   const [filteredServices, setFilteredServices] = useState([]);
-  const [publicChecked, setpublicChecked] = useState(true);
+  const [publicChecked, setPublicChecked] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
   const newEvent = {
@@ -44,7 +41,7 @@ export default function CreateEventCustomer({ loggedInUser }) {
     eventDescription: description,
     duration: duration,
     status: "Pending",
-    isPublic: isPublic,
+    isPublic: publicChecked,
     eventName: eventName,
     eventStart: eventStart.toISOString(),
     serviceIds: serviceIds,
@@ -82,7 +79,7 @@ export default function CreateEventCustomer({ loggedInUser }) {
     setServiceIds(selectedOptions);
   };
   const handlePublicChange = () => {
-    setpublicChecked(!publicChecked);
+    setPublicChecked(!publicChecked);
   };
   const handleMonthChange = (e) => {
     const newDate = new Date(eventStart.setMonth(parseInt(e.target.value) - 1));
@@ -241,7 +238,7 @@ export default function CreateEventCustomer({ loggedInUser }) {
                 />
               </FormGroup>
 
-              {/* Datetime dropdowns */}
+              {/* Date time dropdowns */}
               <FormGroup>
                 <DateDropdowns
                   handleDayChange={handleDayChange}
@@ -255,7 +252,7 @@ export default function CreateEventCustomer({ loggedInUser }) {
                 />
               </FormGroup>
 
-              {/* duration dropddown */}
+              {/* duration dropdown */}
               <div className="duration-dropdown-container">
                 <FormGroup>
                   <DurationDropdown onChange={handleDurationChange} />
