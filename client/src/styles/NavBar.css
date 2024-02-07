@@ -1,33 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Forum&family=Quattrocento&family=Stoke:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Forum&family=Quattrocento&family=Stoke:wght@300;400&display=swap");
 .navbar-background {
-    background: linear-gradient(0deg, rgba(35,94,128,1) 9%, rgba(22,50,75,1) 68%);}
+  background: linear-gradient(
+    0deg,
+    rgba(35, 94, 128, 1) 9%,
+    rgba(22, 50, 75, 1) 68%
+  );
+}
 #navBrand {
-    color: #FCD46A;
-    font-family: 'Stoke';
+  color: #fcd46a;
+  font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
 }
 #navBrand:hover {
-    color: #82B3AD;
-    font-family: 'Stoke';
+  color: #82b3ad;
+  font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
 }
 .nav_bar_link {
-    color: #FCD46A; ;
-    font-family: 'Stoke';
+  color: #fcd46a;
+  font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
 }
 .nav_bar_link:hover {
-    color: #82B3AD; ;
+  color: #82b3ad;
 }
 .navbar-nav .nav_bar_link.active {
-    color: #ffffff; 
+  color: #ffffff;
 }
 .welcome-txt {
-    margin-right: 10px;
-    font-family: 'Stoke';
-    color: #FCD46A;
+  margin-right: 10px;
+  font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
+
+  color: #fcd46a;
 }
 
-
 .nav_btn_background {
-    color: black;
-    font-family: 'Stoke';
-    background: linear-gradient(90deg, rgba(252,212,106,1) 0%, rgba(254,173,111,1) 90%);
+  color: black;
+  font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
+
+  background: linear-gradient(
+    90deg,
+    rgba(252, 212, 106, 1) 0%,
+    rgba(254, 173, 111, 1) 90%
+  );
 }

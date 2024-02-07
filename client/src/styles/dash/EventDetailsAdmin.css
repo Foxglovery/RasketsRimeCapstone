@@ -1,11 +1,12 @@
 .admin-centered-content {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
 .centered-content h4 {
-  font-family: 'Stoke';
-  color: #FCD46A;
+  font-family: "Stoke", Georgia, "Times New Roman", Times, serif;
+
+  color: #fcd46a;
 }
