@@ -1,24 +1,22 @@
-
-  
-  /* Placeholder*/
-  textarea::placeholder {
-    color: #FCD46A;
-  }
-  #venueSelect:focus {
-    background-color: #201e19; 
-    color: #FCD46A;
-    outline: 2px solid #FCD46A;
-    box-shadow: 0 0 5px #FCD46A;
-  }
-  #servicesMulti:focus {
-    background-color: #201e19; 
-    color: #FCD46A; 
-    outline: 2px solid #FCD46A; 
-    box-shadow: 0 0 5px #FCD46A;
-  }
-  #description:focus {
-    background-color: #201e19; 
-    color: #FCD46A;
-    outline: 2px solid #FCD46A; 
-    box-shadow: 0 0 5px #FCD46A;
-  }
+/* Placeholder*/
+textarea::placeholder {
+  color: #fcd46a;
+}
+#venueSelect:focus {
+  background-color: #201e19;
+  color: #fcd46a;
+  outline: 2px solid #fcd46a;
+  box-shadow: 0 0 5px #fcd46a;
+}
+#servicesMulti:focus {
+  background-color: #201e19;
+  color: #fcd46a;
+  outline: 2px solid #fcd46a;
+  box-shadow: 0 0 5px #fcd46a;
+}
+#description:focus {
+  background-color: #201e19;
+  color: #fcd46a;
+  outline: 2px solid #fcd46a;
+  box-shadow: 0 0 5px #fcd46a;
+}
