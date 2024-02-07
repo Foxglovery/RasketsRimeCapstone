@@ -13,7 +13,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 0 auto;
-  margin-top: ;
   max-width: 500px;
   position: relative;
   padding-bottom: 60px;
@@ -61,8 +60,7 @@
   padding: 10px 0; /* padding away from bottom */
 }
 
-.login-reg-ctn p {
-}
+
 .container input {
   background-color: #201e19;
   color: red;

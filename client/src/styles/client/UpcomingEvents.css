@@ -1,5 +1,3 @@
-
-
 .upcoming-header-container {
   display: flex;
   justify-content: space-between;
@@ -12,7 +10,7 @@
   margin-top: 70px;
 }
 .upcoming-venue-link:hover {
-color: rgb(193, 191, 191);
+  color: rgb(193, 191, 191);
 }
 
 #pageHeaderTitle {
