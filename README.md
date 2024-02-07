@@ -36,6 +36,7 @@ This project went a lot smoother than my first one. The most notable snag was wi
     <li>Making sure my Class models could work in harmony</li>
     <li>Starting the CSS on a project sometimes feels like dual-wielding katanas to slice a grape, only to cut your table in half. Then it works and I love it again.</li>
     <li>Wrapping my brain around the hierarchy of Authentication Classes (UserRoles, UserProfiles, etc.)</li>
+    <li>Choosing a method of Datetime selection</li>
     
   
 </ul>
