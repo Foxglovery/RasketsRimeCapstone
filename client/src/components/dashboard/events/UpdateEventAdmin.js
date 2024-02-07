@@ -18,7 +18,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { GetEventToUpdateById, UpdateEvent } from "../../managers/eventManager";
 import DateDropdowns from "../../DateDropdowns";
 import DurationDropdown from "../../DurationDropdown";
-import "../../../styles/dash/UpdateEventAdmin.css"
+import "../../../styles/dash/UpdateEventAdmin.css";
 export default function UpdateEventAdmin({ loggedInUser }) {
   const navigate = useNavigate();
   const { eventId } = useParams();
@@ -33,12 +33,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
   const [serviceIds, setServiceIds] = useState([]);
   const [filteredServices, setFilteredServices] = useState([]);
   const [publicChecked, setpublicChecked] = useState(true);
-  const [eventToUpdate, setEventToUpdate] = useState({});
-  const [existingServiceIds, setExistingServiceIds] = useState([]);
-  const [existingMonth, setExistingMonth] = useState(0);
-  const [existingDay, setExistingDay] = useState(0);
-  const [existingYear, setExistingYear] = useState(0);
-  const [existingHour, setExistingHour] = useState(0);
+
   const newEvent = {
     userId: loggedInUser.id,
     venueId: chosenVenueId,
@@ -61,8 +56,6 @@ export default function UpdateEventAdmin({ loggedInUser }) {
 
   useEffect(() => {
     GetEventToUpdateById(eventId).then((event) => {
-      setEventToUpdate(event);
-      setExistingServiceIds(event.serviceIds);
       setEventName(event.eventName);
       setChosenVenueId(event.venueId);
       setExpected(event.expectedAttendees);
@@ -72,11 +65,6 @@ export default function UpdateEventAdmin({ loggedInUser }) {
 
       const existingEventStart = new Date(event.eventStart);
       setEventStart(existingEventStart);
-      setExistingMonth(existingEventStart.getMonth() + 1);
-      setExistingDay(existingEventStart.getDate());
-      setExistingYear(existingEventStart.getFullYear());
-      setExistingHour(existingEventStart.getHours());
-      
     });
   }, [eventId]);
 
@@ -85,8 +73,6 @@ export default function UpdateEventAdmin({ loggedInUser }) {
       AvailableServicesByVenueId(chosenVenueId).then(setFilteredServices);
     }
   }, [chosenVenueId]);
-
- 
 
   const handleVenueChange = (event) => {
     setChosenVenueId(parseInt(event.target.value));
@@ -100,8 +86,10 @@ export default function UpdateEventAdmin({ loggedInUser }) {
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
+  //create new array of service ids from selected services
   const handleServiceSelection = (event) => {
     const selectedOptions = Array.from(event.target.selectedOptions, (option) =>
+      //converts value of option to an integer
       parseInt(option.value)
     );
     setServiceIds(selectedOptions);
@@ -110,18 +98,18 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     setpublicChecked(!publicChecked);
   };
   const handleMonthChange = (e) => {
-    const newDate = new Date(eventStart.setMonth(parseInt(e.target.value) - 1));
-    setEventStart(new Date(newDate)); // Update month
+    const newDate = new Date(eventStart.setMonth(parseInt(e.target.value) - 1)); //accounting for the +1 needed for the 0 indexed months in dropdown
+    setEventStart(new Date(newDate));
   };
 
   const handleDayChange = (e) => {
     const newDate = new Date(eventStart.setDate(parseInt(e.target.value)));
-    setEventStart(new Date(newDate)); // Update day
+    setEventStart(new Date(newDate));
   };
 
   const handleYearChange = (e) => {
     const newDate = new Date(eventStart.setFullYear(parseInt(e.target.value)));
-    setEventStart(new Date(newDate)); // Update year
+    setEventStart(new Date(newDate));
   };
   const handleDurationChange = (newDuration) => {
     setDuration(parseInt(newDuration));
@@ -134,8 +122,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     setEventStart(newDate);
   };
 
-  
-  const currentMonth = eventStart.getMonth() + 1; 
+  const currentMonth = eventStart.getMonth() + 1;
   const currentDay = eventStart.getDate();
   const currentYear = eventStart.getFullYear();
   const currentHour = eventStart.getHours();
@@ -144,7 +131,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     e.preventDefault();
 
     try {
-      const data = await UpdateEvent( eventId, newEvent);
+      const data = await UpdateEvent(eventId, newEvent);
 
       if (data && !data.error) {
         console.log("Event created successfully:", data);
@@ -165,16 +152,16 @@ export default function UpdateEventAdmin({ loggedInUser }) {
               Update An Event
             </h3>
             <div className="centered-content">
-          <Link to={`/admin/events`} className="chip-link">
-            Events
-          </Link>
-          <Link to={`/admin/venues`} className="chip-link">
-            Venues
-          </Link>
-          <Link to={`/admin/services`} className="chip-link">
-            Services
-          </Link>
-        </div>
+              <Link to={`/admin/events`} className="chip-link">
+                Events
+              </Link>
+              <Link to={`/admin/venues`} className="chip-link">
+                Venues
+              </Link>
+              <Link to={`/admin/services`} className="chip-link">
+                Services
+              </Link>
+            </div>
             <Form>
               {/* Event Name */}
               <FormGroup>
@@ -284,7 +271,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
                 />
               </FormGroup>
 
-              {/* duration dropddown */}
+              {/* duration dropdown */}
               <div className="duration-dropdown-container">
                 <FormGroup>
                   <DurationDropdown onChange={handleDurationChange} />
@@ -305,7 +292,10 @@ export default function UpdateEventAdmin({ loggedInUser }) {
 
               {/* Submit */}
               <FormGroup className="text-center">
-                <Button className="btn btn-primary create-event-submit-btn mt-3" onClick={handleSubmit}>
+                <Button
+                  className="btn btn-primary create-event-submit-btn mt-3"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </Button>
               </FormGroup>

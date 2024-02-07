@@ -18,5 +18,10 @@
         "titleBar.inactiveBackground": "#0d29ee99",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#0d29ee"
+    "peacock.color": "#0d29ee",
+    "cSpell.words": [
+        "cust",
+        "descr",
+        "raskets"
+    ]
 }

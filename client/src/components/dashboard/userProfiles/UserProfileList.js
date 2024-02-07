@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import { GetProfiles } from "../../managers/userProfileManager";
 import { Button, Table } from "reactstrap";
 import { Link } from "react-router-dom";
-import backgroundImage from "../../../assets/brown-blue-wood.jpg";
 import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
 
 export default function UserProfileList({ loggedInUser }) {
   const [userProfiles, setUserProfiles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,14 +17,12 @@ export default function UserProfileList({ loggedInUser }) {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error(
-          "There was an error fetching profiles", error
-        );
-      })
+        console.error("There was an error fetching profiles", error);
+      });
   }, []);
-  
+
   return (
-    <>
+    
       <div className="dashboard-background">
         <div className="centered-content">
           <h3>Users</h3>
@@ -47,39 +43,47 @@ export default function UserProfileList({ loggedInUser }) {
             <CircleLoader color="white" size={100} />
           </div>
         ) : (
-          <Table dark striped className="mt-4 event-rounded-table" style={{ maxWidth: '80%', margin: 'auto' }}>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>IsAdmin</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userProfiles.map((up) => (
-              <tr key={up.Id}>
-                <th scope="row">{up.id}</th>
-                <td>{up.firstName}</td>
-                <td>{up.lastName}</td>
-                <td>{up.userName}</td>
-                <td>{up.email}</td>
-                <td>{up.address}</td>
-                <td>{up.isAdmin ? "yes" : "no"}</td>
-                <td>
-                  <Link to={`${up.id}`}><Button className="admin-details-event-btn">Details</Button></Link>
-                </td>
+          <Table
+            dark
+            striped
+            className="mt-4 event-rounded-table"
+            style={{ maxWidth: "80%", margin: "auto" }}
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>IsAdmin</th>
+                <th>Details</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {userProfiles.map((up) => (
+                <tr key={up.Id}>
+                  <th scope="row">{up.id}</th>
+                  <td>{up.firstName}</td>
+                  <td>{up.lastName}</td>
+                  <td>{up.userName}</td>
+                  <td>{up.email}</td>
+                  <td>{up.address}</td>
+                  <td>{up.isAdmin ? "yes" : "no"}</td>
+                  <td>
+                    <Link to={`${up.id}`}>
+                      <Button className="admin-details-event-btn">
+                        Details
+                      </Button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         )}
-        
       </div>
-    </>
+    
   );
 }

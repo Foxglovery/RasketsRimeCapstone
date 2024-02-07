@@ -1,35 +1,28 @@
-/* tried adding this to get rid of white space */
-/* html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  } */
-
 input[type="text"]:-webkit-autofill,
 input[type="number"]:-webkit-autofill,
 input[type="password"]:-webkit-autofill,
 input[type="email"]:-webkit-autofill,
 input[type="date"]:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #201e19 inset;
-  -webkit-text-fill-color: #d8a830;
-  transition: background-color 5000s ease-in-out 0s; /* Smooth transition for background color */
+  -webkit-text-fill-color: #FCD46A;
+  transition: background-color 5000s ease-in-out 0s; 
 }
 .container input {
   background-color: #201e19;
-  color: #d8a830;
+  color: #FCD46A;
 }
 .container input::placeholder {
   background-color: #201e19;
-  color: #d8a830;
+  color: #FCD46A;
 }
 .container input:focus {
   background-color: #201e19;
-  outline: 2px solid #d8a830; /* Custom outline color */
-  color: #d8a830;
-  box-shadow: 0 0 5px #d8a830; /* Optional: Adds a glow effect */
+  outline: 2px solid #FCD46A; 
+  color: #FCD46A;
+  box-shadow: 0 0 5px #FCD46A; 
 }
 .create-form-text {
-  color: #fcd46a;
+  color: #FCD46A;
   font-family: "Stoke";
   
   margin-top: 10px;
@@ -37,30 +30,30 @@ input[type="date"]:-webkit-autofill {
 }
 
 .container textarea::placeholder {
-  color: #d8a830;
+  color: #FCD46A;
 }
 .background .form-control {
   background-color: #201e19;
-  color: #d8a830;
+  color: #FCD46A;
 }
 .background .form-control::focus {
   background-color: #201e19;
-  color: #d8a830;
+  color: #FCD46A;
 }
 .form-control {
-  background-color: #201e19; /* Dark background */
-  color: #d8a830; /* Light text */
+  background-color: #201e19; 
+  color: #FCD46A; 
 }
 
 .dashboard-background .form-control::placeholder {
-  color: #d8a830;
+  color: #FCD46A;
 }
 .dashboard-background .form-control {
-  color: #d8a830;
+  color: #FCD46A;
 }
 .error-message {
   font-family: "Stoke";
-  color: #fcd46a;
+  color: #FCD46A;
 }
 
 .dashboard-background {
