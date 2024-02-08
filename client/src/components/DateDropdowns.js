@@ -27,7 +27,7 @@ export default function DateDropdowns({
     "December",
   ];
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
-  const startYear = 2024;
+  const startYear = new Date().getFullYear();
   const years = Array.from({ length: 5 }, (_, i) => startYear + i);
   const hours = Array.from({ length: 24 }, (_, i) => {
     const hour = i % 12 === 0 ? 12 : i % 12; // Convert 24-hr to 12-hr format
