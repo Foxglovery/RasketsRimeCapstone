@@ -65,7 +65,7 @@ export default function MyEventsList({ loggedInUser }) {
 
   return (
     <div className="dashboard-background">
-      <section className="">
+      <section>
         <div className="container py-4">
           <h1 className="h1 text-center" id="pageHeaderTitle">
             My Events
@@ -75,130 +75,138 @@ export default function MyEventsList({ loggedInUser }) {
               <CircleLoader loading={isLoading} color="white" size={100} />
             </div>
           ) : (
-            Array.isArray(myEvents) &&
-            myEvents.map((me) => (
-              <article key={me.id} className="postcard dark blue">
-                <Link
-                  className="postcard__img_link"
-                  to={`/venues#venue-${me.venue.id}`}
-                >
-                  <img
-                    className="postcard__img"
-                    src={me.venue.imageUrl}
-                    alt="a venue"
-                  />
-                </Link>
-                <div className="postcard__text my-events-details">
-                  <h1 className="postcard__title blue">
-                    <span>{me.eventName}</span>
-                  </h1>
-                  <h3 className="postcard-my-venue-text">
-                    <span>@ </span>
+            <>
+              {myEvents && myEvents.length > 0 ? (
+                myEvents.map((me) => (
+                  <article key={me.id} className="postcard dark blue">
                     <Link
-                      className="upcoming-venue-link"
+                      className="postcard__img_link"
                       to={`/venues#venue-${me.venue.id}`}
                     >
-                      {me.venue.venueName}
+                      <img
+                        className="postcard__img"
+                        src={me.venue.imageUrl}
+                        alt="Venue"
+                      />
                     </Link>
-                  </h3>
-                  <div className="postcard__subtitle small">
-                    <i className="fas fa-calendar-alt mr-2"></i>
-                    {me.status}
-                  </div>
-                  <div className="upcoming-small-details">
-                    <div className="upcoming-details-cont">
-                      <div className="postcard__subtitle small">
-                        <i className="fas fa-calendar-alt mr-2"></i>
-                        {me.venue.address}
-                      </div>
-                      <div className="postcard__subtitle small">
-                        <i className="fas fa-calendar-alt mr-2"></i>
-                        {formatEventTime(me.eventStart)}
-                      </div>
-                    </div>
-
-                    <div className="upcoming-details-cont">
-                      <div className="postcard__subtitle small">
-                        <i className="fas fa-calendar-alt mr-2"></i>
-                        {me.expectedAttendees} People Expected
-                      </div>
-                      <div className="postcard__subtitle small">
-                        <i className="fas fa-calendar-alt mr-2"></i>
-                        Until {formatEventEnd(me.eventEnd)}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="postcard__bar"></div>
-                  <div className="postcard__preview-txt">
-                    {me.eventDescription}
-                  </div>
-                  <ul className="postcard__tagbox">
-                    {me.eventServices.map((ev) => (
-                      <React.Fragment key={ev.id}>
-                        <li key={ev.id} className="tag__item play blue">
-                          <Link
-                            to={`/services#service-${ev.service.id}`}
-                            id={`Tooltip-${ev.id}`}
-                          >
-                            <i className="fas fa-play mr-2"></i>
-                            {ev.service.serviceName}
-                          </Link>
-                        </li>
-                        <Tooltip
-                          placement="bottom"
-                          isOpen={tooltips[`Tooltip-${ev.id}`]}
-                          target={`Tooltip-${ev.id}`}
-                          toggle={() => toggleTooltip(`Tooltip-${ev.id}`)}
+                    <div className="postcard__text my-events-details">
+                      <h1 className="postcard__title blue">
+                        <span>{me.eventName}</span>
+                      </h1>
+                      <h3 className="postcard-my-venue-text">
+                        <span>@ </span>
+                        <Link
+                          className="upcoming-venue-link"
+                          to={`/venues#venue-${me.venue.id}`}
                         >
-                          {ev.service.description}{" "}
-                        </Tooltip>
-                      </React.Fragment>
-                    ))}
-                  </ul>
-                  <div className="postcard__subtitle small">
-                    <i className="fas fa-calendar-alt mr-2"></i>Have questions?
-                    Reach out to <span>{me.venue.contactInfo}</span>
-                  </div>
-                  <div className="postcard__bar"></div>
-                  {loggedInUser.id === me.userId && (
-                    <div className="my-events-btn-container">
-                      <Button
-                        className="my-events-btn"
-                        onClick={() => navigate(`/events/update/${me.id}`)}
+                          {me.venue.venueName}
+                        </Link>
+                      </h3>
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>
+                        {me.status}
+                      </div>
+                      <div className="upcoming-small-details">
+                        <div className="upcoming-details-cont">
+                          <div className="postcard__subtitle small">
+                            <i className="fas fa-calendar-alt mr-2"></i>
+                            {me.venue.address}
+                          </div>
+                          <div className="postcard__subtitle small">
+                            <i className="fas fa-calendar-alt mr-2"></i>
+                            {formatEventTime(me.eventStart)}
+                          </div>
+                        </div>
+                        <div className="upcoming-details-cont">
+                          <div className="postcard__subtitle small">
+                            <i className="fas fa-calendar-alt mr-2"></i>
+                            {me.expectedAttendees} People Expected
+                          </div>
+                          <div className="postcard__subtitle small">
+                            <i className="fas fa-calendar-alt mr-2"></i>Until{" "}
+                            {formatEventEnd(me.eventEnd)}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="postcard__bar"></div>
+                      <div className="postcard__preview-txt">
+                        {me.eventDescription}
+                      </div>
+                      <ul className="postcard__tagbox">
+                        {me.eventServices.map((ev) => (
+                          <React.Fragment key={ev.id}>
+                            <li className="tag__item play blue">
+                              <Link
+                                to={`/services#service-${ev.service.id}`}
+                                id={`Tooltip-${ev.id}`}
+                              >
+                                <i className="fas fa-play mr-2"></i>
+                                {ev.service.serviceName}
+                              </Link>
+                              <Tooltip
+                                placement="bottom"
+                                isOpen={tooltips[`Tooltip-${ev.id}`]}
+                                target={`Tooltip-${ev.id}`}
+                                toggle={() => toggleTooltip(`Tooltip-${ev.id}`)}
+                              >
+                                {ev.service.description}{" "}
+                              </Tooltip>
+                            </li>
+                          </React.Fragment>
+                        ))}
+                      </ul>
+                      <div className="postcard__subtitle small">
+                        <i className="fas fa-calendar-alt mr-2"></i>Have
+                        questions? Reach out to{" "}
+                        <span>{me.venue.contactInfo}</span>
+                      </div>
+                      <div className="postcard__bar"></div>
+                      {loggedInUser.id === me.userId && (
+                        <div className="my-events-btn-container">
+                          <Button
+                            className="my-events-btn"
+                            onClick={() => navigate(`/events/update/${me.id}`)}
+                          >
+                            Update Event
+                          </Button>
+                          <Button
+                            className="my-events-btn"
+                            onClick={() => openModal(me.id)}
+                          >
+                            Cancel Event
+                          </Button>
+                        </div>
+                      )}
+                      <Modal
+                        isOpen={activeModalId === me.id}
+                        toggle={closeModal}
                       >
-                        Update Event
-                      </Button>
-                      <Button
-                        className="my-events-btn"
-                        onClick={() => openModal(me.id)}
-                      >
-                        Cancel Event
-                      </Button>
+                        <ModalHeader toggle={closeModal}>
+                          Cancel Event
+                        </ModalHeader>
+                        <ModalBody>Are you sure you wish to cancel?</ModalBody>
+                        <ModalFooter>
+                          <Button
+                            color="danger"
+                            onClick={() => handleUserCancel(me.id)}
+                          >
+                            Yes, Cancel
+                          </Button>
+                          <Button color="secondary" onClick={closeModal}>
+                            No
+                          </Button>
+                        </ModalFooter>
+                      </Modal>
                     </div>
-                  )}
-                  {/* begin modal */}
-                  <Modal isOpen={activeModalId === me.id} toggle={closeModal}>
-                    <ModalHeader toggle={closeModal}>Cancel Event</ModalHeader>
-                    <ModalBody>Are you sure you wish to cancel?</ModalBody>
-                    <ModalFooter>
-                      <Button
-                        color="danger"
-                        onClick={() => {
-                          handleUserCancel(me.id);
-                        }}
-                      >
-                        Yes, Cancel
-                      </Button>{" "}
-                      <Button color="secondary" onClick={closeModal}>
-                        No
-                      </Button>
-                    </ModalFooter>
-                  </Modal>
+                  </article>
+                ))
+              ) : (
+                <div className="no-events-message">
+                  <p>You have not submitted any events. Start adding some <Link className="my-events-link" to={`/events/create`}>here!</Link></p>
                 </div>
-              </article>
-            ))
+              )}
+            </>
           )}
-          {/* make sure my events contains an array for if admin has no submitted events*/}
         </div>
       </section>
     </div>

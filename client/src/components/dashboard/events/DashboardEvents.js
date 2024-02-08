@@ -152,7 +152,7 @@ export default function DashboardEvents({ loggedInUser }) {
                   </td>
                   <td>{e.venue.venueName}</td>
                   <td>{e.venue.address}</td>
-                  <td>{formatEventTime(e.submitedOn)}</td>
+                  <td>{formatEventTime(e.submittedOn)}</td>
                   <td>{formatEventTime(e.eventStart)}</td>
                   <td>{formatEventTime(e.eventEnd)}</td>
                   <td>{e.status}</td>

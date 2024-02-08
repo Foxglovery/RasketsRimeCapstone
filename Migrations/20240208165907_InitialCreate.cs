@@ -254,7 +254,7 @@ namespace RasketsRimeCapstone.Migrations
                     ExpectedAttendees = table.Column<int>(type: "integer", nullable: false),
                     EventDescription = table.Column<string>(type: "text", nullable: false),
                     IsPublic = table.Column<bool>(type: "boolean", nullable: false),
-                    SubmitedOn = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    SubmittedOn = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false),
                     EventStart = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Duration = table.Column<int>(type: "integer", nullable: false)
@@ -316,8 +316,8 @@ namespace RasketsRimeCapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "a6e06f95-e112-4953-a486-49f193cdde55", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIai0R+qPPxCAm0JPzJ70P2ORo3sTGLE8O0m66zWDTaF+/MO5ivaN4fME+zV8kR11A==", null, false, "c8bcde19-f1f6-4b55-a8f6-1c8d3ad32a1f", false, "Administrator" },
-                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "223c15e5-d457-4c6d-b35b-a404c7cfb7c6", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK8+nUTIlRYVgBHOgL6o3mBRlFJ5bN/MfaiJBCmyS8ylrSblgOdNX/mVa9qfPvThOg==", null, false, "b17f348e-d469-404c-a47a-33c54e548416", false, "Schlebethany" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "f74228a6-1980-4763-b888-8ad25463ad22", "admin@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGK0gYfZG7dzMmx3Q5YEAtd/WyNHIhoJbYZ9gaIWk323rmmvdnDpa9ADCbV2q8QOPw==", null, false, "764774af-e934-43f3-81c5-d651dcfecc66", false, "Administrator" },
+                    { "e2731372-eb45-4cc5-9a34-d9711f3642b2", 0, "bf6bed2f-2b19-4cae-8df8-9832d93f4bf5", "Schlebethany@neopets.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEPBmj79g/xR+mctaKhMIHxyLAKfuMZj4UfatopTuZOBzD5lFyaoa9jI/p04hJni7ng==", null, false, "09b47454-66bd-4e3a-870e-6a469ba65327", false, "Schlebethany" }
                 });
 
             migrationBuilder.InsertData(
@@ -415,7 +415,7 @@ namespace RasketsRimeCapstone.Migrations
 
             migrationBuilder.InsertData(
                 table: "Events",
-                columns: new[] { "Id", "Duration", "EventDescription", "EventName", "EventStart", "ExpectedAttendees", "IsPublic", "Status", "SubmitedOn", "UserId", "VenueId" },
+                columns: new[] { "Id", "Duration", "EventDescription", "EventName", "EventStart", "ExpectedAttendees", "IsPublic", "Status", "SubmittedOn", "UserId", "VenueId" },
                 values: new object[] { 1, 6, "Just some rowdy gals ready to get totally twisted.", "Darla Dinkles Bachelorette Party", new DateTime(2024, 4, 12, 7, 0, 0, 0, DateTimeKind.Utc), 15, true, "Approved", new DateTime(2024, 1, 12, 5, 0, 0, 0, DateTimeKind.Utc), 2, 5 });
 
             migrationBuilder.InsertData(
