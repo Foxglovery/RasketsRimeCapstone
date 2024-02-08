@@ -41,11 +41,16 @@ export default function ServiceList() {
   }, [selectedVenueId]);
   //auto scrolling to service if url has ref
   useEffect(() => {
+    //get the hash from the url
     const hash = window.location.hash;
+    //if hash is present
     if (hash) {
+      //remove the hash header 
       const id = hash.replace("#service-", "");
+      //find the element on the page with that id
       const element = document.getElementById(`service-${id}`);
       if (element) {
+        //if element was found, then scroll to the element
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }

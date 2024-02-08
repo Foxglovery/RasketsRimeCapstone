@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Table } from "reactstrap";
 import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
+import "../../../styles/dash/UserProfileDetails.css"
 export default function UserProfileDetails({ loggedInUser }) {
   const [userProfile, setUserProfile] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -80,7 +81,7 @@ export default function UserProfileDetails({ loggedInUser }) {
               userProfile.events.map((event, index) => (
                 <div key={index}>
                   <div className="centered-content">
-                    <h4>
+                    <h4 className="user-event-header">
                       Event {index + 1}: {event.eventName}
                     </h4>
                   </div>
