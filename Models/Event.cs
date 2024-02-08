@@ -18,17 +18,18 @@ public class Event
     public string EventDescription { get; set; }
     [Required]
     public bool IsPublic { get; set; }
-    
-    public DateTime SubmitedOn { get; set; }
+
+    public DateTime SubmittedOn { get; set; }
     [Required]
     public string Status { get; set; }
     [Required]
     public DateTime EventStart { get; set; }
     public int Duration { get; set; }
-    
+
     public DateTime EventEnd
     {
-        get {
+        get
+        {
             return EventStart.AddHours(Duration);
         }
     }

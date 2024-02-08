@@ -90,7 +90,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 FirstName = "Schlebethany",
                 LastName = "Pleasance",
                 Address = "222 N Sidereal Way",
-                IsAdmin = false 
+                IsAdmin = false
             }
         });
         modelBuilder.Entity<Venue>().HasData(new Venue[]
@@ -520,8 +520,8 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ServiceId = 21
             }
         });
-            DateTime initialEventSubmitted = DateTime.SpecifyKind(DateTime.Parse("2024-01-12T11:00:00Z"), DateTimeKind.Utc);
-            DateTime initialEventStart = DateTime.SpecifyKind(DateTime.Parse("2024-04-12T12:00:00Z"), DateTimeKind.Utc);
+        DateTime initialEventSubmitted = DateTime.SpecifyKind(DateTime.Parse("2024-01-12T11:00:00Z"), DateTimeKind.Utc);
+        DateTime initialEventStart = DateTime.SpecifyKind(DateTime.Parse("2024-04-12T12:00:00Z"), DateTimeKind.Utc);
 
 
         modelBuilder.Entity<Event>().HasData(new Event[]
@@ -535,7 +535,7 @@ public class RasketsRimeDbContext : IdentityDbContext<IdentityUser>
                 ExpectedAttendees = 15,
                 EventDescription = "Just some rowdy gals ready to get totally twisted.",
                 IsPublic = true,
-                SubmitedOn = initialEventSubmitted,
+                SubmittedOn = initialEventSubmitted,
                 Status = "Approved",
                 EventStart = initialEventStart,
                 Duration = 6

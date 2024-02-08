@@ -73,7 +73,10 @@ input[type="date"]:-webkit-autofill {
   align-items: center;
   gap: 10px;
 }
-
+#serviceMulti:focus {
+  background-color: #201e19;
+  color: #fcd46a;
+}
 .create-event-submit-btn {
   color: black;
   font-family: "Stoke", Georgia, "Times New Roman", Times, serif;

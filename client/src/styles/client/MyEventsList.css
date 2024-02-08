@@ -27,6 +27,9 @@
 
   color: black;
 }
+.my-events-link {
+  color: #e9e8e8;
+}
 .my-events-btn-container :nth-child(2) {
   background: linear-gradient(
     0deg,
