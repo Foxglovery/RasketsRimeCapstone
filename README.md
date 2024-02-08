@@ -100,5 +100,5 @@ Before diving into the setup process, ensure you have the following installed:
 ### Attributions
 
 <ul>
-    <li>attribution:<a href="https://www.flaticon.com/free-icons/price" title="price icons">Price icons created by andinur - Flaticon</a></li>
+    <li><a href="https://www.flaticon.com/free-icons/price" title="price icons">Price icons created by andinur - Flaticon</a></li>
 </ul>
