@@ -96,3 +96,9 @@ Before diving into the setup process, ensure you have the following installed:
    As of writing this, I am running the API using the VS Code debugger.
    Ensure you have the proper C# extension for working with C#.
    Run Debugger
+
+### Attributions
+
+<ul>
+    <li>attribution:<a href="https://www.flaticon.com/free-icons/price" title="price icons">Price icons created by andinur - Flaticon</a></li>
+</ul>
