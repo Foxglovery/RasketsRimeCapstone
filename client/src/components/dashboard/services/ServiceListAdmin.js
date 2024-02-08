@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 export default function ServiceListAdmin({ loggedInUser }) {
   const [services, setServices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -93,7 +95,7 @@ export default function ServiceListAdmin({ loggedInUser }) {
                   <td>{service.description}</td>
                   <td>{renderVenueNames(service.venueServices)}</td>
                   <td>${service.price}</td>
-                  <td>{service.isActive ? "Active" : "Inactive"}</td>
+                  <td>{service.isActive ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faXmark} />}</td>
                   <td>
                     {service.isActive ? (
                       <Button

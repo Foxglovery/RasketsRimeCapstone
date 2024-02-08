@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Table } from "reactstrap";
 import { GetVenueById } from "../../managers/venueManager";
-import backgroundImage from "../../../assets/brown-blue-wood.jpg";
 import { GetEventsByVenueId } from "../../managers/eventManager";
 import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function VenueDetailsAdmin({ loggedInUser }) {
   const { id } = useParams();
@@ -88,7 +90,7 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
               </tr>
               <tr>
                 <th>Is Active</th>
-                <td>{venue?.isActive ? "Yes" : "No"}</td>
+                <td>{venue?.isActive ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faXmark} />}</td>
               </tr>
               <tr>
                 <th>Total Service Revenue</th>
@@ -121,7 +123,7 @@ export default function VenueDetailsAdmin({ loggedInUser }) {
                   <td>{service.service.serviceName}</td>
                   <td>{service.service.description}</td>
                   <td>${service.service.price}</td>
-                  <td>{service.service.isActive ? "Yes" : "No"}</td>
+                  <td>{service.service.isActive ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faXmark} />}</td>
                 </tr>
               ))}
             </tbody>

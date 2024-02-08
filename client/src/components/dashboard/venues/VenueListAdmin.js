@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function VenueListAdmin({ loggedInUser }) {
   const [venues, setVenues] = useState([]);
@@ -94,7 +96,7 @@ export default function VenueListAdmin({ loggedInUser }) {
                 <td>{v.address}</td>
                 <td>{v.contactInfo}</td>
                 <td>{v.maxOccupancy}</td>
-                <td>{v.isActive ? "Active" : "Inactive"}</td>
+                <td>{v.isActive ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faXmark} />}</td>
                 <td>
                   {v.isActive ? (
                     <Button
