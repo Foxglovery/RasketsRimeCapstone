@@ -4,6 +4,8 @@ import { Button, Table } from "reactstrap";
 import { Link } from "react-router-dom";
 import withMinimumLoadingTime from "../../WithMinimumLoadingTime";
 import CircleLoader from "react-spinners/CircleLoader";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function UserProfileList({ loggedInUser }) {
   const [userProfiles, setUserProfiles] = useState([]);
@@ -70,7 +72,7 @@ export default function UserProfileList({ loggedInUser }) {
                   <td>{up.userName}</td>
                   <td>{up.email}</td>
                   <td>{up.address}</td>
-                  <td>{up.isAdmin ? "yes" : "no"}</td>
+                  <td>{up.isAdmin ? <FontAwesomeIcon icon={faCheck} />: <FontAwesomeIcon icon={faXmark} />}</td>
                   <td>
                     <Link to={`${up.id}`}>
                       <Button className="admin-details-event-btn">
