@@ -1,11 +1,13 @@
-// Ensure a minimum display time for the spinner
+// Ensure a min display time for the spinner
 export default function withMinimumLoadingTime(promise) {
     const minLoadingTime = 500; 
     //store current time 
     const startTime = new Date().getTime();
   //wait for two promises to resolve, (argument, setTimeOut Promise)
     return Promise.all([
+      //the original promise
       promise,
+      //and the min loading time promise
       new Promise((resolve) => setTimeout(resolve, minLoadingTime))
     ]).then(([result]) => {
       const endTime = new Date().getTime();
@@ -16,7 +18,7 @@ export default function withMinimumLoadingTime(promise) {
         return result;
       }
   
-      // Otherwise, wait until the min time has passed
+      //if it loaded quickly, calculate how much time is left and makes new setTimeout Promise to be resolved
       return new Promise((resolve) => setTimeout(() => resolve(result), minLoadingTime - elapsedTime));
     });
   }
