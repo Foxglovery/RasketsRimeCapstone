@@ -272,6 +272,8 @@ public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO updatedVenue)
     return Ok(venueToUpdate);
 }
 
+//add in delete venue function
+
 [HttpPut("deactivate/{id}")]
     [Authorize(Roles = "Admin")]
     public IActionResult DeactivateVenue(int id)
