@@ -156,13 +156,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f74228a6-1980-4763-b888-8ad25463ad22",
+                            ConcurrencyStamp = "4c05e559-9af6-4b45-8ff2-36d4a3e01321",
                             Email = "admin@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGK0gYfZG7dzMmx3Q5YEAtd/WyNHIhoJbYZ9gaIWk323rmmvdnDpa9ADCbV2q8QOPw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH/gNBKYV/Wo1HDmmeGI624Hx2C+oUtuftD910PuVFd/exOYeQkBiN0bzIxZeiKKlw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "764774af-e934-43f3-81c5-d651dcfecc66",
+                            SecurityStamp = "243cd81f-8491-449f-b2b0-1593467e0924",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -170,13 +170,13 @@ namespace RasketsRimeCapstone.Migrations
                         {
                             Id = "e2731372-eb45-4cc5-9a34-d9711f3642b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bf6bed2f-2b19-4cae-8df8-9832d93f4bf5",
+                            ConcurrencyStamp = "352f5aa0-4f6a-42ca-a266-38cb33b8aa3d",
                             Email = "Schlebethany@neopets.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEPBmj79g/xR+mctaKhMIHxyLAKfuMZj4UfatopTuZOBzD5lFyaoa9jI/p04hJni7ng==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEErqz1gdeTekyajAzAviWjsBJIrTxFA/Tsx2Xr9V/Q1TFTtnSHwwwYEJQmpdSNDkyQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "09b47454-66bd-4e3a-870e-6a469ba65327",
+                            SecurityStamp = "42a07f55-ed55-4b90-833f-5549e27db169",
                             TwoFactorEnabled = false,
                             UserName = "Schlebethany"
                         });
