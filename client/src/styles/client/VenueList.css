@@ -184,6 +184,10 @@ a:hover {
 }
 
 @media screen and (min-width: 769px) {
+
+  .postcard__img:hover {
+    transform: scale(1.1);
+  }
   .postcard {
     flex-wrap: inherit;
 
@@ -216,9 +220,7 @@ a:hover {
       width: 55px;
     }
 
-    &:hover .postcard__img {
-      transform: scale(1.1);
-    }
+    
 
     &:nth-child(2n + 1) {
       flex-direction: row;
