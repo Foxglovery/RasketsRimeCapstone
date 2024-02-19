@@ -307,4 +307,21 @@ public IActionResult UpdateVenue(int id, [FromBody] UpdateVenueDTO updatedVenue)
 
     }
 
+[HttpDelete("{id}")]
+[Authorize(Roles = "Admin")]
+public IActionResult DeleteVenue(int id)
+{
+    var eventsAtDeletedVenue = _dbContext.Events.
+        Where(e => e.VenueId == id).ToList();
+    Venue venueToDelete = _dbContext.Venues.SingleOrDefault(v => v.Id == id);
+    if (venueToDelete == null)
+    {
+        return NotFound();
+    }
+    //what do i want to do if there are events?
+    _dbContext.Venues.Remove(venueToDelete);
+    _dbContext.SaveChanges();
+    return Ok("Venue deletion successful");
+}
+
 }

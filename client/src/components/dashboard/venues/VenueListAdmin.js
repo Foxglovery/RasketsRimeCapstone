@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   ActivateVenue,
   DeactivateVenue,
+  DeleteVenue,
   GetVenues,
 } from "../../managers/venueManager";
 import { Link, useNavigate } from "react-router-dom";
@@ -37,6 +38,11 @@ export default function VenueListAdmin({ loggedInUser }) {
   };
   const handleActivate = (id) => {
     ActivateVenue(id).then(() => {
+      GetVenues().then(setVenues);
+    });
+  };
+  const handleDelete = (id) => {
+    DeleteVenue(id).then(() => {
       GetVenues().then(setVenues);
     });
   };
@@ -86,6 +92,7 @@ export default function VenueListAdmin({ loggedInUser }) {
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -96,7 +103,13 @@ export default function VenueListAdmin({ loggedInUser }) {
                 <td>{v.address}</td>
                 <td>{v.contactInfo}</td>
                 <td>{v.maxOccupancy}</td>
-                <td>{v.isActive ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faXmark} />}</td>
+                <td>
+                  {v.isActive ? (
+                    <FontAwesomeIcon icon={faCheck} />
+                  ) : (
+                    <FontAwesomeIcon icon={faXmark} />
+                  )}
+                </td>
                 <td>
                   {v.isActive ? (
                     <Button
@@ -113,6 +126,14 @@ export default function VenueListAdmin({ loggedInUser }) {
                       Activate
                     </Button>
                   )}
+                </td>
+                <td>
+                  <Button
+                    color="danger"
+                    onClick={() => handleDelete(v.id)}
+                  >
+                    Delete
+                  </Button>
                 </td>
                 <td>
                   <Button

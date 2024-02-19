@@ -66,6 +66,9 @@ export default function DashboardEvents({ loggedInUser }) {
       GetEvents().then(setEvents);
     });
   };
+  const handleUncancel = (id) => {
+    
+  };
   //datetime formatting
   const formatEventTime = (dateString) => {
     const date = new Date(dateString);
@@ -184,7 +187,7 @@ export default function DashboardEvents({ loggedInUser }) {
                   ) : (
                     <td>
                       <Button className="admin-cancel-btn" disabled>
-                        Cancel
+                        Un-cancel
                       </Button>
                     </td>
                   )}
