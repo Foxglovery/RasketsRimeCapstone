@@ -45,6 +45,15 @@ export const AdminCancelEvent = (id) => {
     body: JSON.stringify(id),
   });
 };
+export const AdminUncancel = (id) => {
+  return fetch(`${_apiUrl}/AdminUncancel/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(id),
+  });
+};
 export const UserCancelEvent = (eventId, userId) => {
   return fetch(`${_apiUrl}/UserCancel/${eventId}?userId=${userId}`, {
     method: "PUT",

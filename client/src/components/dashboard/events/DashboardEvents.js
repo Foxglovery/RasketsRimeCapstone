@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   AdminCancelEvent,
+  AdminUncancel,
   ApproveEvent,
   DeleteEvent,
   GetEvents,
@@ -67,7 +68,9 @@ export default function DashboardEvents({ loggedInUser }) {
     });
   };
   const handleUncancel = (id) => {
-    
+    AdminUncancel(id).then(() => {
+      GetEvents().then(setEvents);
+    });
   };
   //datetime formatting
   const formatEventTime = (dateString) => {
@@ -175,7 +178,7 @@ export default function DashboardEvents({ loggedInUser }) {
                       </Button>
                     </td>
                   )}
-                  {e.status === "Approved" ? (
+                  {e.status === "Approved" || e.status === "Pending" ? (
                     <td>
                       <Button
                         className="admin-cancel-btn"
@@ -186,8 +189,11 @@ export default function DashboardEvents({ loggedInUser }) {
                     </td>
                   ) : (
                     <td>
-                      <Button className="admin-cancel-btn" disabled>
-                        Un-cancel
+                      <Button 
+                        className="admin-cancel-btn"
+                        onClick={() => handleUncancel(e.id)}
+                        >
+                        Repend
                       </Button>
                     </td>
                   )}
