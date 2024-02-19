@@ -56,3 +56,13 @@ export const ActivateVenue = (id) => {
     body: JSON.stringify(id),
   });
 };
+
+export const DeleteVenue = (id) => {
+  return fetch(`${_apiUrl}/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(id),
+  });
+}

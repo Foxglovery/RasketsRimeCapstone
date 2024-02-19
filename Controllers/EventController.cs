@@ -782,6 +782,21 @@ public class EventController : ControllerBase
         return Ok("Event cancellation successful");
 
     }
+
+    [HttpPut("AdminUncancel/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult AdminUncancel(int id)
+    {
+        var eventToUncancel = _dbContext.Events.SingleOrDefault(e => e.Id == id);
+        if (eventToUncancel == null)
+        {
+            return NotFound();
+        }
+        eventToUncancel.Status = "Pending";
+        _dbContext.SaveChanges();
+        return Ok("Event Uncancel Successful");
+    }
+
     [HttpPut("UserCancel/{eventId}")]
     [Authorize]
     public IActionResult UserCancelEvent(int eventId, int userId)
