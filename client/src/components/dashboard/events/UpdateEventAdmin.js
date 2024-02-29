@@ -122,7 +122,7 @@ export default function UpdateEventAdmin({ loggedInUser }) {
     setEventStart(newDate);
   };
 
-  const currentMonth = eventStart.getMonth() + 1;
+  const currentMonth = eventStart.getMonth() + 1; //accounting for the 0 index
   const currentDay = eventStart.getDate();
   const currentYear = eventStart.getFullYear();
   const currentHour = eventStart.getHours();

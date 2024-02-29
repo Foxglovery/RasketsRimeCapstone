@@ -59,6 +59,7 @@ export default function MyEventsList({ loggedInUser }) {
     } catch (error) {
       console.error("There was an error canceling the event:", error);
     } finally {
+      //use finally here to close the modal
       closeModal();
     }
   };
