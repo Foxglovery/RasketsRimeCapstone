@@ -27,7 +27,7 @@ export default function CreateService() {
   useEffect(() => {
     GetVenues().then(setVenues);
   }, []);
-
+//define structure of new service
   const newService = {
     serviceName: serviceName,
     description: description,
@@ -36,6 +36,7 @@ export default function CreateService() {
     isActive: isActive,
     venueIds: venueIds,
   };
+  //Handlers
   const handleNameChange = (event) => {
     setServiceName(event.target.value);
   };
@@ -53,21 +54,25 @@ export default function CreateService() {
   const handlePriceChange = (event) => {
     setPrice(parseInt(event.target.value));
   };
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    //using try and await to store the response as a variable
     try {
       const data = await CreateNewService(newService);
-
+      //if the response has value and has no error, then tallyho!
       if (data && !data.error) {
         console.log("Service created successfully", data);
         navigate(`/admin/services`);
       } else {
+        //otherwise store error message and display to user
         const errorMsg = data.error || "Failed to create service";
         setErrorMessage("Sorry, we couldn't create the service" + errorMsg);
         console.error("Failed to create service:", data);
       }
     } catch (error) {
+      //if the request has an error, parse that error
       let errorMsg = error.message || "Error submitting service";
       //parse the error from the db because they are mad helpful
       if (typeof errorMsg === "string" && errorMsg.startsWith("{")) {
