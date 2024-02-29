@@ -8,14 +8,15 @@ import "../../../styles/dash/UserProfileDetails.css"
 export default function UserProfileDetails({ loggedInUser }) {
   const [userProfile, setUserProfile] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
   const { id } = useParams();
 
   useEffect(() => {
+    //Upon mount, spinner will spin for min time
     setIsLoading(true);
     withMinimumLoadingTime(GetProfile(id))
       .then((fetchedProfile) => {
         setUserProfile(fetchedProfile);
+        //the spinner vanishes
         setIsLoading(false);
       })
       .catch((error) => {
@@ -44,6 +45,7 @@ export default function UserProfileDetails({ loggedInUser }) {
             Services
           </Link>
         </div>
+        {/* Content to be displayed after spinner */}
         {isLoading ? (
           <div className="dashboard-event-spinner">
             <CircleLoader color="white" size={100} />
@@ -110,6 +112,7 @@ export default function UserProfileDetails({ loggedInUser }) {
                     </tbody>
                   </Table>
                   <div className="centered-content">
+                    {/* Event Services Information Table */}
                     <h3>Event Services</h3>
                     <Table
                       dark
